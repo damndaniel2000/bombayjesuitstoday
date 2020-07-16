@@ -46,7 +46,7 @@ const VideoCards = () => {
         <div className="video-card-sharebuttons">
           <ShareButton videoUrl="https://www.youtube.com/embed/wk92BtfnWqE" />
           <a href={card.videoURL} target="_blank" rel="noopener noreferrer">
-            Not Loading? Click here to view in Youtube
+            Not Loading? Click here to view in Youtube{" "}
             <i className="fa fa-youtube-play" />
           </a>
         </div>
