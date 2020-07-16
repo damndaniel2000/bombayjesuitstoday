@@ -26,6 +26,8 @@
 
 .video-post-form-button:hover {
   opacity: 90%;
+  -moz-opacity: 90%;
+  -khtml-opacity: 90%;
 }
 
 @media only screen and (max-width: 900px) {

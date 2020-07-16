@@ -12,7 +12,7 @@ app.use(cors());
 const videoRouter = require("./routes/videoRouter");
 
 const url =
-  "mongodb+srv://dan:Daniel2000@cluster0-owjks.mongodb.net/Demo?retryWrites=true&w=majority";
+  "mongodb+srv://dan:Daniel2000@cluster0-owjks.mongodb.net/Jesuits-Demo?retryWrites=true&w=majority";
 
 mongoose
   .connect(process.env.MONGODB_URI || url, {
