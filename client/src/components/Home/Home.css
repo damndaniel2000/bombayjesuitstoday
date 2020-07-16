@@ -55,6 +55,12 @@
   font-family: Rancho;
 }
 
+@media only screen and (max-height: 700px) {
+  .ggg-text-container {
+    top: 5rem;
+  }
+}
+
 @media only screen and (max-width: 800px) {
   .container {
     background-position: center;
@@ -80,6 +86,12 @@
   .video-button-container {
     left: 2rem;
     bottom: 20rem;
+  }
+}
+
+@media only screen and (max-width: 800px) and (max-height: 700px) {
+  .ggg-text-container {
+    top: 8rem;
   }
 }
 
