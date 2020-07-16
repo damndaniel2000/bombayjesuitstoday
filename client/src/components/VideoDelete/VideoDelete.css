@@ -1,0 +1,22 @@
+.video-delete-div {
+  width: 50%;
+  margin: 3rem auto;
+}
+
+.video-delete-card {
+  margin-top: 2rem;
+  text-align: left;
+}
+
+.video-delete-button {
+  border: none;
+  padding: 0.5rem 2rem;
+  background: #f5222d;
+  color: #fff;
+}
+
+@media only screen and (max-width: 900px) {
+  .video-delete-div {
+    width: 80%;
+  }
+}

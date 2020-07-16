@@ -1,0 +1,9 @@
+#nav-strip {
+  background-color: #ad2102;
+  color: #fff;
+  height: 5.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.2rem 3rem;
+}

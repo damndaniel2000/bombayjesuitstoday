@@ -1,0 +1,59 @@
+.video-card-div {
+  margin: 2rem auto;
+  width: 55%;
+  text-align: left;
+  box-shadow: 3px 3px 5px 3px #ccc;
+  padding-top: 2px;
+  padding-bottom: 2rem;
+  background-color: #fff;
+}
+
+.video-card-video {
+  width: 100%;
+  height: 500px;
+}
+
+.video-card-content {
+  margin: 5px 10px;
+}
+
+.video-card-title {
+  font-weight: bolder;
+  font-size: 18px;
+}
+
+.video-card-sharebuttons {
+  display: flex;
+  align-items: center;
+  height: 4rem;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+.video-card-sharebuttons a {
+  color: red;
+}
+
+.share-buttons {
+  width: 8rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+@media only screen and (max-width: 900px) {
+  .video-card-div {
+    width: 90%;
+  }
+  .video-card-video {
+    height: 400px;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .video-card-div {
+    width: 100%;
+  }
+  .video-card-video {
+    height: 300px;
+  }
+}
