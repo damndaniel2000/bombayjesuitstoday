@@ -6,8 +6,10 @@ import NavBar from "./components/Navbar/NavBar";
 import HomeNavBar from "./components/HomeNav/HomeNavBar";
 import HomePage from "./pages/HomePage";
 import VideoPage from "./pages/VideoPage";
-import VideoPost from "./pages/VideoPostPage";
-import VideoDelete from "./pages/VideoDeletePage";
+import VideoUpload from "./pages/VideoPost";
+
+import AdminVideoPost from "./pages/Admin/VideoPostPage";
+import AdminVideoDelete from "./pages/Admin/VideoDeletePage";
 
 const App = () => {
   return (
@@ -17,8 +19,10 @@ const App = () => {
       <Switch>
         <Route exact path="/" component={HomePage} />
         <Route exact path="/videos" component={VideoPage} />
-        <Route exact path="/videos/post" component={VideoPost} />
-        <Route exact path="/videos/delete" component={VideoDelete} />
+        <Route exact path="/video/upload" component={VideoUpload} />
+
+        <Route exact path="/videos/post" component={AdminVideoPost} />
+        <Route exact path="/videos/delete" component={AdminVideoDelete} />
       </Switch>
     </Router>
   );

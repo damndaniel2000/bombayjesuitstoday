@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import "./VideoPost.css";
+import "./VideoUpload.css";
+
 import axios from "axios";
 import { Form, Input, message } from "antd";
 
@@ -7,20 +8,38 @@ const VideoPost = () => {
   const [state, setState] = useState({
     uploader: "",
     caption: "",
-    embedLink: "",
-    videoURL: "",
   });
-  const { uploader, caption, embedLink, videoURL } = state;
+  const [videoURL, setURL] = useState("");
+  const { uploader, caption } = state;
+
+  const openWidget = () => {
+    window.cloudinary.openUploadWidget(
+      {
+        cloud_name: "dij0e4dwn",
+        upload_preset: "nofvgsru",
+        folder: "video_uploads",
+      },
+      (error, result) => {
+        if (!error) {
+          setURL(result[0].secure_url);
+        } else {
+          return null;
+        }
+      }
+    );
+  };
 
   const handleSubmit = () => {
     axios
-      .post("/api/videos", {
+      .post("/api/videos-upload", {
         uploader: uploader,
         caption: caption,
-        embedLink: embedLink,
         videoURL: videoURL,
       })
-      .then(() => successMessage())
+      .then(() => {
+        successMessage();
+        setURL("");
+      })
       .catch((err) => {
         console.log(err);
         errorMessage();
@@ -59,6 +78,18 @@ const VideoPost = () => {
           />
         </Form.Item>
 
+        <div className="upload-input-div">
+          <button className="upload-input-button" onClick={() => openWidget()}>
+            Select Video
+          </button>
+          <Input
+            className="upload-input-filename"
+            placeholder="Filename"
+            value={videoURL}
+          />
+        </div>
+        <br />
+
         <Form.Item label="Caption" name="caption">
           <Input.TextArea
             value={caption}
@@ -70,38 +101,15 @@ const VideoPost = () => {
           />
         </Form.Item>
 
-        <Form.Item
-          label="Embed Link"
-          name="embedLink"
-          extra="Go to your video -> Share -> Embed -> Copy the link inside src=' ' and paste it here"
-        >
-          <Input
-            placeholder="Embed Link"
-            name="embedLink"
-            value={embedLink}
-            onChange={handleChange}
-            required
-          />
-        </Form.Item>
-
-        <Form.Item
-          label="Video URL"
-          name="videoURL"
-          extra="This is the link to the page your video is on. This appears in the searchbar on top"
-        >
-          <Input
-            name="videoURL"
-            placeholder="Video URL"
-            value={videoURL}
-            onChange={handleChange}
-            required
-          />
-        </Form.Item>
-
         <button className="video-post-form-button" type="primary">
           Post Video
         </button>
       </Form>
+      <br />
+      <h3>
+        After uploading your videos, it may take a while for them to appear on
+        the website.
+      </h3>
     </div>
   );
 };

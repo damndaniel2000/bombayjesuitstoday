@@ -1,11 +1,14 @@
 import React, { useEffect } from "react";
+import { useHistory, Link } from "react-router-dom";
 import "./Home.css";
 
 const Home = () => {
   useEffect(() => {
     document.getElementById("home-nav-bar").style.display = "block";
     document.getElementById("nav-strip").style.display = "none";
-  }, []);
+  });
+  const history = useHistory();
+
   return (
     <>
       <div className="container">
@@ -16,7 +19,10 @@ const Home = () => {
             </p>
           </div>
           <div className="video-button-container">
-            <button className="img-button">
+            <button
+              onClick={() => history.push("/videos")}
+              className="img-button"
+            >
               <span className="img-button-text">Videos</span>
             </button>
           </div>

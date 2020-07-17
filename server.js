@@ -9,7 +9,8 @@ const app = express();
 app.use(bodyParser.json());
 app.use(cors());
 
-const videoRouter = require("./routes/videoRouter");
+const videoPostRouter = require("./routes/videoPostRouter");
+const videoUploadRouter = require("./routes/videoUploadRouter");
 
 const url =
   "mongodb+srv://dan:Daniel2000@cluster0-owjks.mongodb.net/Jesuits-Demo?retryWrites=true&w=majority";
@@ -22,7 +23,8 @@ mongoose
   .then(() => console.log("Database Connection Successful"))
   .catch((err) => console.error(err));
 
-app.use("/api/videos", videoRouter);
+app.use("/api/videos-post", videoPostRouter);
+app.use("/api/videos-upload", videoUploadRouter);
 
 app.use(express.static(path.join(__dirname, "client/build")));
 

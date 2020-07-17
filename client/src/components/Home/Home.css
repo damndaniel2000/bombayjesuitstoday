@@ -1,18 +1,18 @@
 @import url("https://fonts.googleapis.com/css2?family=Rancho&display=swap");
 .container {
-  height: 800px;
+  height: 1000px;
   background-attachment: fixed;
   background-repeat: no-repeat;
   background-size: cover;
-  background-image: url("/images/jesuit.jpg");
+  background-image: url("https://res.cloudinary.com/dij0e4dwn/image/upload/v1594989422/jesuit_ui2v9m.jpg");
 }
 .opacity-container {
-  height: 800px;
+  height: 1000px;
   background-color: rgb(0, 0, 0, 0.6);
 }
 .ggg-text-container {
   position: absolute;
-  top: 7rem;
+  top: 10rem;
   left: 4rem;
   width: 40rem;
 }
@@ -26,13 +26,13 @@
 
 .video-button-container {
   position: absolute;
-  bottom: 15rem;
+  bottom: 18rem;
   left: 6rem;
 }
 
 .blogs-button-container {
   position: absolute;
-  bottom: 15rem;
+  bottom: 18rem;
   left: 27rem;
 }
 

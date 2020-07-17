@@ -12,7 +12,7 @@ const VideoDelete = () => {
 
   const getVideos = () => {
     axios
-      .get("/qwerty/api/videos")
+      .get("/qwerty/api/videos-post")
       .then((res) => setVideos(res.data))
       .catch((err) => console.log(err));
   };

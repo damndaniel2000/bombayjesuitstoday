@@ -1,5 +1,5 @@
 import React from "react";
-import VideoPost from "../components/VideoPost/VideoPost";
+import VideoPost from "../../components/Admin/VideoPost/VideoPost";
 
 const VideoPostPage = () => {
   return <VideoPost />;

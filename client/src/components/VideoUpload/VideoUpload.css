@@ -1,0 +1,38 @@
+.video-upload-form-button {
+  background-color: rgb(173, 33, 2);
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 5px;
+  width: 40%;
+}
+
+.video-upload-form-button:hover {
+  font-weight: bold;
+}
+
+.video-post-form p {
+  margin-top: -1rem;
+}
+
+.upload-input-div {
+  display: flex;
+}
+
+.upload-input-button {
+  background-color: rgb(173, 33, 2);
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border: none;
+  width: 40%;
+}
+
+.upload-input-button:hover {
+  font-weight: bold;
+}
+
+@media only screen and (max-width: 500px) {
+  .upload-input-button {
+    width: 40%;
+  }
+}

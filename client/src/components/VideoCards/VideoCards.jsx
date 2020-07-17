@@ -8,12 +8,15 @@ const VideoCards = () => {
   const [videos, setVideos] = useState([]);
 
   useEffect(() => {
+    document.getElementById("home-nav-bar").style.display = "none";
+    document.getElementById("nav-strip").style.display = "flex";
+
     getVideos();
   }, []);
 
   const getVideos = () => {
     axios
-      .get("/api/videos")
+      .get("/api/videos-post")
       .then((res) => setVideos(res.data))
       .catch((err) => console.log(err));
   };

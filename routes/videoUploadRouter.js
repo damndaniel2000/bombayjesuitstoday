@@ -1,7 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 
-const Video = require("../models/Videos");
+const Video = require("../models/VideosUpload");
 
 const videoRouter = express.Router();
 

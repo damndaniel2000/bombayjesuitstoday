@@ -40,7 +40,7 @@
   justify-content: space-between;
 }
 
-@media only screen and (max-width: 900px) {
+@media only screen and (max-width: 1000px) {
   .video-card-div {
     width: 90%;
   }
