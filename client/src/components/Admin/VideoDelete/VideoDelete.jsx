@@ -12,7 +12,7 @@ const VideoDelete = () => {
 
   const getVideos = () => {
     axios
-      .get("/qwerty/api/videos-post")
+      .get("/api/videos-post")
       .then((res) => setVideos(res.data))
       .catch((err) => console.log(err));
   };
@@ -21,7 +21,7 @@ const VideoDelete = () => {
     const confirm = prompt("Types YES in the input below");
     if (confirm === "YES") {
       axios
-        .delete("/qwerty/api/videos/" + id)
+        .delete("/api/videos-post/" + id)
         .then(() => {
           getVideos();
           successMessage();

@@ -5,5 +5,73 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0.2rem 3rem;
+  padding: 0.2rem 2rem;
+}
+
+.main-nav-div {
+  font-size: 18px;
+  width: 30%;
+  padding: 1rem;
+}
+
+.main-nav {
+  display: flex;
+  justify-content: space-between;
+}
+
+.desktop-nav span {
+  padding: 10px 30px;
+}
+
+.desktop-nav span:hover {
+  background-color: rgb(255, 255, 255, 0.2);
+  border-radius: 50px;
+}
+
+.mobile-nav {
+  display: none;
+}
+
+.ant-drawer-body {
+  background-color: #ad2102;
+  color: #fff;
+  padding: 0;
+}
+.drawer-nav-links {
+  margin-top: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-size: 25px;
+  height: 26%;
+}
+.drawer-nav-links span {
+  padding: 0.5rem 1rem;
+  height: 55px;
+  text-align: left;
+  width: 100%;
+}
+.drawer-nav-links span:hover {
+  background-color: #fff;
+  color: #ad2102;
+}
+
+@media only screen and (max-width: 1600px) {
+  .mobile-nav {
+    font-size: 30px;
+    float: right;
+    display: block;
+  }
+  .desktop-nav {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  #nav-strip {
+    padding: 0.2rem 0.7rem;
+  }
+  .drawer-nav-links {
+    padding-top: 3rem;
+  }
 }

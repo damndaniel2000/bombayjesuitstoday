@@ -42,12 +42,12 @@ const VideoCards = () => {
         <iframe
           className="video-card-video"
           frameBorder="0"
-          src="https://www.youtube.com/embed/wk92BtfnWqE"
+          src={card.embedLink}
           title={card._id}
         ></iframe>
 
         <div className="video-card-sharebuttons">
-          <ShareButton videoUrl="https://www.youtube.com/embed/wk92BtfnWqE" />
+          <ShareButton videoUrl={card.videoURL} />
           <a href={card.videoURL} target="_blank" rel="noopener noreferrer">
             Not Loading? Click here to view in Youtube{" "}
             <i className="fa fa-youtube-play" />

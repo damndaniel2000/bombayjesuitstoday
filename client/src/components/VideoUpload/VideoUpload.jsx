@@ -10,23 +10,55 @@ const VideoPost = () => {
     caption: "",
   });
   const [videoURL, setURL] = useState("");
+  const [fileName, setFileName] = useState("");
   const { uploader, caption } = state;
 
   const openWidget = () => {
-    window.cloudinary.openUploadWidget(
-      {
-        cloud_name: "dij0e4dwn",
-        upload_preset: "nofvgsru",
-        folder: "video_uploads",
-      },
-      (error, result) => {
-        if (!error) {
-          setURL(result[0].secure_url);
-        } else {
-          return null;
+    window.cloudinary
+      .createUploadWidget(
+        {
+          cloudName: "dij0e4dwn",
+          uploadPreset: "nofvgsru",
+          sources: ["local"],
+          api_key: "597871714829172",
+          showAdvancedOptions: false,
+          multiple: false,
+          defaultSource: "local",
+          styles: {
+            palette: {
+              window: "#10173a",
+              sourceBg: "#20304b",
+              windowBorder: "#7171D0",
+              tabIcon: "#79F7FF",
+              inactiveTabIcon: "#8E9FBF",
+              menuIcons: "#CCE8FF",
+              link: "#72F1FF",
+              action: "#5333FF",
+              inProgress: "#00ffcc",
+              complete: "#33ff00",
+              error: "#cc3333",
+              textDark: "#000000",
+              textLight: "#ffffff",
+            },
+            fonts: {
+              default: null,
+              "'Poppins', sans-serif": {
+                url: "https://fonts.googleapis.com/css?family=Poppins",
+                active: true,
+              },
+            },
+          },
+        },
+        (error, result) => {
+          if (!error && result.event === "success") {
+            setURL(result.info.secure_url);
+            setFileName(result.info.original_filename);
+          } else {
+            return null;
+          }
         }
-      }
-    );
+      )
+      .open();
   };
 
   const handleSubmit = () => {
@@ -79,13 +111,13 @@ const VideoPost = () => {
         </Form.Item>
 
         <div className="upload-input-div">
-          <button className="upload-input-button" onClick={() => openWidget()}>
+          <span className="upload-input-button" onClick={() => openWidget()}>
             Select Video
-          </button>
+          </span>
           <Input
             className="upload-input-filename"
             placeholder="Filename"
-            value={videoURL}
+            value={fileName}
           />
         </div>
         <br />

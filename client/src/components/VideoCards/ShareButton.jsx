@@ -4,8 +4,6 @@ import {
   FacebookIcon,
   WhatsappShareButton,
   WhatsappIcon,
-  EmailShareButton,
-  EmailIcon,
 } from "react-share";
 import "./VideoCards.css";
 
@@ -18,9 +16,6 @@ const ShareButtons = (props) => {
       <WhatsappShareButton url={props.videoUrl}>
         <WhatsappIcon size={32} round />
       </WhatsappShareButton>
-      <EmailShareButton url={props.videoUrl}>
-        <EmailIcon size={32} round />
-      </EmailShareButton>
     </div>
   );
 };

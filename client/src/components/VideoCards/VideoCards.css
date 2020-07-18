@@ -18,8 +18,12 @@
 }
 
 .video-card-title {
-  font-weight: bolder;
-  font-size: 18px;
+  color: #000;
+  font-size: 21px;
+}
+.video-card-caption {
+  color: #000;
+  font-size: 17px;
 }
 
 .video-card-sharebuttons {
@@ -35,7 +39,7 @@
 }
 
 .share-buttons {
-  width: 8rem;
+  width: 5rem;
   display: flex;
   justify-content: space-between;
 }
@@ -45,15 +49,18 @@
     width: 90%;
   }
   .video-card-video {
-    height: 400px;
+    height: 500px;
   }
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 500px) {
   .video-card-div {
     width: 100%;
   }
   .video-card-video {
     height: 300px;
+  }
+  .video-card-caption {
+    font-size: 15px;
   }
 }
