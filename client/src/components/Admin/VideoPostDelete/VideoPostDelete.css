@@ -1,22 +1,45 @@
 .video-delete-div {
-  width: 50%;
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
   margin: 3rem auto;
+  flex-wrap: wrap;
 }
 
 .video-delete-card {
-  margin-top: 2rem;
   text-align: left;
+  margin-bottom: 2rem;
+  width: 30%;
+  padding: 0.5rem 0 1rem 1rem;
+  border: solid 1px rgb(179, 179, 179);
+}
+
+.video-card-delete-body {
+  height: 8rem;
 }
 
 .video-delete-button {
+  text-align: center;
   border: none;
   padding: 0.5rem 2rem;
-  background: #f5222d;
+  background: #541c1c;
   color: #fff;
 }
 
-@media only screen and (max-width: 900px) {
+@media only screen and (max-width: 1000px) {
   .video-delete-div {
-    width: 80%;
+    width: 90%;
+  }
+  .video-delete-card {
+    width: 48%;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .video-delete-div {
+    width: 95%;
+  }
+  .video-delete-card {
+    width: 98%;
   }
 }

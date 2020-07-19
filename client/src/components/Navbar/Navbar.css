@@ -1,5 +1,5 @@
 #nav-strip {
-  background-color: #ad2102;
+  background-color: #541c1c;
   color: #fff;
   height: 5.5rem;
   display: flex;
@@ -34,7 +34,7 @@
 }
 
 .ant-drawer-body {
-  background-color: #ad2102;
+  background-color: #541c1c;
   color: #fff;
   padding: 0;
 }
@@ -55,7 +55,7 @@
 }
 .drawer-nav-links span:hover {
   background-color: #fff;
-  color: #ad2102;
+  color: #541c1c;
 }
 
 @media only screen and (max-width: 1600px) {

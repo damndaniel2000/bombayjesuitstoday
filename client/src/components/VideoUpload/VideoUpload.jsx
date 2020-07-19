@@ -100,7 +100,7 @@ const VideoPost = () => {
     <div className="video-upload-form">
       <h1> Upload Your Video </h1>
       <Form onFinish={handleSubmit} layout="vertical" size="large">
-        <Form.Item label="Uploader's Name" name="uploader">
+        <Form.Item label="Your Name" name="uploader">
           <Input
             placeholder="Name"
             name="uploader"
@@ -110,10 +110,8 @@ const VideoPost = () => {
           />
         </Form.Item>
 
-        <div className="upload-input-div">
-          <span className="upload-input-button" onClick={() => openWidget()}>
-            Select Video
-          </span>
+        <div className="upload-input-div" onClick={() => openWidget()}>
+          <span className="upload-input-button">Select Video</span>
           <Input
             className="upload-input-filename"
             placeholder="Filename"
@@ -122,7 +120,7 @@ const VideoPost = () => {
         </div>
         <br />
 
-        <Form.Item label="Caption" name="caption">
+        <Form.Item label="Any message with the video?" name="caption">
           <Input.TextArea
             value={caption}
             name="caption"

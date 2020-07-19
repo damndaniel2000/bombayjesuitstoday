@@ -1,0 +1,20 @@
+.contributors-card {
+  margin: 2rem auto;
+  width: 60%;
+  flex-direction: column;
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+  background-color: #a8976f;
+  border-radius: 10px;
+}
+
+.contributors-card-details {
+  margin-top: 1rem;
+  padding-left: 1rem;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-size: 18px;
+}
