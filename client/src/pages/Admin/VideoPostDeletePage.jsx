@@ -1,5 +1,5 @@
 import React from "react";
-import VideoDelete from "../../components/Admin/VideoDelete/VideoDelete";
+import VideoDelete from "../../components/Admin/VideoPostDelete/VideoPostDelete";
 
 const VideoDeletePage = () => {
   return <VideoDelete />;

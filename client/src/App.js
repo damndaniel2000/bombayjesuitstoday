@@ -9,7 +9,7 @@ import VideoPage from "./pages/VideoPage";
 import VideoUpload from "./pages/VideoPost";
 
 import AdminVideoPost from "./pages/Admin/VideoPostPage";
-import AdminVideoDelete from "./pages/Admin/VideoDeletePage";
+import AdminVideoPostDelete from "./pages/Admin/VideoPostDeletePage";
 
 const App = () => {
   return (
@@ -22,7 +22,7 @@ const App = () => {
         <Route exact path="/videos/upload" component={VideoUpload} />
 
         <Route exact path="/videos/post" component={AdminVideoPost} />
-        <Route exact path="/videos/delete" component={AdminVideoDelete} />
+        <Route exact path="/videos/delete" component={AdminVideoPostDelete} />
       </Switch>
     </Router>
   );

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Card, message } from "antd";
 import axios from "axios";
-import "./VideoDelete.css";
+import "./VideoPostDelete.css";
 
 const VideoDelete = () => {
   const [videos, setVideos] = useState([]);

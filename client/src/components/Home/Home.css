@@ -119,3 +119,26 @@
     font-size: 29px;
   }
 }
+
+@media only screen and (max-width: 400px) {
+  .ggg-text {
+    font-size: 35px;
+  }
+  .ggg-text-container {
+    top: 7rem;
+    left: 0.5rem;
+    width: 15rem;
+  }
+  .img-button {
+    padding: 0.1rem 2rem;
+  }
+  .img-button-text {
+    font-size: 25px;
+  }
+  .video-button-container {
+    left: 0.5rem;
+  }
+  .blogs-button-container {
+    left: 9rem;
+  }
+}

@@ -16,10 +16,22 @@ const NavBar = () => {
     setVisible(false);
   };
 
-  const home = () => history.push("/");
-  const videos = () => history.push("/videos");
-  const blogs = () => history.push("/blogs");
-  const contributors = () => history.push("/contributors");
+  const home = () => {
+    history.push("/");
+    hideDrawer();
+  };
+  const videos = () => {
+    history.push("/videos");
+    hideDrawer();
+  };
+  const blogs = () => {
+    history.push("/blogs");
+    hideDrawer();
+  };
+  const contributors = () => {
+    history.push("/contributors");
+    hideDrawer();
+  };
 
   return (
     <div id="nav-strip">

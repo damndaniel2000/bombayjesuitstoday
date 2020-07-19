@@ -97,8 +97,8 @@ const VideoPost = () => {
     });
   };
   return (
-    <div className="video-post-form">
-      <h1> Post Your Video </h1>
+    <div className="video-upload-form">
+      <h1> Upload Your Video </h1>
       <Form onFinish={handleSubmit} layout="vertical" size="large">
         <Form.Item label="Uploader's Name" name="uploader">
           <Input
@@ -129,7 +129,6 @@ const VideoPost = () => {
             placeholder="Caption..."
             rows={3}
             onChange={handleChange}
-            required
           />
         </Form.Item>
 

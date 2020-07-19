@@ -1,3 +1,13 @@
+.video-upload-form {
+  position: fixed;
+  width: 45%;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 2rem;
+  border: 1px solid rgb(181, 174, 172);
+}
+
 .video-upload-form-button {
   background-color: rgb(173, 33, 2);
   color: #fff;
@@ -29,10 +39,21 @@
 
 .upload-input-button:hover {
   font-weight: bold;
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 1000px) {
+  .video-upload-form {
+    width: 80%;
+  }
 }
 
 @media only screen and (max-width: 500px) {
   .upload-input-button {
     width: 40%;
+  }
+  .video-post-form {
+    width: 95%;
+    padding: 1rem;
   }
 }

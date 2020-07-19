@@ -1,15 +1,11 @@
 .video-post-form {
+  position: fixed;
   width: 45%;
-  margin: 3rem auto;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   padding: 2rem;
   border: 1px solid rgb(181, 174, 172);
-  box-shadow: rgba(0, 0, 0, 0.06) 0px 2px 4px, rgba(0, 0, 0, 0.05) 0px 0.5px 1px;
-  transition: all 0.3s ease-in-out;
-}
-
-.video-post-form:hover {
-  box-shadow: rgba(0, 0, 0, 0.22) 0px 19px 43px;
-  transform: translate3d(0px, -10px, 0px);
 }
 
 .video-post-form-button {
@@ -38,8 +34,5 @@
   .video-post-form {
     width: 95%;
     padding: 1rem;
-  }
-  .video-post-form:hover {
-    margin-top: 2rem;
   }
 }
