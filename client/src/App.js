@@ -7,7 +7,8 @@ import HomeNavBar from "./components/HomeNav/HomeNavBar";
 import HomePage from "./pages/HomePage";
 import VideoPage from "./pages/VideoPage";
 import VideoUpload from "./pages/VideoPost";
-import ContributorsPage from "./pages/Contributors";
+import ContributorsPage from "./pages/ContributorsPage";
+import ContributorsUploadPage from "./pages/ContributosUploadPage";
 
 import AdminVideoPost from "./pages/Admin/VideoPostPage";
 import AdminVideoPostDelete from "./pages/Admin/VideoPostDeletePage";
@@ -23,6 +24,11 @@ const App = () => {
         <Route exact path="/videos" component={VideoPage} />
         <Route exact path="/videos/upload" component={VideoUpload} />
         <Route exact path="/contributors" component={ContributorsPage} />
+        <Route
+          exact
+          path="/contributors/upload-details"
+          component={ContributorsUploadPage}
+        />
 
         <Route exact path="/videos/post" component={AdminVideoPost} />
         <Route

@@ -14,8 +14,8 @@
 }
 
 .navbar-logo {
-  width: 9rem;
-  height: 4.6rem;
+  width: 150px;
+  height: 70px;
 }
 
 @media only screen and (max-width: 800px) {
@@ -29,7 +29,7 @@
     padding: 0.5rem 1rem;
   }
   .navbar-logo {
-    width: 7rem;
-    height: 4.2rem;
+    width: 120px;
+    height: 50px;
   }
 }

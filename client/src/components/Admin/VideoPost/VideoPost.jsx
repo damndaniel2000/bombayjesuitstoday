@@ -47,9 +47,11 @@ const VideoPost = () => {
   };
   return (
     <div className="video-post-form">
-      <h1> Post Your Video </h1>
+      <h1> Post Video </h1>
       <Form onFinish={handleSubmit} layout="vertical" size="large">
-        <Form.Item label="Uploader's Name" name="uploader">
+        <Form.Item name="uploader">
+          <label htmlFor="uploader">Uploader's Name :</label>
+
           <Input
             placeholder="Name"
             name="uploader"
@@ -59,7 +61,9 @@ const VideoPost = () => {
           />
         </Form.Item>
 
-        <Form.Item label="Caption" name="caption">
+        <Form.Item name="caption">
+          <label htmlFor="caption">Caption :</label>
+
           <Input.TextArea
             value={caption}
             name="caption"
@@ -70,11 +74,9 @@ const VideoPost = () => {
           />
         </Form.Item>
 
-        <Form.Item
-          label="Embed Link"
-          name="embedLink"
-          extra="Go to your video -> Share -> Embed -> Copy the link inside src=' ' and paste it here"
-        >
+        <Form.Item name="embedLink">
+          <label htmlFor="embedLink">Embed Link :</label>
+
           <Input
             placeholder="Embed Link"
             name="embedLink"
@@ -83,12 +85,14 @@ const VideoPost = () => {
             required
           />
         </Form.Item>
+        <p className="form-extra">
+          Go to your video -> Share -> Embed -> Copy the link inside src=' ' and
+          paste it here
+        </p>
 
-        <Form.Item
-          label="Video URL"
-          name="videoURL"
-          extra="This is the link to the page your video is on. This appears in the searchbar on top"
-        >
+        <Form.Item name="videoURL">
+          <label htmlFor="videoURL">Video URL :</label>
+
           <Input
             name="videoURL"
             placeholder="Video URL"
@@ -97,9 +101,13 @@ const VideoPost = () => {
             required
           />
         </Form.Item>
+        <p className="form-extra">
+          This is the link to the page your video is on. This appears in the
+          searchbar on top
+        </p>
 
         <button className="video-post-form-button" type="primary">
-          Post Video
+          Post
         </button>
       </Form>
     </div>

@@ -1,17 +1,43 @@
 import React, { useState } from "react";
-import "./VideoUpload.css";
-
+import "./ContributorsUpload.css";
 import axios from "axios";
 import { Form, Input, message } from "antd";
 
 const VideoPost = () => {
   const [state, setState] = useState({
     uploader: "",
-    caption: "",
+    quote: "",
+    basedLocation: "",
   });
-  const [videoURL, setURL] = useState("");
+  const [imgURL, setURL] = useState("");
   const [fileName, setFileName] = useState("");
-  const { uploader, caption } = state;
+  const { uploader, quote, basedLocation } = state;
+
+  const handleSubmit = () => {
+    axios
+      .post("/api/videos-post", {
+        uploader: uploader,
+        basedLocation: basedLocation,
+        imgURL: imgURL,
+        quote: quote,
+      })
+      .then(() => successMessage())
+      .catch((err) => {
+        console.log(err);
+        errorMessage();
+      });
+  };
+
+  const successMessage = () => {
+    return message.success("Video posted successfully. Thank You", 5);
+  };
+
+  const errorMessage = () => {
+    return message.error(
+      "There was a problem in uploading the video. Sorry",
+      5
+    );
+  };
 
   const openWidget = () => {
     window.cloudinary
@@ -61,34 +87,6 @@ const VideoPost = () => {
       .open();
   };
 
-  const handleSubmit = () => {
-    axios
-      .post("/api/videos-upload", {
-        uploader: uploader,
-        caption: caption,
-        videoURL: videoURL,
-      })
-      .then(() => {
-        successMessage();
-        setURL("");
-      })
-      .catch((err) => {
-        console.log(err);
-        errorMessage();
-      });
-  };
-
-  const successMessage = () => {
-    return message.success("Video posted successfully. Thank You", 5);
-  };
-
-  const errorMessage = () => {
-    return message.error(
-      "There was a problem in uploading the video. Sorry",
-      5
-    );
-  };
-
   const handleChange = (evt) => {
     const value = evt.target.value;
     setState({
@@ -98,7 +96,7 @@ const VideoPost = () => {
   };
   return (
     <div className="video-post-form">
-      <h1> Upload Your Video </h1>
+      <h1> Tell Us About You </h1>
       <Form onFinish={handleSubmit} layout="vertical" size="large">
         <Form.Item name="uploader">
           <label htmlFor="uploader">Your name :</label>
@@ -112,37 +110,53 @@ const VideoPost = () => {
           />
         </Form.Item>
 
+        <Form.Item name="basedLocation">
+          <label htmlFor="basedLocation">
+            Where are you currently based at?
+          </label>
+
+          <Input
+            placeholder="Location"
+            name="basedLocation"
+            value={basedLocation}
+            onChange={handleChange}
+            required
+          />
+        </Form.Item>
+
         <div className="upload-input-div" onClick={() => openWidget()}>
-          <span className="upload-input-button">Select Video</span>
+          <span className="upload-input-button">Select Image</span>
           <Input
             className="upload-input-filename"
             placeholder="Filename"
             value={fileName}
+            disabled
           />
         </div>
+        <p className="form-extra-image">
+          Select a photo of yourself with your best smile !
+        </p>
         <br />
 
-        <Form.Item name="caption">
-          <label htmlFor="caption">Any message with the video?</label>
-
+        <Form.Item name="quote">
+          <label htmlFor="quote">Any quote or scripture you live by :</label>
           <Input.TextArea
-            value={caption}
-            name="caption"
-            placeholder="Caption..."
+            value={quote}
+            name="quote"
+            placeholder="Message..."
             rows={3}
             onChange={handleChange}
+            required
           />
         </Form.Item>
+        <p className="form-extra">
+          You can check our Contributors page to get an idea about what to write
+        </p>
 
         <button className="video-post-form-button" type="primary">
-          Upload
+          Submit
         </button>
       </Form>
-      <br />
-      <h3>
-        After uploading your videos, it may take a while for them to appear on
-        the website.
-      </h3>
     </div>
   );
 };

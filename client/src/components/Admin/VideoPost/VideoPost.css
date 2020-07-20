@@ -6,9 +6,23 @@
   transform: translate(-50%, -50%);
   padding: 2rem;
   border: 1px solid rgb(181, 174, 172);
+  border-radius: 10px;
+}
+
+.video-post-form label {
+  font-size: 15px;
+  float: left;
+  color: #000;
+  margin-bottom: 0.8rem;
+}
+
+.form-extra {
+  margin-top: -20px;
+  font-size: 15px;
 }
 
 .video-post-form-button {
+  margin-top: 1rem;
   background-color: #541c1c;
   color: #fff;
   padding: 0.5rem 1rem;
@@ -22,6 +36,7 @@
 
 .video-post-form-button:hover {
   font-weight: 1000;
+  cursor: pointer;
 }
 
 @media only screen and (max-width: 1000px) {
@@ -34,5 +49,14 @@
   .video-post-form {
     width: 95%;
     padding: 1rem;
+  }
+  .form-extra {
+    font-size: 12px;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .video-post-form label {
+    font-size: 13px;
   }
 }

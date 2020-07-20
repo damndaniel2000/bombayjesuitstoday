@@ -49,10 +49,18 @@ const NavBar = () => {
             key="left"
           >
             <div className="drawer-nav-links">
-              <span onClick={home}> Home </span>
-              <span onClick={videos}> Videos </span>
-              <span onClick={blogs}> Blogs </span>
-              <span onClick={contributors}> Contributors </span>
+              <span onClick={home}>
+                <i className="fa fa-home" /> Home
+              </span>
+              <span onClick={videos}>
+                <i className="fa fa-video-camera" /> Videos
+              </span>
+              <span onClick={blogs}>
+                <i className="fa fa-pencil" /> Blogs
+              </span>
+              <span onClick={contributors}>
+                <i className="fa fa-users" /> Contributors
+              </span>
             </div>
           </Drawer>
         </div>
