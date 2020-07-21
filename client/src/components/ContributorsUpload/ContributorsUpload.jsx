@@ -5,18 +5,18 @@ import { Form, Input, message } from "antd";
 
 const VideoPost = () => {
   const [state, setState] = useState({
-    uploader: "",
+    name: "",
     quote: "",
     basedLocation: "",
   });
   const [imgURL, setURL] = useState("");
   const [fileName, setFileName] = useState("");
-  const { uploader, quote, basedLocation } = state;
+  const { name, quote, basedLocation } = state;
 
   const handleSubmit = () => {
     axios
-      .post("/api/videos-post", {
-        uploader: uploader,
+      .post("/api/contributors", {
+        name: name,
         basedLocation: basedLocation,
         imgURL: imgURL,
         quote: quote,
@@ -50,6 +50,9 @@ const VideoPost = () => {
           showAdvancedOptions: false,
           multiple: false,
           defaultSource: "local",
+          cropping: true,
+          croppingAspectRatio: 0.75,
+          showSkipCropButton: false,
           styles: {
             palette: {
               window: "#10173a",
@@ -98,14 +101,14 @@ const VideoPost = () => {
     <div className="video-post-form">
       <h1> Tell Us About You </h1>
       <Form onFinish={handleSubmit} layout="vertical" size="large">
-        <Form.Item name="uploader">
-          <label htmlFor="uploader">Your name :</label>
+        <Form.Item name="name">
+          <label htmlFor="name">Your name :</label>
 
           <Input
             placeholder="Name"
-            name="uploader"
+            name="name"
             onChange={handleChange}
-            value={uploader}
+            value={name}
             required
           />
         </Form.Item>
