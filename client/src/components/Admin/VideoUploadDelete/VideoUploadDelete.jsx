@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Card, message } from "antd";
+import { message } from "antd";
 import axios from "axios";
 import "./VideoUploadDelete.css";
 

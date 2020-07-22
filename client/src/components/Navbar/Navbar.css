@@ -33,11 +33,6 @@
   display: none;
 }
 
-.ant-drawer-body {
-  background-color: #541c1c;
-  color: #fff;
-  padding: 0;
-}
 .drawer-nav-links {
   margin-top: 2.5rem;
   display: flex;
@@ -73,6 +68,7 @@
 @media only screen and (max-width: 500px) {
   #nav-strip {
     padding: 0.2rem 0.7rem;
+    height: 4.5rem;
   }
   .drawer-nav-links {
     padding-top: 3rem;

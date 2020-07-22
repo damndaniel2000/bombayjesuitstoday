@@ -43,6 +43,11 @@ const NavBar = () => {
           <i className="fa fa-navicon" onClick={showDrawer} />
 
           <Drawer
+            bodyStyle={{
+              backgroundColor: "#541c1c",
+              color: "#fff",
+              padding: 0,
+            }}
             placement="left"
             visible={visible}
             onClose={hideDrawer}

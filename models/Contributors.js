@@ -11,7 +11,6 @@ const contributorSchema = new Schema(
       type: String,
       required: true,
     },
-
     imgURL: {
       type: String,
       required: true,
@@ -19,6 +18,10 @@ const contributorSchema = new Schema(
     basedLocation: {
       type: String,
       required: true,
+    },
+    validated: {
+      type: Boolean,
+      default: false,
     },
   },
   {

@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { trackPromise, usePromiseTracker } from "react-promise-tracker";
+import { Spin } from "antd";
 
 import ShareButton from "./ShareButton";
 import "./VideoCards.css";
 
 const VideoCards = () => {
   const [videos, setVideos] = useState([]);
+  const { promiseInProgress } = usePromiseTracker();
 
   useEffect(() => {
     document.getElementById("home-nav-bar").style.display = "none";
@@ -14,11 +17,13 @@ const VideoCards = () => {
     getVideos();
   }, []);
 
-  const getVideos = () => {
-    axios
-      .get("/api/videos-post")
-      .then((res) => setVideos(res.data))
-      .catch((err) => console.log(err));
+  const getVideos = async () => {
+    try {
+      const res = await trackPromise(axios.get("/api/videos-post"));
+      setVideos(res.data);
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   const videoCards = videos.map((card) => {
@@ -56,7 +61,12 @@ const VideoCards = () => {
       </div>
     );
   });
-  return <>{videoCards}</>;
+  return (
+    <>
+      {promiseInProgress && <Spin size={100} />}
+      {videoCards}
+    </>
+  );
 };
 
 export default VideoCards;
