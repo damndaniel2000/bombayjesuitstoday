@@ -5,10 +5,7 @@ const Error = () => {
     <>
       <p className="not-found-title"> 404 - Page Not Found </p>
       <div className="not-found-text">
-        <p>
-          The link you have entered might be wrong or this page might have been
-          deleted
-        </p>
+        <p>Please check and verify the link you have entered</p>
         <button className="not-found-button">Go to Home Page</button>
       </div>
     </>

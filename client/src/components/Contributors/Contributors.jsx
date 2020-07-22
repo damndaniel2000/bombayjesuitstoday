@@ -10,9 +10,6 @@ const ContributorsCard = () => {
   const { promiseInProgress } = usePromiseTracker();
 
   useEffect(() => {
-    document.getElementById("home-nav-bar").style.display = "none";
-    document.getElementById("nav-strip").style.display = "flex";
-
     getContributors();
   }, []);
 

@@ -1,12 +1,8 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useHistory } from "react-router-dom";
 import "./Home.css";
 
 const Home = () => {
-  useEffect(() => {
-    document.getElementById("home-nav-bar").style.display = "block";
-    document.getElementById("nav-strip").style.display = "none";
-  });
   const history = useHistory();
 
   return (

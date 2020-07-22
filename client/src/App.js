@@ -1,5 +1,10 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  withRouter,
+} from "react-router-dom";
 import "./App.css";
 
 import NavBar from "./components/Navbar/NavBar";
@@ -17,11 +22,11 @@ import AdminVideoUploadDelete from "./pages/Admin/VideoUploadDelete";
 
 import NotFound from "./pages/NotFoundPage";
 
-const App = () => {
+const App = (props) => {
   return (
     <Router>
-      <NavBar />
-      <HomeNavBar />
+      {props.location.pathname === "/" ? <HomeNavBar /> : <NavBar />}
+
       <Switch>
         <Route exact path="/" component={HomePage} />
         <Route exact path="/videos" component={VideoPage} />
@@ -51,4 +56,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default withRouter(App);
