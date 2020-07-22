@@ -53,9 +53,14 @@ const HomeNavBar = () => {
                 placement="left"
                 visible={visible}
                 onClose={hideDrawer}
-                key="left"
+                closeIcon={
+                  <i
+                    className="fa fa-close"
+                    style={{ color: "#fff", fontSize: "20px" }}
+                  />
+                }
               >
-                <div className="drawer-nav-links">
+                <div className="home-drawer-nav-links">
                   <span onClick={home}>
                     <i className="fa fa-home" /> Home
                   </span>

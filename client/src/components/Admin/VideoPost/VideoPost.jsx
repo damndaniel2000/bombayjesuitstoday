@@ -12,7 +12,7 @@ const VideoPost = () => {
   });
   const { uploader, caption, embedLink, videoURL } = state;
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     axios
       .post("/api/videos-post", {
         uploader: uploader,

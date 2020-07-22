@@ -4,6 +4,7 @@ import "./App.css";
 
 import NavBar from "./components/Navbar/NavBar";
 import HomeNavBar from "./components/HomeNav/HomeNavBar";
+
 import HomePage from "./pages/HomePage";
 import VideoPage from "./pages/VideoPage";
 import VideoUpload from "./pages/VideoPost";
@@ -13,6 +14,8 @@ import ContributorsUploadPage from "./pages/ContributosUploadPage";
 import AdminVideoPost from "./pages/Admin/VideoPostPage";
 import AdminVideoPostDelete from "./pages/Admin/VideoPostDeletePage";
 import AdminVideoUploadDelete from "./pages/Admin/VideoUploadDelete";
+
+import NotFound from "./pages/NotFoundPage";
 
 const App = () => {
   return (
@@ -41,6 +44,8 @@ const App = () => {
           path="/videos/upload/delete"
           component={AdminVideoUploadDelete}
         />
+
+        <Route component={NotFound} />
       </Switch>
     </Router>
   );
