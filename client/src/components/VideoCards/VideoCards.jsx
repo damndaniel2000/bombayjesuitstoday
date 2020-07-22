@@ -63,7 +63,9 @@ const VideoCards = () => {
   });
   return (
     <>
-      {promiseInProgress && <Spin size={100} />}
+      <br />
+      <br />
+      {promiseInProgress && <Spin size="large" />}
       {videoCards}
     </>
   );

@@ -58,6 +58,8 @@ const ContributorsCard = () => {
       <br />
       <br />
       <span className="page-title">Meet Our Contributors</span>
+      <br />
+      <br />
       {promiseInProgress && <Spin size="large" />}
       <div className="contributors-card-container">{contributorsList} </div>
     </>
