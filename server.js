@@ -12,12 +12,10 @@ app.use(cors());
 const videoPostRouter = require("./routes/videoPostRouter");
 const videoUploadRouter = require("./routes/videoUploadRouter");
 const contributorRouter = require("./routes/contributorsRouter");
-
-const url =
-  "mongodb+srv://dan:Daniel2000@cluster0-owjks.mongodb.net/Jesuits-Demo?retryWrites=true&w=majority";
+const userRouter = require("./routes/userRouter");
 
 mongoose
-  .connect(process.env.MONGODB_URI || url, {
+  .connect(process.env.MONGODB_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
@@ -27,6 +25,7 @@ mongoose
 app.use("/api/videos-post", videoPostRouter);
 app.use("/api/videos-upload", videoUploadRouter);
 app.use("/api/contributors", contributorRouter);
+app.use("/api/users", userRouter);
 
 app.use(express.static(path.join(__dirname, "client/build")));
 

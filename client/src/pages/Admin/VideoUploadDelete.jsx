@@ -1,8 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
+import UserContext from "../../context/UserContext";
+
+import NotFoundPage from "../NotFoundPage";
 import VideoDelete from "../../components/Admin/VideoUploadDelete/VideoUploadDelete";
 
-const HomePage = () => {
-  return <VideoDelete />;
+const VideoUploadDelete = () => {
+  const { userData } = useContext(UserContext);
+
+  return <>{!userData.user ? <NotFoundPage /> : <VideoDelete />}</>;
 };
 
-export default HomePage;
+export default VideoUploadDelete;

@@ -1,5 +1,6 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const auth = require("../middleware/auth");
 
 const Video = require("../models/VideosUpload");
 
@@ -33,7 +34,7 @@ videoRouter
       .catch((err) => next(err));
   });
 
-videoRouter.route("/:videoID").delete((req, res, next) => {
+videoRouter.route("/:videoID").delete(auth, (req, res, next) => {
   Video.findById({ _id: req.params.videoID })
     .then((video) => video.remove())
     .then(

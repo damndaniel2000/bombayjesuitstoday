@@ -1,5 +1,6 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const auth = require("../middleware/auth");
 
 const Contributor = require("../models/Contributors");
 
@@ -33,7 +34,7 @@ contributorRouter
       .catch((err) => next(err));
   });
 
-contributorRouter.route("/:contributorID").delete((req, res, next) => {
+contributorRouter.route("/:contributorID").delete(auth, (req, res, next) => {
   Contributor.findById({ _id: req.params.contributorID })
     .then((video) => video.remove())
     .then(

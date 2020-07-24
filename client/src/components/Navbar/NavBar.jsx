@@ -34,56 +34,60 @@ const NavBar = () => {
   };
 
   return (
-    <div id="nav-strip">
-      <div>
-        <img src={logo} className="navbar-logo" alt="logo" />
-      </div>
-      <div className="main-nav-div">
-        <div className="mobile-nav">
-          <i className="fa fa-navicon" onClick={showDrawer} />
+    <>
+      {window.location.pathname === "/" ? null : (
+        <div id="nav-strip">
+          <div>
+            <img src={logo} className="navbar-logo" alt="logo" />
+          </div>
+          <div className="main-nav-div">
+            <div className="mobile-nav">
+              <i className="fa fa-navicon" onClick={showDrawer} />
 
-          <Drawer
-            bodyStyle={{
-              backgroundColor: "#541c1c",
-              color: "#fff",
-              padding: 0,
-            }}
-            placement="left"
-            visible={visible}
-            onClose={hideDrawer}
-            closeIcon={
-              <i
-                className="fa fa-close"
-                style={{ color: "#fff", fontSize: "20px" }}
-              />
-            }
-          >
-            <div className="drawer-nav-links">
-              <span onClick={home}>
-                <i className="fa fa-home" /> Home
-              </span>
-              <span onClick={videos}>
-                <i className="fa fa-video-camera" /> Videos
-              </span>
-              <span onClick={blogs}>
-                <i className="fa fa-pencil" /> Blogs
-              </span>
-              <span onClick={contributors}>
-                <i className="fa fa-users" /> Contributors
-              </span>
+              <Drawer
+                bodyStyle={{
+                  backgroundColor: "#541c1c",
+                  color: "#fff",
+                  padding: 0,
+                }}
+                placement="left"
+                visible={visible}
+                onClose={hideDrawer}
+                closeIcon={
+                  <i
+                    className="fa fa-close"
+                    style={{ color: "#fff", fontSize: "20px" }}
+                  />
+                }
+              >
+                <div className="drawer-nav-links">
+                  <span onClick={home}>
+                    <i className="fa fa-home" /> Home
+                  </span>
+                  <span onClick={videos}>
+                    <i className="fa fa-video-camera" /> Videos
+                  </span>
+                  <span onClick={blogs}>
+                    <i className="fa fa-pencil" /> Blogs
+                  </span>
+                  <span onClick={contributors}>
+                    <i className="fa fa-users" /> Contributors
+                  </span>
+                </div>
+              </Drawer>
             </div>
-          </Drawer>
+            <div className="desktop-nav">
+              <nav className="main-nav">
+                <span onClick={home}> Home </span>
+                <span onClick={videos}> Videos </span>
+                <span onClick={blogs}> Blogs </span>
+                <span onClick={contributors}> Contributors </span>
+              </nav>
+            </div>
+          </div>
         </div>
-        <div className="desktop-nav">
-          <nav className="main-nav">
-            <span onClick={home}> Home </span>
-            <span onClick={videos}> Videos </span>
-            <span onClick={blogs}> Blogs </span>
-            <span onClick={contributors}> Contributors </span>
-          </nav>
-        </div>
-      </div>
-    </div>
+      )}
+    </>
   );
 };
 
