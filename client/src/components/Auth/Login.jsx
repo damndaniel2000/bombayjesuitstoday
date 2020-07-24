@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
-import { Form, Input, message, Modal, Button } from "antd";
+import { Form, Input, message, Modal, Button, Alert } from "antd";
 import UserContext from "../../context/UserContext";
 
 const Login = () => {
@@ -29,7 +29,7 @@ const Login = () => {
       loginSuccessMessage();
     } catch (err) {
       err.response.data.msg && setError(err.response.data.msg);
-      console.log("ERR", err.response.data.msg);
+      console.log(err);
     }
   };
 
@@ -44,6 +44,7 @@ const Login = () => {
           title="Login"
           centered
           visible={modalVisible}
+          closable={false}
           footer={[
             <Button
               key="back"
@@ -64,6 +65,7 @@ const Login = () => {
             </Button>,
           ]}
         >
+          {error && <p style={{ color: "red" }}>{error}</p>}
           <Form layout="vertical" size="large">
             <Form.Item name="userName">
               <Input

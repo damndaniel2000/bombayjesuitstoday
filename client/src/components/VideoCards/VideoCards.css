@@ -57,6 +57,7 @@
 @media only screen and (max-width: 500px) {
   .video-card-div {
     width: 100%;
+    border-radius: 0;
   }
   .video-card-video {
     height: 300px;

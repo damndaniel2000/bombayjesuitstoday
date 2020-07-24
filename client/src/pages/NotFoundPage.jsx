@@ -1,12 +1,17 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
 
 const Error = () => {
+  const history = useHistory();
+
   return (
     <>
       <p className="not-found-title"> 404 - Page Not Found </p>
       <div className="not-found-text">
         <p>Please check and verify the link you have entered</p>
-        <button className="not-found-button">Go to Home Page</button>
+        <button onClick={() => history.push("/")} className="not-found-button">
+          Go to Home Page
+        </button>
       </div>
     </>
   );

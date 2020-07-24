@@ -14,7 +14,7 @@
 .ggg-text-container {
   position: absolute;
   top: 10rem;
-  left: 4rem;
+  left: 1rem;
   width: 40rem;
 }
 .ggg-text {
@@ -27,14 +27,14 @@
 
 .video-button-container {
   position: absolute;
-  bottom: 18rem;
+  bottom: 8rem;
   left: 6rem;
 }
 
 .blogs-button-container {
   position: absolute;
-  bottom: 18rem;
-  left: 27rem;
+  bottom: 8rem;
+  left: 26rem;
 }
 
 .img-button {

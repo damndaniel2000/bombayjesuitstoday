@@ -22,33 +22,40 @@ const ContributorsCard = () => {
     }
   };
 
-  const contributorsList = contributors.map((contri) => (
-    <div className="contributors-card">
-      <div className="contributors-card-photo">
-        <img
-          className="contributors-avatar"
-          src={contri.imgURL}
-          alt="Profile Pic"
-        />
-      </div>
-      <div className="contributors-card-details">
-        <div>
-          <p className="contributors-card-name"> {contri.name} </p>
-          <p className="contributors-card-location"> {contri.basedLocation} </p>
-          <blockquote>{contri.quote}</blockquote>
+  const contributorsList = contributors.map((contri) => {
+    if (contri.validated) {
+      return (
+        <div className="contributors-card">
+          <div className="contributors-card-photo">
+            <img
+              className="contributors-avatar"
+              src={contri.imgURL}
+              alt="Profile Pic"
+            />
+          </div>
+          <div className="contributors-card-details">
+            <div>
+              <p className="contributors-card-name"> {contri.name} </p>
+              <p className="contributors-card-location">
+                {" "}
+                {contri.basedLocation}{" "}
+              </p>
+              <blockquote>{contri.quote}</blockquote>
+            </div>
+            <div>
+              <a
+                href={contri.playlistLink}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <button className="contributors-card-link">Videos</button>
+              </a>
+            </div>
+          </div>
         </div>
-        <div>
-          <a
-            href={contri.playlistLink}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <button className="contributors-card-link">Videos</button>
-          </a>
-        </div>
-      </div>
-    </div>
-  ));
+      );
+    }
+  });
 
   return (
     <>

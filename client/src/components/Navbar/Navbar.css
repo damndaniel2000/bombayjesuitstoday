@@ -73,4 +73,7 @@
   .drawer-nav-links {
     padding-top: 3rem;
   }
+  .mobile-nav {
+    font-size: 23px;
+  }
 }
