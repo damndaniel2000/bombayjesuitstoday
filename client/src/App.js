@@ -54,32 +54,31 @@ const App = () => {
   return (
     <Router>
       <UserContext.Provider value={{ userData, setUserData }}>
-        <NavBar />
         <Switch>
-          <Route exact path="/" component={HomePage} />
-          <Route exact path="/videos" component={VideoPage} />
-          <Route exact path="/videos/upload" component={VideoUpload} />
-          <Route exact path="/contributors" component={ContributorsPage} />
-          <Route
+          <HomeNavBar exact path="/" component={HomePage} />
+          <NavBar exact path="/videos" component={VideoPage} />
+          <NavBar exact path="/videos/upload" component={VideoUpload} />
+          <NavBar exact path="/contributors" component={ContributorsPage} />
+          <NavBar
             exact
             path="/contributors/upload-details"
             component={ContributorsUploadPage}
           />
 
-          <Route exact path="/login" component={LoginPage} />
-          <Route exact path="/videos/post" component={AdminVideoPost} />
-          <Route
+          <NavBar exact path="/login" component={LoginPage} />
+          <NavBar exact path="/videos/post" component={AdminVideoPost} />
+          <NavBar
             exact
             path="/videos/post/delete"
             component={AdminVideoPostDelete}
           />
-          <Route
+          <NavBar
             exact
             path="/videos/uploads"
             component={AdminVideoUploadDelete}
           />
 
-          <Route component={NotFound} />
+          <NavBar component={NotFound} />
         </Switch>
       </UserContext.Provider>
     </Router>
