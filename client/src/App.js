@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Switch } from "react-router-dom";
 import axios from "axios";
 
 import "./App.css";
@@ -11,6 +11,7 @@ import HomeNavBar from "./components/HomeNav/HomeNavBar";
 import HomePage from "./pages/HomePage";
 import VideoPage from "./pages/VideoPage";
 import VideoUpload from "./pages/VideoPost";
+import BlogPage from "./pages/BlogsPage";
 import ContributorsPage from "./pages/ContributorsPage";
 import ContributorsUploadPage from "./pages/ContributosUploadPage";
 
@@ -64,6 +65,7 @@ const App = () => {
             path="/contributors/upload-details"
             component={ContributorsUploadPage}
           />
+          <NavBar exact path="/blogs" component={BlogPage} />
 
           <NavBar exact path="/login" component={LoginPage} />
           <NavBar exact path="/videos/post" component={AdminVideoPost} />

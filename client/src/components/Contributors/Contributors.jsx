@@ -55,6 +55,7 @@ const ContributorsCard = () => {
         </div>
       );
     }
+    return null;
   });
 
   return (

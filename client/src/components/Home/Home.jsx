@@ -23,7 +23,10 @@ const Home = () => {
             </button>
           </div>
           <div className="blogs-button-container">
-            <button className="img-button">
+            <button
+              onClick={() => history.push("/blogs")}
+              className="img-button"
+            >
               <span className="img-button-text">Blogs</span>
             </button>
           </div>

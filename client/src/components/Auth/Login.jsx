@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
-import { Form, Input, message, Modal, Button, Alert } from "antd";
+import { Form, Input, message, Modal, Button } from "antd";
 import UserContext from "../../context/UserContext";
 
 const Login = () => {
