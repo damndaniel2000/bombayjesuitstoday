@@ -45,7 +45,7 @@ const NavBar = (props) => {
 
             <Drawer
               bodyStyle={{
-                backgroundColor: "#541c1c",
+                backgroundColor: "#1a137c",
                 color: "#fff",
                 padding: 0,
               }}

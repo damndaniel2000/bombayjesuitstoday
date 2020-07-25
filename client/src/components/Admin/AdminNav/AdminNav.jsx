@@ -10,7 +10,7 @@ const AdminNav = () => {
       <Button
         type="primary"
         style={{
-          backgroundColor: "#541c1c",
+          backgroundColor: "#1a137c",
           border: "none",
           padding: "0.4rem 2rem",
         }}
@@ -21,7 +21,7 @@ const AdminNav = () => {
       <br /> <br /> <br />
       <Button
         type="primary"
-        style={{ backgroundColor: "#541c1c", border: "none" }}
+        style={{ backgroundColor: "#1a137c", border: "none" }}
         onClick={() => history.push("/videos/post/delete")}
       >
         Delete Posted Videos
@@ -30,7 +30,7 @@ const AdminNav = () => {
       <Button
         type="primary"
         style={{
-          backgroundColor: "#541c1c",
+          backgroundColor: "#1a137c",
           border: "none",
           padding: "0.4rem 2rem",
         }}
