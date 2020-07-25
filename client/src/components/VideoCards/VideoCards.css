@@ -65,4 +65,8 @@
   .video-card-caption {
     font-size: 15px;
   }
+  .video-card-title {
+    font-size: 18px;
+    font-weight: bold;
+  }
 }
