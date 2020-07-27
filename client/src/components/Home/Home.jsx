@@ -10,25 +10,7 @@ const Home = () => {
       <div className="container">
         <div className="opacity-container">
           <div className="ggg-text-container">
-            <p className="ggg-text">
-              All for the <br /> Greater Glory of God
-            </p>
-          </div>
-          <div className="video-button-container">
-            <button
-              onClick={() => history.push("/videos")}
-              className="img-button"
-            >
-              <span className="img-button-text">Videos</span>
-            </button>
-          </div>
-          <div className="blogs-button-container">
-            <button
-              onClick={() => history.push("/blogs")}
-              className="img-button"
-            >
-              <span className="img-button-text">Blogs</span>
-            </button>
+            <p className="ggg-text">God's Greater Glory</p>
           </div>
         </div>
       </div>

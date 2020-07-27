@@ -1,60 +1,25 @@
 @import url("https://fonts.googleapis.com/css2?family=Rancho&display=swap");
 
 .container {
-  height: 1000px;
-  background-attachment: fixed;
+  margin-bottom: -5rem;
+  height: 900px;
   background-repeat: no-repeat;
   background-size: cover;
-  background-image: url("https://res.cloudinary.com/dij0e4dwn/image/upload/v1594989422/jesuit_ui2v9m.jpg");
+  background-position: right 0 bottom 35%;
+  background-image: url("https://res.cloudinary.com/dij0e4dwn/image/upload/v1595824464/ezgif.com-gif-maker_a6gych.jpg");
 }
-.opacity-container {
-  height: 1000px;
-  background-color: rgb(0, 0, 0, 0.6);
-}
+
 .ggg-text-container {
   position: absolute;
-  top: 10rem;
-  left: 1rem;
-  width: 40rem;
+  top: 6rem;
+  left: 30%;
 }
 .ggg-text {
   margin: auto;
   font-family: Rancho;
-  font-size: 70px;
+  font-size: 90px;
   font-weight: 1000;
   color: rgb(255, 255, 255);
-}
-
-.video-button-container {
-  position: absolute;
-  bottom: 8rem;
-  left: 6rem;
-}
-
-.blogs-button-container {
-  position: absolute;
-  bottom: 8rem;
-  left: 26rem;
-}
-
-.img-button {
-  background-color: rgb(255, 255, 255, 0.25);
-  border: 1px solid #eee;
-  box-shadow: rgba(0, 0, 0, 0.06) 0px 2px 4px, rgba(0, 0, 0, 0.05) 0px 0.5px 1px;
-  transition: all 0.3s ease-in-out;
-  padding: 1rem 4rem;
-  border: none;
-  color: rgb(255, 255, 255);
-  border-radius: 15%;
-  cursor: pointer;
-}
-.img-button:hover {
-  box-shadow: rgba(0, 0, 0, 0.22) 0px 19px 43px;
-  transform: translate3d(0px, -10px, 0px);
-}
-.img-button-text {
-  font-size: 50px;
-  font-family: Rancho;
 }
 
 @media only screen and (max-height: 600px) {
@@ -78,20 +43,6 @@
   .ggg-text {
     font-size: 50px;
   }
-  .img-button {
-    padding: 0.5rem 3rem;
-  }
-  .img-button-text {
-    font-size: 35px;
-  }
-  .blogs-button-container {
-    left: 16rem;
-    bottom: 20rem;
-  }
-  .video-button-container {
-    left: 2rem;
-    bottom: 20rem;
-  }
 }
 
 @media only screen and (max-width: 800px) and (max-height: 600px) {
@@ -112,20 +63,6 @@
   .ggg-text {
     font-size: 40px;
   }
-  .video-button-container {
-    left: 1rem;
-    bottom: 4rem;
-  }
-  .blogs-button-container {
-    left: 11rem;
-    bottom: 4rem;
-  }
-  .img-button {
-    padding: 0.3rem 2.5rem;
-  }
-  .img-button-text {
-    font-size: 29px;
-  }
 }
 
 @media only screen and (max-width: 400px) {
@@ -136,17 +73,5 @@
     top: 7rem;
     left: 0.5rem;
     width: 15rem;
-  }
-  .img-button {
-    padding: 0.1rem 2rem;
-  }
-  .img-button-text {
-    font-size: 25px;
-  }
-  .video-button-container {
-    left: 0.5rem;
-  }
-  .blogs-button-container {
-    left: 9rem;
   }
 }

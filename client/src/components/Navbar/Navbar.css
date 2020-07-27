@@ -19,8 +19,24 @@
   justify-content: space-between;
 }
 
-.desktop-nav span {
+.desktop-nav div {
+  height: 5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.desktop-nav div span {
   padding: 10px 30px;
+}
+
+.desktop-dropdown-items {
+  font-size: 16px;
+}
+
+.desktop-dropdown-items:hover {
+  background-color: #1a137c;
+  color: #fff;
 }
 
 .desktop-nav span:hover {

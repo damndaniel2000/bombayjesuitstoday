@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Drawer } from "antd";
+import { Drawer, Menu, Dropdown } from "antd";
 import { useHistory, Route } from "react-router-dom";
 
 import "./Navbar.css";
@@ -32,6 +32,25 @@ const NavBar = (props) => {
     history.push("/contributors");
     hideDrawer();
   };
+
+  const dropVideos = (
+    <Menu>
+      <Menu.ItemGroup>
+        <Menu.Item key="1" className="desktop-dropdown-items">
+          Daily Mass
+        </Menu.Item>
+        <Menu.Item key="2" className="desktop-dropdown-items">
+          Daily Gospel Insights
+        </Menu.Item>
+        <Menu.Item key="3" className="desktop-dropdown-items">
+          Ignatian Insights & Spirituality
+        </Menu.Item>
+        <Menu.Item key="4" className="desktop-dropdown-items">
+          Vlogs
+        </Menu.Item>
+      </Menu.ItemGroup>
+    </Menu>
+  );
 
   return (
     <>
@@ -77,10 +96,25 @@ const NavBar = (props) => {
           </div>
           <div className="desktop-nav">
             <nav className="main-nav">
-              <span onClick={home}> Home </span>
-              <span onClick={videos}> Videos </span>
-              <span onClick={blogs}> Blogs </span>
-              <span onClick={contributors}> Contributors </span>
+              <div>
+                <span onClick={home}> Home </span>
+              </div>
+
+              <Dropdown overlay={dropVideos}>
+                <div>
+                  <span onClick={videos}>
+                    Videos &nbsp;
+                    <i className="fa fa-angle-down" />
+                  </span>
+                </div>
+              </Dropdown>
+
+              <div>
+                <span onClick={blogs}> Blogs </span>
+              </div>
+              <div>
+                <span onClick={contributors}> Contributors </span>
+              </div>
             </nav>
           </div>
         </div>
