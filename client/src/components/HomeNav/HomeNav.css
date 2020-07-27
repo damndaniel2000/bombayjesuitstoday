@@ -11,8 +11,9 @@
 }
 
 .navbar-logo {
-  width: 150px;
-  height: 70px;
+  width: 180px;
+  height: 160px;
+  margin-bottom: -20px;
 }
 
 .home-drawer-nav-links {
