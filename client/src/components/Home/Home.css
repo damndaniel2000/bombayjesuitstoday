@@ -1,8 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Rancho&display=swap");
 
 .container {
-  margin-bottom: -5rem;
-  height: 900px;
+  height: 800px;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: right 0 bottom 35%;
@@ -19,7 +18,7 @@
   font-family: Rancho;
   font-size: 90px;
   font-weight: 1000;
-  color: rgb(255, 255, 255);
+  color: #000;
 }
 
 @media only screen and (max-height: 600px) {

@@ -1,6 +1,11 @@
+.home-card-container {
+  margin: 0 auto;
+  padding: 3rem 0;
+}
+
 .home-card {
+  margin: 0 auto;
   width: 70%;
-  margin: 200px auto;
   display: flex;
   justify-content: space-around;
 }
