@@ -29,12 +29,12 @@ const VideoPost = () => {
   };
 
   const successMessage = () => {
-    return message.success("Video posted successfully. Thank You", 5);
+    return message.success("Your response has been recorded. Thank You", 5);
   };
 
   const errorMessage = () => {
     return message.error(
-      "There was a problem in uploading the video. Sorry",
+      "There was a problem in accepting your response. Sorry",
       5
     );
   };
