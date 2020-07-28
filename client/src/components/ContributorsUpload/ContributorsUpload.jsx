@@ -21,7 +21,11 @@ const VideoPost = () => {
         imgURL: imgURL,
         quote: quote,
       })
-      .then(() => successMessage())
+      .then(() => {
+        successMessage();
+        setURL("");
+        setState((name: ""));
+      })
       .catch((err) => {
         console.log(err);
         errorMessage();

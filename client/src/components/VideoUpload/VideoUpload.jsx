@@ -20,6 +20,7 @@ const VideoPost = () => {
           cloudName: "dij0e4dwn",
           uploadPreset: "nofvgsru",
           sources: ["local"],
+          folder: "contributors",
           api_key: "597871714829172",
           showAdvancedOptions: false,
           multiple: false,
