@@ -7,7 +7,11 @@ import VideoDelete from "../../components/Admin/VideoUploadDelete/VideoUploadDel
 const VideoUploadDelete = () => {
   const { userData } = useContext(UserContext);
 
-  return <>{!userData.user ? <NotFoundPage /> : <VideoDelete />}</>;
+  return (
+    <div style={{ minHeight: "100vh" }}>
+      {!userData.user ? <NotFoundPage /> : <VideoDelete />}
+    </div>
+  );
 };
 
 export default VideoUploadDelete;

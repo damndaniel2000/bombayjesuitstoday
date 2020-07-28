@@ -8,10 +8,10 @@ const LoginPage = () => {
   const { userData } = useContext(UserContext);
 
   return (
-    <>
+    <div style={{ minHeight: "100vh" }}>
       {!userData.user ? null : <AdminNav />}
       <Login />
-    </>
+    </div>
   );
 };
 

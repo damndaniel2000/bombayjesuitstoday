@@ -1,9 +1,6 @@
 .video-post-form {
-  position: fixed;
   width: 45%;
-  top: 55%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  margin: 8rem auto 1rem auto;
   padding: 2rem;
   background-color: rgb(199, 201, 203);
   border-radius: 10px;

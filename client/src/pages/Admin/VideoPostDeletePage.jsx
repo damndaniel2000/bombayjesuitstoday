@@ -7,7 +7,11 @@ import NotFoundPage from "../NotFoundPage";
 const VideoDeletePage = () => {
   const { userData } = useContext(UserContext);
 
-  return <>{!userData.user ? <NotFoundPage /> : <VideoDelete />}</>;
+  return (
+    <div style={{ minHeight: "100vh" }}>
+      {!userData.user ? <NotFoundPage /> : <VideoDelete />}
+    </div>
+  );
 };
 
 export default VideoDeletePage;

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Switch } from "react-router-dom";
 import axios from "axios";
 
 import "./App.css";
@@ -7,6 +7,7 @@ import UserContext from "./context/UserContext";
 
 import NavBar from "./components/Navbar/NavBar";
 import HomeNavBar from "./components/HomeNav/HomeNavBar";
+import Footer from "./components/Footer/Footer.jsx";
 
 import HomePage from "./pages/HomePage";
 import VideoPage from "./pages/VideoPage";
@@ -56,10 +57,11 @@ const App = () => {
     <Router>
       <UserContext.Provider value={{ userData, setUserData }}>
         <Switch>
+          <HomeNavBar exact path="/" component={HomePage} />
           <NavBar exact path="/videos" component={VideoPage} />
           <NavBar exact path="/videos/upload" component={VideoUpload} />
           <NavBar exact path="/contributors" component={ContributorsPage} />
-          <Route
+          <NavBar
             exact
             path="/contributors/upload-details"
             component={ContributorsUploadPage}
@@ -79,8 +81,9 @@ const App = () => {
             component={AdminVideoUploadDelete}
           />
 
-          <Route component={NotFound} />
+          <NavBar component={NotFound} />
         </Switch>
+        <Footer />
       </UserContext.Provider>
     </Router>
   );

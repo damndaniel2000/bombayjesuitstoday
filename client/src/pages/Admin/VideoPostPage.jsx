@@ -7,7 +7,11 @@ import VideoPost from "../../components/Admin/VideoPost/VideoPost";
 const VideoPostPage = () => {
   const { userData } = useContext(UserContext);
 
-  return <>{!userData.user ? <NotFoundPage /> : <VideoPost />}</>;
+  return (
+    <div style={{ minHeight: "100vh" }}>
+      {!userData.user ? <NotFoundPage /> : <VideoPost />}
+    </div>
+  );
 };
 
 export default VideoPostPage;

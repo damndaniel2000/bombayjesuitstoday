@@ -80,7 +80,7 @@ const VideoPost = () => {
   };
 
   const successMessage = () => {
-    return message.success("Video posted successfully. Thank You", 5);
+    return message.success("Video uploaded successfully. Thank You", 5);
   };
 
   const errorMessage = () => {
@@ -98,53 +98,66 @@ const VideoPost = () => {
     });
   };
   return (
-    <div className="video-post-form">
-      <h1> Upload Your Video </h1>
-      <Form onFinish={handleSubmit} layout="vertical" size="large">
-        <Form.Item name="uploader">
-          <label htmlFor="uploader">Your name :</label>
+    <>
+      <div className="video-post-form">
+        <h1> Upload Your Video </h1>
+        <Form onFinish={handleSubmit} layout="vertical" size="large">
+          <Form.Item name="uploader">
+            <label htmlFor="uploader">Your name :</label>
 
-          <Input
-            placeholder="Name"
-            name="uploader"
-            onChange={handleChange}
-            value={uploader}
-            required
-          />
-        </Form.Item>
+            <Input
+              placeholder="Name"
+              name="uploader"
+              onChange={handleChange}
+              value={uploader}
+              required
+            />
+          </Form.Item>
 
-        <div className="upload-input-div" onClick={() => openWidget()}>
-          <span className="upload-input-button">Select Video</span>
-          <Input
-            className="upload-input-filename"
-            placeholder="Filename"
-            value={fileName}
-          />
-        </div>
+          <div className="upload-input-div" onClick={() => openWidget()}>
+            <span className="upload-input-button">Select Video</span>
+            <Input
+              className="upload-input-filename"
+              placeholder="Filename"
+              value={fileName}
+            />
+          </div>
+          <br />
+
+          <Form.Item name="caption">
+            <label htmlFor="caption">Any message with the video?</label>
+
+            <Input.TextArea
+              value={caption}
+              name="caption"
+              placeholder="Caption..."
+              rows={3}
+              onChange={handleChange}
+            />
+          </Form.Item>
+
+          <button className="video-post-form-button" type="primary">
+            Upload
+          </button>
+        </Form>
         <br />
-
-        <Form.Item name="caption">
-          <label htmlFor="caption">Any message with the video?</label>
-
-          <Input.TextArea
-            value={caption}
-            name="caption"
-            placeholder="Caption..."
-            rows={3}
-            onChange={handleChange}
-          />
-        </Form.Item>
-
-        <button className="video-post-form-button" type="primary">
-          Upload
-        </button>
-      </Form>
-      <br />
+        <h3>
+          After uploading your videos, it may take a while for them to appear on
+          the website.
+        </h3>
+      </div>
       <h3>
-        After uploading your videos, it may take a while for them to appear on
-        the website.
+        Video not uploading?{" "}
+        <a
+          href="https://forms.gle/CmouRWKMULh5WQpM8"
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{ textDecoration: "underline" }}
+        >
+          Click Here
+        </a>
       </h3>
-    </div>
+    </>
   );
 };
 

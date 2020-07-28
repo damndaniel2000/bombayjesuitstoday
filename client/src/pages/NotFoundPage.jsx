@@ -5,7 +5,7 @@ const Error = () => {
   const history = useHistory();
 
   return (
-    <>
+    <div style={{ minHeight: "100vh" }}>
       <p className="not-found-title"> 404 - Page Not Found </p>
       <div className="not-found-text">
         <p>Please check and verify the link you have entered</p>
@@ -13,7 +13,7 @@ const Error = () => {
           Go to Home Page
         </button>
       </div>
-    </>
+    </div>
   );
 };
 
