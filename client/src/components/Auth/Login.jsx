@@ -24,7 +24,7 @@ const Login = () => {
         token: loginRes.data.token,
         user: loginRes.data.user,
       });
-      window.storage.local.set("auth-token", loginRes.data.token);
+      localStorage.setItem("auth-token", loginRes.data.token);
       setVisible(!modalVisible);
       loginSuccessMessage();
     } catch (err) {
