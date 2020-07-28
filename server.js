@@ -9,7 +9,8 @@ const app = express();
 app.use(bodyParser.json());
 app.use(cors());
 
-const videoPostRouter = require("./routes/videoPostRouter");
+const videoSpiritualRouter = require("./routes/videoSpiritualRouter");
+const videoMissionRouter = require("./routes/videoMissionRouter");
 const videoUploadRouter = require("./routes/videoUploadRouter");
 const contributorRouter = require("./routes/contributorsRouter");
 const userRouter = require("./routes/userRouter");
@@ -20,7 +21,7 @@ if (process.env.ENVIRONMENT === "production") {
 } else {
   uri = "mongodb://localhost:27017/jesuits";
 }
-console.log(uri);
+
 MongoClient.connect(uri, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
@@ -28,7 +29,8 @@ MongoClient.connect(uri, {
   .then(() => console.log("Database Connection Successful"))
   .catch((err) => console.error(err));
 
-app.use("/api/videos-post", videoPostRouter);
+app.use("/api/videos-spiritual", videoSpiritualRouter);
+app.use("/api/videos-mission", videoMissionRouter);
 app.use("/api/videos-upload", videoUploadRouter);
 app.use("/api/contributors", contributorRouter);
 app.use("/api/users", userRouter);

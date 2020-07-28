@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./VideoPost.css";
 import axios from "axios";
-import { Form, Input, message } from "antd";
+import { Form, Input, Radio, message } from "antd";
 
 const VideoPost = () => {
   const [state, setState] = useState({
@@ -10,13 +10,14 @@ const VideoPost = () => {
     embedLink: "",
     videoURL: "",
   });
+  const [path, setPath] = useState();
   const { uploader, caption, embedLink, videoURL } = state;
 
   const handleSubmit = async () => {
     const token = localStorage.getItem("auth-token");
     axios
       .post(
-        "/api/videos-post",
+        `/api/videos-${path}`,
         {
           uploader: uploader,
           caption: caption,
@@ -49,6 +50,10 @@ const VideoPost = () => {
       ...state,
       [evt.target.name]: value,
     });
+  };
+
+  const handleRadios = (evt) => {
+    setPath(evt.target.value);
   };
   return (
     <div className="video-post-form">
@@ -110,6 +115,13 @@ const VideoPost = () => {
           This is the link to the page your video is on. This appears in the
           searchbar on top
         </p>
+
+        <div>
+          <Radio.Group onChange={handleRadios}>
+            <Radio.Button value="spiritual"> Spiritual </Radio.Button>
+            <Radio.Button value="mission"> Misson </Radio.Button>
+          </Radio.Group>
+        </div>
 
         <button className="video-post-form-button" type="primary">
           Post

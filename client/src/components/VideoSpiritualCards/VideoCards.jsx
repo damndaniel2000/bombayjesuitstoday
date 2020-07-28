@@ -16,7 +16,7 @@ const VideoCards = () => {
 
   const getVideos = async () => {
     try {
-      const res = await trackPromise(axios.get("/api/videos-post"));
+      const res = await trackPromise(axios.get("/api/videos-spiritual"));
       setVideos(res.data);
     } catch (err) {
       console.log(err);

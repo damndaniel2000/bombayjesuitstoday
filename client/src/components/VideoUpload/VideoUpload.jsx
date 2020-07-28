@@ -115,7 +115,10 @@ const VideoPost = () => {
           </Form.Item>
 
           <div className="upload-input-div" onClick={() => openWidget()}>
-            <span className="upload-input-button">Select Video</span>
+            <span className="upload-input-button">
+              <i className="fa fa-upload" />
+              &nbsp; Select Video
+            </span>
             <Input
               className="upload-input-filename"
               placeholder="Filename"

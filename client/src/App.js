@@ -10,7 +10,8 @@ import HomeNavBar from "./components/HomeNav/HomeNavBar";
 import Footer from "./components/Footer/Footer.jsx";
 
 import HomePage from "./pages/HomePage";
-import VideoPage from "./pages/VideoPage";
+import VideoSpiritualPage from "./pages/VideoSpiritualPage";
+import VideoMissionPage from "./pages/VideoMissionPage";
 import VideoUpload from "./pages/VideoPost";
 import BlogPage from "./pages/BlogsPage";
 import ContributorsPage from "./pages/ContributorsPage";
@@ -58,7 +59,12 @@ const App = () => {
       <UserContext.Provider value={{ userData, setUserData }}>
         <Switch>
           <HomeNavBar exact path="/" component={HomePage} />
-          <NavBar exact path="/videos" component={VideoPage} />
+          <NavBar
+            exact
+            path="/videos/spiritual"
+            component={VideoSpiritualPage}
+          />
+          <NavBar exact path="/videos/mission" component={VideoMissionPage} />
           <NavBar exact path="/videos/upload" component={VideoUpload} />
           <NavBar exact path="/contributors" component={ContributorsPage} />
           <NavBar

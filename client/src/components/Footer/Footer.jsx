@@ -117,7 +117,7 @@ const Footer = () => {
             www.flaticon.com
           </a>
         </div>
-        © Copyright <b>Jesuits Bombay Province</b>. All Rights Reserved
+        © Copyright <b>Jesuits Bombay Province</b>. All Rights Reserved.
       </div>
     </footer>
   );

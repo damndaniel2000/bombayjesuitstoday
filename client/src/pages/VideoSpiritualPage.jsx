@@ -1,10 +1,10 @@
 import React from "react";
-import VideoCards from "../components/VideoCards/VideoCards";
+import VideoSpiritualCards from "../components/VideoSpiritualCards/VideoCards";
 
 const VideoPage = () => {
   return (
     <div style={{ minHeight: "100vh" }}>
-      <VideoCards />
+      <VideoSpiritualCards />
     </div>
   );
 };
