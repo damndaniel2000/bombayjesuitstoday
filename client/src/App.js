@@ -19,7 +19,7 @@ import ContributorsUploadPage from "./pages/ContributosUploadPage";
 import LoginPage from "./pages/Admin/LoginPage";
 import AdminVideoPost from "./pages/Admin/VideoPostPage";
 import AdminVideoPostDelete from "./pages/Admin/VideoPostDeletePage";
-import AdminVideoUploadDelete from "./pages/Admin/VideoUploadDelete";
+import AdminVideoUploadGet from "./pages/Admin/VideoUploadGet";
 
 import NotFound from "./pages/NotFoundPage";
 
@@ -78,7 +78,7 @@ const App = () => {
           <NavBar
             exact
             path="/videos/uploads"
-            component={AdminVideoUploadDelete}
+            component={AdminVideoUploadGet}
           />
 
           <NavBar component={NotFound} />

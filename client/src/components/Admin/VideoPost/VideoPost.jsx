@@ -13,14 +13,22 @@ const VideoPost = () => {
   const { uploader, caption, embedLink, videoURL } = state;
 
   const handleSubmit = async () => {
+    const token = localStorage.getItem("auth-token");
     axios
-      .post("/api/videos-post", {
-        uploader: uploader,
-        caption: caption,
-        embedLink: embedLink,
-        videoURL: videoURL,
+      .post(
+        "/api/videos-post",
+        {
+          uploader: uploader,
+          caption: caption,
+          embedLink: embedLink,
+          videoURL: videoURL,
+        },
+        { headers: { "x-auth-token": token } }
+      )
+      .then(() => {
+        successMessage();
+        setState({ uploader: "" });
       })
-      .then(() => successMessage())
       .catch((err) => {
         console.log(err);
         errorMessage();
@@ -32,10 +40,7 @@ const VideoPost = () => {
   };
 
   const errorMessage = () => {
-    return message.error(
-      "There was a problem in uploading the video. Sorry",
-      5
-    );
+    return message.error("There was a problem in posting the video. Sorry", 5);
   };
 
   const handleChange = (evt) => {

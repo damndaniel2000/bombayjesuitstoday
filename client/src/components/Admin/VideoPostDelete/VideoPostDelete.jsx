@@ -18,10 +18,13 @@ const VideoDelete = () => {
   };
 
   const deleteVideo = (id) => {
+    const token = localStorage.getItem("auth-token");
     const confirm = prompt("Types YES in the input below");
     if (confirm === "YES") {
       axios
-        .delete("/api/videos-post/" + id)
+        .delete("/api/videos-post/" + id, {
+          headers: { "x-auth-token": token },
+        })
         .then(() => {
           getVideos();
           successMessage();
@@ -37,7 +40,7 @@ const VideoDelete = () => {
   };
 
   const errorMessage = () => {
-    message.error("The video was not deleted", 5);
+    message.error("The video was not removed", 5);
   };
 
   const videoData = videos.length
