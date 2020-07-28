@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter as Router, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import axios from "axios";
 
 import "./App.css";
@@ -56,11 +56,10 @@ const App = () => {
     <Router>
       <UserContext.Provider value={{ userData, setUserData }}>
         <Switch>
-          <HomeNavBar exact path="/" component={HomePage} />
           <NavBar exact path="/videos" component={VideoPage} />
           <NavBar exact path="/videos/upload" component={VideoUpload} />
           <NavBar exact path="/contributors" component={ContributorsPage} />
-          <NavBar
+          <Route
             exact
             path="/contributors/upload-details"
             component={ContributorsUploadPage}
@@ -80,7 +79,7 @@ const App = () => {
             component={AdminVideoUploadDelete}
           />
 
-          <NavBar component={NotFound} />
+          <Route component={NotFound} />
         </Switch>
       </UserContext.Provider>
     </Router>

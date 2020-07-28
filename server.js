@@ -18,7 +18,7 @@ let uri = "";
 if (process.env.ENVIRONMENT === "production") {
   uri = process.env.MONGODB_URI;
 } else {
-  uri = "mongodb://localhost:27017/jesuitsDemo";
+  uri = "mongodb://localhost:27017/jesuits";
 }
 console.log(uri);
 MongoClient.connect(uri, {
@@ -39,9 +39,7 @@ app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname + "/client/build/index.html"));
 });
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
   console.log("Server listening on port ", PORT);
 });
-
-//mission and spirtuals
