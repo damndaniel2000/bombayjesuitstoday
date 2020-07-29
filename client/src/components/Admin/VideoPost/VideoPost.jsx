@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import "./VideoPost.css";
 import axios from "axios";
 import { Form, Input, Radio, message } from "antd";
+
+import "./VideoPost.css";
 
 const VideoPost = () => {
   const [state, setState] = useState({

@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Rancho&display=swap");
 
 .container {
-  height: 800px;
+  height: 90vh;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: right 0 bottom 35%;
@@ -21,12 +21,6 @@
   color: #000;
 }
 
-@media only screen and (max-height: 600px) {
-  .ggg-text-container {
-    top: 5rem;
-  }
-}
-
 @media only screen and (max-width: 800px) {
   .container {
     background-position: center;
@@ -44,15 +38,9 @@
   }
 }
 
-@media only screen and (max-width: 800px) and (max-height: 600px) {
-  .ggg-text-container {
-    top: 8rem;
-  }
-}
-
 @media only screen and (max-width: 500px) {
-  #home-nav-bar {
-    padding: 0.5rem 1rem;
+  .container {
+    height: 80vh;
   }
   .ggg-text-container {
     top: 8rem;

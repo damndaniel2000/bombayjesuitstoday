@@ -45,6 +45,13 @@
   justify-content: space-between;
 }
 
+.page-radio-buttons {
+  font-size: 20px;
+  padding: 10px 20px;
+  height: 50px;
+  width: 200px;
+}
+
 @media only screen and (max-width: 1000px) {
   .video-card-div {
     width: 90%;
@@ -68,5 +75,11 @@
   .video-card-title {
     font-size: 18px;
     font-weight: bold;
+  }
+  .page-radio-buttons {
+    font-size: 15px;
+    padding: 5px 10px;
+    height: 40px;
+    width: 100px;
   }
 }

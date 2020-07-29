@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { trackPromise, usePromiseTracker } from "react-promise-tracker";
-import { Spin } from "antd";
+import { Spin, Radio } from "antd";
+import { useHistory } from "react-router-dom";
 
 import ShareButton from "./ShareButton";
 import "./VideoCards.css";
@@ -9,6 +10,7 @@ import "./VideoCards.css";
 const VideoCards = () => {
   const [videos, setVideos] = useState([]);
   const { promiseInProgress } = usePromiseTracker();
+  const history = useHistory();
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -22,6 +24,10 @@ const VideoCards = () => {
     } catch (err) {
       console.log(err);
     }
+  };
+
+  const handleRadios = (evt) => {
+    history.push(evt.target.value);
   };
 
   const videoCards = videos.map((card) => {
@@ -61,6 +67,21 @@ const VideoCards = () => {
   });
   return (
     <>
+      <br />
+      <br />
+      <div>
+        <Radio.Group onChange={handleRadios} defaultValue="/videos/spiritual">
+          <Radio.Button
+            value="/videos/spiritual"
+            className="page-radio-buttons"
+          >
+            Spiritual
+          </Radio.Button>
+          <Radio.Button value="/videos/mission" className="page-radio-buttons">
+            Misson
+          </Radio.Button>
+        </Radio.Group>
+      </div>
       <br />
       <br />
       {promiseInProgress && <Spin size="large" />}

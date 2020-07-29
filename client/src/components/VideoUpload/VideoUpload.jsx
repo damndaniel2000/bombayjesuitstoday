@@ -21,7 +21,7 @@ const VideoPost = () => {
           cloudName: "dij0e4dwn",
           uploadPreset: "nofvgsru",
           sources: ["local"],
-          folder: "contributors",
+          folder: "videoUploads",
           api_key: "597871714829172",
           showAdvancedOptions: false,
           multiple: false,
@@ -153,8 +153,11 @@ const VideoPost = () => {
       <h3>
         {" "}
         First time uploading a video?{" "}
-        <Link to="/contributors/upload-details">
-          <a>Click Here</a>
+        <Link
+          to="/contributors/upload-details"
+          style={{ color: "blue", textDecoration: "underline" }}
+        >
+          Click Here
         </Link>
       </h3>
       <h3>
@@ -163,7 +166,7 @@ const VideoPost = () => {
           href="https://forms.gle/CmouRWKMULh5WQpM8"
           target="_blank"
           rel="noopener noreferrer"
-          style={{ textDecoration: "underline" }}
+          style={{ color: "blue", textDecoration: "underline" }}
         >
           Click Here
         </a>

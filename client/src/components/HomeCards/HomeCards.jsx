@@ -22,6 +22,7 @@ const HomeCards = () => {
           <div className="home-card-img-container">
             <img
               src={window.location.origin + "/images/church.png"}
+              alt="Freepik Icon"
               className="home-card-img"
             ></img>
           </div>
@@ -39,6 +40,7 @@ const HomeCards = () => {
           <div className="home-card-img-container">
             <img
               src={window.location.origin + "/images/bible.png"}
+              alt="Freepik Icon"
               className="home-card-img"
             ></img>
           </div>
@@ -61,6 +63,7 @@ const HomeCards = () => {
           <div className="home-card-img-container">
             <img
               src={window.location.origin + "/images/dove.png"}
+              alt="Freepik Icon"
               className="home-card-img"
             ></img>
           </div>
@@ -85,6 +88,7 @@ const HomeCards = () => {
           <div className="home-card-img-container">
             <img
               src={window.location.origin + "/images/mission.png"}
+              alt="Freepik Icon"
               className="home-card-img"
             ></img>
           </div>
@@ -108,6 +112,7 @@ const HomeCards = () => {
           <div className="home-card-img-container">
             <img
               src={window.location.origin + "/images/blog.png"}
+              alt="Freepik Icon"
               className="home-card-img"
             ></img>
           </div>

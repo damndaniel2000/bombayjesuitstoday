@@ -64,43 +64,74 @@ const Footer = () => {
             </div>
             <div className="footer-related-sites">
               <h3> Related Sites </h3>
-              <a>
+              <a
+                href="https://www.jesuits.global/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <p>> Jesuit Curia in Rome </p>
               </a>
-              <a>
+              <a
+                href="https://jcsaweb.org/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <p>> Jesuit Conference of South Asia </p>
               </a>
-              <a>
-                <p>> Universal Apostolic Preferences </p>
+              <a
+                href="https://jrs.net/en/home/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <p>> Jesuit Refugee Service </p>
               </a>
-              <a>
-                <p>> Pope's Worldwide Prayer Network</p>
-              </a>
-              <a>
-                <p>> Vatican Observatory</p>
-              </a>
-              <a>
-                <p>> Lok Manch</p>
-              </a>
-              <a>
-                <p>> JIVAN</p>
-              </a>
-              <a>
-                <p>> IGNIS</p>
-              </a>
-              <a>
+              <a
+                href="https://www.americamagazine.org/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <p>> America Magazine</p>
               </a>
-              <a>
+              <a
+                href="https://onlineministries.creighton.edu/CollaborativeMinistry/online.html"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <p>> Online Ministries</p>
               </a>
-              <a>
+              <a
+                href="https://www.ignatianspirituality.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <p>> Ignatian Spirituality</p>
               </a>
-              <a>
+              <a
+                href="https://www.loyolapress.com/catholic-resources/ignatian-spirituality/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <p>> Loyola Press</p>
               </a>
-              <a>
+              <a
+                href="http://xaviers.edu/main/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <p>> St. Xavier's College, Mumbai </p>
+              </a>
+              <a
+                href="https://mpsm.in/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <p>> MPSM </p>
+              </a>
+              <a
+                href="https://www.bombayjesuits.org/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <p>> Bombay Jesuits Official Website</p>
               </a>
             </div>
@@ -109,12 +140,22 @@ const Footer = () => {
         <div className="footer-bottom-text">
           <div>
             Icons made by{" "}
-            <a href="https://www.flaticon.com/authors/freepik" title="Freepik">
+            <a
+              href="https://www.flaticon.com/authors/freepik"
+              title="Freepik"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               {" "}
               Freepik
             </a>{" "}
             from{" "}
-            <a href="https://www.flaticon.com/" title="Flaticon">
+            <a
+              href="https://www.flaticon.com/"
+              title="Flaticon"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               www.flaticon.com
             </a>
           </div>
