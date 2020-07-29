@@ -1,19 +1,22 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
 
 import "./HomeCards.css";
 
 const HomeCards = () => {
+  const history = useHistory();
+
   return (
     <>
-      <div
-        className="home-card-container"
-        style={{ backgroundColor: "#a0b5c6" }}
-      >
+      <div className="home-card-container">
         <div className="home-card">
-          <div className="home-card-text">
+          <div className="home-card-text-container">
             <div>
-              <p>Join Us For The Daily Eucharist</p>
-              <button> Daily Mass </button>
+              <p className="home-card-text">Join Us For The Daily Eucharist</p>
+              <button className="home-card-button"> Holy Family Church </button>
+              <br />
+              <br />
+              <button className="home-card-button"> St. Peter's Church </button>
             </div>
           </div>
           <div className="home-card-img-container">
@@ -25,32 +28,34 @@ const HomeCards = () => {
         </div>
       </div>
 
-      <div className="home-card-container" style={{ backgroundColor: "#fff" }}>
-        <div className="home-card">
+      <div className="home-card-container">
+        <div className="home-card-reverse">
+          <div className="home-card-text-container">
+            <div>
+              <p className="home-card-text">Take A Deeper Look At The Gospel</p>
+              <button className="home-card-button"> Gospel Insights </button>
+            </div>
+          </div>
           <div className="home-card-img-container">
             <img
               src={window.location.origin + "/images/bible.png"}
               className="home-card-img"
             ></img>
           </div>
-          <div className="home-card-text">
-            <div>
-              <p>Take A Deeper Look At The Gospel</p>
-              <button> Gospel Insights </button>
-            </div>
-          </div>
         </div>
       </div>
 
-      <div
-        className="home-card-container"
-        style={{ backgroundColor: "#a0b5c6" }}
-      >
+      <div className="home-card-container">
         <div className="home-card">
-          <div className="home-card-text">
+          <div className="home-card-text-container">
             <div>
-              <p>Follow The Ignatian Spirituality</p>
-              <button> Spirituality Videos </button>
+              <p className="home-card-text">Follow The Ignatian Spirituality</p>
+              <button
+                onClick={() => history.push("/videos/spiritual")}
+                className="home-card-button"
+              >
+                Spirituality Videos
+              </button>
             </div>
           </div>
           <div className="home-card-img-container">
@@ -62,32 +67,42 @@ const HomeCards = () => {
         </div>
       </div>
 
-      <div className="home-card-container" style={{ backgroundColor: "#fff" }}>
-        <div className="home-card">
+      <div className="home-card-container">
+        <div className="home-card-reverse">
+          <div className="home-card-text-container">
+            <div>
+              <p className="home-card-text">
+                Be A Part Of The Ignatian Mission
+              </p>
+              <button
+                onClick={() => history.push("/videos/mission")}
+                className="home-card-button"
+              >
+                Mission Videos
+              </button>
+            </div>
+          </div>
           <div className="home-card-img-container">
             <img
               src={window.location.origin + "/images/mission.png"}
               className="home-card-img"
             ></img>
           </div>
-          <div className="home-card-text">
-            <div>
-              <p>Be A Part Of The Ignatian Mission</p>
-              <button> Mission Videos </button>
-            </div>
-          </div>
         </div>
       </div>
 
-      <div
-        className="home-card-container"
-        style={{ backgroundColor: "#a0b5c6" }}
-      >
+      <div className="home-card-container">
         <div className="home-card">
-          <div className="home-card-text">
+          <div className="home-card-text-container">
             <div>
-              <p>Awaken The Reader In You</p>
-              <button> Blogs </button>
+              <p className="home-card-text">Awaken The Reader In You</p>
+              <button
+                onClick={() => history.push("/blogs")}
+                className="home-card-button"
+              >
+                {" "}
+                Blogs{" "}
+              </button>
             </div>
           </div>
           <div className="home-card-img-container">

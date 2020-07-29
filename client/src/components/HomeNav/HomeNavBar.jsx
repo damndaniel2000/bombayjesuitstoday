@@ -7,6 +7,7 @@ import logo from "./logo.png";
 
 const HomeNavBar = (props) => {
   const [visible, setVisible] = useState(false);
+  const [videoDrop, setDrop] = useState(false);
   const history = useHistory();
 
   const showDrawer = () => {
@@ -14,6 +15,7 @@ const HomeNavBar = (props) => {
   };
   const hideDrawer = () => {
     setVisible(false);
+    setDrop(false);
   };
 
   const home = () => {
@@ -40,17 +42,30 @@ const HomeNavBar = (props) => {
           Daily Mass
         </Menu.Item>
         <Menu.Item key="2" className="desktop-dropdown-items">
-          Daily Gospel Insights
+          Gospel Insights
         </Menu.Item>
         <Menu.Item key="3" className="desktop-dropdown-items">
-          Ignatian Insights & Spirituality
+          Ignatian Mission
         </Menu.Item>
         <Menu.Item key="4" className="desktop-dropdown-items">
-          Vlogs
+          Ignatian Spirituality
         </Menu.Item>
       </Menu.ItemGroup>
     </Menu>
   );
+
+  const drawerDropVideos = () => {
+    if (videoDrop) {
+      return (
+        <div className="drawer-drop-content">
+          <span> > Daily Mass </span>
+          <span> > Gospel Insights </span>
+          <span> > Ignatian Spirituality </span>
+          <span> > Ignatian Mission </span>
+        </div>
+      );
+    }
+  };
 
   return (
     <>
@@ -82,9 +97,12 @@ const HomeNavBar = (props) => {
                 <span onClick={home}>
                   <i className="fa fa-home" /> Home
                 </span>
-                <span onClick={videos}>
-                  <i className="fa fa-video-camera" /> Videos
+                <span onClick={() => setDrop(!videoDrop)}>
+                  <i className="fa fa-video-camera" /> Videos &nbsp; &nbsp;
+                  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                  <i className="fa fa-angle-down" />
                 </span>
+                {drawerDropVideos()}
                 <span onClick={blogs}>
                   <i className="fa fa-pencil" /> Blogs
                 </span>
@@ -102,7 +120,7 @@ const HomeNavBar = (props) => {
 
               <Dropdown overlay={dropVideos}>
                 <div>
-                  <span onClick={videos}>
+                  <span>
                     Videos &nbsp;
                     <i className="fa fa-angle-down" />
                   </span>

@@ -1,6 +1,10 @@
 .home-card-container {
   margin: 0 auto;
   padding: 3rem 0;
+  background-color: #fff;
+}
+.home-card-container:nth-of-type(even) {
+  background-color: #a0b5c6;
 }
 
 .home-card {
@@ -8,28 +12,38 @@
   width: 70%;
   display: flex;
   justify-content: space-around;
+  align-items: center;
+}
+.home-card-reverse {
+  margin: 0 auto;
+  width: 70%;
+  flex-direction: row-reverse;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
 
-.home-card-text {
+.home-card-text-container {
   width: 45%;
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
-.home-card-text p {
+.home-card-text {
   font-size: 40px;
   color: #000;
   font-weight: bold;
 }
 
-.home-card-text button {
+.home-card-button {
   font-size: 20px;
   background-color: #1a137c;
   color: #fff;
   padding: 15px 50px;
   border: none;
   border-radius: 50px;
+  cursor: pointer;
 }
 
 .home-card-img-container {
@@ -39,4 +53,73 @@
   width: 20rem;
   height: 20rem;
   margin: 0 auto;
+}
+
+@media only screen and (max-width: 1400px) {
+  .home-card {
+    width: 90%;
+  }
+  .home-card-reverse {
+    width: 90%;
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  .home-card {
+    justify-content: space-between;
+  }
+  .home-card-reverse {
+    justify-content: space-between;
+  }
+  .home-card-text {
+    font-size: 30px;
+  }
+  .home-card-button {
+    font-size: 18px;
+    padding: 13px 40px;
+  }
+  .home-card-img {
+    width: 18rem;
+    height: 18rem;
+    margin: 0 auto;
+  }
+}
+
+@media only screen and (max-width: 750px) {
+  .home-card-img {
+    width: 16rem;
+    height: 16rem;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .home-card {
+    flex-direction: column-reverse;
+    justify-content: center;
+  }
+  .home-card-reverse {
+    flex-direction: column-reverse;
+    justify-content: center;
+  }
+  .home-card-text-container {
+    margin-top: 2rem;
+    width: 100%;
+  }
+  .home-card-button {
+    font-size: 14px;
+    padding: 12px 30px;
+  }
+  .home-card-img-container {
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .home-card-img {
+    width: 12rem;
+    height: 12rem;
+  }
+  .home-card-text {
+    font-size: 25px;
+  }
 }

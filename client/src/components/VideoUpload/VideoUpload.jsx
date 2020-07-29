@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import "./VideoUpload.css";
 
 import axios from "axios";
@@ -149,6 +150,13 @@ const VideoPost = () => {
           the website.
         </h3>
       </div>
+      <h3>
+        {" "}
+        First time uploading a video?{" "}
+        <Link to="/contributors/upload-details">
+          <a>Click Here</a>
+        </Link>
+      </h3>
       <h3>
         Video not uploading?{" "}
         <a

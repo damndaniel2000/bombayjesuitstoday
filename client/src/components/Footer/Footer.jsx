@@ -106,18 +106,22 @@ const Footer = () => {
             </div>
           </div>
         </div>
-        <div>
-          Icons made by{" "}
-          <a href="https://www.flaticon.com/authors/freepik" title="Freepik">
-            {" "}
-            Freepik
-          </a>{" "}
-          from{" "}
-          <a href="https://www.flaticon.com/" title="Flaticon">
-            www.flaticon.com
-          </a>
+        <div className="footer-bottom-text">
+          <div>
+            Icons made by{" "}
+            <a href="https://www.flaticon.com/authors/freepik" title="Freepik">
+              {" "}
+              Freepik
+            </a>{" "}
+            from{" "}
+            <a href="https://www.flaticon.com/" title="Flaticon">
+              www.flaticon.com
+            </a>
+          </div>
+          <p>
+            © Copyright <b>Jesuits Bombay Province</b>. All Rights Reserved.
+          </p>
         </div>
-        © Copyright <b>Jesuits Bombay Province</b>. All Rights Reserved.
       </div>
     </footer>
   );

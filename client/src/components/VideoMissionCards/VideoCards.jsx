@@ -11,6 +11,7 @@ const VideoCards = () => {
   const { promiseInProgress } = usePromiseTracker();
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     getVideos();
   }, []);
 
