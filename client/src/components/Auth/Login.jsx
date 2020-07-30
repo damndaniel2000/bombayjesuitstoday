@@ -61,7 +61,7 @@ const Login = () => {
               loading={loading}
               onClick={handleSubmit}
             >
-              Submit
+              Login
             </Button>,
           ]}
         >

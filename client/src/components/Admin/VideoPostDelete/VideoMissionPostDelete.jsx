@@ -12,7 +12,7 @@ const VideoDelete = () => {
 
   const getVideos = () => {
     axios
-      .get("/api/videos-post")
+      .get("/api/videos-mission")
       .then((res) => setVideos(res.data))
       .catch((err) => console.log(err));
   };
@@ -22,7 +22,7 @@ const VideoDelete = () => {
     const confirm = prompt("Types YES in the input below");
     if (confirm === "YES") {
       axios
-        .delete("/api/videos-post/" + id, {
+        .delete("/api/videos-mission/" + id, {
           headers: { "x-auth-token": token },
         })
         .then(() => {
@@ -43,7 +43,7 @@ const VideoDelete = () => {
     message.error("The video was not removed", 5);
   };
 
-  const videoData = videos.length
+  const videoSData = videos.length
     ? videos.map((video) => {
         const timestamp = video._id.toString().substring(0, 8);
         const hours = new Date(
@@ -76,7 +76,14 @@ const VideoDelete = () => {
       })
     : null;
 
-  return <div className="video-delete-div"> {videoData} </div>;
+  return (
+    <>
+      <br />
+      <br />
+      <h2> Mission Videos </h2>
+      <div className="video-delete-div"> {videoSData} </div>
+    </>
+  );
 };
 
 export default VideoDelete;

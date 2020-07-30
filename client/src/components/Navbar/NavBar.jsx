@@ -22,8 +22,12 @@ const NavBar = (props) => {
     history.push("/");
     hideDrawer();
   };
-  const videos = () => {
-    history.push("/videos");
+  const sVideos = () => {
+    history.push("/videos/spiritual");
+    hideDrawer();
+  };
+  const mVideos = () => {
+    history.push("/videos/mission");
     hideDrawer();
   };
   const blogs = () => {
@@ -44,10 +48,10 @@ const NavBar = (props) => {
         <Menu.Item key="2" className="desktop-dropdown-items">
           Gospel Insights
         </Menu.Item>
-        <Menu.Item key="3" className="desktop-dropdown-items">
+        <Menu.Item key="3" onClick={mVideos} className="desktop-dropdown-items">
           Ignatian Mission
         </Menu.Item>
-        <Menu.Item key="4" className="desktop-dropdown-items">
+        <Menu.Item key="4" onClick={sVideos} className="desktop-dropdown-items">
           Ignatian Spirituality
         </Menu.Item>
       </Menu.ItemGroup>
@@ -60,8 +64,8 @@ const NavBar = (props) => {
         <div className="drawer-drop-content">
           <span> > Daily Mass </span>
           <span> > Gospel Insights </span>
-          <span> > Ignatian Spirituality </span>
-          <span> > Ignatian Mission </span>
+          <span onClick={sVideos}> > Ignatian Spirituality </span>
+          <span onClick={mVideos}> > Ignatian Mission </span>
         </div>
       );
     }

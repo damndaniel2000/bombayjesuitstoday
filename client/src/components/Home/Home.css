@@ -1,5 +1,4 @@
 @import url("https://fonts.googleapis.com/css2?family=Rancho&display=swap");
-
 .container {
   height: 90vh;
   background-repeat: no-repeat;
@@ -21,6 +20,27 @@
   color: #000;
 }
 
+.provincial-message-container {
+  width: 60%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin: 0 auto;
+  padding: 2rem 0;
+  font-size: 40px;
+}
+
+.provincial-message {
+  color: #000;
+  font-family: Rancho;
+}
+
+@media only screen and (max-width: 1000px) {
+  .provincial-message-container {
+    width: 80%;
+  }
+}
+
 @media only screen and (max-width: 800px) {
   .container {
     background-position: center;
@@ -38,6 +58,13 @@
   }
 }
 
+@media only screen and (max-width: 700px) {
+  .provincial-message-container {
+    width: 90%;
+    font-size: 35px;
+  }
+}
+
 @media only screen and (max-width: 500px) {
   .container {
     height: 80vh;
@@ -50,6 +77,9 @@
   .ggg-text {
     font-size: 40px;
   }
+  .provincial-message-container {
+    font-size: 30px;
+  }
 }
 
 @media only screen and (max-width: 400px) {
@@ -60,5 +90,8 @@
     top: 7rem;
     left: 0.5rem;
     width: 15rem;
+  }
+  .provincial-message-container {
+    font-size: 25px;
   }
 }

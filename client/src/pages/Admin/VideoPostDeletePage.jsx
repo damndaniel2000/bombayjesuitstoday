@@ -1,7 +1,8 @@
 import React, { useContext } from "react";
 import UserContext from "../../context/UserContext";
 
-import VideoDelete from "../../components/Admin/VideoPostDelete/VideoPostDelete";
+import SpiritualVideoDelete from "../../components/Admin/VideoPostDelete/VideoSpiritualPostDelete";
+import MissionVideoDelete from "../../components/Admin/VideoPostDelete/VideoMissionPostDelete";
 import NotFoundPage from "../NotFoundPage";
 
 const VideoDeletePage = () => {
@@ -9,7 +10,14 @@ const VideoDeletePage = () => {
 
   return (
     <div style={{ minHeight: "100vh" }}>
-      {!userData.user ? <NotFoundPage /> : <VideoDelete />}
+      {!userData.user ? (
+        <NotFoundPage />
+      ) : (
+        <>
+          <SpiritualVideoDelete />
+          <MissionVideoDelete />
+        </>
+      )}
     </div>
   );
 };
