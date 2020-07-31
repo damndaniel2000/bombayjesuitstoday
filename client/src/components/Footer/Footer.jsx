@@ -25,7 +25,7 @@ const Footer = () => {
                 <p>
                   <i className="fa fa-envelope" />
                   <a href="mailto:sjspiritual2020@gmail.com">
-                    &nbsp;sjspiritual2020@gmail.com
+                    &nbsp;&nbsp;sjspiritual2020@gmail.com
                   </a>
                 </p>
                 <p>

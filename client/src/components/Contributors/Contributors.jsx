@@ -7,6 +7,7 @@ import "./Contributors.css";
 
 const ContributorsCard = () => {
   const [contributors, setContributors] = useState([]);
+  const [notFound, setNotFound] = useState(true);
   const { promiseInProgress } = usePromiseTracker();
 
   useEffect(() => {
@@ -24,6 +25,7 @@ const ContributorsCard = () => {
 
   const contributorsList = contributors.map((contri) => {
     if (contri.validated) {
+      setNotFound(false);
       return (
         <div className="contributors-card">
           <div className="contributors-card-photo">
@@ -37,8 +39,7 @@ const ContributorsCard = () => {
             <div>
               <p className="contributors-card-name"> {contri.name} </p>
               <p className="contributors-card-location">
-                {" "}
-                {contri.basedLocation}{" "}
+                {contri.basedLocation}
               </p>
               <blockquote>{contri.quote}</blockquote>
             </div>
@@ -54,15 +55,23 @@ const ContributorsCard = () => {
           </div>
         </div>
       );
+    } else {
+      return null;
     }
-    return null;
   });
 
   return (
     <>
       <br />
       <br />
-      <span className="page-title">Meet Our Contributors</span>
+      {!notFound && <span className="page-title">Meet Our Contributors</span>}
+      {notFound && (
+        <span className="page-title">
+          Our Contributors are currently busy providing you with good content.
+          <br />
+          They will be here soon
+        </span>
+      )}
       <br />
       <br />
       {promiseInProgress && <Spin size="large" />}

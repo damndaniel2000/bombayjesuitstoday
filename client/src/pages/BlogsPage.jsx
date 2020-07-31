@@ -9,7 +9,7 @@ const BlogPage = () => {
       <br />
       <br />
       <br />
-      <video width="500" height="500" autoplay="true" loop="true">
+      <video width="400" height="400" autoplay="true" loop="true">
         <source
           src={window.location.origin + "/images/giphy.mp4"}
           type="video/mp4"

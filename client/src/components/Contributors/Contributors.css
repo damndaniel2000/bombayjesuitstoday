@@ -58,6 +58,7 @@
 }
 
 .page-title {
+  margin: 1rem;
   font-size: 40px;
   color: #000;
 }
