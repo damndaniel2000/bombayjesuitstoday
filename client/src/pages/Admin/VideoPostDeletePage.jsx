@@ -9,7 +9,7 @@ const VideoDeletePage = () => {
   const { userData } = useContext(UserContext);
 
   return (
-    <div style={{ minHeight: "100vh" }}>
+    <div style={{ minHeight: "150vh" }}>
       {!userData.user ? (
         <NotFoundPage />
       ) : (

@@ -5,7 +5,7 @@ const BlogPage = () => {
     window.scrollTo(0, 0);
   });
   return (
-    <div style={{ minHeight: "100vh" }}>
+    <div style={{ minHeight: "150vh" }}>
       <br />
       <br />
       <br />

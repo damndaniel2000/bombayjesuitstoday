@@ -8,7 +8,7 @@ const HomePage = () => {
     window.scrollTo(0, 0);
   });
   return (
-    <div style={{ minHeight: "100vh" }}>
+    <div style={{ minHeight: "150vh" }}>
       <Home />
       <HomeCards />
     </div>

@@ -3,7 +3,7 @@ import VideoUpload from "../components/VideoUpload/VideoUpload";
 
 const Page = () => {
   return (
-    <div style={{ minHeight: "100vh" }}>
+    <div style={{ minHeight: "150vh" }}>
       <VideoUpload />
     </div>
   );

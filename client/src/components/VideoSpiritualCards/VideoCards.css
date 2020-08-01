@@ -39,10 +39,23 @@
   color: red;
 }
 
+.share-buttons-container {
+  display: flex;
+  width: 9rem;
+  justify-content: space-between;
+}
+
 .share-buttons {
   width: 5rem;
   display: flex;
   justify-content: space-between;
+}
+
+.page-radio-buttons {
+  font-size: 18px;
+  width: 150px;
+  padding: 10px;
+  height: 50px;
 }
 
 @media only screen and (max-width: 1000px) {
@@ -68,5 +81,11 @@
   .video-card-title {
     font-size: 18px;
     font-weight: bold;
+  }
+  .page-radio-buttons {
+    font-size: 14px;
+    width: 100px;
+    height: 40px;
+    padding: 5px;
   }
 }

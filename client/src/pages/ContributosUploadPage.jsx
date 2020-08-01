@@ -3,7 +3,7 @@ import ContributorsUpload from "../components/ContributorsUpload/ContributorsUpl
 
 const ContributorsUploadPage = () => {
   return (
-    <div style={{ minHeight: "100vh" }}>
+    <div style={{ minHeight: "150vh" }}>
       <ContributorsUpload />
     </div>
   );

@@ -5,7 +5,6 @@ import { Spin, Radio } from "antd";
 import { useHistory } from "react-router-dom";
 
 import ShareButton from "./ShareButton";
-import "./VideoCards.css";
 
 const VideoCards = () => {
   const [videos, setVideos] = useState([]);
@@ -45,8 +44,10 @@ const VideoCards = () => {
       return (
         <div className="video-card-div" key={card._id}>
           <div className="video-card-content">
-            <span className="video-card-title">{card.uploader}</span>
+            <span className="video-card-title">{card.name}</span>
             <p> {uploadTime} </p>
+            <p className="video-card-caption">{card.caption}</p>
+            <p style={{ marginTop: "-10px" }}> By {card.uploader}</p>
             <p className="video-card-caption">{card.caption}</p>
           </div>
           <iframe
@@ -87,7 +88,6 @@ const VideoCards = () => {
           </Radio.Button>
         </Radio.Group>
       </div>
-      <br />
       <br />
       {promiseInProgress && <Spin size="large" />}
       {videoCards}

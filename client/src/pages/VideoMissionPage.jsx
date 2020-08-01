@@ -3,7 +3,7 @@ import VideoMissionCards from "../components/VideoMissionCards/VideoCards";
 
 const VideoPage = () => {
   return (
-    <div style={{ minHeight: "100vh" }}>
+    <div style={{ minHeight: "150vh" }}>
       <VideoMissionCards />
     </div>
   );

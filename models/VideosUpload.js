@@ -7,11 +7,14 @@ const videoSchema = new Schema(
       type: String,
       required: true,
     },
+    title: {
+      type: String,
+      required: true,
+    },
     caption: {
       type: String,
       required: true,
     },
-
     videoURL: {
       type: String,
       required: true,

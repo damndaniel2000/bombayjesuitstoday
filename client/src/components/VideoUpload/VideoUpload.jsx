@@ -9,10 +9,11 @@ const VideoPost = () => {
   const [state, setState] = useState({
     uploader: "",
     caption: "",
+    title: "",
   });
   const [videoURL, setURL] = useState("");
   const [fileName, setFileName] = useState("");
-  const { uploader, caption } = state;
+  const { uploader, caption, title } = state;
 
   const openWidget = () => {
     window.cloudinary
@@ -68,11 +69,13 @@ const VideoPost = () => {
       .post("/api/videos-upload", {
         uploader: uploader,
         caption: caption,
+        title: title,
         videoURL: videoURL,
       })
       .then(() => {
         successMessage();
         setURL("");
+        setState({ uploader: "" });
       })
       .catch((err) => {
         console.log(err);
@@ -113,6 +116,18 @@ const VideoPost = () => {
               value={uploader}
               required
             />
+          </Form.Item>
+
+          <Form.Item name="title">
+            <label htmlFor="title">Title of the Video: </label>
+            <Input
+              placeholder="Title"
+              name="title"
+              onChange={handleChange}
+              value={title}
+              required
+            />
+            <p className="form-extra-image">Please keep the title short.</p>
           </Form.Item>
 
           <div className="upload-input-div" onClick={() => openWidget()}>
@@ -163,7 +178,7 @@ const VideoPost = () => {
       <h3>
         Video not uploading?{" "}
         <a
-          href="https://forms.gle/CmouRWKMULh5WQpM8"
+          href="https://forms.gle/1krEpsjYcTQUYY538"
           target="_blank"
           rel="noopener noreferrer"
           style={{ color: "blue", textDecoration: "underline" }}

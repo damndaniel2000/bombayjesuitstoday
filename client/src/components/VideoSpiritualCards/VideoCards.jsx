@@ -45,8 +45,9 @@ const VideoCards = () => {
       return (
         <div className="video-card-div" key={card._id}>
           <div className="video-card-content">
-            <span className="video-card-title">{card.uploader}</span>
+            <span className="video-card-title">{card.title}</span>
             <p> {uploadTime} </p>
+            <p style={{ marginTop: "-10px" }}> By {card.uploader}</p>
             <p className="video-card-caption">{card.caption}</p>
           </div>
           <iframe
@@ -87,7 +88,6 @@ const VideoCards = () => {
           </Radio.Button>
         </Radio.Group>
       </div>
-      <br />
       <br />
       {promiseInProgress && <Spin size="large" />}
       {videoCards}

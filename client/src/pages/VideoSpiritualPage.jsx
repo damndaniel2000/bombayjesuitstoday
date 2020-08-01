@@ -3,7 +3,7 @@ import VideoSpiritualCards from "../components/VideoSpiritualCards/VideoCards";
 
 const VideoPage = () => {
   return (
-    <div style={{ minHeight: "100vh" }}>
+    <div style={{ minHeight: "150vh" }}>
       <VideoSpiritualCards />
     </div>
   );

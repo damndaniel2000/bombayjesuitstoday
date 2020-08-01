@@ -8,11 +8,12 @@ const VideoPost = () => {
   const [state, setState] = useState({
     uploader: "",
     caption: "",
+    title: "",
     embedLink: "",
     videoURL: "",
   });
   const [path, setPath] = useState();
-  const { uploader, caption, embedLink, videoURL } = state;
+  const { uploader, caption, title, embedLink, videoURL } = state;
 
   const handleSubmit = async () => {
     const token = localStorage.getItem("auth-token");
@@ -22,6 +23,7 @@ const VideoPost = () => {
         {
           uploader: uploader,
           caption: caption,
+          title: title,
           embedLink: embedLink,
           videoURL: videoURL,
         },
@@ -72,9 +74,19 @@ const VideoPost = () => {
           />
         </Form.Item>
 
+        <Form.Item name="title">
+          <label htmlFor="title">Title of the Video: </label>
+          <Input
+            placeholder="Title"
+            name="title"
+            onChange={handleChange}
+            value={title}
+            required
+          />
+        </Form.Item>
+
         <Form.Item name="caption">
           <label htmlFor="caption">Caption :</label>
-
           <Input.TextArea
             value={caption}
             name="caption"
@@ -89,7 +101,7 @@ const VideoPost = () => {
           <label htmlFor="embedLink">Embed Link :</label>
 
           <Input
-            placeholder="Embed Link"
+            placeholder="Link"
             name="embedLink"
             value={embedLink}
             onChange={handleChange}
@@ -106,7 +118,7 @@ const VideoPost = () => {
 
           <Input
             name="videoURL"
-            placeholder="Video URL"
+            placeholder="URL"
             value={videoURL}
             onChange={handleChange}
             required

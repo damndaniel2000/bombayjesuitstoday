@@ -10,6 +10,10 @@ const videoSchema = new Schema({
     type: String,
     required: true,
   },
+  title: {
+    type: String,
+    required: true,
+  },
   embedLink: {
     type: String,
     required: true,
