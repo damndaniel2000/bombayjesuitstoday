@@ -25,7 +25,6 @@ const ContributorsCard = () => {
 
   const contributorsList = contributors.map((contri) => {
     if (contri.validated) {
-      setNotFound(false);
       return (
         <div className="contributors-card">
           <div className="contributors-card-photo">
@@ -64,14 +63,7 @@ const ContributorsCard = () => {
     <>
       <br />
       <br />
-      {!notFound && <span className="page-title">Meet Our Contributors</span>}
-      {notFound && (
-        <span className="page-title">
-          Our Contributors are currently busy providing you with good content.
-          <br />
-          They will be here soon
-        </span>
-      )}
+      <span className="page-title">Meet Our Contributors</span>
       <br />
       <br />
       {promiseInProgress && <Spin size="large" />}
