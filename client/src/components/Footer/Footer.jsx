@@ -83,7 +83,7 @@ const Footer = () => {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <p>> Fr. Gehrard Website</p>
+                <p>> Fr. Gerard's Website</p>
               </a>
               <a
                 href="https://www.bombayjesuits.org/"

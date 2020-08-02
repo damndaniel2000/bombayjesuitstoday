@@ -163,7 +163,8 @@ const VideoPost = () => {
           />
         </Form.Item>
         <p className="form-extra">
-          You can check our Contributors page to get an idea about what to write
+          You can check our Contributors page to get an idea about what to
+          write.
         </p>
 
         <button className="video-post-form-button" type="primary">

@@ -1,23 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Rancho&display=swap");
 .container {
-  height: 90vh;
   background-repeat: no-repeat;
+  background-position: top center;
   background-size: cover;
-  background-position: right 0 bottom 35%;
-  background-image: url("https://res.cloudinary.com/dij0e4dwn/image/upload/v1595824464/ezgif.com-gif-maker_a6gych.jpg");
-}
-
-.ggg-text-container {
-  position: absolute;
-  top: 6rem;
-  left: 30%;
-}
-.ggg-text {
-  margin: auto;
-  font-family: Rancho;
-  font-size: 90px;
-  font-weight: 1000;
-  color: #000;
+  height: 80vh;
+  background-image: url("https://res.cloudinary.com/dij0e4dwn/image/upload/v1596377635/ezgif.com-gif-maker_px37mm.jpg");
 }
 
 .provincial-message-container {
@@ -43,18 +30,10 @@
 
 @media only screen and (max-width: 800px) {
   .container {
-    background-position: center;
+    background-position: center left 20%;
   }
   #home-nav-bar {
     padding: 0.5rem 2rem;
-  }
-  .ggg-text-container {
-    left: 2rem;
-    top: 10rem;
-    width: 25rem;
-  }
-  .ggg-text {
-    font-size: 50px;
   }
 }
 
@@ -67,15 +46,8 @@
 
 @media only screen and (max-width: 500px) {
   .container {
-    height: 80vh;
-  }
-  .ggg-text-container {
-    top: 8rem;
-    left: 1rem;
-    width: 18rem;
-  }
-  .ggg-text {
-    font-size: 40px;
+    background-position: center left;
+    height: 500px;
   }
   .provincial-message-container {
     font-size: 30px;
@@ -83,14 +55,6 @@
 }
 
 @media only screen and (max-width: 400px) {
-  .ggg-text {
-    font-size: 35px;
-  }
-  .ggg-text-container {
-    top: 7rem;
-    left: 0.5rem;
-    width: 15rem;
-  }
   .provincial-message-container {
     font-size: 25px;
   }

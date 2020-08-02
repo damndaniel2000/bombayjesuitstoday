@@ -5,11 +5,7 @@ const Home = () => {
   return (
     <>
       <div className="container">
-        <div className="opacity-container">
-          <div className="ggg-text-container">
-            <p className="ggg-text">God's Greater Glory</p>
-          </div>
-        </div>
+        <div className="opacity-container"></div>
       </div>
       <div className="provincial-message-container">
         <blockquote className="provincial-message">
