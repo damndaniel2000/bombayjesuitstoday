@@ -7,7 +7,6 @@ import "./Contributors.css";
 
 const ContributorsCard = () => {
   const [contributors, setContributors] = useState([]);
-  const [notFound, setNotFound] = useState(true);
   const { promiseInProgress } = usePromiseTracker();
 
   useEffect(() => {

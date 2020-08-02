@@ -46,8 +46,10 @@ const VideoCards = () => {
         <div className="video-card-div" key={card._id}>
           <div className="video-card-content">
             <span className="video-card-title">{card.title}</span>
-            <p> {uploadTime} </p>
-            <p style={{ marginTop: "-10px" }}> By {card.uploader}</p>
+            <p style={{ color: "#000", fontSize: "16px" }}>
+              By {card.uploader}
+            </p>
+            <p style={{ marginTop: "-16px" }}> {uploadTime} </p>
             <p className="video-card-caption">{card.caption}</p>
           </div>
           <iframe

@@ -7,24 +7,6 @@ const User = require("../models/Users");
 
 router.use(bodyParser.json());
 
-router.post("/register", async (req, res) => {
-  try {
-    let { password, userName } = req.body;
-
-    const salt = await bcrypt.genSalt();
-    const passwordHash = await bcrypt.hash(password, salt);
-
-    const newUser = new User({
-      password: passwordHash,
-      userName,
-    });
-    const savedUser = await newUser.save();
-    res.json(savedUser);
-  } catch (err) {
-    res.status(500).json({ error: err.message });
-  }
-});
-
 router.post("/login", async (req, res) => {
   try {
     const { userName, password } = req.body;

@@ -133,6 +133,7 @@ const VideoPost = () => {
           <Radio.Group onChange={handleRadios}>
             <Radio.Button value="spiritual"> Spiritual </Radio.Button>
             <Radio.Button value="mission"> Misson </Radio.Button>
+            <Radio.Button value="laity"> SJ Laity </Radio.Button>
           </Radio.Group>
         </div>
 

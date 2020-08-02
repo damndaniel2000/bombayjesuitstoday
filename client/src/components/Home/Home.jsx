@@ -20,7 +20,7 @@ const Home = () => {
             <br />
             <b>
               - Fr. Arun De Souza SJ <br />
-              (Provincial Head)
+              (Provincial)
             </b>
           </i>
         </blockquote>

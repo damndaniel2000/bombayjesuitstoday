@@ -119,16 +119,19 @@ const VideoPost = () => {
 
         <Form.Item name="basedLocation">
           <label htmlFor="basedLocation">
-            Where are you currently based at?
+            Which parish do you currently belong to?
           </label>
-
           <Input
-            placeholder="Location"
+            placeholder="Church Name"
             name="basedLocation"
             value={basedLocation}
             onChange={handleChange}
             required
           />
+          <p className="form-extra-image">
+            If you don't belong to a particular church, just write down the
+            location you currently work in.
+          </p>
         </Form.Item>
 
         <div className="upload-input-div" onClick={() => openWidget()}>
