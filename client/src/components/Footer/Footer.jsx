@@ -65,55 +65,6 @@ const Footer = () => {
             <div className="footer-related-sites">
               <h3> Related Sites </h3>
               <a
-                href="https://www.jesuits.global/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <p>> Jesuit Curia in Rome </p>
-              </a>
-              <a
-                href="https://jcsaweb.org/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <p>> Jesuit Conference of South Asia </p>
-              </a>
-              <a
-                href="https://jrs.net/en/home/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <p>> Jesuit Refugee Service </p>
-              </a>
-              <a
-                href="https://www.americamagazine.org/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <p>> America Magazine</p>
-              </a>
-              <a
-                href="https://onlineministries.creighton.edu/CollaborativeMinistry/online.html"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <p>> Online Ministries</p>
-              </a>
-              <a
-                href="https://www.ignatianspirituality.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <p>> Ignatian Spirituality</p>
-              </a>
-              <a
-                href="https://www.loyolapress.com/catholic-resources/ignatian-spirituality/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <p>> Loyola Press</p>
-              </a>
-              <a
                 href="http://xaviers.edu/main/"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -126,6 +77,13 @@ const Footer = () => {
                 rel="noopener noreferrer"
               >
                 <p>> MPSM </p>
+              </a>
+              <a
+                href="http://crumbz.org/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <p>> Fr. Gehrard Website</p>
               </a>
               <a
                 href="https://www.bombayjesuits.org/"

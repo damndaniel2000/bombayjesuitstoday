@@ -10,10 +10,14 @@ import HomeNavBar from "./components/HomeNav/HomeNavBar";
 import Footer from "./components/Footer/Footer.jsx";
 
 import HomePage from "./pages/HomePage";
+
 import VideoSpiritualPage from "./pages/VideoSpiritualPage";
 import VideoMissionPage from "./pages/VideoMissionPage";
+import VideoLaityPage from "./pages/VideoLaityPage";
 import VideoUpload from "./pages/VideoPost";
+
 import BlogPage from "./pages/BlogsPage";
+
 import ContributorsPage from "./pages/ContributorsPage";
 import ContributorsUploadPage from "./pages/ContributosUploadPage";
 
@@ -64,14 +68,17 @@ const App = () => {
             path="/videos/spiritual"
             component={VideoSpiritualPage}
           />
+          <NavBar exact path="/videos/laity" component={VideoLaityPage} />
           <NavBar exact path="/videos/mission" component={VideoMissionPage} />
           <NavBar exact path="/videos/upload" component={VideoUpload} />
+
           <NavBar exact path="/contributors" component={ContributorsPage} />
           <NavBar
             exact
             path="/contributors/upload-details"
             component={ContributorsUploadPage}
           />
+
           <NavBar exact path="/blogs" component={BlogPage} />
 
           <NavBar exact path="/login" component={LoginPage} />

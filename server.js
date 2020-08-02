@@ -11,6 +11,7 @@ app.use(cors());
 
 const videoSpiritualRouter = require("./routes/videoSpiritualRouter");
 const videoMissionRouter = require("./routes/videoMissionRouter");
+const videoLaityRouter = require("./routes/videoLaityRouter");
 const videoUploadRouter = require("./routes/videoUploadRouter");
 const contributorRouter = require("./routes/contributorsRouter");
 const userRouter = require("./routes/userRouter");
@@ -31,6 +32,7 @@ MongoClient.connect(uri, {
 
 app.use("/api/videos-spiritual", videoSpiritualRouter);
 app.use("/api/videos-mission", videoMissionRouter);
+app.use("/api/videos-laity", videoLaityRouter);
 app.use("/api/videos-upload", videoUploadRouter);
 app.use("/api/contributors", contributorRouter);
 app.use("/api/users", userRouter);

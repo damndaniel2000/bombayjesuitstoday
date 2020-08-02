@@ -44,9 +44,8 @@ const VideoCards = () => {
       return (
         <div className="video-card-div" key={card._id}>
           <div className="video-card-content">
-            <span className="video-card-title">{card.name}</span>
+            <span className="video-card-title">{card.title}</span>
             <p> {uploadTime} </p>
-            <p className="video-card-caption">{card.caption}</p>
             <p style={{ marginTop: "-10px" }}> By {card.uploader}</p>
             <p className="video-card-caption">{card.caption}</p>
           </div>
@@ -85,6 +84,9 @@ const VideoCards = () => {
           </Radio.Button>
           <Radio.Button value="/videos/mission" className="page-radio-buttons">
             Misson
+          </Radio.Button>
+          <Radio.Button value="/videos/laity" className="page-radio-buttons">
+            SJ Laity
           </Radio.Button>
         </Radio.Group>
       </div>

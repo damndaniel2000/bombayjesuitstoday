@@ -5,7 +5,6 @@ import { Spin, Radio } from "antd";
 import { useHistory } from "react-router-dom";
 
 import ShareButton from "./ShareButton";
-import "./VideoCards.css";
 
 const VideoCards = () => {
   const [videos, setVideos] = useState([]);
@@ -19,7 +18,7 @@ const VideoCards = () => {
 
   const getVideos = async () => {
     try {
-      const res = await trackPromise(axios.get("/api/videos-spiritual"));
+      const res = await trackPromise(axios.get("/api/videos-laity"));
       setVideos(res.data);
     } catch (err) {
       console.log(err);
@@ -76,7 +75,7 @@ const VideoCards = () => {
       <br />
       <br />
       <div>
-        <Radio.Group onChange={handleRadios} defaultValue="/videos/spiritual">
+        <Radio.Group onChange={handleRadios} defaultValue="/videos/laity">
           <Radio.Button
             value="/videos/spiritual"
             className="page-radio-buttons"
