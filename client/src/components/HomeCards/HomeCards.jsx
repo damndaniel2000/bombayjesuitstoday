@@ -34,7 +34,12 @@ const HomeCards = () => {
           <div className="home-card-text-container">
             <div>
               <p className="home-card-text">Take A Deeper Look At The Gospel</p>
-              <button className="home-card-button"> Gospel Insights </button>
+              <button
+                onClick={() => history.push("/videos/gospel")}
+                className="home-card-button"
+              >
+                Gospel Insights
+              </button>
             </div>
           </div>
           <div className="home-card-img-container">

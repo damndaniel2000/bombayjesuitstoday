@@ -5,7 +5,6 @@ import { Spin, Radio } from "antd";
 import { useHistory } from "react-router-dom";
 
 import ShareButton from "./ShareButton";
-import "./VideoCards.css";
 
 const VideoCards = () => {
   const [videos, setVideos] = useState([]);
@@ -19,7 +18,7 @@ const VideoCards = () => {
 
   const getVideos = async () => {
     try {
-      const res = await trackPromise(axios.get("/api/videos-spiritual"));
+      const res = await trackPromise(axios.get("/api/videos-gospel"));
       setVideos(res.data);
     } catch (err) {
       console.log(err);
@@ -46,10 +45,8 @@ const VideoCards = () => {
         <div className="video-card-div" key={card._id}>
           <div className="video-card-content">
             <span className="video-card-title">{card.title}</span>
-            <p style={{ color: "#000", fontSize: "16px" }}>
-              By {card.uploader}
-            </p>
-            <p style={{ marginTop: "-16px" }}> {uploadTime} </p>
+            <p> {uploadTime} </p>
+            <p style={{ marginTop: "-10px" }}> By {card.uploader}</p>
             <p className="video-card-caption">{card.caption}</p>
           </div>
           <iframe
@@ -78,7 +75,7 @@ const VideoCards = () => {
       <br />
       <br />
       <div>
-        <Radio.Group onChange={handleRadios} defaultValue="/videos/spiritual">
+        <Radio.Group onChange={handleRadios} defaultValue="/videos/gospel">
           <Radio.Button value="/videos/gospel" className="page-radio-buttons">
             Gospel
           </Radio.Button>

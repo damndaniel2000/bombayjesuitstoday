@@ -11,6 +11,7 @@ import Footer from "./components/Footer/Footer.jsx";
 
 import HomePage from "./pages/HomePage";
 
+import VideosGospelPage from "./pages/VideosGospelPage";
 import VideoSpiritualPage from "./pages/VideoSpiritualPage";
 import VideoMissionPage from "./pages/VideoMissionPage";
 import VideoLaityPage from "./pages/VideoLaityPage";
@@ -63,6 +64,7 @@ const App = () => {
       <UserContext.Provider value={{ userData, setUserData }}>
         <Switch>
           <HomeNavBar exact path="/" component={HomePage} />
+          <NavBar exact path="/videos/gospel" component={VideosGospelPage} />
           <NavBar
             exact
             path="/videos/spiritual"

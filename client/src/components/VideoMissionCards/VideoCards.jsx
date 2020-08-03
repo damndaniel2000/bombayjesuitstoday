@@ -76,12 +76,16 @@ const VideoCards = () => {
       <br />
       <div>
         <Radio.Group onChange={handleRadios} defaultValue="/videos/mission">
+          <Radio.Button value="/videos/gospel" className="page-radio-buttons">
+            Gospel
+          </Radio.Button>
           <Radio.Button
             value="/videos/spiritual"
             className="page-radio-buttons"
           >
             Spiritual
           </Radio.Button>
+          <br />
           <Radio.Button value="/videos/mission" className="page-radio-buttons">
             Misson
           </Radio.Button>
