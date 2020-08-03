@@ -19,7 +19,8 @@ import VideoUpload from "./pages/VideoPost";
 
 import BlogPage from "./pages/BlogsPage";
 
-import ContributorsPage from "./pages/ContributorsPage";
+import ContributorsJesuitsPage from "./pages/ContributorsJesuitsPage";
+import ContributorsLaityPage from "./pages/ContributorsLaityPage";
 import ContributorsUploadPage from "./pages/ContributosUploadPage";
 
 import LoginPage from "./pages/Admin/LoginPage";
@@ -74,7 +75,16 @@ const App = () => {
           <NavBar exact path="/videos/mission" component={VideoMissionPage} />
           <NavBar exact path="/videos/upload" component={VideoUpload} />
 
-          <NavBar exact path="/contributors" component={ContributorsPage} />
+          <NavBar
+            exact
+            path="/contributors/jesuits"
+            component={ContributorsJesuitsPage}
+          />
+          <NavBar
+            exact
+            path="/contributors/laity"
+            component={ContributorsLaityPage}
+          />
           <NavBar
             exact
             path="/contributors/upload-details"

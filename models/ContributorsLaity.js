@@ -19,6 +19,10 @@ const contributorSchema = new Schema(
       type: String,
       required: true,
     },
+    videosURL: {
+      type: String,
+      default: "",
+    },
     validated: {
       type: Boolean,
       default: false,
@@ -29,5 +33,5 @@ const contributorSchema = new Schema(
   }
 );
 
-const Contributor = mongoose.model("Contributors", contributorSchema);
+const Contributor = mongoose.model("ContributorsLaity", contributorSchema);
 module.exports = Contributor;

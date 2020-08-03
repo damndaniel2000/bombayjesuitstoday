@@ -57,8 +57,8 @@
   font-weight: 1000;
 }
 
-.page-title {
-  margin: 1rem;
+.contributors-page-title {
+  margin-top: 2rem;
   font-size: 40px;
   color: #000;
 }
@@ -82,7 +82,7 @@
   .contributors-card {
     width: 60%;
   }
-  .page-title {
+  .contributors-page-title {
     font-size: 30px;
   }
 }
@@ -119,14 +119,13 @@
   .contributors-card-name {
     font-size: 17px;
   }
-  .page-title {
+  .contributors-page-title {
     font-size: 25px;
   }
 }
 @media only screen and (max-width: 400px) {
   .contributors-card {
     margin-top: 0;
-
     width: 95%;
   }
 

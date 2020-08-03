@@ -1,5 +1,5 @@
 import React from "react";
-import Contributors from "../components/Contributors/Contributors";
+import Contributors from "../components/ContributorsLaity/Contributors";
 
 const ContributorsPage = () => {
   return (

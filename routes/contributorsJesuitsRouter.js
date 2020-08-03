@@ -2,7 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const auth = require("../middleware/auth");
 
-const Contributor = require("../models/Contributors");
+const Contributor = require("../models/ContributorsJesuits");
 
 const contributorRouter = express.Router();
 

@@ -87,7 +87,7 @@ const VideoCards = () => {
           </Radio.Button>
           <br />
           <Radio.Button value="/videos/mission" className="page-radio-buttons">
-            Misson
+            Mission
           </Radio.Button>
           <Radio.Button value="/videos/laity" className="page-radio-buttons">
             SJ Laity

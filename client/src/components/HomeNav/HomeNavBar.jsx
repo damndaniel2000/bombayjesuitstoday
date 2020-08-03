@@ -35,7 +35,7 @@ const HomeNavBar = (props) => {
     hideDrawer();
   };
   const contributors = () => {
-    history.push("/contributors");
+    history.push("/contributors/jesuits");
     hideDrawer();
   };
 

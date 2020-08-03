@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { useHistory } from "react-router-dom";
 import { trackPromise, usePromiseTracker } from "react-promise-tracker";
-import { Spin } from "antd";
+import { Spin, Radio } from "antd";
 
 import "./Contributors.css";
 
 const ContributorsCard = () => {
   const [contributors, setContributors] = useState([]);
   const { promiseInProgress } = usePromiseTracker();
+  const history = useHistory();
 
   useEffect(() => {
     getContributors();
@@ -15,11 +17,15 @@ const ContributorsCard = () => {
 
   const getContributors = async () => {
     try {
-      const res = await trackPromise(axios.get("/api/contributors"));
+      const res = await trackPromise(axios.get("/api/contributors-jesuits"));
       setContributors(res.data);
     } catch (err) {
       console.log(err.message);
     }
+  };
+
+  const handleRadios = (evt) => {
+    history.push(evt.target.value);
   };
 
   const contributorsList = contributors.map((contri) => {
@@ -46,9 +52,7 @@ const ContributorsCard = () => {
                 href={contri.playlistLink}
                 target="_blank"
                 rel="noopener noreferrer"
-              >
-                <button className="contributors-card-link">Videos</button>
-              </a>
+              ></a>
             </div>
           </div>
         </div>
@@ -61,10 +65,23 @@ const ContributorsCard = () => {
   return (
     <>
       <br />
+
+      <p className="contributors-page-title">Meet Our Contributors</p>
       <br />
-      <span className="page-title">Meet Our Contributors</span>
-      <br />
-      <br />
+      <Radio.Group onChange={handleRadios} defaultValue="/contributors/jesuits">
+        <Radio.Button
+          className="page-radio-buttons"
+          value="/contributors/jesuits"
+        >
+          Jesuits
+        </Radio.Button>
+        <Radio.Button
+          className="page-radio-buttons"
+          value="/contributors/laity"
+        >
+          Laity
+        </Radio.Button>
+      </Radio.Group>
       {promiseInProgress && <Spin size="large" />}
       <div className="contributors-card-container">{contributorsList} </div>
     </>

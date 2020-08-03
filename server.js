@@ -14,7 +14,10 @@ const videoMissionRouter = require("./routes/videoMissionRouter");
 const videoLaityRouter = require("./routes/videoLaityRouter");
 const videoGospelRouter = require("./routes/videoGospelRouter");
 const videoUploadRouter = require("./routes/videoUploadRouter");
-const contributorRouter = require("./routes/contributorsRouter");
+
+const contributorJesuitRouter = require("./routes/contributorsJesuitsRouter");
+const contributorLaityRouter = require("./routes/contributorsLaityRouter");
+
 const userRouter = require("./routes/userRouter");
 
 let uri = "";
@@ -36,7 +39,10 @@ app.use("/api/videos-mission", videoMissionRouter);
 app.use("/api/videos-laity", videoLaityRouter);
 app.use("/api/videos-gospel", videoGospelRouter);
 app.use("/api/videos-upload", videoUploadRouter);
-app.use("/api/contributors", contributorRouter);
+
+app.use("/api/contributors-jesuits", contributorJesuitRouter);
+app.use("/api/contributors-laity", contributorLaityRouter);
+
 app.use("/api/users", userRouter);
 
 app.use(express.static(path.join(__dirname, "client/build")));

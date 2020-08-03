@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./ContributorsUpload.css";
 import axios from "axios";
-import { Form, Input, message } from "antd";
+import { Form, Input, message, Radio } from "antd";
 
 const VideoPost = () => {
   const [state, setState] = useState({
@@ -11,11 +11,12 @@ const VideoPost = () => {
   });
   const [imgURL, setURL] = useState("");
   const [fileName, setFileName] = useState("");
+  const [path, setPath] = useState("");
   const { name, quote, basedLocation } = state;
 
   const handleSubmit = () => {
     axios
-      .post("/api/contributors", {
+      .post(`/api/contributors-${path}`, {
         name: name,
         basedLocation: basedLocation,
         imgURL: imgURL,
@@ -50,6 +51,7 @@ const VideoPost = () => {
           cloudName: "dij0e4dwn",
           uploadPreset: "nofvgsru",
           sources: ["local"],
+          folder: `contributors`,
           api_key: "597871714829172",
           showAdvancedOptions: false,
           multiple: false,
@@ -101,13 +103,17 @@ const VideoPost = () => {
       [evt.target.name]: value,
     });
   };
+
+  const handleRadios = (evt) => {
+    setPath(evt.target.value);
+  };
+
   return (
     <div className="video-post-form">
       <h1> Tell Us About You </h1>
       <Form onFinish={handleSubmit} layout="vertical" size="large">
         <Form.Item name="name">
           <label htmlFor="name">Your name :</label>
-
           <Input
             placeholder="Name"
             name="name"
@@ -115,6 +121,10 @@ const VideoPost = () => {
             value={name}
             required
           />
+          <p className="form-extra-image">
+            If you are a jesuit, please write your name like this -> "Fr.
+            Your_Name SJ"
+          </p>
         </Form.Item>
 
         <Form.Item name="basedLocation">
@@ -166,6 +176,13 @@ const VideoPost = () => {
           You can check our Contributors page to get an idea about what to
           write.
         </p>
+
+        <Form.Item name="choice" label="Are you a Jesuit or a laity?">
+          <Radio.Group onChange={handleRadios}>
+            <Radio.Button value="jesuits"> Jesuit </Radio.Button>
+            <Radio.Button value="laity"> Laity </Radio.Button>
+          </Radio.Group>
+        </Form.Item>
 
         <button className="video-post-form-button" type="primary">
           Submit
