@@ -81,9 +81,6 @@ export default function BlogExample() {
         </p>
       </div>
       <div>
-        <p className="blogs-share">
-          <b>Share</b>
-        </p>
         <ShareButtons />
       </div>
       <br />
