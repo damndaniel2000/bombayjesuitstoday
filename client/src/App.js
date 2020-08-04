@@ -18,6 +18,8 @@ import VideoLaityPage from "./pages/VideoLaityPage";
 import VideoUpload from "./pages/VideoPost";
 
 import BlogPage from "./pages/BlogsPage";
+import BlogUploadPage from "./pages/BlogUploadPage";
+import BlogExamplePage from "./pages/BlogExamplePage";
 
 import ContributorsJesuitsPage from "./pages/ContributorsJesuitsPage";
 import ContributorsLaityPage from "./pages/ContributorsLaityPage";
@@ -92,6 +94,8 @@ const App = () => {
           />
 
           <NavBar exact path="/blogs" component={BlogPage} />
+          <NavBar exact path="/blogs/upload" component={BlogUploadPage} />
+          <NavBar exact path="/blogs/example" component={BlogExamplePage} />
 
           <NavBar exact path="/login" component={LoginPage} />
           <NavBar exact path="/videos/post" component={AdminVideoPost} />

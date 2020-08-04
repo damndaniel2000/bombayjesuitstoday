@@ -1,0 +1,34 @@
+@import url("https://fonts.googleapis.com/css2?family=Staatliches&family=Zilla+Slab:wght@300&display=swap");
+
+.blog-container {
+  width: 60%;
+  margin: 3rem auto;
+  text-align: left;
+}
+.blog-title {
+  font-family: Staatliches;
+  letter-spacing: 1px;
+  font-size: 40px;
+  color: blue;
+}
+.blog-author {
+  font-weight: bold;
+  font-size: 20px;
+  color: #000;
+}
+.blog-img {
+  position: relative;
+  margin: 1rem 0;
+  height: 600px;
+  background-size: cover;
+}
+.blog-content {
+  font-family: Zilla Slab;
+  margin-top: 3rem;
+  font-size: 20px;
+  color: #000;
+}
+.blogs-share {
+  color: rgb(128, 14, 241);
+  font-size: 17px;
+}

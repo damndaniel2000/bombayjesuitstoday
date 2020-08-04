@@ -4,9 +4,7 @@ import "./Home.css";
 const Home = () => {
   return (
     <>
-      <div className="container">
-        <div className="opacity-container"></div>
-      </div>
+      <div className="container"></div>
       <div className="provincial-message-container">
         <blockquote className="provincial-message">
           <i>

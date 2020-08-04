@@ -82,6 +82,7 @@ const ContributorsCard = () => {
           Laity
         </Radio.Button>
       </Radio.Group>
+      <br />
       {promiseInProgress && <Spin size="large" />}
       <div className="contributors-card-container">{contributorsList} </div>
     </>

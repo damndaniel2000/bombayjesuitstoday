@@ -1,0 +1,38 @@
+.blog-editor-container {
+  width: 60%;
+  margin: 3rem auto;
+  padding: 2rem;
+  background-color: rgb(199, 201, 203);
+  border-radius: 10px;
+}
+
+.blog-editor-container label {
+  font-size: 15px;
+  float: left;
+  color: #000;
+  margin-bottom: 0.8rem;
+}
+
+.blog-editor-container p {
+  font-size: 15px;
+  float: left;
+  color: #000;
+  margin-bottom: 0.8rem;
+}
+
+@media only screen and (max-width: 1000px) {
+  .blog-editor-container {
+    width: 90%;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .blog-editor-container {
+    width: 95%;
+    padding: 1rem;
+    background-color: inherit;
+  }
+  .form-extra {
+    font-size: 12px;
+  }
+}
