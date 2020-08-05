@@ -38,6 +38,18 @@ const AdminNav = () => {
       >
         Uploaded Videos
       </Button>
+      <br /> <br /> <br />
+      <Button
+        type="primary"
+        style={{
+          backgroundColor: "#1a137c",
+          border: "none",
+          padding: "0.4rem 2rem",
+        }}
+        onClick={() => history.push("/contributors/validate")}
+      >
+        Validate Contributors
+      </Button>
     </>
   );
 };

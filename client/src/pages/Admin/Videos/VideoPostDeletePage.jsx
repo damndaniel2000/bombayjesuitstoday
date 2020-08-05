@@ -3,6 +3,8 @@ import UserContext from "../../../context/UserContext";
 
 import SpiritualVideoDelete from "../../../components/Videos/VideoPostDelete/VideoSpiritualPostDelete";
 import MissionVideoDelete from "../../../components/Videos/VideoPostDelete/VideoMissionPostDelete";
+import GospelVideoDelete from "../../../components/Videos/VideoPostDelete/VideoGospelPostDelete";
+import LaityVideoDelete from "../../../components/Videos/VideoPostDelete/VideoLaityPostDelete";
 import NotFoundPage from "../../NotFoundPage";
 
 const VideoDeletePage = () => {
@@ -16,6 +18,8 @@ const VideoDeletePage = () => {
         <>
           <SpiritualVideoDelete />
           <MissionVideoDelete />
+          <GospelVideoDelete />
+          <LaityVideoDelete />
         </>
       )}
     </div>

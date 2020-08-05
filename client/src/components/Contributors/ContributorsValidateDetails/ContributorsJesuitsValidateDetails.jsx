@@ -17,7 +17,7 @@ const Details = (props) => {
 
   useEffect(() => {
     axios
-      .get("/api/contributors-laity/" + props.match.params.id)
+      .get("/api/contributors-jesuits/" + props.match.params.id)
       .then((res) => {
         setJob(res.data);
         setRender(false);
