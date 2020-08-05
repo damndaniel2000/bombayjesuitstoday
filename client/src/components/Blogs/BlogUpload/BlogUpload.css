@@ -15,7 +15,7 @@
 
 .blog-editor-container p {
   font-size: 15px;
-  float: left;
+  text-align: left;
   color: #000;
   margin-bottom: 0.8rem;
 }

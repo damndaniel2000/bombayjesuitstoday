@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
-import UserContext from "../../context/UserContext";
+import UserContext from "../../../context/UserContext";
 
-import SpiritualVideoDelete from "../../components/Admin/VideoPostDelete/VideoSpiritualPostDelete";
-import MissionVideoDelete from "../../components/Admin/VideoPostDelete/VideoMissionPostDelete";
-import NotFoundPage from "../NotFoundPage";
+import SpiritualVideoDelete from "../../../components/Videos/VideoPostDelete/VideoSpiritualPostDelete";
+import MissionVideoDelete from "../../../components/Videos/VideoPostDelete/VideoMissionPostDelete";
+import NotFoundPage from "../../NotFoundPage";
 
 const VideoDeletePage = () => {
   const { userData } = useContext(UserContext);

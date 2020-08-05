@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
-import UserContext from "../../context/UserContext";
+import UserContext from "../../../context/UserContext";
 
-import NotFoundPage from "../NotFoundPage";
-import VideoPost from "../../components/Admin/VideoPost/VideoPost";
+import NotFoundPage from "../../NotFoundPage";
+import VideoPost from "../../../components/Videos/VideoPost/VideoPost";
 
 const VideoPostPage = () => {
   const { userData } = useContext(UserContext);

@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 
-import Home from "../components/Home/Home";
-import HomeCards from "../components/HomeCards/HomeCards";
+import HomeHero from "../components/Home/HomeHero/Home";
+import HomeCards from "../components/Home/HomeCards/HomeCards";
 
 const HomePage = () => {
   useEffect(() => {
@@ -9,7 +9,7 @@ const HomePage = () => {
   });
   return (
     <div style={{ minHeight: "150vh" }}>
-      <Home />
+      <HomeHero />
       <HomeCards />
     </div>
   );

@@ -1,5 +1,5 @@
 import React from "react";
-import ContributorsUpload from "../components/ContributorsUpload/ContributorsUpload";
+import ContributorsUpload from "../../components/Contributors/ContributorsUpload/ContributorsUpload";
 
 const ContributorsUploadPage = () => {
   return (

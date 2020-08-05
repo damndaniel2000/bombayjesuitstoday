@@ -1,5 +1,5 @@
 import React from "react";
-import VideoUpload from "../components/VideoUpload/VideoUpload";
+import VideoUpload from "../../components/Videos/VideoUpload/VideoUpload";
 
 const Page = () => {
   return (

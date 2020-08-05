@@ -1,6 +1,6 @@
 import React from "react";
 
-import BlogUpload from "../components/BlogUpload/BlogUpload";
+import BlogUpload from "../../components/Blogs/BlogUpload/BlogUpload";
 
 const BlogUploadPage = () => {
   return (

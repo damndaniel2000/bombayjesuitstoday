@@ -1,5 +1,5 @@
 import React from "react";
-import VideoLaityCards from "../components/VideoLaityCards/VideoCards";
+import VideoLaityCards from "../../components/Videos/VideoLaityCards/VideoCards";
 
 const VideoPage = () => {
   return (

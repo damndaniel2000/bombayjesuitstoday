@@ -6,29 +6,34 @@ import "./App.css";
 import UserContext from "./context/UserContext";
 
 import NavBar from "./components/Navbar/NavBar";
-import HomeNavBar from "./components/HomeNav/HomeNavBar";
+import HomeNavBar from "./components/Home/HomeNav/HomeNavBar";
 import Footer from "./components/Footer/Footer.jsx";
 
 import HomePage from "./pages/HomePage";
 
-import VideosGospelPage from "./pages/VideosGospelPage";
-import VideoSpiritualPage from "./pages/VideoSpiritualPage";
-import VideoMissionPage from "./pages/VideoMissionPage";
-import VideoLaityPage from "./pages/VideoLaityPage";
-import VideoUpload from "./pages/VideoPost";
+import VideosGospelPage from "./pages/VideoPages/VideosGospelPage";
+import VideoSpiritualPage from "./pages/VideoPages/VideoSpiritualPage";
+import VideoMissionPage from "./pages/VideoPages/VideoMissionPage";
+import VideoLaityPage from "./pages/VideoPages/VideoLaityPage";
+import VideoUpload from "./pages/VideoPages/VideoUploadPage";
 
-import BlogPage from "./pages/BlogsPage";
-import BlogUploadPage from "./pages/BlogUploadPage";
-import BlogExamplePage from "./pages/BlogExamplePage";
+import BlogPage from "./pages/BlogPages/BlogCardsPage";
+import BlogUploadPage from "./pages/BlogPages/BlogUploadPage";
+import BlogExamplePage from "./pages/BlogPages/BlogExamplePage";
 
-import ContributorsJesuitsPage from "./pages/ContributorsJesuitsPage";
-import ContributorsLaityPage from "./pages/ContributorsLaityPage";
-import ContributorsUploadPage from "./pages/ContributosUploadPage";
+import ContributorsJesuitsPage from "./pages/ContributorPages/ContributorsJesuitsPage";
+import ContributorsLaityPage from "./pages/ContributorPages/ContributorsLaityPage";
+import ContributorsUploadPage from "./pages/ContributorPages/ContributosUploadPage";
 
 import LoginPage from "./pages/Admin/LoginPage";
-import AdminVideoPost from "./pages/Admin/VideoPostPage";
-import AdminVideoPostDelete from "./pages/Admin/VideoPostDeletePage";
-import AdminVideoUploadGet from "./pages/Admin/VideoUploadGet";
+
+import AdminVideoPost from "./pages/Admin/Videos/VideoPostPage";
+import AdminVideoPostDelete from "./pages/Admin/Videos/VideoPostDeletePage";
+import AdminVideoUploadGet from "./pages/Admin/Videos/VideoUploadGet";
+
+import AdminContributorsValidateCardsPage from "./pages/Admin/Contributors/ContributorsValidateCardsPage";
+import AdminContributorsValidateJesuitDetailsPage from "./pages/Admin/Contributors/ContributorsValidateJesuitDetailsPage";
+import AdminContributorsValidateLaityDetailsPage from "./pages/Admin/Contributors/ContributorsValidateLaityDetailsPage";
 
 import NotFound from "./pages/NotFoundPage";
 
@@ -108,6 +113,22 @@ const App = () => {
             exact
             path="/videos/uploads"
             component={AdminVideoUploadGet}
+          />
+
+          <NavBar
+            exact
+            path="/contributors/validate"
+            component={AdminContributorsValidateCardsPage}
+          />
+          <NavBar
+            exact
+            path="/contributors/validate/jesuits/:id"
+            component={AdminContributorsValidateJesuitDetailsPage}
+          />
+          <NavBar
+            exact
+            path="/contributors/validate/laity/:id"
+            component={AdminContributorsValidateLaityDetailsPage}
           />
 
           <NavBar component={NotFound} />

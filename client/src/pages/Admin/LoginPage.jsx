@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
 import UserContext from "../../context/UserContext";
 
-import Login from "../../components/Auth/Login";
-import AdminNav from "../../components/Admin/AdminNav/AdminNav";
+import Login from "../../components/Admin/Login";
+import AdminNav from "../../components/Admin/AdminNav";
 
 const LoginPage = () => {
   const { userData } = useContext(UserContext);

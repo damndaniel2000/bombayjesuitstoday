@@ -1,5 +1,5 @@
 import React from "react";
-import Contributors from "../components/ContributorsJesuits/Contributors";
+import Contributors from "../../components/Contributors/ContributorsJesuits/Contributors";
 
 const ContributorsPage = () => {
   return (

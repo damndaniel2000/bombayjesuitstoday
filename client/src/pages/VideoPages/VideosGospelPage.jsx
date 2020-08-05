@@ -1,5 +1,5 @@
 import React from "react";
-import VideoMissionCards from "../components/VideosGospelCards/VideoCards";
+import VideoMissionCards from "../../components/Videos/VideosGospelCards/VideoCards";
 
 const VideoPage = () => {
   return (

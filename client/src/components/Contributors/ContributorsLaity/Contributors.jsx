@@ -45,13 +45,7 @@ const ContributorsCard = () => {
               </p>
               <blockquote>{contri.quote}</blockquote>
             </div>
-            <div>
-              <a
-                href={contri.playlistLink}
-                target="_blank"
-                rel="noopener noreferrer"
-              ></a>
-            </div>
+            <div></div>
           </div>
         </div>
       );
@@ -65,7 +59,7 @@ const ContributorsCard = () => {
       <br />
 
       <p className="contributors-page-title">Meet Our Contributors</p>
-      <br />
+
       <Radio.Group onChange={handleRadios} defaultValue="/contributors/laity">
         <Radio.Button
           className="page-radio-buttons"

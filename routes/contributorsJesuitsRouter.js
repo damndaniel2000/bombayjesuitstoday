@@ -24,28 +24,52 @@ contributorRouter
   .post((req, res, next) => {
     Contributor.create(req.body)
       .then(
-        (video) => {
+        (contributors) => {
           res.statusCode = 200;
           res.setHeader("Content-Type", "application/json");
-          res.json(video);
+          res.json(contributors);
         },
         (err) => next(err)
       )
       .catch((err) => next(err));
   });
 
-contributorRouter.route("/:contributorID").delete(auth, (req, res, next) => {
-  Contributor.findById({ _id: req.params.contributorID })
-    .then((video) => video.remove())
-    .then(
-      (contributors) => {
+contributorRouter
+  .route("/:contributorID")
+  .get((req, res, next) => {
+    Contributor.findById(req.params.contributorID)
+      .then((contri) => {
         res.statusCode = 200;
         res.setHeader("Content-Type", "application/json");
-        res.json(contributors);
-      },
-      (err) => next(err)
+        res.json(contri);
+      })
+      .catch((err) => next(err));
+  })
+  .delete(auth, (req, res, next) => {
+    Contributor.findById(req.params.contributorID)
+      .then((video) => video.remove())
+      .then(
+        (contributors) => {
+          res.statusCode = 200;
+          res.setHeader("Content-Type", "application/json");
+          res.json(contributors);
+        },
+        (err) => next(err)
+      )
+      .catch((err) => next(err));
+  })
+  .put((req, res, next) => {
+    Contributor.findByIdAndUpdate(
+      req.params.contributorID,
+      { $set: req.body },
+      { new: true }
     )
-    .catch((err) => next(err));
-});
+      .then((video) => {
+        res.statusCode = 200;
+        res.setHeader("Content-Type", "application/json");
+        res.json(video);
+      })
+      .catch((err) => next(err));
+  });
 
 module.exports = contributorRouter;

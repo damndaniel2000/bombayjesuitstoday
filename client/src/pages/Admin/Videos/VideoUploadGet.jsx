@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
-import UserContext from "../../context/UserContext";
+import UserContext from "../../../context/UserContext";
 
-import NotFoundPage from "../NotFoundPage";
-import VideoDelete from "../../components/Admin/VideoUploadGet/VideoUploadGet";
+import NotFoundPage from "../../NotFoundPage";
+import VideoDelete from "../../../components/Videos/VideoUploadGet/VideoUploadGet";
 
 const VideoUploadDelete = () => {
   const { userData } = useContext(UserContext);

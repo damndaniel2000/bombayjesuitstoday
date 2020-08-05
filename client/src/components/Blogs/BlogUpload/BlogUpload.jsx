@@ -59,7 +59,7 @@ const BlogUpload = () => {
           </div>
           <br />
 
-          <Form.Item style={{ textAlign: "left" }}>
+          <Form.Item>
             <p>
               If you have a photo to attach, mail it to us on the email ID
               below. In the subject, write the title of your blog. <br />
