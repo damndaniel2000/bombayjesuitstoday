@@ -1,0 +1,51 @@
+@import url("https://fonts.googleapis.com/css2?family=Lora&display=swap");
+
+.blog-cards-container {
+  width: 95%;
+  margin: 3rem auto;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.blog-card {
+  width: 50%;
+  background-color: #fff;
+}
+
+.blog-card-img {
+  height: 280px;
+  width: 100%;
+}
+
+.blog-card-text {
+  width: 95%;
+  margin: 1rem auto;
+  text-align: left;
+}
+
+.blog-card-title {
+  line-height: 33px;
+  letter-spacing: 0.5px;
+  font-family: Lora;
+  font-size: 23px;
+  color: #000;
+  font-weight: bold;
+}
+
+.blog-card-author {
+  margin-top: -10px;
+  font-size: 16px;
+}
+.blog-card-time {
+  margin-top: -10px;
+}
+
+.blog-card-button {
+  background-color: #152256;
+  color: #fff;
+  border: none;
+  border-radius: 50px;
+  font-size: 13px;
+  padding: 3px 20px;
+}

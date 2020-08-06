@@ -18,6 +18,8 @@ const videoUploadRouter = require("./routes/videoUploadRouter");
 const contributorJesuitRouter = require("./routes/contributorsJesuitsRouter");
 const contributorLaityRouter = require("./routes/contributorsLaityRouter");
 
+const blogRouter = require("./routes/blogRouter");
+
 const userRouter = require("./routes/userRouter");
 
 let uri = "";
@@ -42,6 +44,8 @@ app.use("/api/videos-upload", videoUploadRouter);
 
 app.use("/api/contributors-jesuits", contributorJesuitRouter);
 app.use("/api/contributors-laity", contributorLaityRouter);
+
+app.use("/api/blogs", blogRouter);
 
 app.use("/api/users", userRouter);
 

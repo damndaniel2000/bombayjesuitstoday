@@ -9,9 +9,7 @@ export default function BlogExample() {
       <div className="blog-container">
         <span className="blog-title">Title of the Blog</span>
         <br />
-        <span className="blog-author">
-          <i>By Your_Name</i>
-        </span>
+        <span className="blog-author">By Your_Name</span>
         <div
           className="blog-img"
           style={{

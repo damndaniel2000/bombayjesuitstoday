@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Editor } from "@tinymce/tinymce-react";
+import axios from "axios";
 import { Link } from "react-router-dom";
 import { Form, Input, message } from "antd";
 
@@ -7,23 +8,46 @@ import "./BlogUpload.css";
 
 const BlogUpload = () => {
   const [blog, setBlog] = useState();
-  const [name, setName] = useState();
+  const [author, setAuthor] = useState();
   const [title, setTitle] = useState();
+
+  const handleSubmit = () => {
+    axios
+      .post("/api/blogs", {
+        author: author,
+        title: title,
+        blogContent: blog,
+      })
+      .then(() => {
+        successMessage();
+        setBlog("");
+        setAuthor("");
+        setTitle("");
+      })
+      .catch(() => errorMessage());
+  };
+
+  const successMessage = () => {
+    return message.success("Blog uploaded successfully. Thank You", 5);
+  };
+
+  const errorMessage = () => {
+    return message.error("There was a problem in uploading the blog. Sorry", 5);
+  };
 
   return (
     <>
-      {" "}
       <div className="blog-editor-container">
         <h1> Upload Your Blog </h1>
-        <Form layout="vertical" size="large">
-          <Form.Item name="name">
-            <label htmlFor="name">Your Name :</label>
+        <Form onFinish={handleSubmit} layout="vertical" size="large">
+          <Form.Item name="author">
+            <label htmlFor="author">Your Name :</label>
 
             <Input
               placeholder="Name"
-              name="name"
-              onChange={(e) => setName(e.target.value)}
-              value={name}
+              name="author"
+              onChange={(e) => setAuthor(e.target.value)}
+              value={author}
               required
             />
           </Form.Item>
