@@ -15,14 +15,58 @@ export default function Cards() {
           <p className="blog-card-title">
             Build Websites the Easy Way with Sparkle Pro
           </p>
+
           <p className="blog-card-author">
             By <b>Ian D'souza</b>
           </p>
           <p className="blog-card-time">
             <i className="fa fa-clock-o" /> 08/01/2020, 4:30 pm
           </p>
-          <button className="blog-card-button"> Read </button>
         </div>
+        <button className="blog-card-button"> Read </button>
+      </div>
+
+      <div className="blog-card">
+        <img
+          className="blog-card-img"
+          src="https://picjumbo.com/wp-content/uploads/IMG-3712-1080x810.jpg"
+          alt=""
+        />
+        <div className="blog-card-text">
+          <p className="blog-card-title">
+            Build Websites the Easy Way with Sparkle Pro and this is text just
+            to see how multi height fits so yaaaa please ignore this area
+          </p>
+
+          <p className="blog-card-author">
+            By <b>Ian D'souza</b>
+          </p>
+          <p className="blog-card-time">
+            <i className="fa fa-clock-o" /> 08/01/2020, 4:30 pm
+          </p>
+        </div>
+        <button className="blog-card-button"> Read </button>
+      </div>
+
+      <div className="blog-card">
+        <img
+          className="blog-card-img"
+          src="https://picjumbo.com/wp-content/uploads/man-enjoying-a-moody-view-to-the-norwegian-landscape-1080x608.jpg"
+          alt=""
+        />
+        <div className="blog-card-text">
+          <p className="blog-card-title">
+            Build Websites the Easy Way with Sparkle Pro
+          </p>
+
+          <p className="blog-card-author">
+            By <b>Ian D'souza</b>
+          </p>
+          <p className="blog-card-time">
+            <i className="fa fa-clock-o" /> 08/01/2020, 4:30 pm
+          </p>
+        </div>
+        <button className="blog-card-button"> Read </button>
       </div>
     </div>
   );

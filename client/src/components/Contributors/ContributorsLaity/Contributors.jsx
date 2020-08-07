@@ -15,7 +15,7 @@ const ContributorsCard = () => {
 
   const getContributors = async () => {
     try {
-      const res = await trackPromise(axios.get("/api/contributors/laity"));
+      const res = await trackPromise(axios.get("/api/contributors-laity"));
       setContributors(res.data);
     } catch (err) {
       console.log(err.message);
