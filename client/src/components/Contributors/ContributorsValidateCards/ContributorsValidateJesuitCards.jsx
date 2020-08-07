@@ -23,40 +23,34 @@ const ContributorsCard = () => {
   };
 
   const contributorsList = contributors.map((contri) => {
-    if (!contri.validated) {
-      return (
-        <div className="contributors-card">
-          <div className="contributors-card-photo">
-            <img
-              className="contributors-avatar"
-              src={contri.imgURL}
-              alt="Profile Pic"
-            />
+    return (
+      <div className="contributors-card">
+        <div className="contributors-card-photo">
+          <img
+            className="contributors-avatar"
+            src={contri.imgURL}
+            alt="Profile Pic"
+          />
+        </div>
+        <div className="contributors-card-details">
+          <div>
+            <p className="contributors-card-name"> {contri.name} </p>
+            <p className="contributors-card-location">{contri.basedLocation}</p>
+            <blockquote>{contri.quote}</blockquote>
           </div>
-          <div className="contributors-card-details">
-            <div>
-              <p className="contributors-card-name"> {contri.name} </p>
-              <p className="contributors-card-location">
-                {contri.basedLocation}
-              </p>
-              <blockquote>{contri.quote}</blockquote>
-            </div>
-            <div>
-              <button
-                onClick={() =>
-                  history.push(`/contributors/validate/jesuits/${contri._id}`)
-                }
-                className="contributors-card-link"
-              >
-                Edit
-              </button>
-            </div>
+          <div>
+            <button
+              onClick={() =>
+                history.push(`/contributors/validate/jesuits/${contri._id}`)
+              }
+              className="contributors-card-link"
+            >
+              Edit
+            </button>
           </div>
         </div>
-      );
-    } else {
-      return null;
-    }
+      </div>
+    );
   });
 
   return (

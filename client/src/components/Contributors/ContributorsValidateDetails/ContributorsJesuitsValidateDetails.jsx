@@ -151,14 +151,15 @@ const Details = (props) => {
           />
         </Form.Item>
 
-        <div className="upload-input-div" onClick={() => openWidget()}>
-          <span className="upload-input-button">
+        <div className="upload-input-div">
+          <span className="upload-input-button" onClick={() => openWidget()}>
             <i className="fa fa-upload" />
             &nbsp; Update Image
           </span>
           <Input
             className="upload-input-filename"
             placeholder="Filename"
+            onChange={(e) => setImgLink(e.target.value)}
             value={imgLink}
           />
         </div>
