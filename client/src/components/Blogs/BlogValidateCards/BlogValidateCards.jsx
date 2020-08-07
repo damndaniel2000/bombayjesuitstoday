@@ -2,8 +2,6 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useHistory } from "react-router";
 
-import "./BlogCards.css";
-
 export default function Cards() {
   const [blogs, setBlogs] = useState([]);
   const history = useHistory();
@@ -33,35 +31,31 @@ export default function Cards() {
       .toString();
     const uploadTime = `${day}/${month}, ${hours} `;
 
-    if (blog.validated) {
-      return (
-        <div className="blog-card" key={blog._id}>
-          <img
-            className="blog-card-img"
-            src="https://picjumbo.com/wp-content/uploads/krivan-peak-slovakia-free-photo-2210x1473.jpg"
-            alt=""
-          />
-          <div className="blog-card-text">
-            <p className="blog-card-title">{blog.title}</p>
+    return (
+      <div className="blog-card" key={blog._id}>
+        <img
+          className="blog-card-img"
+          src="https://picjumbo.com/wp-content/uploads/krivan-peak-slovakia-free-photo-2210x1473.jpg"
+          alt=""
+        />
+        <div className="blog-card-text">
+          <p className="blog-card-title">{blog.title}</p>
 
-            <div
-              className="blog-card-lower-text"
-              onClick={() => history.push("/blogs/content/" + blog._id)}
-            >
-              <p className="blog-card-author">
-                By <b>{blog.author}</b>
-              </p>
-              <p className="blog-card-time">
-                <i className="fa fa-clock-o" /> {uploadTime}
-              </p>
-              <button className="blog-card-button"> Read </button>
-            </div>
+          <div
+            className="blog-card-lower-text"
+            onClick={() => history.push("/blogs/validate/" + blog._id)}
+          >
+            <p className="blog-card-author">
+              By <b>{blog.author}</b>
+            </p>
+            <p className="blog-card-time">
+              <i className="fa fa-clock-o" /> {uploadTime}
+            </p>
+            <button className="blog-card-button"> Edit </button>
           </div>
         </div>
-      );
-    } else {
-      return null;
-    }
+      </div>
+    );
   });
 
   return <div className="blog-cards-container">{blogCards}</div>;

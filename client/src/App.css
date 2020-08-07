@@ -1,10 +1,12 @@
 @import "~antd/dist/antd.css";
 @import url("https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap");
-body {
+body,
+html {
   text-align: center;
   font-family: "Josefin Sans", sans-serif;
   background-color: #f4f2f0;
   margin: 0;
+  height: 100%;
 }
 
 .not-found-title {

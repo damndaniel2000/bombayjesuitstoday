@@ -30,7 +30,7 @@ blogRouter
 blogRouter
   .route("/:blogID")
   .get((req, res, next) => {
-    Blog.findById(req.params.id)
+    Blog.findById(req.params.blogID)
       .then((blog) => {
         res.statusCode = 200;
         res.setHeader("Content-Type", "application/json");
@@ -40,7 +40,7 @@ blogRouter
   })
   .put((req, res, next) => {
     Blog.findByIdAndUpdate(
-      req.params.id,
+      req.params.blogID,
       { $set: req.body },
       { new: true }
     ).then((blog) => {
@@ -50,11 +50,12 @@ blogRouter
     });
   })
   .delete((req, res, next) => {
-    Blog.findById(req.params.id)
+    Blog.findById(req.params.blogID)
       .then((blog) => blog.remove())
-      .then(() => {
+      .then((blog) => {
         res.statusCode = 200;
         res.setHeader("Content-Type", "application/json");
+        res.json(blog);
       })
       .catch((err) => next(err));
   });

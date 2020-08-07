@@ -32,6 +32,7 @@ if (process.env.ENVIRONMENT === "production") {
 MongoClient.connect(uri, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
+  useFindAndModify: false,
 })
   .then(() => console.log("Database Connection Successful"))
   .catch((err) => console.error(err));

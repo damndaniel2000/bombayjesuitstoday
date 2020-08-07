@@ -10,7 +10,7 @@
 
 .blog-card {
   position: relative;
-  height: 600px;
+  height: 550px;
   margin-bottom: 4rem;
   width: 48%;
   background-color: #fff;
@@ -28,6 +28,11 @@
   text-align: left;
 }
 
+.blog-card-lower-text {
+  position: absolute;
+  bottom: 15px;
+}
+
 .blog-card-title {
   line-height: 33px;
   letter-spacing: 0.5px;
@@ -35,6 +40,7 @@
   font-size: 23px;
   color: #000;
   font-weight: bold;
+  text-transform: capitalize;
 }
 
 .blog-card-author {
@@ -46,9 +52,6 @@
 }
 
 .blog-card-button {
-  position: absolute;
-  bottom: 20px;
-  left: 15px;
   background-color: #152256;
   color: #fff;
   border: none;
@@ -62,7 +65,7 @@
     width: 95%;
   }
   .blog-card {
-    height: 580px;
+    height: 530px;
     width: 48%;
   }
   .blog-card-img {
@@ -99,11 +102,12 @@
   .blog-card-time {
     font-size: 12px;
   }
-  .blog-card-button {
-    margin-left: 10px;
-    margin-bottom: 20px;
+  .blog-card-lower-text {
+    margin-bottom: 10px;
     float: left;
     position: static;
+  }
+  .blog-card-button {
     font-size: 12px;
   }
 }

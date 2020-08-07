@@ -17,7 +17,8 @@ import VideoMissionPage from "./pages/VideoPages/VideoMissionPage";
 import VideoLaityPage from "./pages/VideoPages/VideoLaityPage";
 import VideoUpload from "./pages/VideoPages/VideoUploadPage";
 
-import BlogPage from "./pages/BlogPages/BlogCardsPage";
+import BlogCardsPage from "./pages/BlogPages/BlogCardsPage";
+import BlogContentPage from "./pages/BlogPages/BlogContentPage";
 import BlogUploadPage from "./pages/BlogPages/BlogUploadPage";
 import BlogExamplePage from "./pages/BlogPages/BlogExamplePage";
 
@@ -30,6 +31,9 @@ import LoginPage from "./pages/Admin/LoginPage";
 import AdminVideoPost from "./pages/Admin/Videos/VideoPostPage";
 import AdminVideoPostDelete from "./pages/Admin/Videos/VideoPostDeletePage";
 import AdminVideoUploadGet from "./pages/Admin/Videos/VideoUploadGet";
+
+import AdminBlogValidateCards from "./pages/Admin/Blogs/BlogsValidateCardsPage";
+import AdminBlogValidateDetails from "./pages/Admin/Blogs/BlogsValidateDetailsPage";
 
 import AdminContributorsValidateCardsPage from "./pages/Admin/Contributors/ContributorsValidateCardsPage";
 import AdminContributorsValidateJesuitDetailsPage from "./pages/Admin/Contributors/ContributorsValidateJesuitDetailsPage";
@@ -98,7 +102,8 @@ const App = () => {
             component={ContributorsUploadPage}
           />
 
-          <NavBar exact path="/blogs" component={BlogPage} />
+          <NavBar exact path="/blogs" component={BlogCardsPage} />
+          <NavBar exact path="/blogs/content/:id" component={BlogContentPage} />
           <NavBar exact path="/blogs/upload" component={BlogUploadPage} />
           <NavBar exact path="/blogs/example" component={BlogExamplePage} />
 
@@ -113,6 +118,17 @@ const App = () => {
             exact
             path="/videos/uploads"
             component={AdminVideoUploadGet}
+          />
+
+          <NavBar
+            exact
+            path="/blogs/validate"
+            component={AdminBlogValidateCards}
+          />
+          <NavBar
+            exact
+            path="/blogs/validate/:id"
+            component={AdminBlogValidateDetails}
           />
 
           <NavBar
