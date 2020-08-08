@@ -46,11 +46,11 @@
 
 @media only screen and (max-width: 500px) {
   .container {
-    background-position: center left;
-    height: 500px;
+    background-position: top left;
+    height: 380px;
   }
   .provincial-message-container {
-    font-size: 30px;
+    font-size: 25px;
   }
 }
 

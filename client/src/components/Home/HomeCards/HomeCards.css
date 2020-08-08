@@ -44,6 +44,7 @@
   border: none;
   border-radius: 50px;
   cursor: pointer;
+  outline: none;
 }
 
 .home-card-img-container {
@@ -106,8 +107,8 @@
     width: 100%;
   }
   .home-card-button {
-    font-size: 14px;
-    padding: 12px 30px;
+    font-size: 13px;
+    padding: 10px 20px;
   }
   .home-card-img-container {
     width: 100%;
@@ -116,10 +117,10 @@
 
 @media only screen and (max-width: 500px) {
   .home-card-img {
-    width: 12rem;
-    height: 12rem;
+    width: 11rem;
+    height: 11rem;
   }
   .home-card-text {
-    font-size: 25px;
+    font-size: 20px;
   }
 }

@@ -5,10 +5,11 @@ import { useHistory } from "react-router-dom";
 import { Form, Input, Switch, message } from "antd";
 
 const Details = (props) => {
-  const [job, setJob] = useState([]);
+  const [contri, setContri] = useState([]);
   const [name, setName] = useState();
   const [location, setLocation] = useState();
   const [imgLink, setImgLink] = useState();
+  const [videoURL, setVideoURL] = useState();
   const [quote, setQuote] = useState();
   const [validate, setValidate] = useState(false);
   const [render, setRender] = useState(true);
@@ -19,15 +20,16 @@ const Details = (props) => {
     axios
       .get("/api/contributors-jesuits/" + props.match.params.id)
       .then((res) => {
-        setJob(res.data);
+        setContri(res.data);
         setRender(false);
       })
       .catch((err) => console.log(err));
 
-    setName(job.name);
-    setLocation(job.basedLocation);
-    setImgLink(job.imgURL);
-    setQuote(job.quote);
+    setName(contri.name);
+    setLocation(contri.basedLocation);
+    setImgLink(contri.imgURL);
+    setQuote(contri.quote);
+    setVideoURL(contri.videosURL);
   }, [render]);
 
   const validateChange = () => {
@@ -177,6 +179,17 @@ const Details = (props) => {
           />
         </Form.Item>
 
+        <Form.Item name="videoURL">
+          <label htmlFor="videoURL">Youtube Link: </label>
+          <Input
+            onChange={(e) => setVideoURL(e.target.value)}
+            placeholder="Link"
+            name="videoURL"
+            value={videoURL}
+            required
+          />
+        </Form.Item>
+
         <Form.Item>
           <Switch
             onChange={validateChange}
@@ -184,6 +197,7 @@ const Details = (props) => {
             unCheckedChildren={<i className="fa fa-close" />}
           />
         </Form.Item>
+
         <button className="video-post-form-button">Update Details</button>
         <br />
       </Form>

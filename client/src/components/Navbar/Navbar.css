@@ -80,6 +80,13 @@
   }
 }
 
+@media only screen and (max-width: 1000px) {
+  .drawer-nav-links {
+    margin-top: 5rem;
+    font-size: 17px;
+  }
+}
+
 @media only screen and (max-width: 500px) {
   #nav-strip {
     padding: 0.2rem 0.7rem;
@@ -89,6 +96,14 @@
     padding-top: 3rem;
   }
   .mobile-nav {
-    font-size: 23px;
+    font-size: 20px;
+  }
+  .drawer-nav-links {
+    margin-top: 10px;
+    font-size: 15px;
+  }
+  .drawer-nav-links span {
+    padding: 1rem;
+    height: 55px;
   }
 }

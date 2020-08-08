@@ -45,8 +45,12 @@ const VideoCards = () => {
         <div className="video-card-div" key={card._id}>
           <div className="video-card-content">
             <span className="video-card-title">{card.title}</span>
-            <p> {uploadTime} </p>
-            <p style={{ marginTop: "-10px" }}> By {card.uploader}</p>
+            <p className="video-card-uploader">
+              By <b>{card.uploader}</b>
+            </p>
+            <p className="video-card-time">
+              <i className="fa fa-clock-o" /> {uploadTime}
+            </p>
             <p className="video-card-caption">{card.caption}</p>
           </div>
           <iframe
@@ -54,6 +58,7 @@ const VideoCards = () => {
             frameBorder="0"
             src={card.embedLink}
             title={card._id}
+            allowFullScreen
           ></iframe>
 
           <div className="video-card-sharebuttons">
@@ -95,7 +100,11 @@ const VideoCards = () => {
         </Radio.Group>
       </div>
       <br />
-      {promiseInProgress && <Spin size="large" />}
+      {promiseInProgress && (
+        <div className="spinner">
+          <Spin size="large" />
+        </div>
+      )}
       {videoCards}
     </>
   );

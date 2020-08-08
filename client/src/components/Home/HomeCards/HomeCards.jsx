@@ -15,8 +15,6 @@ const HomeCards = () => {
               <p className="home-card-text">Join Us For The Daily Eucharist</p>
               <button className="home-card-button"> Holy Family Church </button>
               <br />
-              <br />
-              <button className="home-card-button"> St. Peter's Church </button>
             </div>
           </div>
           <div className="home-card-img-container">

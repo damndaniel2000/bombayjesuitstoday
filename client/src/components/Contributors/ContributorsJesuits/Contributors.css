@@ -99,7 +99,7 @@
 @media only screen and (max-width: 600px) {
   .contributors-card {
     margin-top: 1px;
-    width: 97%;
+    width: 100%;
   }
   .contributors-avatar {
     width: 180px;
@@ -112,12 +112,12 @@
     font-size: 13px;
   }
   .contributors-card-location {
-    font-size: 13px;
-    margin-top: -1.3rem;
-    margin-bottom: 10px;
+    font-size: 12px;
+    margin-top: -13px;
+    margin-bottom: 30px;
   }
   .contributors-card-name {
-    font-size: 17px;
+    font-size: 15px;
   }
   .contributors-page-title {
     font-size: 25px;
@@ -126,7 +126,6 @@
 @media only screen and (max-width: 400px) {
   .contributors-card {
     margin-top: 0;
-    width: 95%;
   }
 
   .contributors-card-link {

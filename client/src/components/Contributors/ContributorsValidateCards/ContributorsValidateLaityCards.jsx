@@ -65,7 +65,11 @@ const ContributorsCard = () => {
 
       <p className="contributors-page-title">Laity Contributors</p>
 
-      {promiseInProgress && <Spin size="large" />}
+      {promiseInProgress && (
+        <div className="spinner">
+          <Spin size="large" />
+        </div>
+      )}
       <div className="contributors-card-container">{contributorsList} </div>
     </>
   );

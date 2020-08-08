@@ -26,6 +26,7 @@
   border: none;
   border-radius: 5px;
   width: 30%;
+  outline: none;
 }
 .video-post-form-button:focus {
   outline: none;

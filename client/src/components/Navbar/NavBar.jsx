@@ -30,6 +30,14 @@ const NavBar = (props) => {
     history.push("/videos/mission");
     hideDrawer();
   };
+  const gVideos = () => {
+    history.push("/videos/gospel");
+    hideDrawer();
+  };
+  const lVideos = () => {
+    history.push("/videos/laity");
+    hideDrawer();
+  };
   const blogs = () => {
     history.push("/blogs");
     hideDrawer();
@@ -45,7 +53,7 @@ const NavBar = (props) => {
         <Menu.Item key="1" className="desktop-dropdown-items">
           Daily Mass
         </Menu.Item>
-        <Menu.Item key="2" className="desktop-dropdown-items">
+        <Menu.Item key="2" onClick={gVideos} className="desktop-dropdown-items">
           Gospel Insights
         </Menu.Item>
         <Menu.Item key="3" onClick={mVideos} className="desktop-dropdown-items">
@@ -53,6 +61,9 @@ const NavBar = (props) => {
         </Menu.Item>
         <Menu.Item key="4" onClick={sVideos} className="desktop-dropdown-items">
           Ignatian Spirituality
+        </Menu.Item>
+        <Menu.Item key="5" onClick={lVideos} className="desktop-dropdown-items">
+          SJ Laity
         </Menu.Item>
       </Menu.ItemGroup>
     </Menu>
@@ -62,10 +73,11 @@ const NavBar = (props) => {
     if (videoDrop) {
       return (
         <div className="drawer-drop-content">
-          <span> > Daily Mass </span>
-          <span> > Gospel Insights </span>
-          <span onClick={sVideos}> > Ignatian Spirituality </span>
-          <span onClick={mVideos}> > Ignatian Mission </span>
+          <span> Daily Mass </span>
+          <span onClick={gVideos}> Gospel Insights </span>
+          <span onClick={sVideos}> Ignatian Spiritualit </span>
+          <span onClick={mVideos}> Ignatian Mission </span>
+          <span onClick={lVideos}> SJ Laity </span>
         </div>
       );
     }

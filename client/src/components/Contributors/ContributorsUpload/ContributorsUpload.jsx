@@ -8,11 +8,12 @@ const VideoPost = () => {
     name: "",
     quote: "",
     basedLocation: "",
+    videosURL: "",
   });
   const [imgURL, setURL] = useState("");
   const [fileName, setFileName] = useState("");
   const [path, setPath] = useState("");
-  const { name, quote, basedLocation } = state;
+  const { name, quote, basedLocation, videosURL } = state;
 
   const handleSubmit = () => {
     axios
@@ -20,6 +21,7 @@ const VideoPost = () => {
         name: name,
         basedLocation: basedLocation,
         imgURL: imgURL,
+        videosURL: videosURL,
         quote: quote,
       })
       .then(() => {
@@ -159,7 +161,6 @@ const VideoPost = () => {
         <p className="form-extra-image">
           Select a photo of yourself with your best smile !
         </p>
-        <br />
 
         <Form.Item name="quote">
           <label htmlFor="quote">Any quote or scripture you live by :</label>
@@ -176,6 +177,18 @@ const VideoPost = () => {
           You can check our Contributors page to get an idea about what to
           write.
         </p>
+
+        <Form.Item name="videosURL">
+          <label htmlFor="videosURL">
+            If you have a Youtube account, paste the link here:{" "}
+          </label>
+          <Input
+            placeholder="Youtube Link"
+            name="videosURL"
+            onChange={handleChange}
+            value={videosURL}
+          />
+        </Form.Item>
 
         <Form.Item name="choice" label="Are you a Jesuit or a laity?">
           <Radio.Group onChange={handleRadios}>
