@@ -92,15 +92,13 @@
     padding: 0.2rem 0.7rem;
     height: 4.5rem;
   }
-  .drawer-nav-links {
-    padding-top: 3rem;
-  }
   .mobile-nav {
     font-size: 20px;
   }
   .drawer-nav-links {
     margin-top: 10px;
     font-size: 15px;
+    padding-top: 3rem;
   }
   .drawer-nav-links span {
     padding: 1rem;

@@ -5,8 +5,8 @@ import axios from "axios";
 import "./App.css";
 import UserContext from "./context/UserContext";
 
-import NavBar from "./components/Navbar/NavBar";
-import HomeNavBar from "./components/Home/HomeNav/HomeNavBar";
+import NavBar from "./components/Nav/Navbar/NavBar";
+import HomeNavBar from "./components/Nav/HomeNav/HomeNavBar";
 import Footer from "./components/Footer/Footer.jsx";
 
 import HomePage from "./pages/HomePage";

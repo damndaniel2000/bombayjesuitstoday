@@ -1,10 +1,10 @@
 import React from "react";
-import VideoMissionCards from "../../components/Videos/VideoMissionCards/VideoCards";
+import VideoMissionCards from "../../components/Videos/VideoCards/VideoCards";
 
 const VideoPage = () => {
   return (
     <div style={{ minHeight: "150vh" }}>
-      <VideoMissionCards />
+      <VideoMissionCards path="mission" />
     </div>
   );
 };

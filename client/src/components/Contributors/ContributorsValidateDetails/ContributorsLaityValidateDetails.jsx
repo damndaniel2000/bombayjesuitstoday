@@ -28,6 +28,8 @@ const Details = (props) => {
     setLocation(job.basedLocation);
     setImgLink(job.imgURL);
     setQuote(job.quote);
+
+    window.scrollTo(0, 0);
   }, [render]);
 
   const validateChange = () => {

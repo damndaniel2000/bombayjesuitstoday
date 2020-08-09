@@ -1,10 +1,10 @@
 import React from "react";
-import Contributors from "../../components/Contributors/ContributorsLaity/Contributors";
+import ContributorsLaity from "../../components/Contributors/ContributorsCards/Contributors";
 
 const ContributorsPage = () => {
   return (
     <div style={{ minHeight: "150vh" }}>
-      <Contributors />
+      <ContributorsLaity path="laity" />
     </div>
   );
 };

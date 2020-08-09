@@ -1,10 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 
+import MassModal from "../../Nav/MassModal/MassModal";
 import "./HomeCards.css";
 
 const HomeCards = () => {
+  const [modal, setModal] = useState();
   const history = useHistory();
+
+  const massModalToggle = () => {
+    setModal(!modal);
+  };
 
   return (
     <>
@@ -13,7 +19,16 @@ const HomeCards = () => {
           <div className="home-card-text-container">
             <div>
               <p className="home-card-text">Join Us For The Daily Eucharist</p>
-              <button className="home-card-button"> Holy Family Church </button>
+              <button
+                className="home-card-button"
+                onClick={() => setModal(!modal)}
+              >
+                {" "}
+                Daily Mass{" "}
+              </button>
+              {modal && (
+                <MassModal visible={modal} modalToggler={massModalToggle} />
+              )}
               <br />
             </div>
           </div>

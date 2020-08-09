@@ -29,7 +29,6 @@
   text-align: left;
   width: 100%;
   cursor: pointer;
-  position: relative;
 }
 .home-drawer-nav-links span:hover {
   background-color: #fff;
@@ -40,6 +39,14 @@
   flex-direction: column;
   padding-left: 2rem;
 }
+
+@media only screen and (max-width: 1000px) {
+  .home-drawer-nav-links {
+    margin-top: 5rem;
+    font-size: 17px;
+  }
+}
+
 @media only screen and (max-width: 800px) {
   #home-nav-bar {
     padding: 0.5rem 2rem;
@@ -55,7 +62,16 @@
     width: 80px;
     height: 80px;
   }
+  .mobile-nav {
+    font-size: 20px;
+  }
   .home-drawer-nav-links {
+    margin-top: 10px;
+    font-size: 15px;
     padding-top: 3rem;
+  }
+  .home-drawer-nav-links span {
+    padding: 1rem;
+    height: 55px;
   }
 }

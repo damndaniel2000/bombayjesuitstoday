@@ -6,10 +6,12 @@ import { Spin, Radio } from "antd";
 
 import "./Contributors.css";
 
-const ContributorsCard = () => {
+const ContributorsCard = (props) => {
   const [contributors, setContributors] = useState([]);
   const { promiseInProgress } = usePromiseTracker();
   const history = useHistory();
+
+  const radio = "/contributors/" + props.path;
 
   useEffect(() => {
     getContributors();
@@ -17,7 +19,9 @@ const ContributorsCard = () => {
 
   const getContributors = async () => {
     try {
-      const res = await trackPromise(axios.get("/api/contributors-jesuits"));
+      const res = await trackPromise(
+        axios.get("/api/contributors-" + props.path)
+      );
       setContributors(res.data);
     } catch (err) {
       console.log(err.message);
@@ -62,7 +66,7 @@ const ContributorsCard = () => {
 
       <p className="contributors-page-title">Meet Our Contributors</p>
 
-      <Radio.Group onChange={handleRadios} defaultValue="/contributors/jesuits">
+      <Radio.Group onChange={handleRadios} defaultValue={radio}>
         <Radio.Button
           className="page-radio-buttons"
           value="/contributors/jesuits"

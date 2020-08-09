@@ -29,6 +29,8 @@ const BlogDetails = (props) => {
     setTitle(blog.title);
     setImgLink(blog.imgLink);
     setContent(blog.blogContent);
+
+    window.scrollTo(0, 0);
   }, [render]);
 
   const validateChange = () => {

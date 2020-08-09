@@ -1,0 +1,9 @@
+.mass-modal a {
+  color: #000;
+}
+.mass-modal a:hover {
+  color: rgb(52, 151, 232);
+}
+.mass-modal hr {
+  color: rgb(198, 198, 198);
+}

@@ -2,12 +2,14 @@ import React, { useState } from "react";
 import { Drawer, Menu, Dropdown } from "antd";
 import { useHistory, Route } from "react-router-dom";
 
-import "./Navbar.css";
-import logo from "./logo.png";
+import "./HomeNav.css";
+import MassModal from "../MassModal/MassModal";
+import logo from "../logo.png";
 
-const NavBar = (props) => {
+const HomeNavBar = (props) => {
   const [visible, setVisible] = useState(false);
   const [videoDrop, setDrop] = useState(false);
+  const [modal, setModal] = useState();
   const history = useHistory();
 
   const showDrawer = () => {
@@ -47,10 +49,18 @@ const NavBar = (props) => {
     hideDrawer();
   };
 
+  const massModalToggle = () => {
+    setModal(!modal);
+  };
+
   const dropVideos = (
     <Menu>
       <Menu.ItemGroup>
-        <Menu.Item key="1" className="desktop-dropdown-items">
+        <Menu.Item
+          key="1"
+          onClick={() => setModal(!modal)}
+          className="desktop-dropdown-items"
+        >
           Daily Mass
         </Menu.Item>
         <Menu.Item key="2" onClick={gVideos} className="desktop-dropdown-items">
@@ -73,7 +83,7 @@ const NavBar = (props) => {
     if (videoDrop) {
       return (
         <div className="drawer-drop-content">
-          <span> Daily Mass </span>
+          <span onClick={() => setModal(!modal)}> Daily Mass </span>
           <span onClick={gVideos}> Gospel Insights </span>
           <span onClick={sVideos}> Ignatian Spiritualit </span>
           <span onClick={mVideos}> Ignatian Mission </span>
@@ -85,7 +95,8 @@ const NavBar = (props) => {
 
   return (
     <>
-      <div id="nav-strip">
+      {modal && <MassModal visible={modal} modalToggler={massModalToggle} />}
+      <div id="home-nav-bar">
         <div>
           <img src={logo} className="navbar-logo" alt="logo" />
         </div>
@@ -95,7 +106,7 @@ const NavBar = (props) => {
 
             <Drawer
               bodyStyle={{
-                backgroundColor: "#152256",
+                backgroundColor: "#000",
                 color: "#fff",
                 padding: 0,
               }}
@@ -109,7 +120,7 @@ const NavBar = (props) => {
                 />
               }
             >
-              <div className="drawer-nav-links">
+              <div className="home-drawer-nav-links">
                 <span onClick={home}>
                   <i className="fa fa-home" /> Home
                 </span>
@@ -159,18 +170,18 @@ const NavBar = (props) => {
   );
 };
 
-const NavRoute = ({ component: Component, ...rest }) => {
+const MainNavRoute = ({ component: Component, ...rest }) => {
   return (
     <Route
       {...rest}
       render={(props) => {
         return (
-          <NavBar>
+          <HomeNavBar>
             <Component {...props} />
-          </NavBar>
+          </HomeNavBar>
         );
       }}
     />
   );
 };
-export default NavRoute;
+export default MainNavRoute;

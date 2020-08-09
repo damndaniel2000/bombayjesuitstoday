@@ -30,6 +30,8 @@ const Details = (props) => {
     setImgLink(contri.imgURL);
     setQuote(contri.quote);
     setVideoURL(contri.videosURL);
+
+    window.scrollTo(0, 0);
   }, [render]);
 
   const validateChange = () => {

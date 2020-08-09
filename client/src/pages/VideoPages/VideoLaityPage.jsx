@@ -1,10 +1,10 @@
 import React from "react";
-import VideoLaityCards from "../../components/Videos/VideoLaityCards/VideoCards";
+import VideoLaityCards from "../../components/Videos/VideoCards/VideoCards";
 
 const VideoPage = () => {
   return (
     <div style={{ minHeight: "150vh" }}>
-      <VideoLaityCards />
+      <VideoLaityCards path="laity" />
     </div>
   );
 };
