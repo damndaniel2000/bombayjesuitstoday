@@ -69,6 +69,8 @@ const App = () => {
     };
 
     checkLoggedIn();
+
+    axios.put("/api/counter/5f32d0aa496558bec4230e31");
   }, []);
 
   return (

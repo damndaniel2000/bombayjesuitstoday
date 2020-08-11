@@ -21,6 +21,7 @@ const contributorLaityRouter = require("./routes/contributorsLaityRouter");
 const blogRouter = require("./routes/blogRouter");
 
 const userRouter = require("./routes/userRouter");
+const counterRouter = require("./routes/counterRouter");
 
 let uri = "";
 if (process.env.ENVIRONMENT === "production") {
@@ -49,6 +50,7 @@ app.use("/api/contributors-laity", contributorLaityRouter);
 app.use("/api/blogs", blogRouter);
 
 app.use("/api/users", userRouter);
+app.use("/api/counter", counterRouter);
 
 app.use(express.static(path.join(__dirname, "client/build")));
 
