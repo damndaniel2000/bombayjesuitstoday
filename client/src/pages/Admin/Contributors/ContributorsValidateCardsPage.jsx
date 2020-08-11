@@ -1,11 +1,10 @@
 import React, { useContext } from "react";
 import UserContext from "../../../context/UserContext";
 
-import ContributorsJesuitValidate from "../../../components/Contributors/ContributorsValidateCards/ContributorsValidateJesuitCards";
-import ContributorsLaityValidate from "../../../components/Contributors/ContributorsValidateCards/ContributorsValidateLaityCards";
+import ContributorsValidate from "../../../components/Contributors/ContributorsValidateCards";
 import NotFoundPage from "../../NotFoundPage";
 
-const ContributorsValidate = () => {
+const ContributorsValidateCards = () => {
   const { userData } = useContext(UserContext);
 
   return (
@@ -14,12 +13,14 @@ const ContributorsValidate = () => {
         <NotFoundPage />
       ) : (
         <>
-          <ContributorsJesuitValidate />
-          <ContributorsLaityValidate />
+          <p className="contributors-page-title">Jesuit Contributors</p>
+          <ContributorsValidate path="jesuits" />
+          <p className="contributors-page-title">Laity Contributors</p>
+          <ContributorsValidate path="laity" />
         </>
       )}
     </div>
   );
 };
 
-export default ContributorsValidate;
+export default ContributorsValidateCards;

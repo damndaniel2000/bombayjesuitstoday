@@ -9,27 +9,21 @@ const app = express();
 app.use(bodyParser.json());
 app.use(cors());
 
-const videoSpiritualRouter = require("./routes/videoSpiritualRouter");
-const videoMissionRouter = require("./routes/videoMissionRouter");
-const videoLaityRouter = require("./routes/videoLaityRouter");
-const videoGospelRouter = require("./routes/videoGospelRouter");
-const videoUploadRouter = require("./routes/videoUploadRouter");
+const videoSpiritualRouter = require("./routes/Videos/videoSpiritualRouter");
+const videoMissionRouter = require("./routes/Videos/videoMissionRouter");
+const videoLaityRouter = require("./routes/Videos/videoLaityRouter");
+const videoGospelRouter = require("./routes/Videos/videoGospelRouter");
+const videoUploadRouter = require("./routes/Videos/videoUploadRouter");
 
-const contributorJesuitRouter = require("./routes/contributorsJesuitsRouter");
-const contributorLaityRouter = require("./routes/contributorsLaityRouter");
+const contributorJesuitRouter = require("./routes/Contributors/contributorsJesuitsRouter");
+const contributorLaityRouter = require("./routes/Contributors/contributorsLaityRouter");
 
-const blogRouter = require("./routes/blogRouter");
+const blogRouter = require("./routes/Blogs/blogRouter");
 
-const userRouter = require("./routes/userRouter");
-const counterRouter = require("./routes/counterRouter");
+const userRouter = require("./routes/Misc/userRouter");
+const counterRouter = require("./routes/Misc/counterRouter");
 
-let uri = "";
-if (process.env.ENVIRONMENT === "production") {
-  uri = process.env.MONGODB_URI;
-} else {
-  uri = "mongodb://localhost:27017/jesuits";
-}
-
+uri = "mongodb://localhost:27017/jesuits";
 MongoClient.connect(uri, {
   useNewUrlParser: true,
   useUnifiedTopology: true,

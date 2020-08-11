@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import UserContext from "../../../context/UserContext";
 
-import ContributorsValidateLaityDetails from "../../../components/Contributors/ContributorsValidateDetails/ContributorsLaityValidateDetails";
+import ContributorsValidateLaityDetails from "../../../components/Contributors/ContributorsValidateDetails";
 import NotFoundPage from "../../NotFoundPage";
 
 const ContributorsValidate = () => {
@@ -13,7 +13,7 @@ const ContributorsValidate = () => {
         <NotFoundPage />
       ) : (
         <>
-          <ContributorsValidateLaityDetails />
+          <ContributorsValidateLaityDetails path="laity" />
         </>
       )}
     </div>

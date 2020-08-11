@@ -1,10 +1,7 @@
 import React, { useContext } from "react";
 import UserContext from "../../../context/UserContext";
 
-import SpiritualVideoDelete from "../../../components/Videos/VideoPostDelete/VideoSpiritualPostDelete";
-import MissionVideoDelete from "../../../components/Videos/VideoPostDelete/VideoMissionPostDelete";
-import GospelVideoDelete from "../../../components/Videos/VideoPostDelete/VideoGospelPostDelete";
-import LaityVideoDelete from "../../../components/Videos/VideoPostDelete/VideoLaityPostDelete";
+import VideoDelete from "../../../components/Videos/VideoPostDelete/VideoPostDelete";
 import NotFoundPage from "../../NotFoundPage";
 
 const VideoDeletePage = () => {
@@ -16,10 +13,14 @@ const VideoDeletePage = () => {
         <NotFoundPage />
       ) : (
         <>
-          <SpiritualVideoDelete />
-          <MissionVideoDelete />
-          <GospelVideoDelete />
-          <LaityVideoDelete />
+          <p className="contributors-page-title">Spiritual</p>
+          <VideoDelete path="spiritual" />
+          <p className="contributors-page-title">Gospel</p>
+          <VideoDelete path="gospel" />
+          <p className="contributors-page-title">Laity</p>
+          <VideoDelete path="laity" />
+          <p className="contributors-page-title">Mission</p>
+          <VideoDelete path="mission" />
         </>
       )}
     </div>

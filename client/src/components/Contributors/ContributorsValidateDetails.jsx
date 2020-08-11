@@ -18,7 +18,7 @@ const Details = (props) => {
 
   useEffect(() => {
     axios
-      .get("/api/contributors-jesuits/" + props.match.params.id)
+      .get(`/api/contributors-${props.path}/` + props.match.params.id)
       .then((res) => {
         setContri(res.data);
         setRender(false);
@@ -40,7 +40,7 @@ const Details = (props) => {
 
   const handleSubmit = () => {
     axios
-      .put("/api/contributors-jesuits/" + props.match.params.id, {
+      .put(`/api/contributors-${props.path}/` + props.match.params.id, {
         name: name,
         basedLocation: location,
         imgURL: imgLink,
@@ -115,7 +115,7 @@ const Details = (props) => {
     const confirm = prompt("Types YES in the input below");
     if (confirm === "YES") {
       axios
-        .delete("/api/contributors-jesuits/" + props.match.params.id, {
+        .delete(`/api/contributors-${props.path}/` + props.match.params.id, {
           headers: { "x-auth-token": token },
         })
         .then(() => {
@@ -188,7 +188,6 @@ const Details = (props) => {
             placeholder="Link"
             name="videoURL"
             value={videoURL}
-            required
           />
         </Form.Item>
 

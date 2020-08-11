@@ -1,8 +1,8 @@
 const express = require("express");
 const mongoose = require("mongoose");
-const auth = require("../middleware/auth");
+const auth = require("../../middleware/auth");
 
-const Video = require("../models/VideosGospel");
+const Video = require("../../models/Videos/VideosGospel");
 
 const videoRouter = express.Router();
 

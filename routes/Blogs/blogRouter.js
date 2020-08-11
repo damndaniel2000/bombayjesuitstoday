@@ -1,8 +1,8 @@
 const express = require("express");
 const mongoose = require("mongoose");
-const auth = require("../middleware/auth");
+const auth = require("../../middleware/auth");
 
-const Blog = require("../models/Blogs");
+const Blog = require("../../models/Blogs/Blogs");
 const blogRouter = express.Router();
 
 blogRouter
@@ -38,7 +38,7 @@ blogRouter
       })
       .catch((err) => next(err));
   })
-  .put((req, res, next) => {
+  .put(auth, (req, res, next) => {
     Blog.findByIdAndUpdate(
       req.params.blogID,
       { $set: req.body },
@@ -49,7 +49,7 @@ blogRouter
       res.json(blog);
     });
   })
-  .delete((req, res, next) => {
+  .delete(auth, (req, res, next) => {
     Blog.findById(req.params.blogID)
       .then((blog) => blog.remove())
       .then((blog) => {

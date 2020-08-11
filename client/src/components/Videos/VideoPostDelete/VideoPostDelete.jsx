@@ -3,7 +3,7 @@ import { Card, message } from "antd";
 import axios from "axios";
 import "./VideoPostDelete.css";
 
-const VideoDelete = () => {
+const VideoDelete = (props) => {
   const [videos, setVideos] = useState([]);
 
   useEffect(() => {
@@ -12,7 +12,7 @@ const VideoDelete = () => {
 
   const getVideos = () => {
     axios
-      .get("/api/videos-laity")
+      .get(`/api/videos-${props.path}`)
       .then((res) => setVideos(res.data))
       .catch((err) => console.log(err));
   };
@@ -22,7 +22,7 @@ const VideoDelete = () => {
     const confirm = prompt("Types YES in the input below");
     if (confirm === "YES") {
       axios
-        .delete("/api/videos-laity/" + id, {
+        .delete(`/api/videos-${props.path}/` + id, {
           headers: { "x-auth-token": token },
         })
         .then(() => {
@@ -78,9 +78,6 @@ const VideoDelete = () => {
 
   return (
     <>
-      <br />
-      <br />
-      <h2> Laity Videos </h2>
       <div className="video-delete-div"> {videoSData} </div>
     </>
   );

@@ -2,8 +2,8 @@ const router = require("express").Router();
 const bodyParser = require("body-parser");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-const auth = require("../middleware/auth");
-const User = require("../models/Users");
+const auth = require("../../middleware/auth");
+const User = require("../../models/Misc/Users");
 
 router.use(bodyParser.json());
 

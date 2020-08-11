@@ -1,18 +1,8 @@
 const express = require("express");
 const mongoose = require("mongoose");
 
-const Counter = require("../models/HitCounter");
+const Counter = require("../../models/Misc/HitCounter");
 const counterRouter = express.Router();
-
-counterRouter.route("/").post((req, res, next) => {
-  Counter.create(req.body)
-    .then((counter) => {
-      res.statusCode = 200;
-      res.setHeader("Content-Type", "application/json");
-      res.json(counter);
-    })
-    .catch((err) => next(err));
-});
 
 counterRouter.route("/:id").put((req, res, next) => {
   Counter.findById(req.params.id)

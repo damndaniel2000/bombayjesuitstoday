@@ -69,8 +69,9 @@ const App = () => {
     };
 
     checkLoggedIn();
-
-    axios.put("/api/counter/5f32d0aa496558bec4230e31");
+    alert(process.env.REACT_APP_ENVIRONMENT);
+    if (process.env.REACT_APP_ENVIRONMENT === "production")
+      axios.put("/api/counter/5f32dd424dc9b411bd2a1b9c");
   }, []);
 
   return (

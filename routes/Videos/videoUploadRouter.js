@@ -1,8 +1,8 @@
 const express = require("express");
 const mongoose = require("mongoose");
-const auth = require("../middleware/auth");
+const auth = require("../../middleware/auth");
 
-const Video = require("../models/VideosLaity");
+const Video = require("../../models/Videos/VideosUpload");
 
 const videoRouter = express.Router();
 
@@ -21,7 +21,7 @@ videoRouter
       )
       .catch((err) => next(err));
   })
-  .post(auth, (req, res, next) => {
+  .post((req, res, next) => {
     Video.create(req.body)
       .then(
         (video) => {
