@@ -72,7 +72,7 @@ const App = () => {
     checkLoggedIn();
     if (process.env.REACT_APP_ENVIRONMENT === "production") {
       axios.put("/api/counter/5f32dd424dc9b411bd2a1b9c");
-      axios.get("/api/counter/5f32d0aa496558bec4230e31").then((counter) => {
+      axios.get("/api/counter/5f32dd424dc9b411bd2a1b9c").then((counter) => {
         setCount(counter.data.count);
       });
     } else {
