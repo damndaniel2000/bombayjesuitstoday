@@ -51,12 +51,32 @@ export default function MassModal(props) {
         <hr />
         <a
           href={detectDevice(
+            "https://www.youtube.com/channel/UCqEOkFa9L8vF2kFj5_4Zgnw/videos"
+          )}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <p> 3. St. Michael's Church, Manickpur </p>
+        </a>
+        <hr />
+        <a
+          href={detectDevice(
             "	www.youtube.com/channel/UCKvmSLoLls_Ub7GLyigiNIg/videos"
           )}
           target="_blank"
           rel="noopener noreferrer"
         >
-          <p> 3. Shrine of The Infant Jesus, Nashik (Weekly)</p>
+          <p> 4. St. Anne's Church, Mazagaon (Weekly) </p>
+        </a>
+        <hr />
+        <a
+          href={detectDevice(
+            "	www.youtube.com/channel/UCKvmSLoLls_Ub7GLyigiNIg/videos"
+          )}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <p> 5. Shrine of The Infant Jesus, Nashik (Weekly)</p>
         </a>
       </div>
     </Modal>

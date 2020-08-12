@@ -15,6 +15,7 @@ import VideosGospelPage from "./pages/VideoPages/VideosGospelPage";
 import VideoSpiritualPage from "./pages/VideoPages/VideoSpiritualPage";
 import VideoMissionPage from "./pages/VideoPages/VideoMissionPage";
 import VideoLaityPage from "./pages/VideoPages/VideoLaityPage";
+import VideoYouthPage from "./pages/VideoPages/VideoYouthPage";
 import VideoUpload from "./pages/VideoPages/VideoUploadPage";
 
 import BlogCardsPage from "./pages/BlogPages/BlogCardsPage";
@@ -72,7 +73,7 @@ const App = () => {
     checkLoggedIn();
     if (process.env.REACT_APP_ENVIRONMENT === "production") {
       axios.put("/api/counter/5f32dd424dc9b411bd2a1b9c");
-      axios.get("/api/counter/5f32dd424dc9b411bd2a1b9c").then((counter) => {
+      axios.get("/api/counter/5f32dd424dc9b411bd2a1b9cp").then((counter) => {
         setCount(counter.data.count);
       });
     } else {
@@ -100,6 +101,7 @@ const App = () => {
           />
           <NavBar exact path="/videos/laity" component={VideoLaityPage} />
           <NavBar exact path="/videos/mission" component={VideoMissionPage} />
+          <NavBar exact path="/videos/youth" component={VideoYouthPage} />
           <NavBar exact path="/videos/upload" component={VideoUpload} />
 
           <NavBar

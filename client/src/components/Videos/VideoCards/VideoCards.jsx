@@ -99,12 +99,15 @@ const VideoCards = (props) => {
           >
             Spiritual
           </Radio.Button>
-          <br />
           <Radio.Button value="/videos/mission" className="page-radio-buttons">
             Mission
           </Radio.Button>
+          <br />
           <Radio.Button value="/videos/laity" className="page-radio-buttons">
             SJ Laity
+          </Radio.Button>
+          <Radio.Button value="/videos/youth" className="page-radio-buttons">
+            Youth Talk
           </Radio.Button>
         </Radio.Group>
       </div>

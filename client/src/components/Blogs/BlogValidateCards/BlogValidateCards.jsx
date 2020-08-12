@@ -33,11 +33,7 @@ export default function Cards() {
 
     return (
       <div className="blog-card" key={blog._id}>
-        <img
-          className="blog-card-img"
-          src="https://picjumbo.com/wp-content/uploads/krivan-peak-slovakia-free-photo-2210x1473.jpg"
-          alt=""
-        />
+        <img className="blog-card-img" src={blog.imgLink} alt="Blog Image" />
         <div className="blog-card-text">
           <p className="blog-card-title">{blog.title}</p>
 

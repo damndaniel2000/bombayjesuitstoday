@@ -21,6 +21,8 @@ const VideoDeletePage = () => {
           <VideoDelete path="laity" />
           <p className="contributors-page-title">Mission</p>
           <VideoDelete path="mission" />
+          <p className="contributors-page-title">Youth</p>
+          <VideoDelete path="youth" />
         </>
       )}
     </div>

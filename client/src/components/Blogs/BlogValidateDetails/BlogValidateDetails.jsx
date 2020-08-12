@@ -14,6 +14,7 @@ const BlogDetails = (props) => {
   const [validate, setValidate] = useState(false);
   const [render, setRender] = useState(true);
 
+  const token = localStorage.getItem("auth-token");
   const history = useHistory();
 
   useEffect(() => {
@@ -39,13 +40,17 @@ const BlogDetails = (props) => {
 
   const handleSubmit = () => {
     axios
-      .put("/api/blogs/" + props.match.params.id, {
-        author: author,
-        title: title,
-        imgLink: imgLink,
-        blogContent: content,
-        validated: validate,
-      })
+      .put(
+        "/api/blogs/" + props.match.params.id,
+        {
+          author: author,
+          title: title,
+          imgLink: imgLink,
+          blogContent: content,
+          validated: validate,
+        },
+        { headers: { "x-auth-token": token } }
+      )
       .then(() => successMessage())
       .catch(() => errorMessage());
   };

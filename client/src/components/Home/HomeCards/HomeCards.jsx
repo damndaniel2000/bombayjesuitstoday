@@ -25,7 +25,7 @@ const HomeCards = () => {
               >
                 {" "}
                 Daily Mass{" "}
-              </button>
+              </button>{" "}
               {modal && (
                 <MassModal visible={modal} modalToggler={massModalToggle} />
               )}
