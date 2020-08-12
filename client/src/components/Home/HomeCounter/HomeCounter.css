@@ -1,0 +1,38 @@
+.counter-container {
+  padding: 1rem 0;
+  background: #280000;
+  background: -webkit-linear-gradient(to right, #004e92, #000428);
+  background: linear-gradient(to right, #004e92, #000428);
+  height: 30rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.counter span {
+  font-size: 80px;
+  color: #fff;
+  font-weight: bold;
+  letter-spacing: 5px;
+}
+
+.counter-message {
+  font-size: 20px;
+  color: #a0b5c6;
+  margin-top: 2rem;
+  text-transform: capitalize;
+}
+
+@media only screen and (max-width: 500px) {
+  .counter-container {
+    height: 20rem;
+  }
+  .counter span {
+    font-size: 60px;
+  }
+  .counter-message {
+    font-size: 12px;
+
+    margin: 0 auto;
+  }
+}

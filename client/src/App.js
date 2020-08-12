@@ -46,6 +46,7 @@ const App = () => {
     token: undefined,
     user: undefined,
   });
+  const [count, setCount] = useState();
 
   useEffect(() => {
     const checkLoggedIn = async () => {
@@ -69,16 +70,22 @@ const App = () => {
     };
 
     checkLoggedIn();
-    alert(process.env.REACT_APP_ENVIRONMENT);
     if (process.env.REACT_APP_ENVIRONMENT === "production")
       axios.put("/api/counter/5f32dd424dc9b411bd2a1b9c");
+    axios.get("/api/counter/5f32dd424dc9b411bd2a1b9c").then((counter) => {
+      setCount(counter.count);
+    });
   }, []);
 
   return (
     <Router>
       <UserContext.Provider value={{ userData, setUserData }}>
         <Switch>
-          <HomeNavBar exact path="/" component={HomePage} />
+          <HomeNavBar
+            exact
+            path="/"
+            component={() => <HomePage count={count} />}
+          />
           <NavBar exact path="/videos/gospel" component={VideosGospelPage} />
           <NavBar
             exact

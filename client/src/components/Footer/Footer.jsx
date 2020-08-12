@@ -3,7 +3,7 @@ import React from "react";
 import "./Footer.css";
 import logo from "./logo.png";
 
-const Footer = () => {
+const Footer = (props) => {
   return (
     <footer>
       <div className="footer-container">
@@ -20,23 +20,23 @@ const Footer = () => {
                   <br /> Mumbai - 400 093
                 </p>
               </address>
-              <div className="footer-email">
-                <h3> Contact Us </h3>
-                <p>
-                  <i className="fa fa-envelope" />
-                  <a href="mailto:sjspiritual2020@gmail.com">
-                    &nbsp;&nbsp;sjspiritual2020@gmail.com
-                  </a>
-                </p>
-                <p>
-                  <i className="fa fa-phone" />{" "}
-                  <a href="tel:02226871975">&nbsp;(022) 2687 1975</a>
-                </p>
-                <p>
-                  <i className="fa fa-phone" />{" "}
-                  <a href="tel:02226872192">&nbsp;(022) 2687 2192</a>
-                </p>
-              </div>
+            </div>
+            <div className="footer-email">
+              <h3> Contact Us </h3>
+              <p>
+                <i className="fa fa-envelope" />
+                <a href="mailto:sjspiritual2020@gmail.com">
+                  &nbsp;&nbsp;sjspiritual2020@gmail.com
+                </a>
+              </p>
+              <p>
+                <i className="fa fa-phone" />{" "}
+                <a href="tel:02226871975">&nbsp;(022) 2687 1975</a>
+              </p>
+              <p>
+                <i className="fa fa-phone" />{" "}
+                <a href="tel:02226872192">&nbsp;(022) 2687 2192</a>
+              </p>
             </div>
             <div className="footer-social">
               <h3> Follow Us </h3>

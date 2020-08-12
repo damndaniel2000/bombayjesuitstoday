@@ -13,6 +13,7 @@
   width: 45%;
   display: flex;
   justify-content: space-around;
+  flex-wrap: wrap;
 }
 
 .footer-text-container h3 {
@@ -27,6 +28,10 @@
 }
 
 .footer-address {
+  text-align: left;
+}
+
+.footer-email {
   text-align: left;
 }
 
@@ -93,23 +98,21 @@
 @media only screen and (max-width: 500px) {
   .footer-text-container {
     font-size: 10px;
+    width: 98%;
+    justify-content: space-around;
   }
   .footer-bottom-text {
     font-size: 10px;
   }
   .footer-logo {
-    margin-top: 0px;
-    width: 300px;
-    height: 300px;
-  }
-}
-@media only screen and (max-width: 500px) {
-  .footer-logo {
     width: 200px;
     height: 200px;
   }
+  .footer-related-sites {
+    margin: 1rem auto;
+  }
   .footer-container {
-    padding: 0 0 0.2rem 0;
+    padding: 2rem 0 0.2rem 0;
   }
 }
 
