@@ -40,6 +40,10 @@ const HomeNavBar = (props) => {
     history.push("/videos/laity");
     hideDrawer();
   };
+  const yVideos = () => {
+    history.push("/videos/youth");
+    hideDrawer();
+  };
   const blogs = () => {
     history.push("/blogs");
     hideDrawer();
@@ -75,6 +79,9 @@ const HomeNavBar = (props) => {
         <Menu.Item key="5" onClick={lVideos} className="desktop-dropdown-items">
           SJ Laity
         </Menu.Item>
+        <Menu.Item key="6" onClick={yVideos} className="desktop-dropdown-items">
+          Youth Talk
+        </Menu.Item>
       </Menu.ItemGroup>
     </Menu>
   );
@@ -88,6 +95,7 @@ const HomeNavBar = (props) => {
           <span onClick={sVideos}> Ignatian Spiritualit </span>
           <span onClick={mVideos}> Ignatian Mission </span>
           <span onClick={lVideos}> SJ Laity </span>
+          <span onClick={yVideos}>Youth Talk </span>
         </div>
       );
     }

@@ -43,7 +43,9 @@ const ContributorsCard = (props) => {
           <div>
             <button
               onClick={() =>
-                history.push(`/contributors/validate/jesuits/${contri._id}`)
+                history.push(
+                  `/contributors/validate/${props.path}/${contri._id}`
+                )
               }
               className="contributors-card-link"
             >

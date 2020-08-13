@@ -69,28 +69,28 @@ const Footer = (props) => {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <p>> St. Xavier's College, Mumbai </p>
+                <p> St. Xavier's College, Mumbai </p>
               </a>
               <a
                 href="https://mpsm.in/"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <p>> MPSM </p>
+                <p> MPSM </p>
               </a>
               <a
                 href="http://crumbz.org/"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <p>> Fr. Gerard's Website</p>
+                <p> Fr. Gerard's Website (crumbz.org)</p>
               </a>
               <a
                 href="https://www.bombayjesuits.org/"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <p>> Bombay Jesuits Official Website</p>
+                <p> Bombay Jesuits Official Website</p>
               </a>
             </div>
           </div>

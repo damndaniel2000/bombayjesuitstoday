@@ -9,14 +9,14 @@
 
 .home-card {
   margin: 0 auto;
-  width: 70%;
+  width: 60%;
   display: flex;
   justify-content: space-around;
   align-items: center;
 }
 .home-card-reverse {
   margin: 0 auto;
-  width: 70%;
+  width: 60%;
   flex-direction: row-reverse;
   display: flex;
   justify-content: space-around;
@@ -51,8 +51,8 @@
   width: 50%;
 }
 .home-card-img {
-  width: 19rem;
-  height: 19rem;
+  width: 17rem;
+  height: 17rem;
   margin: 0 auto;
 }
 
