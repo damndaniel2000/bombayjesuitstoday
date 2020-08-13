@@ -117,29 +117,6 @@ const HomeCards = () => {
         <div className="home-card">
           <div className="home-card-text-container">
             <div>
-              <p className="home-card-text">Learn How To Be A Jesuit Youth</p>
-              <button
-                onClick={() => history.push("/videos/youth")}
-                className="home-card-button"
-              >
-                Youth Talk
-              </button>
-            </div>
-          </div>
-          <div className="home-card-img-container">
-            <img
-              src={window.location.origin + "/images/youth.png"}
-              alt="Freepik Icon"
-              className="home-card-img"
-            ></img>
-          </div>
-        </div>
-      </div>
-
-      <div className="home-card-container">
-        <div className="home-card-reverse">
-          <div className="home-card-text-container">
-            <div>
               <p className="home-card-text">Hear From Our SJ Laity</p>
               <button
                 onClick={() => history.push("/videos/laity")}

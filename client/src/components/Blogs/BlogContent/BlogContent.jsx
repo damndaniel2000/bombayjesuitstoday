@@ -25,9 +25,9 @@ function BlogContent(props) {
   return (
     <>
       <div className="blog-container">
-        <span className="blog-title">{blog.title}</span>
+        <div className="blog-title">{blog.title}</div>
         <br />
-        <span className="blog-author">By {blog.author}</span>
+        <div className="blog-author">By {blog.author}</div>
         <div
           className="blog-img"
           style={{
@@ -36,11 +36,11 @@ function BlogContent(props) {
         ></div>
         <p className="blog-content">{ReactHtmlParser(blog.blogContent)}</p>
       </div>
-      <div>
-        <ShareButtons
-          link={`http://bombayjesuitstoday.com/blogs/content/${id}`}
-        />
-      </div>
+
+      <ShareButtons
+        link={`http://bombayjesuitstoday.com/blogs/content/${id}`}
+      />
+
       <br />
       <br />
       <br />

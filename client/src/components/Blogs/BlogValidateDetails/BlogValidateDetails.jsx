@@ -94,7 +94,6 @@ const BlogDetails = (props) => {
             name="author"
             value={author}
           />
-          {author}
         </Form.Item>
 
         <Form.Item name="title">
