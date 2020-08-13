@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { withRouter } from "react-router";
+import { useParams } from "react-router-dom";
 import ReactHtmlParser from "react-html-parser";
 
 import ShareButtons from "./ShareButton";
 
 function BlogContent(props) {
   const [blog, setBlog] = useState([]);
+  const { id } = useParams();
 
   useEffect(() => {
     getBlog();
@@ -35,7 +37,9 @@ function BlogContent(props) {
         <p className="blog-content">{ReactHtmlParser(blog.blogContent)}</p>
       </div>
       <div>
-        <ShareButtons />
+        <ShareButtons
+          link={`http://bombayjesuitstoday.com/blogs/content/${id}`}
+        />
       </div>
       <br />
       <br />

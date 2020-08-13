@@ -11,11 +11,11 @@ const ShareButtons = (props) => {
     <>
       <div className="blogs-share-buttons-container">
         <div className="blogs-share-buttons">
-          <FacebookShareButton url={props.videoUrl}>
+          <FacebookShareButton url={props.link}>
             <FacebookIcon size={35} round />
           </FacebookShareButton>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          <WhatsappShareButton url={props.videoUrl}>
+          <WhatsappShareButton url={props.link}>
             <WhatsappIcon size={35} round />
           </WhatsappShareButton>
         </div>
