@@ -8,10 +8,7 @@ const BlogPage = () => {
   });
   return (
     <div style={{ minHeight: "150vh" }}>
-      <br />
-      <br />
-      <br />
-      <h1> The Blogs Are Currently Being Written... </h1>
+      <BlogCards />
     </div>
   );
 };

@@ -1,0 +1,65 @@
+.home-follow-container {
+  background-color: #b65e5e;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.home-follow-img {
+  width: 60%;
+  height: 700px;
+}
+
+.home-follow-button-container {
+  width: 20%;
+}
+
+.home-follow-button {
+  border: none;
+  background-color: rgb(199, 28, 28);
+  padding: 10px 30px;
+  border-radius: 10px;
+  font-size: 30px;
+  font-family: Rancho;
+  color: #fff;
+}
+
+@media only screen and (max-width: 1000px) {
+  .home-follow-button {
+    font-size: 25px;
+    padding: 8px 20px;
+  }
+  .home-follow-img {
+    width: 80%;
+    height: 600px;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .home-follow-img {
+    width: 98%;
+    height: 300px;
+  }
+  .home-follow-container {
+    flex-direction: column-reverse;
+  }
+  .home-follow-button-container {
+    width: 100%;
+  }
+  .home-follow-button {
+    margin-bottom: 30px;
+    font-size: 20px;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .home-follow-img {
+    height: 250px;
+  }
+  .home-follow-button {
+    margin-bottom: 30px;
+    font-size: 18px;
+    padding: 5px 20px;
+  }
+}
