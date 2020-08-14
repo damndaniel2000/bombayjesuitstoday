@@ -40,6 +40,10 @@ const NavBar = (props) => {
     history.push("/videos/laity");
     hideDrawer();
   };
+  const yVideos = () => {
+    history.push("/videos/youth");
+    hideDrawer();
+  };
 
   const followHim = () => {
     history.push("/follow-him");
@@ -79,6 +83,9 @@ const NavBar = (props) => {
         <Menu.Item key="5" onClick={lVideos} className="desktop-dropdown-items">
           SJ Laity
         </Menu.Item>
+        <Menu.Item key="6" onClick={yVideos} className="desktop-dropdown-items">
+          Youth
+        </Menu.Item>
       </Menu.ItemGroup>
     </Menu>
   );
@@ -89,9 +96,10 @@ const NavBar = (props) => {
         <div className="drawer-drop-content">
           <span onClick={() => setModal(!modal)}> Daily Mass </span>
           <span onClick={gVideos}> Gospel Insights </span>
-          <span onClick={sVideos}> Ignatian Spiritualit </span>
+          <span onClick={sVideos}> Ignatian Spirituality </span>
           <span onClick={mVideos}> Ignatian Mission </span>
           <span onClick={lVideos}> SJ Laity </span>
+          <span onClick={yVideos}> Youth </span>
         </div>
       );
     }
@@ -106,7 +114,7 @@ const NavBar = (props) => {
           <img src={logo} className="navbar-logo" alt="logo" />
         </div>
         <div className="main-nav-div">
-          <div className="mobile-nav">
+          <div className="nav-mobile-nav">
             <i className="fa fa-navicon" onClick={showDrawer} />
 
             <Drawer

@@ -51,7 +51,7 @@ export default function MassModal(props) {
         <hr />
         <a
           href={detectDevice(
-            "https://www.youtube.com/channel/UCqEOkFa9L8vF2kFj5_4Zgnw/videos"
+            "www.youtube.com/channel/UC_kLgjgChGQW0I83-_aelJg/videos"
           )}
           target="_blank"
           rel="noopener noreferrer"
@@ -61,7 +61,7 @@ export default function MassModal(props) {
         <hr />
         <a
           href={detectDevice(
-            "	www.youtube.com/channel/UCKvmSLoLls_Ub7GLyigiNIg/videos"
+            "www.youtube.com/channel/UCqEOkFa9L8vF2kFj5_4Zgnw/videos"
           )}
           target="_blank"
           rel="noopener noreferrer"
@@ -71,7 +71,7 @@ export default function MassModal(props) {
         <hr />
         <a
           href={detectDevice(
-            "	www.youtube.com/channel/UCKvmSLoLls_Ub7GLyigiNIg/videos"
+            "www.youtube.com/channel/UCKvmSLoLls_Ub7GLyigiNIg/videos"
           )}
           target="_blank"
           rel="noopener noreferrer"

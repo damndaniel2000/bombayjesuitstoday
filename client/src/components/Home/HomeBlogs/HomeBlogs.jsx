@@ -40,24 +40,24 @@ const HomeBlogs = () => {
           className="home-blogs-card"
           style={{
             backgroundImage:
-              "url(https://picjumbo.com/wp-content/uploads/stoney-bridge-between-cliffs-in-portugal-2210x1473.jpg)",
+              "url(https://picjumbo.com/wp-content/uploads/lavender-free-photo-2210x1473.jpg)",
             backgroundPosition: "bottom",
           }}
         >
           <div className="home-blogs-card-opacity">
-            <div className="home-blogs-card-title">Two-Step Healing</div>
+            <div className="home-blogs-card-title">🔥 Spiritual Spark 🔥</div>
             <div className="home-blogs-card-content">
-              “They came to Bethsaida, and some people brought a blind man and
-              begged Jesus to touch him. He took the blind man by the hand and
-              led him outside the village. When he had spit on the man’s eyes
-              and put his hands on him, Jesus asked, ‘Do you see anything?’ He
-              looked up and said, ‘I see people; they look like trees walking
-              around.’"
+              We all like to be in good terms with others; that is why we like
+              to speak sweet and pleasant words. But those who speak sweet and
+              pleasant words are not always our well-wishers. When we truly care
+              for others, we occasionally use bitter words to correct them. We
+              all know that very often truth is bitter and lie is sweet. That is
+              why medicine is often bitter.
             </div>
             <button
               className="home-blogs-card-button"
               onClick={() =>
-                history.push("/blogs/content/5f353ed6ed887f61acaa55c1")
+                history.push("/blogs/content/5f3634822a5d7d5dce7eec2b")
               }
             >
               Read

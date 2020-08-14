@@ -40,6 +40,10 @@ const HomeNavBar = (props) => {
     history.push("/videos/laity");
     hideDrawer();
   };
+  const yVideos = () => {
+    history.push("/videos/youth");
+    hideDrawer();
+  };
 
   const followHim = () => {
     history.push("/follow-him");
@@ -81,6 +85,9 @@ const HomeNavBar = (props) => {
         <Menu.Item key="5" onClick={lVideos} className="desktop-dropdown-items">
           SJ Laity
         </Menu.Item>
+        <Menu.Item key="6" onClick={yVideos} className="desktop-dropdown-items">
+          Youth
+        </Menu.Item>
       </Menu.ItemGroup>
     </Menu>
   );
@@ -91,9 +98,10 @@ const HomeNavBar = (props) => {
         <div className="drawer-drop-content">
           <span onClick={() => setModal(!modal)}> Daily Mass </span>
           <span onClick={gVideos}> Gospel Insights </span>
-          <span onClick={sVideos}> Ignatian Spiritualit </span>
+          <span onClick={sVideos}> Ignatian Spirituality </span>
           <span onClick={mVideos}> Ignatian Mission </span>
           <span onClick={lVideos}> SJ Laity </span>
+          <span onClick={yVideos}> Youth </span>
         </div>
       );
     }
@@ -104,7 +112,7 @@ const HomeNavBar = (props) => {
       {modal && <MassModal visible={modal} modalToggler={massModalToggle} />}
       <div id="home-nav-bar">
         <div>
-          <img src={logo} className="navbar-logo" alt="logo" />
+          <img src={logo} className="home-navbar-logo" alt="logo" />
         </div>
         <div className="main-nav-div">
           <div className="mobile-nav">

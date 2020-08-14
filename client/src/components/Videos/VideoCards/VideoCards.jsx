@@ -38,6 +38,15 @@ const VideoCards = (props) => {
     } else return link;
   };
 
+  const backtop = () => {
+    var scrollStep = -window.scrollY / (100 / 15),
+      scrollInterval = setInterval(function () {
+        if (window.scrollY != 0) {
+          window.scrollBy(0, scrollStep);
+        } else clearInterval(scrollInterval);
+      }, 15);
+  };
+
   const videoCards = videos.map((card) => {
     const timestamp = card._id.toString().substring(0, 8);
     const hours = new Date(
@@ -68,7 +77,6 @@ const VideoCards = (props) => {
           title={card._id}
           allowFullScreen
         ></iframe>
-
         <div className="video-card-sharebuttons">
           <ShareButton videoUrl={card.videoURL} />
           <a
@@ -79,6 +87,9 @@ const VideoCards = (props) => {
             Not Loading? Click here to view in Youtube{" "}
             <i className="fa fa-youtube-play" />
           </a>
+        </div>
+        <div className="backtop" onClick={backtop}>
+          Back To Top <i className="fa fa-arrow-up" />
         </div>
       </div>
     );

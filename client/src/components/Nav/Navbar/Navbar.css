@@ -14,9 +14,14 @@
   padding: 0.2rem 2rem;
 }
 
+.navbar-logo {
+  margin-top: 10px;
+  width: 120px;
+  height: 120px;
+}
 .main-nav-div {
   font-size: 16px;
-  width: 30%;
+  width: 40%;
   padding: 1rem;
 }
 
@@ -44,7 +49,7 @@
 }
 
 .desktop-nav span {
-  padding: 10px 20px;
+  padding: 10px 25px;
 }
 
 .desktop-dropdown-items {
@@ -71,7 +76,7 @@
   cursor: pointer;
 }
 
-.mobile-nav {
+.nav-mobile-nav {
   display: none;
 }
 
@@ -102,7 +107,7 @@
 }
 
 @media only screen and (max-width: 1600px) {
-  .mobile-nav {
+  .nav-mobile-nav {
     font-size: 30px;
     float: right;
     display: block;
@@ -125,7 +130,7 @@
     padding: 0.2rem 0.7rem;
     height: 4.5rem;
   }
-  .mobile-nav {
+  .nav-mobile-nav {
     font-size: 20px;
   }
   .drawer-nav-links {
@@ -136,5 +141,9 @@
   .drawer-nav-links span {
     padding: 1rem;
     height: 55px;
+  }
+  .navbar-logo {
+    width: 80px;
+    height: 80px;
   }
 }
