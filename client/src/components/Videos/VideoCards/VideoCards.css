@@ -2,6 +2,8 @@
   margin: 2rem auto;
   width: 55%;
   text-align: left;
+  -webkit-box-shadow: 0 10px 10px rgba(0, 0, 0, 0.12),
+    0 2px 10px rgba(0, 0, 0, 0.24);
   box-shadow: 0 10px 10px rgba(0, 0, 0, 0.12), 0 2px 10px rgba(0, 0, 0, 0.24);
   padding-top: 10px;
   padding-bottom: 2rem;
@@ -36,10 +38,19 @@
 }
 
 .video-card-sharebuttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
   height: 4rem;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
   justify-content: space-between;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
   flex-direction: column;
 }
 
@@ -48,14 +59,22 @@
 }
 
 .share-buttons-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   width: 9rem;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
   justify-content: space-between;
 }
 
 .share-buttons {
   width: 5rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
   justify-content: space-between;
 }
 
@@ -102,5 +121,14 @@
     width: 100px;
     height: 40px;
     padding: 5px;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .page-radio-buttons {
+    font-size: 12px;
+    width: 80px;
+    height: 30px;
+    padding: 0px;
   }
 }

@@ -50,7 +50,7 @@ export default function Cards() {
               <p className="blog-card-time">
                 <i className="fa fa-clock-o" /> {uploadTime}
               </p>
-              <button className="blog-card-button"> Read </button>
+              <button className="blog-card-button">Read</button>
             </div>
           </div>
         </div>

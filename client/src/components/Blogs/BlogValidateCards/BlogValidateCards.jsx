@@ -33,7 +33,7 @@ export default function Cards() {
 
     return (
       <div className="blog-card" key={blog._id}>
-        <img className="blog-card-img" src={blog.imgLink} alt="Blog Image" />
+        <img className="blog-card-img" src={blog.imgLink} alt="Blog" />
         <div className="blog-card-text">
           <p className="blog-card-title">{blog.title}</p>
 

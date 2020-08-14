@@ -2,8 +2,14 @@
   background-color: #152256;
   color: #fff;
   height: 6rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
   justify-content: space-between;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
   padding: 0.2rem 2rem;
 }
@@ -15,14 +21,25 @@
 }
 
 .main-nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
   justify-content: space-between;
 }
 
 .desktop-nav div {
   height: 5rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
   flex-direction: column;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
 }
 
@@ -38,8 +55,17 @@
   background-color: #152256;
   color: #fff;
 }
+.desktop-dropdown-items:active {
+  background-color: #152256;
+  color: #fff;
+}
 
 .desktop-nav span:hover {
+  background-color: rgb(255, 255, 255, 0.2);
+  border-radius: 50px;
+  cursor: pointer;
+}
+.desktop-nav span:active {
   background-color: rgb(255, 255, 255, 0.2);
   border-radius: 50px;
   cursor: pointer;
@@ -51,8 +77,15 @@
 
 .drawer-nav-links {
   margin-top: 2.5rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
   flex-direction: column;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
   font-size: 18px;
 }

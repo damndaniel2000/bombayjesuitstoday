@@ -107,7 +107,7 @@ const VideoCards = (props) => {
             SJ Laity
           </Radio.Button>
           <Radio.Button value="/videos/youth" className="page-radio-buttons">
-            Youth Talk
+            Youth
           </Radio.Button>
         </Radio.Group>
       </div>
