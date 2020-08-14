@@ -43,8 +43,8 @@
   justify-content: center;
 }
 
-.desktop-nav div span {
-  padding: 10px 30px;
+.desktop-nav span {
+  padding: 10px 20px;
 }
 
 .desktop-dropdown-items {

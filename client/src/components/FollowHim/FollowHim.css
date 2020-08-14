@@ -1,0 +1,153 @@
+.followhim-hero-img {
+  background-image: url("https://res.cloudinary.com/dij0e4dwn/image/upload/v1597302749/jj_crb31p.jpg");
+  height: 85vh;
+  background-size: cover;
+}
+
+.followhim-section {
+  margin: 3rem auto;
+}
+.followhim-section-text {
+  width: 45%;
+  margin: 0 auto;
+}
+
+.followhim-questions {
+  font-family: Saira Semi Condensed;
+  font-size: 60px;
+}
+.followhim-content {
+  font-family: Zilla Slab;
+  font-size: 30px;
+  text-align: justify;
+}
+
+.carousel-container {
+  width: 100%;
+  overflow-x: auto;
+  white-space: nowrap;
+  scrollbar-width: none;
+  margin: 5rem auto;
+}
+.carousel-container::-webkit-scrollbar {
+  display: none;
+}
+
+.carousel-img {
+  width: 1000px;
+  height: 600px;
+  display: inline-block;
+  vertical-align: top;
+  margin: 0 2rem;
+  border-radius: 10px;
+}
+.carousel-scroll {
+  font-size: 20px;
+  font-weight: bold;
+  font-family: Zilla Slab;
+  margin-top: -50px;
+}
+
+.contact-barcode {
+  width: 300px;
+  height: 300px;
+  display: block;
+  margin: 2rem auto;
+}
+
+.followhim-slogan {
+  font-size: 70px;
+  font-family: Staatliches;
+  color: #000;
+  margin: 7rem auto;
+  word-spacing: 1rem;
+}
+
+@media only screen and (max-width: 1000px) {
+  .followhim-section-text {
+    width: 80%;
+  }
+  .carousel-img {
+    width: 800px;
+    height: 500px;
+    margin-left: 1rem;
+    margin-right: 2rem;
+  }
+  .followhim-slogan {
+    font-size: 60px;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .followhim-hero-img {
+    height: 70vh;
+  }
+  .followhim-section-text {
+    width: 90%;
+  }
+  .followhim-questions {
+    font-size: 40px;
+  }
+  .followhim-content {
+    font-size: 23px;
+  }
+  .carousel-container {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+  }
+  .carousel-img {
+    width: 400px;
+    height: 280px;
+    margin-left: 0.5rem;
+    margin-right: 1rem;
+  }
+  .carousel-scroll {
+    font-size: 15px;
+    margin-top: 0px;
+  }
+  .contact-barcode {
+    width: 200px;
+    height: 200px;
+    margin: 2rem auto;
+  }
+  .followhim-slogan {
+    font-size: 30px;
+    margin: 4rem auto;
+    word-spacing: 0.2rem;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .followhim-hero-img {
+    height: 60vh;
+  }
+  .followhim-section-text {
+    width: 90%;
+  }
+  .followhim-questions {
+    font-size: 30px;
+  }
+  .followhim-content {
+    font-size: 18px;
+  }
+
+  .carousel-img {
+    width: 350px;
+    height: 260px;
+    margin-left: 0.5rem;
+    margin-right: 1rem;
+  }
+  .carousel-scroll {
+    font-size: 13px;
+    margin-top: 0px;
+  }
+  .contact-barcode {
+    width: 150px;
+    height: 150px;
+  }
+  .followhim-slogan {
+    font-size: 27px;
+    margin: 4rem auto;
+    word-spacing: 0.2rem;
+  }
+}

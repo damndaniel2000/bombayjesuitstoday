@@ -41,6 +41,10 @@ const NavBar = (props) => {
     hideDrawer();
   };
 
+  const followHim = () => {
+    history.push("/follow-him");
+    hideDrawer();
+  };
   const blogs = () => {
     history.push("/blogs");
     hideDrawer();
@@ -137,6 +141,9 @@ const NavBar = (props) => {
                 <span onClick={contributors}>
                   <i className="fa fa-users" /> Contributors
                 </span>
+                <span onClick={followHim}>
+                  <i className="fa fa-compass" /> Follow Him
+                </span>
               </div>
             </Drawer>
           </div>
@@ -149,7 +156,7 @@ const NavBar = (props) => {
               <Dropdown overlay={dropVideos}>
                 <div>
                   <span>
-                    Videos &nbsp;
+                    Videos&nbsp;&nbsp;
                     <i className="fa fa-angle-down" />
                   </span>
                 </div>
@@ -160,6 +167,9 @@ const NavBar = (props) => {
               </div>
               <div>
                 <span onClick={contributors}> Contributors </span>
+              </div>
+              <div>
+                <span onClick={followHim}>Follow Him</span>
               </div>
             </nav>
           </div>

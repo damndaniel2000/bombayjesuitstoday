@@ -10,6 +10,7 @@ import HomeNavBar from "./components/Nav/HomeNav/HomeNavBar";
 import Footer from "./components/Footer/Footer.jsx";
 
 import HomePage from "./pages/HomePage";
+import FollowHimPage from "./pages/FollowHimPage";
 
 import VideosGospelPage from "./pages/VideoPages/VideosGospelPage";
 import VideoSpiritualPage from "./pages/VideoPages/VideoSpiritualPage";
@@ -93,6 +94,8 @@ const App = () => {
             path="/"
             component={() => <HomePage count={count} />}
           />
+          <HomeNavBar exact path="/follow-him" component={FollowHimPage} />
+
           <NavBar exact path="/videos/gospel" component={VideosGospelPage} />
           <NavBar
             exact

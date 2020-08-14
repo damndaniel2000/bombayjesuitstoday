@@ -41,6 +41,11 @@ const HomeNavBar = (props) => {
     hideDrawer();
   };
 
+  const followHim = () => {
+    history.push("/follow-him");
+    hideDrawer();
+  };
+
   const blogs = () => {
     history.push("/blogs");
     hideDrawer();
@@ -137,6 +142,9 @@ const HomeNavBar = (props) => {
                 <span onClick={contributors}>
                   <i className="fa fa-users" /> Contributors
                 </span>
+                <span onClick={followHim}>
+                  <i className="fa fa-compass" /> Follow Him
+                </span>
               </div>
             </Drawer>
           </div>
@@ -160,6 +168,9 @@ const HomeNavBar = (props) => {
               </div>
               <div>
                 <span onClick={contributors}> Contributors </span>
+              </div>
+              <div>
+                <span onClick={followHim}>Follow Him</span>
               </div>
             </nav>
           </div>

@@ -28,9 +28,7 @@ export default function Cards() {
       parseInt(timestamp, 16) * 1000
     ).toLocaleString("en-US", { hour: "numeric", minute: "numeric" });
     const day = new Date(parseInt(timestamp, 16) * 1000).getDate().toString();
-    const month = new Date(parseInt(timestamp, 16) * 1000)
-      .getMonth()
-      .toString();
+    const month = new Date(parseInt(timestamp, 16) * 1000).getMonth() + 1;
     const uploadTime = `${day}/${month}, ${hours} `;
 
     if (blog.validated) {
