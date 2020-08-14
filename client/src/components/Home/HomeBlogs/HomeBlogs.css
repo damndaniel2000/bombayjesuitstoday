@@ -70,6 +70,7 @@
   -o-transition: all 0.3s ease 0s;
   transition: all 0.3s ease 0s;
   letter-spacing: 2px;
+  outline: none;
 }
 .home-blogs-card-button:hover {
   background-color: #fff;
@@ -98,6 +99,7 @@
   margin-top: 3rem;
   cursor: pointer;
   border-radius: 10px;
+  outline: none;
 }
 .home-blogs-button:hover {
   background-color: #001540;

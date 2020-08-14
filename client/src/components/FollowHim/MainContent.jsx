@@ -86,8 +86,8 @@ const FollowMe = () => {
         </div>
         <ImgCarousel
           images={[
-            "https://res.cloudinary.com/dij0e4dwn/image/upload/v1597405285/Follow%20Him/35_-_9_July_yrv92t.jpg",
             "https://res.cloudinary.com/dij0e4dwn/image/upload/v1597405285/Follow%20Him/41_-_1_July_uuanth.jpg",
+            "https://res.cloudinary.com/dij0e4dwn/image/upload/v1597405285/Follow%20Him/35_-_9_July_yrv92t.jpg",
             "https://res.cloudinary.com/dij0e4dwn/image/upload/v1597405284/Follow%20Him/17_16_July_ph9vox.jpg",
             "https://res.cloudinary.com/dij0e4dwn/image/upload/v1597405284/Follow%20Him/Bombay_Jesuits_yjbc84.jpg",
           ]}

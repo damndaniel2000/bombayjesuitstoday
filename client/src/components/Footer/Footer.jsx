@@ -65,13 +65,6 @@ const Footer = (props) => {
             <div className="footer-related-sites">
               <h3> Related Sites </h3>
               <a
-                href="http://xaviers.edu/main/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <p> St. Xavier's College, Mumbai </p>
-              </a>
-              <a
                 href="https://mpsm.in/"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -91,6 +84,55 @@ const Footer = (props) => {
                 rel="noopener noreferrer"
               >
                 <p> Bombay Jesuits Official Website</p>
+              </a>
+              <a
+                href="https://stmarysicse.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <p>St. Mary's School (ICSE), Mazagaon</p>
+              </a>
+              <a
+                href="https://stmarysssc.org"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <p>St. Mary's School (SSC), Mazagaon</p>
+              </a>
+              <a
+                href="https://holyfamilyandheri.org/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <p>Holy Family School, Andheri</p>
+              </a>
+              <a
+                href="http://stanislausbandra.in/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <p>St. Stanislaus School, Bandra</p>
+              </a>
+              <a
+                href="http://xaviers.edu/main/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <p> St. Xavier's College, Churchgate </p>
+              </a>
+              <a
+                href="https://stxaviersfort.org/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <p> St. Xavier's School, Fort </p>
+              </a>
+              <a
+                href="https://stxaviersfort.org/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <p> St. Xavier's Tech Institute, Mahim </p>
               </a>
             </div>
           </div>

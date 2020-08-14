@@ -41,11 +41,41 @@
   margin: 0 2rem;
   border-radius: 10px;
 }
+.carousel-scroll-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  width: 80%;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  margin: 0 auto;
+}
 .carousel-scroll {
   font-size: 20px;
   font-weight: bold;
   font-family: Zilla Slab;
   margin-top: -50px;
+}
+.carousel-arrow {
+  width: 50px;
+  height: 50px;
+  margin-top: -30px;
+  cursor: pointer;
+
+  -webkit-transition: all 0.2s ease 0s;
+
+  -o-transition: all 0.2s ease 0s;
+
+  transition: all 0.2s ease 0s;
+}
+.carousel-arrow:hover {
+  -webkit-transform: translateY(-5px);
+  -ms-transform: translateY(-5px);
+  transform: translateY(-5px);
 }
 
 .contact-barcode {
@@ -85,6 +115,13 @@
   .ignatian-march {
     width: 80%;
     height: 500px;
+  }
+  .carousel-scroll-container {
+    display: block;
+    width: 100%;
+  }
+  .carousel-arrow {
+    display: none;
   }
 }
 
