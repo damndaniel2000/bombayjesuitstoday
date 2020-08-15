@@ -19,6 +19,7 @@ const Follow = () => {
       <img
         className="home-follow-img"
         src={window.location.origin + "/images/follow.png"}
+        alt="follow him"
       />
     </div>
   );

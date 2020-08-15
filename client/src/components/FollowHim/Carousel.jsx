@@ -1,13 +1,11 @@
 import React, { useRef } from "react";
-import { Carousel } from "antd";
-import HorizontalScroll from "react-scroll-horizontal";
 
 const FollowCarousel = (props) => {
   const images = props.images;
   const container = useRef();
 
   const carouselImages = images.map((img) => {
-    return <img src={img} className="carousel-img" key={img} />;
+    return <img src={img} className="carousel-img" alt="carousel" key={img} />;
   });
 
   const leftScroll = () => {

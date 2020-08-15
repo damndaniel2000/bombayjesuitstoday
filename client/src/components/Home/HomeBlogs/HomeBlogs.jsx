@@ -40,24 +40,31 @@ const HomeBlogs = () => {
           className="home-blogs-card"
           style={{
             backgroundImage:
-              "url(https://picjumbo.com/wp-content/uploads/lavender-free-photo-2210x1473.jpg)",
-            backgroundPosition: "bottom",
+              "url(https://cdn.pixabay.com/photo/2018/08/15/07/19/indian-flag-3607410_1280.jpg)",
+            backgroundPosition: "center left",
           }}
         >
           <div className="home-blogs-card-opacity">
-            <div className="home-blogs-card-title">🔥 Spiritual Spark 🔥</div>
+            <div className="home-blogs-card-title">
+              <span role="img" aria-label="fire">
+                🔥
+              </span>{" "}
+              Spiritual Spark{" "}
+              <span role="img" aria-label="fire">
+                🔥
+              </span>
+            </div>
             <div className="home-blogs-card-content">
-              We all like to be in good terms with others; that is why we like
-              to speak sweet and pleasant words. But those who speak sweet and
-              pleasant words are not always our well-wishers. When we truly care
-              for others, we occasionally use bitter words to correct them. We
-              all know that very often truth is bitter and lie is sweet. That is
-              why medicine is often bitter.
+              Today, on the 74th Independence Day of our beloved Mother India,
+              the picture of the dragon and the woman from the book of
+              Revelation makes a lot of sense. The seven-headed dragon of
+              communalism, corruption, poverty, inequality, environmental
+              degradation, health crisis, and unemployment...
             </div>
             <button
               className="home-blogs-card-button"
               onClick={() =>
-                history.push("/blogs/content/5f3634822a5d7d5dce7eec2b")
+                history.push("/blogs/content/5f376008041e0629eef814a2")
               }
             >
               Read

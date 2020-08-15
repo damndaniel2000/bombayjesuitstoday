@@ -1,8 +1,15 @@
-.mass-modal a {
+.mass {
   color: #000;
 }
-.mass-modal a:hover {
+.mass p {
+  color: #000;
+  font-weight: bold;
+}
+.mass p:hover {
   color: rgb(52, 151, 232);
+}
+.mass span {
+  color: #000;
 }
 .mass-modal hr {
   color: rgb(198, 198, 198);

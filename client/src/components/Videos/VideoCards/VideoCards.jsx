@@ -41,7 +41,7 @@ const VideoCards = (props) => {
   const backtop = () => {
     var scrollStep = -window.scrollY / (100 / 15),
       scrollInterval = setInterval(function () {
-        if (window.scrollY != 0) {
+        if (window.scrollY !== 0) {
           window.scrollBy(0, scrollStep);
         } else clearInterval(scrollInterval);
       }, 15);

@@ -19,7 +19,7 @@
 }
 
 .video-post-form-button {
-  margin-top: 1rem;
+  margin: 2rem 0;
   background-color: #1a137c;
   color: #fff;
   padding: 0.5rem 1rem;
@@ -40,6 +40,9 @@
 
 .video-post-form-button:hover {
   font-weight: 1000;
+  -webkit-transform: translateY(-5px);
+  -ms-transform: translateY(-5px);
+  transform: translateY(-5px);
 }
 
 @media only screen and (max-width: 1000px) {

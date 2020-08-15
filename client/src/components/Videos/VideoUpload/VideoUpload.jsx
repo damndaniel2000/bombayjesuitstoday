@@ -159,7 +159,7 @@ const VideoPost = () => {
             Upload
           </button>
         </Form>
-        <br />
+
         <h3>
           After uploading your videos, it may take a while for them to appear on
           the website.

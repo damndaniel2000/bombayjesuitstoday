@@ -102,6 +102,7 @@ const FollowMe = () => {
             <img
               className="contact-barcode"
               src={window.location.origin + "/images/contact-barcode.png"}
+              alt="Contact"
             />
             Scan the above barcode to save the contact directly to your phone
             <br />
