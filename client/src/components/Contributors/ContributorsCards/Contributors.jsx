@@ -79,6 +79,12 @@ const ContributorsCard = (props) => {
         >
           Laity
         </Radio.Button>
+        <Radio.Button
+          className="page-radio-buttons"
+          value="/contributors/blogs"
+        >
+          Blogs
+        </Radio.Button>
       </Radio.Group>
       {promiseInProgress && (
         <div className="spinner">

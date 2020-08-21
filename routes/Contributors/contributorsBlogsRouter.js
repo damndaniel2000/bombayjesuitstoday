@@ -2,7 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const auth = require("../../middleware/auth");
 
-const Contributor = require("../../models/Contributors/ContributorsJesuits");
+const Contributor = require("../../models/Contributors/ContributorsBlogs");
 
 const contributorRouter = express.Router();
 
@@ -58,7 +58,7 @@ contributorRouter
       )
       .catch((err) => next(err));
   })
-  .put(auth, (req, res, next) => {
+  .put((req, res, next) => {
     Contributor.findByIdAndUpdate(
       req.params.contributorID,
       { $set: req.body },

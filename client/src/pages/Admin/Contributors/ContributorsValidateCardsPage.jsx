@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import UserContext from "../../../context/UserContext";
 
-import ContributorsValidate from "../../../components/Contributors/ContributorsValidateCards";
+import ContributorsValidate from "../../../components/Contributors/ContributorsValidate/ContributorsValidateCards";
 import NotFoundPage from "../../NotFoundPage";
 
 const ContributorsValidateCards = () => {
@@ -17,6 +17,8 @@ const ContributorsValidateCards = () => {
           <ContributorsValidate path="jesuits" />
           <p className="contributors-page-title">Laity Contributors</p>
           <ContributorsValidate path="laity" />
+          <p className="contributors-page-title">Blog Contributors</p>
+          <ContributorsValidate path="blogs" />
         </>
       )}
     </div>

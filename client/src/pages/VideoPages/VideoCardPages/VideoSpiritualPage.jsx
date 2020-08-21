@@ -1,10 +1,10 @@
 import React from "react";
-import VideoYouthCards from "../../components/Videos/VideoCards/VideoCards";
+import VideoSpiritualCards from "../../../components/Videos/VideoCards/VideoCards";
 
 const VideoPage = () => {
   return (
     <div style={{ minHeight: "150vh" }}>
-      <VideoYouthCards path="youth" />
+      <VideoSpiritualCards path="spiritual" />
     </div>
   );
 };

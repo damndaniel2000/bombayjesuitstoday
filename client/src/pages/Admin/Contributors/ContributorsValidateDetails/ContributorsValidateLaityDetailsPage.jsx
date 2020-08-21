@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
-import UserContext from "../../../context/UserContext";
+import UserContext from "../../../../context/UserContext";
 
-import ContributorsValidateLaityDetails from "../../../components/Contributors/ContributorsValidateDetails";
-import NotFoundPage from "../../NotFoundPage";
+import ContributorsValidateLaityDetails from "../../../../components/Contributors/ContributorsValidate/ContributorsValidateDetails";
+import NotFoundPage from "../../../NotFoundPage";
 
 const ContributorsValidate = () => {
   const { userData } = useContext(UserContext);

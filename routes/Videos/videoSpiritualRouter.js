@@ -34,18 +34,48 @@ videoRouter
       .catch((err) => next(err));
   });
 
-videoRouter.route("/:videoID").delete(auth, (req, res, next) => {
-  Video.findById({ _id: req.params.videoID })
-    .then((video) => video.remove())
-    .then(
-      (videos) => {
-        res.statusCode = 200;
-        res.setHeader("Content-Type", "application/json");
-        res.json(videos);
-      },
-      (err) => next(err)
+videoRouter
+  .route("/:videoID")
+  .get((req, res, next) => {
+    Video.findById(req.params.videoID)
+      .then(
+        (video) => {
+          res.statusCode = 200;
+          res.setHeader("Content-Type", "application/json");
+          res.json(video);
+        },
+        (err) => next(err)
+      )
+      .catch((err) => next(err));
+  })
+  .put(auth, (req, res, next) => {
+    Video.findByIdAndUpdate(
+      req.params.videoID,
+      { $set: req.body },
+      { new: true }
     )
-    .catch((err) => next(err));
-});
+      .then(
+        (video) => {
+          res.statusCode = 200;
+          res.setHeader("Content-Type", "application/json");
+          res.json(video);
+        },
+        (err) => next(err)
+      )
+      .catch((err) => next(err));
+  })
+  .delete(auth, (req, res, next) => {
+    Video.findById(req.params.videoID)
+      .then((video) => video.remove())
+      .then(
+        (videos) => {
+          res.statusCode = 200;
+          res.setHeader("Content-Type", "application/json");
+          res.json(videos);
+        },
+        (err) => next(err)
+      )
+      .catch((err) => next(err));
+  });
 
 module.exports = videoRouter;

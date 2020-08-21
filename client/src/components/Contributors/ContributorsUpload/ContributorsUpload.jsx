@@ -190,10 +190,14 @@ const VideoPost = () => {
           />
         </Form.Item>
 
-        <Form.Item name="choice" label="Are you a Jesuit or a laity?">
+        <Form.Item
+          name="blogChoice"
+          label="Are you a Jesuit, laity or do you write blogs?"
+        >
           <Radio.Group onChange={handleRadios}>
             <Radio.Button value="jesuits"> Jesuit </Radio.Button>
             <Radio.Button value="laity"> Laity </Radio.Button>
+            <Radio.Button value="blogs"> Blogs </Radio.Button>
           </Radio.Group>
         </Form.Item>
 

@@ -12,11 +12,11 @@ import Footer from "./components/Footer/Footer.jsx";
 import HomePage from "./pages/HomePage";
 import FollowHimPage from "./pages/FollowHimPage";
 
-import VideosGospelPage from "./pages/VideoPages/VideosGospelPage";
-import VideoSpiritualPage from "./pages/VideoPages/VideoSpiritualPage";
-import VideoMissionPage from "./pages/VideoPages/VideoMissionPage";
-import VideoLaityPage from "./pages/VideoPages/VideoLaityPage";
-import VideoYouthPage from "./pages/VideoPages/VideoYouthPage";
+import VideosGospelPage from "./pages/VideoPages/VideoCardPages/VideosGospelPage";
+import VideoSpiritualPage from "./pages/VideoPages/VideoCardPages/VideoSpiritualPage";
+import VideoMissionPage from "./pages/VideoPages/VideoCardPages/VideoMissionPage";
+import VideoLaityPage from "./pages/VideoPages/VideoCardPages/VideoLaityPage";
+import VideoYouthPage from "./pages/VideoPages/VideoCardPages/VideoYouthPage";
 import VideoUpload from "./pages/VideoPages/VideoUploadPage";
 
 import BlogCardsPage from "./pages/BlogPages/BlogCardsPage";
@@ -24,22 +24,24 @@ import BlogContentPage from "./pages/BlogPages/BlogContentPage";
 import BlogUploadPage from "./pages/BlogPages/BlogUploadPage";
 import BlogExamplePage from "./pages/BlogPages/BlogExamplePage";
 
-import ContributorsJesuitsPage from "./pages/ContributorPages/ContributorsJesuitsPage";
-import ContributorsLaityPage from "./pages/ContributorPages/ContributorsLaityPage";
+import ContributorsJesuitsPage from "./pages/ContributorPages/ContributorCardPages/ContributorsJesuitsPage";
+import ContributorsLaityPage from "./pages/ContributorPages/ContributorCardPages/ContributorsLaityPage";
+import ContributorsBlogsPage from "./pages/ContributorPages/ContributorCardPages/ContributorsBlogsPage";
 import ContributorsUploadPage from "./pages/ContributorPages/ContributosUploadPage";
 
 import LoginPage from "./pages/Admin/LoginPage";
 
 import AdminVideoPost from "./pages/Admin/Videos/VideoPostPage";
-import AdminVideoPostDelete from "./pages/Admin/Videos/VideoPostDeletePage";
 import AdminVideoUploadGet from "./pages/Admin/Videos/VideoUploadGet";
+import AdminJesuitsVideoValidate from "./pages/Admin/Videos/VideoValidateCards/ValidateJesuitCards";
 
 import AdminBlogValidateCards from "./pages/Admin/Blogs/BlogsValidateCardsPage";
 import AdminBlogValidateDetails from "./pages/Admin/Blogs/BlogsValidateDetailsPage";
 
 import AdminContributorsValidateCardsPage from "./pages/Admin/Contributors/ContributorsValidateCardsPage";
-import AdminContributorsValidateJesuitDetailsPage from "./pages/Admin/Contributors/ContributorsValidateJesuitDetailsPage";
-import AdminContributorsValidateLaityDetailsPage from "./pages/Admin/Contributors/ContributorsValidateLaityDetailsPage";
+import AdminContributorsValidateJesuitDetailsPage from "./pages/Admin/Contributors/ContributorsValidateDetails/ContributorsValidateJesuitDetailsPage";
+import AdminContributorsValidateLaityDetailsPage from "./pages/Admin/Contributors/ContributorsValidateDetails/ContributorsValidateLaityDetailsPage";
+import AdminContributorsValidateBlogsDetailsPage from "./pages/Admin/Contributors/ContributorsValidateDetails/ContributorsValidateBlogDetailsPage";
 
 import NotFound from "./pages/NotFoundPage";
 
@@ -119,6 +121,11 @@ const App = () => {
           />
           <NavBar
             exact
+            path="/contributors/blogs"
+            component={ContributorsBlogsPage}
+          />
+          <NavBar
+            exact
             path="/contributors/upload-details"
             component={ContributorsUploadPage}
           />
@@ -132,13 +139,13 @@ const App = () => {
           <NavBar exact path="/videos/post" component={AdminVideoPost} />
           <NavBar
             exact
-            path="/videos/post/delete"
-            component={AdminVideoPostDelete}
+            path="/videos/uploads"
+            component={AdminVideoUploadGet}
           />
           <NavBar
             exact
-            path="/videos/uploads"
-            component={AdminVideoUploadGet}
+            path="/videos/validate/jesuits"
+            component={AdminJesuitsVideoValidate}
           />
 
           <NavBar
@@ -166,6 +173,11 @@ const App = () => {
             exact
             path="/contributors/validate/laity/:id"
             component={AdminContributorsValidateLaityDetailsPage}
+          />
+          <NavBar
+            exact
+            path="/contributors/validate/blogs/:id"
+            component={AdminContributorsValidateBlogsDetailsPage}
           />
 
           <NavBar component={NotFound} />

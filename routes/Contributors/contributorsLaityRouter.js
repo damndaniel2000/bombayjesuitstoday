@@ -47,7 +47,7 @@ contributorRouter
   })
   .delete(auth, (req, res, next) => {
     Contributor.findById({ _id: req.params.contributorID })
-      .then((video) => video.remove())
+      .then((contri) => contri.remove())
       .then(
         (contributors) => {
           res.statusCode = 200;
@@ -64,10 +64,10 @@ contributorRouter
       { $set: req.body },
       { new: true }
     )
-      .then((video) => {
+      .then((contri) => {
         res.statusCode = 200;
         res.setHeader("Content-Type", "application/json");
-        res.json(video);
+        res.json(contri);
       })
       .catch((err) => next(err));
   });
