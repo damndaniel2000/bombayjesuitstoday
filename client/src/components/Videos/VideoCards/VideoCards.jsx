@@ -120,6 +120,9 @@ const VideoCards = (props) => {
           <Radio.Button value="/videos/youth" className="page-radio-buttons">
             Youth
           </Radio.Button>
+          <Radio.Button value="/videos/follow" className="page-radio-buttons">
+            Follow Me
+          </Radio.Button>
         </Radio.Group>
       </div>
       <br />

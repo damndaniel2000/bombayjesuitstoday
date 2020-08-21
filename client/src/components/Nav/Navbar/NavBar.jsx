@@ -44,6 +44,10 @@ const NavBar = (props) => {
     history.push("/videos/youth");
     hideDrawer();
   };
+  const fVideos = () => {
+    history.push("/videos/follow");
+    hideDrawer();
+  };
 
   const followHim = () => {
     history.push("/follow-him");
@@ -86,6 +90,9 @@ const NavBar = (props) => {
         <Menu.Item key="6" onClick={yVideos} className="desktop-dropdown-items">
           Youth
         </Menu.Item>
+        <Menu.Item key="7" onClick={fVideos} className="desktop-dropdown-items">
+          Follow Me
+        </Menu.Item>
       </Menu.ItemGroup>
     </Menu>
   );
@@ -100,6 +107,7 @@ const NavBar = (props) => {
           <span onClick={mVideos}> Ignatian Mission </span>
           <span onClick={lVideos}> SJ Laity </span>
           <span onClick={yVideos}> Youth </span>
+          <span onClick={fVideos}> Follow Me </span>
         </div>
       );
     }

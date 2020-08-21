@@ -14,6 +14,7 @@ const videoMissionRouter = require("./routes/Videos/videoMissionRouter");
 const videoLaityRouter = require("./routes/Videos/videoLaityRouter");
 const videoGospelRouter = require("./routes/Videos/videoGospelRouter");
 const videoYouthRouter = require("./routes/Videos/videoYouthRouter");
+const videoFollowRouter = require("./routes/Videos/videoFollowRouter");
 const videoUploadRouter = require("./routes/Videos/videoUploadRouter");
 
 const contributorJesuitRouter = require("./routes/Contributors/contributorsJesuitsRouter");
@@ -39,6 +40,7 @@ app.use("/api/videos-mission", videoMissionRouter);
 app.use("/api/videos-laity", videoLaityRouter);
 app.use("/api/videos-gospel", videoGospelRouter);
 app.use("/api/videos-youth", videoYouthRouter);
+app.use("/api/videos-follow", videoFollowRouter);
 app.use("/api/videos-upload", videoUploadRouter);
 
 app.use("/api/contributors-jesuits", contributorJesuitRouter);
