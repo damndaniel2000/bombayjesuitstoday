@@ -1,10 +1,10 @@
 import React, { useContext } from "react";
 import UserContext from "../../../../context/UserContext";
 
-import JesuitValidateCards from "../../../../components/Videos/VideoValidation/ValidationCards/ValidationCards";
+import SpiritualValidateDetails from "../../../../components/Videos/VideoValidation/ValidateDetails/ValidateDetails";
 import NotFoundPage from "../../../NotFoundPage";
 
-const BlogsValidate = () => {
+const ValidateVideoDetails = () => {
   const { userData } = useContext(UserContext);
 
   return (
@@ -13,11 +13,11 @@ const BlogsValidate = () => {
         <NotFoundPage />
       ) : (
         <>
-          <JesuitValidateCards />
+          <SpiritualValidateDetails path="spiritual" />
         </>
       )}
     </div>
   );
 };
 
-export default BlogsValidate;
+export default ValidateVideoDetails;

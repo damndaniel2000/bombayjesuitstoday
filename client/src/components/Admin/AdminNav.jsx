@@ -22,9 +22,9 @@ const AdminNav = () => {
       <Button
         type="primary"
         style={{ backgroundColor: "#1a137c", border: "none" }}
-        onClick={() => history.push("/videos/post/delete")}
+        onClick={() => history.push("/videos/validate/spiritual")}
       >
-        Delete Posted Videos
+        Validate Videos
       </Button>
       <br /> <br /> <br />
       <Button

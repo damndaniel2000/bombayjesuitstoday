@@ -8,7 +8,7 @@ const VideoValidationCards = (props) => {
   const [videos, setVideos] = useState([]);
   const { promiseInProgress } = usePromiseTracker();
   const history = useHistory();
-  const radio = "/videos/" + props.path;
+  const radio = "/videos/validate" + props.path;
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -50,6 +50,13 @@ const VideoValidationCards = (props) => {
             <i className="fa fa-clock-o" /> {uploadTime}
           </p>
         </div>
+        <button
+          onClick={() =>
+            history.push(`/videos/validate/${props.path}/` + card._id)
+          }
+        >
+          Edit
+        </button>
       </div>
     );
   });
@@ -60,7 +67,10 @@ const VideoValidationCards = (props) => {
       <br />
       <div>
         <Radio.Group onChange={handleRadios} defaultValue={radio}>
-          <Radio.Button value="/videos/gospel" className="page-radio-buttons">
+          <Radio.Button
+            value="/videos/validate/gospel"
+            className="page-radio-buttons"
+          >
             Gospel
           </Radio.Button>
           <Radio.Button

@@ -15,6 +15,7 @@ const Details = (props) => {
   const [render, setRender] = useState(true);
 
   const history = useHistory();
+  const token = localStorage.getItem("auth-token");
 
   useEffect(() => {
     axios
@@ -40,13 +41,17 @@ const Details = (props) => {
 
   const handleSubmit = () => {
     axios
-      .put(`/api/contributors-${props.path}/` + props.match.params.id, {
-        name: name,
-        basedLocation: location,
-        imgURL: imgLink,
-        quote: quote,
-        validated: validate,
-      })
+      .put(
+        `/api/contributors-${props.path}/` + props.match.params.id,
+        {
+          name: name,
+          basedLocation: location,
+          imgURL: imgLink,
+          quote: quote,
+          validated: validate,
+        },
+        { headers: { "x-auth-token": token } }
+      )
       .then(() => successMessage())
       .catch(() => errorMessage());
   };
@@ -111,7 +116,6 @@ const Details = (props) => {
   };
 
   const handleDelete = (id) => {
-    const token = localStorage.getItem("auth-token");
     const confirm = prompt("Types YES in the input below");
     if (confirm === "YES") {
       axios
@@ -175,7 +179,7 @@ const Details = (props) => {
             onChange={(e) => setQuote(e.target.value)}
             value={quote}
             name="quote"
-            placeholder="Caption..."
+            placeholder="Quote..."
             rows={3}
             required
           />

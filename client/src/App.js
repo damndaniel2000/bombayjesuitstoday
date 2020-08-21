@@ -34,7 +34,16 @@ import LoginPage from "./pages/Admin/LoginPage";
 
 import AdminVideoPost from "./pages/Admin/Videos/VideoPostPage";
 import AdminVideoUploadGet from "./pages/Admin/Videos/VideoUploadGet";
-import AdminJesuitsVideoValidate from "./pages/Admin/Videos/VideoValidateCards/ValidateJesuitCards";
+import AdminSpiritualVideoValidateCards from "./pages/Admin/Videos/VideoValidateCards/ValidateSpiritualCards";
+import AdminGospelVideoValidateCards from "./pages/Admin/Videos/VideoValidateCards/ValidateGospelCards";
+import AdminLaityVideoValidateCards from "./pages/Admin/Videos/VideoValidateCards/ValidateLaityCards";
+import AdminMissionVideoValidateCards from "./pages/Admin/Videos/VideoValidateCards/ValidateMissionCards";
+import AdminYouthVideoValidateCards from "./pages/Admin/Videos/VideoValidateCards/ValidateYouthCards";
+import AdminSpiritualVideoValidateDetails from "./pages/Admin/Videos/VideoValidateDetails/ValidateSpiritualDetails";
+import AdminMissionVideoValidateDetails from "./pages/Admin/Videos/VideoValidateDetails/ValidateMissionDetails";
+import AdminGospelVideoValidateDetails from "./pages/Admin/Videos/VideoValidateDetails/ValidateGospelDetails";
+import AdminLaityVideoValidateDetails from "./pages/Admin/Videos/VideoValidateDetails/ValidateLaityDetails";
+import AdminYouthVideoValidateDetails from "./pages/Admin/Videos/VideoValidateDetails/ValidateYouthDetails";
 
 import AdminBlogValidateCards from "./pages/Admin/Blogs/BlogsValidateCardsPage";
 import AdminBlogValidateDetails from "./pages/Admin/Blogs/BlogsValidateDetailsPage";
@@ -98,7 +107,6 @@ const App = () => {
             component={() => <HomePage count={count} />}
           />
           <HomeNavBar exact path="/follow-him" component={FollowHimPage} />
-
           <NavBar exact path="/videos/gospel" component={VideosGospelPage} />
           <NavBar
             exact
@@ -110,7 +118,6 @@ const App = () => {
           <NavBar exact path="/videos/youth" component={VideoYouthPage} />
           <NavBar exact path="/videos/follow" component={VideoFollowPage} />
           <NavBar exact path="/videos/upload" component={VideoUpload} />
-
           <NavBar
             exact
             path="/contributors/jesuits"
@@ -131,12 +138,10 @@ const App = () => {
             path="/contributors/upload-details"
             component={ContributorsUploadPage}
           />
-
           <NavBar exact path="/blogs" component={BlogCardsPage} />
           <NavBar exact path="/blogs/content/:id" component={BlogContentPage} />
           <NavBar exact path="/blogs/upload" component={BlogUploadPage} />
           <NavBar exact path="/blogs/example" component={BlogExamplePage} />
-
           <NavBar exact path="/login" component={LoginPage} />
           <NavBar exact path="/videos/post" component={AdminVideoPost} />
           <NavBar
@@ -146,10 +151,54 @@ const App = () => {
           />
           <NavBar
             exact
-            path="/videos/validate/jesuits"
-            component={AdminJesuitsVideoValidate}
+            path="/videos/validate/spiritual"
+            component={AdminSpiritualVideoValidateCards}
           />
-
+          <NavBar
+            exact
+            path="/videos/validate/gospel"
+            component={AdminGospelVideoValidateCards}
+          />{" "}
+          <NavBar
+            exact
+            path="/videos/validate/mission"
+            component={AdminMissionVideoValidateCards}
+          />
+          <NavBar
+            exact
+            path="/videos/validate/laity"
+            component={AdminLaityVideoValidateCards}
+          />
+          <NavBar
+            exact
+            path="/videos/validate/youth"
+            component={AdminYouthVideoValidateCards}
+          />
+          <NavBar
+            exact
+            path="/videos/validate/spiritual/:id"
+            component={AdminSpiritualVideoValidateDetails}
+          />
+          <NavBar
+            exact
+            path="/videos/validate/gospel/:id"
+            component={AdminGospelVideoValidateDetails}
+          />
+          <NavBar
+            exact
+            path="/videos/validate/mission/:id"
+            component={AdminMissionVideoValidateDetails}
+          />
+          <NavBar
+            exact
+            path="/videos/validate/laity/:id"
+            component={AdminLaityVideoValidateDetails}
+          />
+          <NavBar
+            exact
+            path="/videos/validate/youth/:id"
+            component={AdminYouthVideoValidateDetails}
+          />
           <NavBar
             exact
             path="/blogs/validate"
@@ -160,7 +209,6 @@ const App = () => {
             path="/blogs/validate/:id"
             component={AdminBlogValidateDetails}
           />
-
           <NavBar
             exact
             path="/contributors/validate"
@@ -181,7 +229,6 @@ const App = () => {
             path="/contributors/validate/blogs/:id"
             component={AdminContributorsValidateBlogsDetailsPage}
           />
-
           <NavBar component={NotFound} />
         </Switch>
         <Footer />
