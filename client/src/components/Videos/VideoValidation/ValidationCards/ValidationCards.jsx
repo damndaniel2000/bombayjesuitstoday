@@ -4,11 +4,13 @@ import { trackPromise, usePromiseTracker } from "react-promise-tracker";
 import { Spin, Radio } from "antd";
 import { useHistory } from "react-router-dom";
 
+import "./VideoValidateCards.css";
+
 const VideoValidationCards = (props) => {
   const [videos, setVideos] = useState([]);
   const { promiseInProgress } = usePromiseTracker();
   const history = useHistory();
-  const radio = "/videos/validate" + props.path;
+  const radio = "/videos/validate/" + props.path;
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -29,18 +31,14 @@ const VideoValidationCards = (props) => {
   };
 
   const videoCards = videos.map((card) => {
-    const timestamp = card._id.toString().substring(0, 8);
-    const hours = new Date(
-      parseInt(timestamp, 16) * 1000
-    ).toLocaleString("en-US", { hour: "numeric", minute: "numeric" });
-    const day = new Date(parseInt(timestamp, 16) * 1000).getDate().toString();
-    const monthOG = new Date(
-      parseInt(timestamp, 16) * 1000
-    ).toLocaleString("default", { month: "long" });
-    const uploadTime = `${day} ${monthOG} at ${hours}`;
+    const postDate = new Date(card.date);
+    const date = postDate.getDate();
+    const month = postDate.toLocaleString("default", { month: "long" });
+    const year = postDate.getFullYear();
+    const uploadTime = `${date} ${month}, ${year}`;
 
     return (
-      <div className="video-card-div" key={card._id}>
+      <div className="validate-video-card-div" key={card._id}>
         <div className="video-card-content">
           <span className="video-card-title">{card.title}</span>
           <p className="video-card-uploader">
@@ -98,6 +96,12 @@ const VideoValidationCards = (props) => {
           >
             Youth
           </Radio.Button>
+          <Radio.Button
+            value="/videos/validate/follow"
+            className="page-radio-buttons"
+          >
+            Follow Me
+          </Radio.Button>
         </Radio.Group>
       </div>
       <br />
@@ -106,7 +110,7 @@ const VideoValidationCards = (props) => {
           <Spin size="large" />
         </div>
       )}
-      {videoCards}
+      <div className="validate-video-cards-container"> {videoCards}</div>
     </>
   );
 };

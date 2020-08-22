@@ -22,6 +22,10 @@ const videoSchema = new Schema({
     type: String,
     required: true,
   },
+  date: {
+    type: Date,
+    default: Date.now,
+  },
 });
 
 const Video = mongoose.model("VideosGospel", videoSchema);

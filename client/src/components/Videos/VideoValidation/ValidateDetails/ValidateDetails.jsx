@@ -11,6 +11,7 @@ const BlogDetails = (props) => {
   const [caption, setCaption] = useState();
   const [embedLink, setEmbed] = useState();
   const [videoURL, setURL] = useState();
+  const [postDate, setDate] = useState();
   const [render, setRender] = useState(true);
 
   const token = localStorage.getItem("auth-token");
@@ -30,6 +31,7 @@ const BlogDetails = (props) => {
     setCaption(video.caption);
     setEmbed(video.embedLink);
     setURL(video.videoURL);
+    setDate(video.date);
 
     window.scrollTo(0, 0);
   }, [render]);
@@ -44,6 +46,7 @@ const BlogDetails = (props) => {
           caption: caption,
           embedLink: embedLink,
           videoURL: videoURL,
+          date: postDate,
         },
         { headers: { "x-auth-token": token } }
       )
@@ -99,6 +102,17 @@ const BlogDetails = (props) => {
             placeholder="Title"
             name="title"
             value={title}
+          />
+        </Form.Item>
+
+        <Form.Item name="title">
+          <label htmlFor="title">Date of Posting : </label>
+          <Input
+            type="date"
+            placeholder="Title"
+            name="title"
+            value={postDate}
+            onChange={(e) => setDate(e.target.value)}
           />
         </Form.Item>
 

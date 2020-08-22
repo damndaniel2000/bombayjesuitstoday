@@ -19,6 +19,10 @@ const blogSchema = new Schema(
       type: String,
       default: "",
     },
+    date: {
+      type: Date,
+      default: Date.now,
+    },
     validated: {
       type: Boolean,
       default: false,

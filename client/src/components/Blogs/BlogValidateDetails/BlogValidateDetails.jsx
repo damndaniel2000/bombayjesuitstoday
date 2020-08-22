@@ -11,6 +11,7 @@ const BlogDetails = (props) => {
   const [title, setTitle] = useState();
   const [imgLink, setImgLink] = useState();
   const [content, setContent] = useState();
+  const [postDate, setDate] = useState();
   const [validate, setValidate] = useState(false);
   const [render, setRender] = useState(true);
 
@@ -30,6 +31,7 @@ const BlogDetails = (props) => {
     setTitle(blog.title);
     setImgLink(blog.imgLink);
     setContent(blog.blogContent);
+    setDate(blog.date);
 
     window.scrollTo(0, 0);
   }, [render]);
@@ -47,6 +49,7 @@ const BlogDetails = (props) => {
           title: title,
           imgLink: imgLink,
           blogContent: content,
+          date: postDate,
           validated: validate,
         },
         { headers: { "x-auth-token": token } }
@@ -103,6 +106,16 @@ const BlogDetails = (props) => {
             placeholder="Title"
             name="title"
             value={title}
+          />
+        </Form.Item>
+
+        <Form.Item name="postDate">
+          <label htmlFor="postDate">Date of Posting : </label>
+          <Input
+            type="date"
+            name="postDate"
+            value={postDate}
+            onChange={(e) => setDate(e.target.value)}
           />
         </Form.Item>
 

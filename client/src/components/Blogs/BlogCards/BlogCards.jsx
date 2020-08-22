@@ -23,13 +23,11 @@ export default function Cards() {
   };
 
   const blogCards = blogs.map((blog) => {
-    const timestamp = blog._id.toString().substring(0, 8);
-    const hours = new Date(
-      parseInt(timestamp, 16) * 1000
-    ).toLocaleString("en-US", { hour: "numeric", minute: "numeric" });
-    const day = new Date(parseInt(timestamp, 16) * 1000).getDate().toString();
-    const month = new Date(parseInt(timestamp, 16) * 1000).getMonth() + 1;
-    const uploadTime = `${day}/${month}, ${hours} `;
+    const postDate = new Date(blog.date);
+    const date = postDate.getDate();
+    const month = postDate.toLocaleString("default", { month: "long" });
+    const year = postDate.getFullYear();
+    const uploadTime = `${date} ${month}, ${year}`;
 
     if (blog.validated) {
       return (
