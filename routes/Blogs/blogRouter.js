@@ -9,7 +9,7 @@ blogRouter
   .route("/")
   .get((req, res, next) => {
     Blog.find(req.query)
-      .sort({ _id: -1 })
+      .sort({ date: -1 })
       .then((blogs) => {
         res.statusCode = 200;
         res.setHeader("Content-Type", "application/json");

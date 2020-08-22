@@ -10,7 +10,7 @@ videoRouter
   .route("/")
   .get((req, res, next) => {
     Video.find(req.query)
-      .sort({ _id: -1 })
+      .sort({ date: -1 })
       .then(
         (videos) => {
           res.statusCode = 200;
