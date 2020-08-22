@@ -28,6 +28,8 @@ const counterRouter = require("./routes/Misc/counterRouter");
 
 uri = "mongodb://localhost:27017/jesuits";
 MongoClient.connect(uri, {
+  user: "dand",
+  pass: process.env.MONGO_PASS,
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useFindAndModify: false,
