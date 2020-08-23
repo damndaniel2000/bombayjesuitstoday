@@ -100,7 +100,7 @@ const VideoValidationCards = (props) => {
             value="/videos/validate/follow"
             className="page-radio-buttons"
           >
-            Follow Me
+            Follow Him
           </Radio.Button>
         </Radio.Group>
       </div>

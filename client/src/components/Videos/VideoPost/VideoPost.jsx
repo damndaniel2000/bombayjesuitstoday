@@ -136,7 +136,7 @@ const VideoPost = () => {
             <Radio.Button value="mission"> Misson </Radio.Button>
             <Radio.Button value="laity"> SJ Laity </Radio.Button>
             <Radio.Button value="youth"> Youth </Radio.Button>
-            <Radio.Button value="follow"> Follow Me </Radio.Button>
+            <Radio.Button value="follow"> Follow Him </Radio.Button>
           </Radio.Group>
         </div>
 

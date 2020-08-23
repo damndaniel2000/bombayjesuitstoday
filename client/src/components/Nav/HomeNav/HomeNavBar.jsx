@@ -93,7 +93,7 @@ const HomeNavBar = (props) => {
           Youth
         </Menu.Item>
         <Menu.Item key="7" onClick={fVideos} className="desktop-dropdown-items">
-          Follow Me
+          Follow Him
         </Menu.Item>
       </Menu.ItemGroup>
     </Menu>
@@ -109,7 +109,7 @@ const HomeNavBar = (props) => {
           <span onClick={mVideos}> Ignatian Mission </span>
           <span onClick={lVideos}> SJ Laity </span>
           <span onClick={yVideos}> Youth </span>
-          <span onClick={fVideos}> Follow Me </span>
+          <span onClick={fVideos}> Follow Him </span>
         </div>
       );
     }
