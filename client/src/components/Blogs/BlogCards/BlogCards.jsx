@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { trackPromise, usePromiseTracker } from "react-promise-tracker";
+import { Spin } from "antd";
 import { useHistory } from "react-router";
 
 import "./BlogCards.css";
@@ -7,6 +9,7 @@ import "./BlogCards.css";
 export default function Cards() {
   const [blogs, setBlogs] = useState([]);
   const history = useHistory();
+  const { promiseInProgress } = usePromiseTracker();
 
   useEffect(() => {
     getBlogs();
@@ -15,7 +18,7 @@ export default function Cards() {
 
   const getBlogs = async () => {
     try {
-      const response = await axios.get("/api/blogs");
+      const response = await trackPromise(axios.get("/api/blogs"));
       setBlogs(response.data);
     } catch (err) {
       console.log(err);
@@ -56,5 +59,15 @@ export default function Cards() {
     }
   });
 
-  return <div className="blog-cards-container">{blogCards}</div>;
+  return (
+    <>
+      {promiseInProgress ? (
+        <div className="spinner">
+          <Spin size="large" />
+        </div>
+      ) : (
+        <div className="blog-cards-container">{blogCards}</div>
+      )}
+    </>
+  );
 }
