@@ -10,11 +10,14 @@ blogRouter
   .get((req, res, next) => {
     Blog.find(req.query)
       .sort({ date: -1 })
-      .then((blogs) => {
-        res.statusCode = 200;
-        res.setHeader("Content-Type", "application/json");
-        res.json(blogs);
-      })
+      .then(
+        (blogs) => {
+          res.statusCode = 200;
+          res.setHeader("Content-Type", "application/json");
+          res.json(blogs);
+        },
+        (err) => next(err)
+      )
       .catch((err) => next(err));
   })
   .post((req, res, next) => {
@@ -22,7 +25,7 @@ blogRouter
       .then((blog) => {
         res.statusCode = 200;
         res.setHeader("Content-Type", "application/json");
-        res.json(blog);
+        res.json({ message: "Blog Successfully Posted" });
       })
       .catch((err) => next(err));
   });
@@ -31,32 +34,39 @@ blogRouter
   .route("/:blogID")
   .get((req, res, next) => {
     Blog.findById(req.params.blogID)
-      .then((blog) => {
-        res.statusCode = 200;
-        res.setHeader("Content-Type", "application/json");
-        res.json(blog);
-      })
+      .then(
+        (blog) => {
+          res.statusCode = 200;
+          res.setHeader("Content-Type", "application/json");
+          res.json(blog);
+        },
+        (err) => next(err)
+      )
       .catch((err) => next(err));
   })
   .put(auth, (req, res, next) => {
-    Blog.findByIdAndUpdate(
-      req.params.blogID,
-      { $set: req.body },
-      { new: true }
-    ).then((blog) => {
-      res.statusCode = 200;
-      res.setHeader("Content-Type", "application/json");
-      res.json(blog);
-    });
+    Blog.findByIdAndUpdate(req.params.blogID, { $set: req.body }, { new: true })
+      .then(
+        (blog) => {
+          res.statusCode = 200;
+          res.setHeader("Content-Type", "application/json");
+          res.json({ message: "Blog Successfully Updated" });
+        },
+        (err) => next(err)
+      )
+      .catch((err) => next(err));
   })
   .delete(auth, (req, res, next) => {
     Blog.findById(req.params.blogID)
       .then((blog) => blog.remove())
-      .then((blog) => {
-        res.statusCode = 200;
-        res.setHeader("Content-Type", "application/json");
-        res.json(blog);
-      })
+      .then(
+        (blog) => {
+          res.statusCode = 200;
+          res.setHeader("Content-Type", "application/json");
+          res.json({ message: "Blog Successfully Deleted" });
+        },
+        (err) => next(err)
+      )
       .catch((err) => next(err));
   });
 

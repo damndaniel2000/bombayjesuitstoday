@@ -10,19 +10,18 @@ const ContributorsCard = (props) => {
   const history = useHistory();
 
   useEffect(() => {
+    const getContributors = async () => {
+      try {
+        const res = await trackPromise(
+          axios.get("/api/contributors-" + props.path)
+        );
+        setContributors(res.data);
+      } catch (err) {
+        console.log(err.message);
+      }
+    };
     getContributors();
-  }, []);
-
-  const getContributors = async () => {
-    try {
-      const res = await trackPromise(
-        axios.get("/api/contributors-" + props.path)
-      );
-      setContributors(res.data);
-    } catch (err) {
-      console.log(err.message);
-    }
-  };
+  }, [props.path]);
 
   const contributorsList = contributors.map((contri) => {
     return (

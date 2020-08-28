@@ -24,10 +24,10 @@ videoRouter
   .post(auth, (req, res, next) => {
     Video.create(req.body)
       .then(
-        (video) => {
+        () => {
           res.statusCode = 200;
           res.setHeader("Content-Type", "application/json");
-          res.json(video);
+          res.json({ message: "Video Successfully Posted" });
         },
         (err) => next(err)
       )
@@ -55,10 +55,10 @@ videoRouter
       { new: true }
     )
       .then(
-        (video) => {
+        () => {
           res.statusCode = 200;
           res.setHeader("Content-Type", "application/json");
-          res.json(video);
+          res.json({ message: "Video Successfully Updated" });
         },
         (err) => next(err)
       )
@@ -68,10 +68,10 @@ videoRouter
     Video.findById(req.params.videoID)
       .then((video) => video.remove())
       .then(
-        (videos) => {
+        () => {
           res.statusCode = 200;
           res.setHeader("Content-Type", "application/json");
-          res.json(videos);
+          res.json({ message: "Video Successfully Deleted" });
         },
         (err) => next(err)
       )

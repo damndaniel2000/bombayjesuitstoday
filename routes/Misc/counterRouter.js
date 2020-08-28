@@ -4,11 +4,10 @@ const mongoose = require("mongoose");
 const Counter = require("../../models/Misc/HitCounter");
 const counterRouter = express.Router();
 
-counterRouter
-  .route("/:id")
-  .put((req, res, next) => {
-    Counter.findById(req.params.id)
-      .then((counter) => {
+counterRouter.route("/:id").put((req, res, next) => {
+  Counter.findById(req.params.id)
+    .then(
+      (counter) => {
         res.statusCode = 200;
         res.setHeader("Content-Type", "application/json");
         const currentCount = counter.count;
@@ -20,15 +19,10 @@ counterRouter
         ).then((newCount) => {
           res.json(newCount);
         });
-      })
-      .catch((err) => next(err));
-  })
-  .get((req, res, next) => {
-    Counter.findById(req.params.id).then((count) => {
-      res.status = 200;
-      res.setHeader("Content-Type", "application/json");
-      res.json(count);
-    });
-  });
+      },
+      (err) => next(err)
+    )
+    .catch((err) => next(err));
+});
 
 module.exports = counterRouter;

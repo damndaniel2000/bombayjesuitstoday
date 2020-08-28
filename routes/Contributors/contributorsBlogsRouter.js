@@ -27,7 +27,7 @@ contributorRouter
         (contributors) => {
           res.statusCode = 200;
           res.setHeader("Content-Type", "application/json");
-          res.json(contributors);
+          res.json({ message: "Contributor Successfully Posted" });
         },
         (err) => next(err)
       )
@@ -38,21 +38,11 @@ contributorRouter
   .route("/:contributorID")
   .get((req, res, next) => {
     Contributor.findById(req.params.contributorID)
-      .then((contri) => {
-        res.statusCode = 200;
-        res.setHeader("Content-Type", "application/json");
-        res.json(contri);
-      })
-      .catch((err) => next(err));
-  })
-  .delete(auth, (req, res, next) => {
-    Contributor.findById(req.params.contributorID)
-      .then((contri) => contri.remove())
       .then(
-        (contributors) => {
+        (contri) => {
           res.statusCode = 200;
           res.setHeader("Content-Type", "application/json");
-          res.json(contributors);
+          res.json(contri);
         },
         (err) => next(err)
       )
@@ -64,11 +54,27 @@ contributorRouter
       { $set: req.body },
       { new: true }
     )
-      .then((contri) => {
-        res.statusCode = 200;
-        res.setHeader("Content-Type", "application/json");
-        res.json(contri);
-      })
+      .then(
+        (contri) => {
+          res.statusCode = 200;
+          res.setHeader("Content-Type", "application/json");
+          res.json({ message: "Contributor Successfully Updated" });
+        },
+        (err) => next(err)
+      )
+      .catch((err) => next(err));
+  })
+  .delete(auth, (req, res, next) => {
+    Contributor.findById(req.params.contributorID)
+      .then((contri) => contri.remove())
+      .then(
+        (contributors) => {
+          res.statusCode = 200;
+          res.setHeader("Content-Type", "application/json");
+          res.json({ message: "Contributor Successfully Deleted" });
+        },
+        (err) => next(err)
+      )
       .catch((err) => next(err));
   });
 

@@ -14,20 +14,20 @@ function BlogContent(props) {
   const { id } = useParams();
 
   useEffect(() => {
+    const getBlog = async () => {
+      try {
+        const res = await trackPromise(
+          axios.get("/api/blogs/" + props.match.params.id)
+        );
+        setBlog(res.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+
     getBlog();
     window.scrollTo(0, 0);
-  }, []);
-
-  const getBlog = async () => {
-    try {
-      const res = await trackPromise(
-        axios.get("/api/blogs/" + props.match.params.id)
-      );
-      setBlog(res.data);
-    } catch (err) {
-      console.log(err);
-    }
-  };
+  }, [props.match.params.id]);
 
   return (
     <>

@@ -128,7 +128,7 @@ const Footer = (props) => {
                 <p> St. Xavier's School, Fort </p>
               </a>
               <a
-                href="https://stxaviersfort.org/"
+                href="http://www.xaviertech.com"
                 target="_blank"
                 rel="noopener noreferrer"
               >

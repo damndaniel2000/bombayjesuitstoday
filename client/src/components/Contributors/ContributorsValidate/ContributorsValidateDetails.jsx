@@ -1,3 +1,5 @@
+/*eslint-disable*/
+
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { withRouter } from "react-router";
@@ -18,19 +20,21 @@ const Details = (props) => {
   const token = localStorage.getItem("auth-token");
 
   useEffect(() => {
-    axios
-      .get(`/api/contributors-${props.path}/` + props.match.params.id)
-      .then((res) => {
-        setContri(res.data);
-        setRender(false);
-      })
-      .catch((err) => console.log(err));
-
-    setName(contri.name);
-    setLocation(contri.basedLocation);
-    setImgLink(contri.imgURL);
-    setQuote(contri.quote);
-    setVideoURL(contri.videosURL);
+    const getContris = () => {
+      axios
+        .get(`/api/contributors-${props.path}/` + props.match.params.id)
+        .then((res) => {
+          setContri(res.data);
+          setRender(false);
+          setName(contri.name);
+          setLocation(contri.basedLocation);
+          setImgLink(contri.imgURL);
+          setQuote(contri.quote);
+          setVideoURL(contri.videosURL);
+        })
+        .catch((err) => console.log(err));
+    };
+    getContris();
 
     window.scrollTo(0, 0);
   }, [render]);

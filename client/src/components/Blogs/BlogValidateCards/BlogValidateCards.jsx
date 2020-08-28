@@ -7,18 +7,17 @@ export default function Cards() {
   const history = useHistory();
 
   useEffect(() => {
+    const getBlogs = async () => {
+      try {
+        const response = await axios.get("/api/blogs");
+        setBlogs(response.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
     getBlogs();
     window.scrollTo(0, 0);
   }, []);
-
-  const getBlogs = async () => {
-    try {
-      const response = await axios.get("/api/blogs");
-      setBlogs(response.data);
-    } catch (err) {
-      console.log(err);
-    }
-  };
 
   const blogCards = blogs.map((blog) => {
     const postDate = new Date(blog.date);

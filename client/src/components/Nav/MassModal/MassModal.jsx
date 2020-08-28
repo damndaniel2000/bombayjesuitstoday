@@ -7,7 +7,7 @@ export default function MassModal(props) {
   const [modal, setModal] = useState(props.visible);
 
   const detectDevice = (link) => {
-    if (window.screen.width < 800)
+    if (/android/i.test(navigator.userAgent))
       return `intent://${link}#Intent;scheme=vnd.youtube;package=com.google.android.youtube;S.browser_fallback_url=market://details?id=com.google.android.youtube;end;`;
     else return `https://${link}`;
   };

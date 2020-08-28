@@ -14,19 +14,18 @@ const ContributorsCard = (props) => {
   const radio = "/contributors/" + props.path;
 
   useEffect(() => {
+    const getContributors = async () => {
+      try {
+        const res = await trackPromise(
+          axios.get("/api/contributors-" + props.path)
+        );
+        setContributors(res.data);
+      } catch (err) {
+        console.log(err.message);
+      }
+    };
     getContributors();
-  }, []);
-
-  const getContributors = async () => {
-    try {
-      const res = await trackPromise(
-        axios.get("/api/contributors-" + props.path)
-      );
-      setContributors(res.data);
-    } catch (err) {
-      console.log(err.message);
-    }
-  };
+  }, [props.path]);
 
   const handleRadios = (evt) => {
     history.push(evt.target.value);

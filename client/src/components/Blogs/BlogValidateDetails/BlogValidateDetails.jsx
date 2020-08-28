@@ -1,3 +1,5 @@
+/*eslint-disable*/
+
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { withRouter } from "react-router";
@@ -19,19 +21,21 @@ const BlogDetails = (props) => {
   const history = useHistory();
 
   useEffect(() => {
-    axios
-      .get("/api/blogs/" + props.match.params.id)
-      .then((res) => {
-        setBlog(res.data);
-        setRender(false);
-      })
-      .catch((err) => console.log(err));
-
-    setAuthor(blog.author);
-    setTitle(blog.title);
-    setImgLink(blog.imgLink);
-    setContent(blog.blogContent);
-    setDate(blog.date);
+    const fetchBlogs = () => {
+      axios
+        .get("/api/blogs/" + props.match.params.id)
+        .then((res) => {
+          setBlog(res.data);
+          setRender(false);
+          setAuthor(blog.author);
+          setTitle(blog.title);
+          setImgLink(blog.imgLink);
+          setContent(blog.blogContent);
+          setDate(blog.date);
+        })
+        .catch((err) => console.log(err));
+    };
+    fetchBlogs();
 
     window.scrollTo(0, 0);
   }, [render]);

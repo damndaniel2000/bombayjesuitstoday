@@ -134,25 +134,28 @@
 
 @media only screen and (max-width: 500px) {
   .home-blogs-card {
-    height: 500px;
+    height: 450px;
     margin: 0 0.8rem;
-    width: 300px;
+    width: 250px;
   }
   .home-blogs-card-title {
     margin-bottom: 3rem;
   }
   .home-blogs-card-content {
-    font-size: 17px;
+    font-size: 14px;
+  }
+  .home-blogs-card-title {
+    margin-bottom: 2rem;
   }
   .home-blogs-card-button {
     bottom: 30px;
     left: 27%;
-    padding: 8px 50px;
-    font-size: 16px;
+    padding: 6px 35px;
+    font-size: 14px;
   }
   .home-blogs-button {
-    padding: 8px 20px;
-    font-size: 18px;
+    padding: 6px 15px;
+    font-size: 16px;
     margin-top: 4rem;
   }
   .home-blogs-title {
@@ -162,22 +165,22 @@
 
 @media only screen and (max-width: 400px) {
   .home-blogs-card {
-    height: 400px;
+    height: 350px;
     margin: 0 0.8rem;
-    width: 250px;
+    width: 200px;
   }
   .home-blogs-card-title {
     margin-bottom: 1rem;
     font-size: 16px;
   }
   .home-blogs-card-content {
-    font-size: 14px;
+    font-size: 12px;
   }
   .home-blogs-card-button {
     bottom: 20px;
-    left: 30%;
-    padding: 6px 30px;
-    font-size: 13px;
+    left: 29%;
+    padding: 5px 25px;
+    font-size: 12px;
   }
   .home-blogs-button {
     padding: 5px 20px;

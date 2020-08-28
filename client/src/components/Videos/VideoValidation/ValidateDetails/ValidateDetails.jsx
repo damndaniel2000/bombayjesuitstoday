@@ -1,8 +1,10 @@
+/*eslint-disable*/
+
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { withRouter } from "react-router";
 import { useHistory } from "react-router-dom";
-import { Form, Input, Switch, message } from "antd";
+import { Form, Input, message } from "antd";
 
 const BlogDetails = (props) => {
   const [video, setVideo] = useState([]);
@@ -18,20 +20,23 @@ const BlogDetails = (props) => {
   const history = useHistory();
 
   useEffect(() => {
-    axios
-      .get(`/api/videos-${props.path}/` + props.match.params.id)
-      .then((res) => {
-        setVideo(res.data);
-        setRender(false);
-      })
-      .catch((err) => console.log(err));
+    const getVideo = () => {
+      axios
+        .get(`/api/videos-${props.path}/` + props.match.params.id)
+        .then((res) => {
+          setVideo(res.data);
+          setRender(false);
+          setUploader(video.uploader);
+          setTitle(video.title);
+          setCaption(video.caption);
+          setEmbed(video.embedLink);
+          setURL(video.videoURL);
+          setDate(video.date);
+        })
+        .catch((err) => console.log(err));
+    };
 
-    setUploader(video.uploader);
-    setTitle(video.title);
-    setCaption(video.caption);
-    setEmbed(video.embedLink);
-    setURL(video.videoURL);
-    setDate(video.date);
+    getVideo();
 
     window.scrollTo(0, 0);
   }, [render]);

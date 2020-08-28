@@ -88,17 +88,10 @@ const App = () => {
     };
 
     checkLoggedIn();
-    if (process.env.REACT_APP_ENVIRONMENT === "production") {
-      axios.put("/api/counter/5f3fe7c67c551223a7bf6d94");
-      axios.get("/api/counter/5f3fe7c67c551223a7bf6d94").then((counter) => {
-        setCount(counter.data.count);
-      });
-    } else {
-      axios.put("/api/counter/5f32d0aa496558bec4230e31");
-      axios.get("/api/counter/5f32d0aa496558bec4230e31").then((counter) => {
-        setCount(counter.data.count);
-      });
-    }
+
+    axios.put("/api/counter/5f3fe7c67c551223a7bf6d94").then((counter) => {
+      setCount(counter.data.count);
+    });
   }, []);
 
   return (

@@ -14,18 +14,17 @@ const VideoCards = (props) => {
   const radio = "/videos/" + props.path;
 
   useEffect(() => {
+    const getVideos = async () => {
+      try {
+        const res = await trackPromise(axios.get("/api/videos-" + props.path));
+        setVideos(res.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
     window.scrollTo(0, 0);
     getVideos();
-  }, []);
-
-  const getVideos = async () => {
-    try {
-      const res = await trackPromise(axios.get("/api/videos-" + props.path));
-      setVideos(res.data);
-    } catch (err) {
-      console.log(err);
-    }
-  };
+  }, [props.path]);
 
   const handleRadios = (evt) => {
     history.push(evt.target.value);
