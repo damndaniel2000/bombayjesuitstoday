@@ -211,6 +211,16 @@ const Details = (props) => {
         <br />
       </Form>
       <button
+        style={{ backgroundColor: "green" }}
+        className="video-post-form-button"
+        onClick={() =>
+          history.push(`/contributors/videos/${props.match.params.id}/add`)
+        }
+      >
+        Add Videos
+      </button>
+      <br />
+      <button
         style={{ backgroundColor: "maroon" }}
         className="video-post-form-button"
         onClick={handleDelete}

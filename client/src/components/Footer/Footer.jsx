@@ -55,7 +55,7 @@ const Footer = (props) => {
                 <p>Facebook</p>
               </a>
               <a
-                href="https://www.youtube.com/channel/UCVGPM2WMUjO8_dVa6IFLy9A"
+                href="https://www.youtube.com/channel/UCa20s0nm63xe-trJQ10V63g/featured"
                 rel="noopener noreferrer"
                 target="_blank"
               >

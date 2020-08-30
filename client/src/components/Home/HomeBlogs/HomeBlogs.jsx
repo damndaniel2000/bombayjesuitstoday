@@ -64,7 +64,7 @@ const HomeBlogs = () => {
             <button
               className="home-blogs-card-button"
               onClick={() =>
-                history.push("/blogs/content/5f410b3a5995375f22ba719e")
+                history.push("/blogs/content/5f42d55f5721c52079aedf72")
               }
             >
               Read
