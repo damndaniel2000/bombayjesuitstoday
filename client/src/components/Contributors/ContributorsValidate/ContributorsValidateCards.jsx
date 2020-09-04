@@ -25,7 +25,7 @@ const ContributorsCard = (props) => {
 
   const contributorsList = contributors.map((contri) => {
     return (
-      <div className="contributors-card">
+      <div className="contributors-card" key={contri._id}>
         <div className="contributors-card-photo">
           <img
             className="contributors-avatar"

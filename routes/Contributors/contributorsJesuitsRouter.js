@@ -119,34 +119,18 @@ contributorRouter
 contributorRouter
   .route("/:contributorID/videos/:videoID")
   .delete((req, res, next) => {
-    Contributor.findById(req.params.contributorID)
-      .then(
-        (contri) => {
-          if (
-            contri !== null &&
-            contri.videos.id(req.params.videoID) !== null
-          ) {
-            contri.videos.id(req.params.videoID).remove();
-            contri
-              .save()
-              .then((video) => {
-                res.statusCode = 200;
-                res.setHeader("Content-Type", "application/json");
-                res.json({ message: "Video Deleted Successfully" });
-              })
-              .catch((err) => next(err));
-          } else if (contri === null) {
-            err = new Error("Contributor with this ID could not be found");
-            err.status = 404;
-            return next(err);
-          } else {
-            err = new Error("Video with this ID could not be found");
-            err.status = 404;
-            return next(err);
-          }
-        },
-        (err) => next(err)
-      )
-      .catch((err) => next(err));
+    Contributor.findOneAndUpdate(
+      { _id: req.params.contributorID },
+      { $pull: { videos: { videoID: req.params.videoID } } }
+    )
+      .then((video) => {
+        res.status = 200;
+        res.setHeader("Content-Type", "application/json");
+        res.json({ message: "Video Successfully Deleted" });
+      })
+      .catch((err) => {
+        next(err);
+      });
   });
+
 module.exports = contributorRouter;

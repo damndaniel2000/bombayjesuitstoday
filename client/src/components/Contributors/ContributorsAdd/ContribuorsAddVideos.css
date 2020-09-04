@@ -1,0 +1,13 @@
+.contri-video-card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.contri-video-card {
+  width: 18%;
+  background-color: #fff;
+  margin: 1rem 0.5rem;
+  padding: 1rem;
+  border: solid 3px rgb(185, 185, 184);
+  cursor: pointer;
+}

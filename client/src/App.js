@@ -56,6 +56,7 @@ import AdminContributorsValidateCardsPage from "./pages/Admin/Contributors/Contr
 import AdminContributorsValidateJesuitDetailsPage from "./pages/Admin/Contributors/ContributorsValidateDetails/ContributorsValidateJesuitDetailsPage";
 import AdminContributorsValidateLaityDetailsPage from "./pages/Admin/Contributors/ContributorsValidateDetails/ContributorsValidateLaityDetailsPage";
 import AdminContributorsValidateBlogsDetailsPage from "./pages/Admin/Contributors/ContributorsValidateDetails/ContributorsValidateBlogDetailsPage";
+import AdminContributorsAddVideoPage from "./pages/Admin/Contributors/ContributorsAdd/ContributorsAddVideoPage";
 
 import NotFound from "./pages/NotFoundPage";
 
@@ -235,6 +236,11 @@ const App = () => {
             exact
             path="/contributors/validate/blogs/:id"
             component={AdminContributorsValidateBlogsDetailsPage}
+          />
+          <NavBar
+            exact
+            path="/contributors/videos/:id/add"
+            component={AdminContributorsAddVideoPage}
           />
           <NavBar component={NotFound} />
         </Switch>
