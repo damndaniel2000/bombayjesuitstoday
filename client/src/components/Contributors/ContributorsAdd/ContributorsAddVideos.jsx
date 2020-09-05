@@ -45,10 +45,14 @@ const AddVideos = (props) => {
     }
     if (contriVids !== []) {
       setRender(false);
+    }
+  }, [contriVids]);
+
+  useEffect(() => {
+    if (!render && contriVids !== [])
       contriVids.map((item) => {
         selectedVids.push(item.videoID);
       });
-    }
   }, [contriVids]);
 
   const handleRadios = async (e) => {
