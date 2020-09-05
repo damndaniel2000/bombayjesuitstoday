@@ -24,7 +24,7 @@ const AddVideos = (props) => {
         console.log(err);
       }
     };
-    if (contriVids !== []) getVideos();
+    getVideos();
   }, []);
 
   useEffect(() => {
@@ -45,11 +45,10 @@ const AddVideos = (props) => {
     }
     if (contriVids !== []) {
       setRender(false);
+      contriVids.map((item) => {
+        selectedVids.push(item.videoID);
+      });
     }
-
-    contriVids.map((item) => {
-      selectedVids.push(item.videoID);
-    });
   }, [contriVids]);
 
   const handleRadios = async (e) => {
@@ -101,7 +100,7 @@ const AddVideos = (props) => {
       const res = await axios.delete(
         `/api/contributors-jesuits/${props.match.params.id}/videos/${id}`
       );
-      message.error(res.data.message);
+      message.success(res.data.message);
     } catch (err) {
       console.log(err);
     }

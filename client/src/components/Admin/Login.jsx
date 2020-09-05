@@ -84,6 +84,7 @@ const Login = () => {
                 name="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
+                autocomplete="on"
                 required
               />
             </Form.Item>
