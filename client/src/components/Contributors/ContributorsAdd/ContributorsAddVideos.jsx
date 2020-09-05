@@ -49,10 +49,12 @@ const AddVideos = (props) => {
   }, [contriVids]);
 
   useEffect(() => {
-    if (!render && contriVids.length !== 0) {
-      contriVids.map((item) => {
-        selectedVids.push(item.videoID);
-      });
+    if (contriVids !== undefined) {
+      if (!render && contriVids.length !== 0) {
+        contriVids.map((item) => {
+          selectedVids.push(item.videoID);
+        });
+      }
     }
   }, [contriVids]);
 
