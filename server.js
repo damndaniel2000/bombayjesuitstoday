@@ -27,7 +27,8 @@ const userRouter = require("./routes/Misc/userRouter");
 const counterRouter = require("./routes/Misc/counterRouter");
 
 uri = "mongodb://localhost:27017/jesuits";
-MongoClient.connect(uri, {
+
+MongoClient.connect(uri || process.env.HEROKU, {
   user: "dand",
   pass: process.env.MONGO_PASS,
   useNewUrlParser: true,

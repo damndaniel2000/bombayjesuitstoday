@@ -7,6 +7,7 @@ const videoSchema = new Schema({
   videoID: {
     type: Schema.Types.ObjectID,
     refPath: "videos.onModel",
+    default: "",
   },
   onModel: {
     type: String,
