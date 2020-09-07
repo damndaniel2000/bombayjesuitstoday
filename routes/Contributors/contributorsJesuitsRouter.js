@@ -94,26 +94,30 @@ contributorRouter
       .catch((err) => next(err));
   })
   .post((req, res, next) => {
-    Contributor.findById(req.params.contributorID).then((contri) => {
-      if (contri !== null) {
-        contri.videos.push(req.body);
-        contri
-          .save()
-          .then(
-            () => {
-              res.statusCode = 200;
-              res.setHeader("Content-Type", "application/json");
-              res.json({ message: "Video Successfully Added" });
-            },
-            (err) => next(err)
-          )
-          .catch((err) => next(err));
-      } else {
-        err = new Error("Contributor with this ID could not be found");
-        err.status = 404;
-        return next(err);
-      }
-    });
+    Contributor.findById(req.params.contributorID)
+      .then((contri) => {
+        if (contri !== null) {
+          contri.videos.push(req.body);
+          contri
+            .save()
+            .then(
+              () => {
+                res.statusCode = 200;
+                res.setHeader("Content-Type", "application/json");
+                res.json({ message: "Video Successfully Added" });
+              },
+              (err) => next(err)
+            )
+            .catch((err) => next(err));
+        } else {
+          err = new Error("Contributor with this ID could not be found");
+          err.status = 404;
+          return next(err);
+        }
+      })
+      .catch((err) => {
+        next(err);
+      });
   });
 
 contributorRouter

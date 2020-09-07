@@ -2,12 +2,9 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const videoSchema = new Schema({
-  other: { type: String },
-  ref: { type: String },
   videoID: {
     type: Schema.Types.ObjectID,
     refPath: "videos.onModel",
-    default: "",
   },
   onModel: {
     type: String,
