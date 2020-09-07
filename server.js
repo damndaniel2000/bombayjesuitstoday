@@ -26,27 +26,13 @@ const blogRouter = require("./routes/Blogs/blogRouter");
 const userRouter = require("./routes/Misc/userRouter");
 const counterRouter = require("./routes/Misc/counterRouter");
 
-let uri =
-  "mongodb+srv://dan:@cluster0.owjks.mongodb.net/Jesuits?retryWrites=true&w=majority";
-
-/*
-if (process.env.ENVIRONMENT === "production") {
-  let uri =
-    "mongodb+srv://dan:Daniel2000@cluster0.owjks.mongodb.net/jesuits?retryWrites=true&w=majority";
-} else {
-  let uri = "mongodb://localhost:27017/jesuits";
-	user: "dand",
-	pass: process.env.MONGO_PASS,
-}*/
-
-MongoClient.connect(
-  "mongodb+srv://dan:NWsmH2ALWZY2rQL@cluster0.owjks.mongodb.net/jesuits?retryWrites=true&w=majority",
-  {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useFindAndModify: false,
-  }
-)
+MongoClient.connect("mongodb://localhost:27017/jesuits", {
+  user: "dand",
+  pass: process.env.MONGO_PASS,
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useFindAndModify: false,
+})
   .then(() => console.log("Database Connection Successful"))
   .catch((err) => console.error(err));
 
