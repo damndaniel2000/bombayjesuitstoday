@@ -13,7 +13,6 @@ contributorRouter
       .sort({ _id: -1 })
       .then(
         (contri) => {
-          res.statusCode = 200;
           res.setHeader("Content-Type", "application/json");
           res.json(contri);
         },
@@ -25,7 +24,6 @@ contributorRouter
     Contributor.create(req.body)
       .then(
         () => {
-          res.statusCode = 200;
           res.setHeader("Content-Type", "application/json");
           res.json({ message: "Contributor Successfully Updated" });
         },
@@ -39,7 +37,6 @@ contributorRouter
   .get((req, res, next) => {
     Contributor.findById(req.params.contributorID)
       .then((contri) => {
-        res.statusCode = 200;
         res.setHeader("Content-Type", "application/json");
         res.json(contri);
       })
@@ -52,7 +49,6 @@ contributorRouter
       { new: true }
     )
       .then(() => {
-        res.statusCode = 200;
         res.setHeader("Content-Type", "application/json");
         res.json({ message: "Contributor Successfully Updated" });
       })
@@ -63,7 +59,6 @@ contributorRouter
       .then((contri) => contri.remove())
       .then(
         () => {
-          res.statusCode = 200;
           res.setHeader("Content-Type", "application/json");
           res.json({ message: "Contributor Successfully Deleted" });
         },
@@ -80,7 +75,6 @@ contributorRouter
       .then(
         (contri) => {
           if (contri !== null) {
-            res.statusCode = 200;
             res.setHeader("Content-Type", "application/json");
             res.json(contri.videos);
           } else {
@@ -102,7 +96,6 @@ contributorRouter
             .save()
             .then(
               () => {
-                res.statusCode = 200;
                 res.setHeader("Content-Type", "application/json");
                 res.json({ message: "Video Successfully Added" });
               },

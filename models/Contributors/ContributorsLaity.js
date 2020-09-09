@@ -1,6 +1,25 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
+const videoSchema = new Schema({
+  videoID: {
+    type: Schema.Types.ObjectID,
+    refPath: "videos.onModel",
+  },
+  onModel: {
+    type: String,
+    required: true,
+    enum: [
+      "VideosLaity",
+      "VideosSpiritual",
+      "VideosFollow",
+      "VideosMission",
+      "VideosYouth",
+      "VideosGospel",
+    ],
+  },
+});
+
 const contributorSchema = new Schema(
   {
     name: {
@@ -23,6 +42,7 @@ const contributorSchema = new Schema(
       type: String,
       default: "",
     },
+    videos: [videoSchema],
     validated: {
       type: Boolean,
       default: false,

@@ -210,16 +210,22 @@ const Details = (props) => {
         <button className="video-post-form-button">Update Details</button>
         <br />
       </Form>
-      <button
-        style={{ backgroundColor: "green" }}
-        className="video-post-form-button"
-        onClick={() =>
-          history.push(`/contributors/videos/${props.match.params.id}/add`)
-        }
-      >
-        Add Videos
-      </button>
-      <br />
+      {props.type === "videos" && (
+        <>
+          <button
+            style={{ backgroundColor: "green" }}
+            className="video-post-form-button"
+            onClick={() =>
+              history.push(
+                `/contributors-${props.path}/videos/${props.match.params.id}/add`
+              )
+            }
+          >
+            Add Videos
+          </button>
+          <br />
+        </>
+      )}
       <button
         style={{ backgroundColor: "maroon" }}
         className="video-post-form-button"

@@ -117,7 +117,7 @@ const NavBar = (props) => {
     <>
       {modal && <MassModal visible={modal} modalToggler={massModalToggle} />}
 
-      <div id="nav-strip">
+      <div className="nav-strip">
         <div>
           <img src={logo} className="navbar-logo" alt="logo" />
         </div>

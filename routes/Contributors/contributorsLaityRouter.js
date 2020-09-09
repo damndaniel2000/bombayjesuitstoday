@@ -13,7 +13,6 @@ contributorRouter
       .sort({ _id: -1 })
       .then(
         (contributors) => {
-          res.statusCode = 200;
           res.setHeader("Content-Type", "application/json");
           res.json(contributors);
         },
@@ -25,7 +24,6 @@ contributorRouter
     Contributor.create(req.body)
       .then(
         () => {
-          res.statusCode = 200;
           res.setHeader("Content-Type", "application/json");
           res.json({ message: "Contributor Successfully Posted" });
         },
@@ -40,7 +38,6 @@ contributorRouter
     Contributor.findById(req.params.contributorID)
       .then(
         (contri) => {
-          res.statusCode = 200;
           res.setHeader("Content-Type", "application/json");
           res.json(contri);
         },
@@ -56,7 +53,6 @@ contributorRouter
     )
       .then(
         () => {
-          res.statusCode = 200;
           res.setHeader("Content-Type", "application/json");
           res.json({ message: "Contributor Successfully Updated" });
         },
@@ -69,13 +65,75 @@ contributorRouter
       .then((contri) => contri.remove())
       .then(
         () => {
-          res.statusCode = 200;
           res.setHeader("Content-Type", "application/json");
           res.json({ message: "Contributor Successfully Deleted" });
         },
         (err) => next(err)
       )
       .catch((err) => next(err));
+  });
+
+contributorRouter
+  .route("/:contributorID/videos")
+  .get((req, res, next) => {
+    Contributor.findById(req.params.contributorID)
+      .populate("videos.videoID")
+      .then(
+        (contri) => {
+          if (contri !== null) {
+            res.setHeader("Content-Type", "application/json");
+            res.json(contri.videos);
+          } else {
+            err = new Error("Videos not found");
+            err.status = 404;
+            return next(err);
+          }
+        },
+        (err) => next(err)
+      )
+      .catch((err) => next(err));
+  })
+  .post((req, res, next) => {
+    Contributor.findById(req.params.contributorID)
+      .then((contri) => {
+        if (contri !== null) {
+          contri.videos.push(req.body);
+          contri
+            .save()
+            .then(
+              () => {
+                res.setHeader("Content-Type", "application/json");
+                res.json({ message: "Video Successfully Added" });
+              },
+              (err) => next(err)
+            )
+            .catch((err) => next(err));
+        } else {
+          err = new Error("Contributor with this ID could not be found");
+          err.status = 404;
+          return next(err);
+        }
+      })
+      .catch((err) => {
+        next(err);
+      });
+  });
+
+contributorRouter
+  .route("/:contributorID/videos/:videoID")
+  .delete((req, res, next) => {
+    Contributor.findOneAndUpdate(
+      { _id: req.params.contributorID },
+      { $pull: { videos: { videoID: req.params.videoID } } }
+    )
+      .then((video) => {
+        res.status = 200;
+        res.setHeader("Content-Type", "application/json");
+        res.json({ message: "Video Successfully Deleted" });
+      })
+      .catch((err) => {
+        next(err);
+      });
   });
 
 module.exports = contributorRouter;

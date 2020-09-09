@@ -40,8 +40,8 @@ const HomeBlogs = () => {
           className="home-blogs-card"
           style={{
             backgroundImage:
-              "url(https://picjumbo.com/wp-content/uploads/lavender-free-photo-2210x1473.jpg)",
-            backgroundPosition: "center left",
+              "url(https://cdn.pixabay.com/photo/2019/12/02/07/07/autumn-4667080_960_720.jpg)",
+            backgroundPosition: "top left",
           }}
         >
           <div className="home-blogs-card-opacity">
@@ -55,16 +55,17 @@ const HomeBlogs = () => {
               </span>
             </div>
             <div className="home-blogs-card-content">
-              Today on the feast of the Queenship of Mary, I wish to focus our
-              attention to the gender inequality, which is prevalent even today.
-              In many traditional families, men behave like scribes and
-              Pharisees, unwilling to lift even a finger to help the women in
-              the works of the house.
+              The beatitudes in the Gospel of Luke are very concrete. They are
+              addressed directly to the disciples in the second person plural.
+              The disciples are poor, hungry, and weeping right now in the
+              present. "When" clause (certain future) is mentioned regarding
+              impending persecution, put as an exhortation to rejoice in the
+              face of persecution.
             </div>
             <button
               className="home-blogs-card-button"
               onClick={() =>
-                history.push("/blogs/content/5f42d55f5721c52079aedf72")
+                history.push("/blogs/content/5f584c9b6734f5472ef41750")
               }
             >
               Read

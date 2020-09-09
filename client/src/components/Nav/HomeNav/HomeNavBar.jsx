@@ -6,7 +6,7 @@ import "./HomeNav.css";
 import MassModal from "../MassModal/MassModal";
 import logo from "../logo.png";
 
-const HomeNavBar = (props) => {
+const NavBar = (props) => {
   const [visible, setVisible] = useState(false);
   const [videoDrop, setDrop] = useState(false);
   const [modal, setModal] = useState();
@@ -53,7 +53,6 @@ const HomeNavBar = (props) => {
     history.push("/follow-him");
     hideDrawer();
   };
-
   const blogs = () => {
     history.push("/blogs");
     hideDrawer();
@@ -62,7 +61,6 @@ const HomeNavBar = (props) => {
     history.push("/contributors/jesuits");
     hideDrawer();
   };
-
   const massModalToggle = () => {
     setModal(!modal);
   };
@@ -118,12 +116,13 @@ const HomeNavBar = (props) => {
   return (
     <>
       {modal && <MassModal visible={modal} modalToggler={massModalToggle} />}
-      <div id="home-nav-bar">
+
+      <div className="home-nav-strip">
         <div>
-          <img src={logo} className="home-navbar-logo" alt="logo" />
+          <img src={logo} className="navbar-logo" alt="logo" />
         </div>
         <div className="main-nav-div">
-          <div className="mobile-nav">
+          <div className="nav-mobile-nav">
             <i className="fa fa-navicon" onClick={showDrawer} />
 
             <Drawer
@@ -173,7 +172,7 @@ const HomeNavBar = (props) => {
               <Dropdown overlay={dropVideos}>
                 <div>
                   <span>
-                    Videos &nbsp;
+                    Videos&nbsp;&nbsp;
                     <i className="fa fa-angle-down" />
                   </span>
                 </div>
@@ -198,18 +197,18 @@ const HomeNavBar = (props) => {
   );
 };
 
-const MainNavRoute = ({ component: Component, ...rest }) => {
+const NavRoute = ({ component: Component, ...rest }) => {
   return (
     <Route
       {...rest}
       render={(props) => {
         return (
-          <HomeNavBar>
+          <NavBar>
             <Component {...props} />
-          </HomeNavBar>
+          </NavBar>
         );
       }}
     />
   );
 };
-export default MainNavRoute;
+export default NavRoute;

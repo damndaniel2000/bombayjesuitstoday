@@ -32,7 +32,7 @@ const AddVideos = (props) => {
     const getContri = async () => {
       try {
         const res = await axios.get(
-          "/api/contributors-jesuits/" + props.match.params.id
+          `/api/contributors-${props.path}/${props.match.params.id}`
         );
 
         setContriVids(res.data.videos);
@@ -90,7 +90,7 @@ const AddVideos = (props) => {
   const addVideo = async (id) => {
     try {
       const res = await axios.post(
-        `/api/contributors-jesuits/${props.match.params.id}/videos`,
+        `/api/contributors-${props.path}/${props.match.params.id}/videos`,
         {
           videoID: id,
           onModel: model,
@@ -105,9 +105,9 @@ const AddVideos = (props) => {
   const deleteVideo = async (id) => {
     try {
       const res = await axios.delete(
-        `/api/contributors-jesuits/${props.match.params.id}/videos/${id}`
+        `/api/contributors-${props.path}/${props.match.params.id}/videos/${id}`
       );
-      message.success(res.data.message);
+      message.error(res.data.message);
     } catch (err) {
       console.log(err);
     }
@@ -147,6 +147,8 @@ const AddVideos = (props) => {
 
   return (
     <>
+      <br />
+      <br />
       <div>
         <Radio.Group onChange={handleRadios} defaultValue="gospel">
           <Radio.Button value="gospel" className="page-radio-buttons">
@@ -170,6 +172,7 @@ const AddVideos = (props) => {
           </Radio.Button>
         </Radio.Group>
       </div>
+      <br />
 
       <div className="contri-video-card-container"> {videoCards}</div>
     </>

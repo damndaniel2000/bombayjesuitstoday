@@ -8,7 +8,6 @@ counterRouter.route("/:id").put((req, res, next) => {
   Counter.findById(req.params.id)
     .then(
       (counter) => {
-        res.statusCode = 200;
         res.setHeader("Content-Type", "application/json");
         const currentCount = counter.count;
         const newCount = currentCount + 1;

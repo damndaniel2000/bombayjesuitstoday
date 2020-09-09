@@ -13,7 +13,7 @@ const ContributorsValidate = () => {
         <NotFoundPage />
       ) : (
         <>
-          <ContributorsValidateJesuitsDetails path="jesuits" />
+          <ContributorsValidateJesuitsDetails path="jesuits" type="videos" />
         </>
       )}
     </div>

@@ -13,7 +13,6 @@ videoRouter
       .sort({ _id: -1 })
       .then(
         (videos) => {
-          res.statusCode = 200;
           res.setHeader("Content-Type", "application/json");
           res.json(videos);
         },
@@ -25,7 +24,6 @@ videoRouter
     Video.create(req.body)
       .then(
         (video) => {
-          res.statusCode = 200;
           res.setHeader("Content-Type", "application/json");
           res.json(video);
         },
@@ -39,7 +37,6 @@ videoRouter.route("/:videoID").delete(auth, (req, res, next) => {
     .then((video) => video.remove())
     .then(
       (videos) => {
-        res.statusCode = 200;
         res.setHeader("Content-Type", "application/json");
         res.json(videos);
       },

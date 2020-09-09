@@ -12,7 +12,6 @@ blogRouter
       .sort({ date: -1 })
       .then(
         (blogs) => {
-          res.statusCode = 200;
           res.setHeader("Content-Type", "application/json");
           res.json(blogs);
         },
@@ -23,7 +22,6 @@ blogRouter
   .post((req, res, next) => {
     Blog.create(req.body)
       .then((blog) => {
-        res.statusCode = 200;
         res.setHeader("Content-Type", "application/json");
         res.json({ message: "Blog Successfully Posted" });
       })
@@ -36,7 +34,6 @@ blogRouter
     Blog.findById(req.params.blogID)
       .then(
         (blog) => {
-          res.statusCode = 200;
           res.setHeader("Content-Type", "application/json");
           res.json(blog);
         },
@@ -48,7 +45,6 @@ blogRouter
     Blog.findByIdAndUpdate(req.params.blogID, { $set: req.body }, { new: true })
       .then(
         (blog) => {
-          res.statusCode = 200;
           res.setHeader("Content-Type", "application/json");
           res.json({ message: "Blog Successfully Updated" });
         },
@@ -61,7 +57,6 @@ blogRouter
       .then((blog) => blog.remove())
       .then(
         (blog) => {
-          res.statusCode = 200;
           res.setHeader("Content-Type", "application/json");
           res.json({ message: "Blog Successfully Deleted" });
         },

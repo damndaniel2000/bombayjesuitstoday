@@ -56,7 +56,8 @@ import AdminContributorsValidateCardsPage from "./pages/Admin/Contributors/Contr
 import AdminContributorsValidateJesuitDetailsPage from "./pages/Admin/Contributors/ContributorsValidateDetails/ContributorsValidateJesuitDetailsPage";
 import AdminContributorsValidateLaityDetailsPage from "./pages/Admin/Contributors/ContributorsValidateDetails/ContributorsValidateLaityDetailsPage";
 import AdminContributorsValidateBlogsDetailsPage from "./pages/Admin/Contributors/ContributorsValidateDetails/ContributorsValidateBlogDetailsPage";
-import AdminContributorsAddVideoPage from "./pages/Admin/Contributors/ContributorsAdd/ContributorsAddVideoPage";
+import AdminContributorsJesuitAddVideoPage from "./pages/Admin/Contributors/ContributorsAdd/ContributorsJesuitsAddVideoPage";
+import AdminContributorsLaityAddVideoPage from "./pages/Admin/Contributors/ContributorsAdd/ContributorsLaityAddVideoPage";
 
 import NotFound from "./pages/NotFoundPage";
 
@@ -156,7 +157,7 @@ const App = () => {
             exact
             path="/videos/validate/gospel"
             component={AdminGospelVideoValidateCards}
-          />{" "}
+          />
           <NavBar
             exact
             path="/videos/validate/mission"
@@ -239,9 +240,15 @@ const App = () => {
           />
           <NavBar
             exact
-            path="/contributors/videos/:id/add"
-            component={AdminContributorsAddVideoPage}
+            path="/contributors-jesuits/videos/:id/add"
+            component={AdminContributorsJesuitAddVideoPage}
           />
+          <NavBar
+            exact
+            path="/contributors-laity/videos/:id/add"
+            component={AdminContributorsLaityAddVideoPage}
+          />
+
           <NavBar component={NotFound} />
         </Switch>
         <Footer />

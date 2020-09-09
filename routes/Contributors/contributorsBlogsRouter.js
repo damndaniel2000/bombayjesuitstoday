@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const auth = require("../../middleware/auth");
 
 const Contributor = require("../../models/Contributors/ContributorsBlogs");
+const Blogs = require("../../models/Blogs/Blogs");
 
 const contributorRouter = express.Router();
 
@@ -13,7 +14,6 @@ contributorRouter
       .sort({ _id: -1 })
       .then(
         (contributors) => {
-          res.statusCode = 200;
           res.setHeader("Content-Type", "application/json");
           res.json(contributors);
         },
@@ -25,7 +25,6 @@ contributorRouter
     Contributor.create(req.body)
       .then(
         (contributors) => {
-          res.statusCode = 200;
           res.setHeader("Content-Type", "application/json");
           res.json({ message: "Contributor Successfully Posted" });
         },
@@ -40,7 +39,6 @@ contributorRouter
     Contributor.findById(req.params.contributorID)
       .then(
         (contri) => {
-          res.statusCode = 200;
           res.setHeader("Content-Type", "application/json");
           res.json(contri);
         },
@@ -56,7 +54,6 @@ contributorRouter
     )
       .then(
         (contri) => {
-          res.statusCode = 200;
           res.setHeader("Content-Type", "application/json");
           res.json({ message: "Contributor Successfully Updated" });
         },
@@ -69,7 +66,6 @@ contributorRouter
       .then((contri) => contri.remove())
       .then(
         (contributors) => {
-          res.statusCode = 200;
           res.setHeader("Content-Type", "application/json");
           res.json({ message: "Contributor Successfully Deleted" });
         },
@@ -77,5 +73,20 @@ contributorRouter
       )
       .catch((err) => next(err));
   });
+
+contributorRouter.route("/:contributorID/blogs").get((req, res, next) => {
+  Contributor.findById(req.params.contributorID)
+    .lean()
+    .then((contri) => {
+      Blogs.find({ author: contri.name })
+        .lean()
+        .then((blogs) => {
+          res.setHeader("Content-Type", "application/json");
+          res.json(blogs);
+        })
+        .catch((err) => next(err));
+    })
+    .catch((err) => next(err));
+});
 
 module.exports = contributorRouter;

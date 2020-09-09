@@ -1,6 +1,13 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
+const blogsSchema = {
+  blogID: {
+    type: Schema.Types.ObjectID,
+    ref: "Blogs",
+  },
+};
+
 const contributorSchema = new Schema(
   {
     name: {
@@ -19,6 +26,7 @@ const contributorSchema = new Schema(
       type: String,
       required: true,
     },
+    blogs: [blogsSchema],
     validated: {
       type: Boolean,
       default: false,

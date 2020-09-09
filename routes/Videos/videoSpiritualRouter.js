@@ -13,7 +13,6 @@ videoRouter
       .sort({ date: -1 })
       .then(
         (videos) => {
-          res.statusCode = 200;
           res.setHeader("Content-Type", "application/json");
           res.json(videos);
         },
@@ -25,7 +24,6 @@ videoRouter
     Video.create(req.body)
       .then(
         () => {
-          res.statusCode = 200;
           res.setHeader("Content-Type", "application/json");
           res.json({ message: "Video Successfully Posted" });
         },
@@ -40,7 +38,6 @@ videoRouter
     Video.findById(req.params.videoID)
       .then(
         (video) => {
-          res.statusCode = 200;
           res.setHeader("Content-Type", "application/json");
           res.json(video);
         },
@@ -56,7 +53,6 @@ videoRouter
     )
       .then(
         () => {
-          res.statusCode = 200;
           res.setHeader("Content-Type", "application/json");
           res.json({ message: "Video Successfully Updated" });
         },
@@ -69,7 +65,6 @@ videoRouter
       .then((video) => video.remove())
       .then(
         () => {
-          res.statusCode = 200;
           res.setHeader("Content-Type", "application/json");
           res.json({ message: "Video Successfully Deleted" });
         },
