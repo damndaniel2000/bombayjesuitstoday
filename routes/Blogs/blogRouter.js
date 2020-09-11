@@ -5,19 +5,51 @@ const auth = require("../../middleware/auth");
 const Blog = require("../../models/Blogs/Blogs");
 const blogRouter = express.Router();
 
+function escapeRegex(text) {
+  return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
+}
+
 blogRouter
   .route("/")
   .get((req, res, next) => {
-    Blog.find(req.query)
-      .sort({ date: -1 })
-      .then(
-        (blogs) => {
+    if (req.query.type === "title" && req.query.search) {
+      const regex = new RegExp(escapeRegex(req.query.search), "gi");
+      Blog.find({ title: regex })
+        .sort({ date: -1 })
+        .then((blog) => {
           res.setHeader("Content-Type", "application/json");
-          res.json(blogs);
-        },
-        (err) => next(err)
-      )
-      .catch((err) => next(err));
+          res.json(blog);
+        })
+        .catch((err) => next(err));
+    } else if (req.query.type === "author" && req.query.search) {
+      const regex = new RegExp(escapeRegex(req.query.search), "gi");
+      Blog.find({ author: regex })
+        .sort({ date: -1 })
+        .then((blog) => {
+          res.setHeader("Content-Type", "application/json");
+          res.json(blog);
+        })
+        .catch((err) => next(err));
+    } else if (req.query.type === "date" && req.query.search) {
+      const searchDate = new Date(req.query.search);
+      Blog.find({ date: { $gte: searchDate } })
+        .then((blog) => {
+          res.setHeader("Content-Type", "application/json");
+          res.json(blog);
+        })
+        .catch((err) => console.log(err));
+    } else {
+      Blog.find()
+        .sort({ date: -1 })
+        .then(
+          (blogs) => {
+            res.setHeader("Content-Type", "application/json");
+            res.json(blogs);
+          },
+          (err) => next(err)
+        )
+        .catch((err) => next(err));
+    }
   })
   .post((req, res, next) => {
     Blog.create(req.body)

@@ -8,6 +8,9 @@ import "./BlogCards.css";
 
 export default function Cards() {
   const [blogs, setBlogs] = useState([]);
+  const [search, setSearch] = useState();
+  const [dropdown, setShowDrop] = useState(false);
+  const [dropSelect, setDropSelect] = useState("title");
   const history = useHistory();
   const { promiseInProgress } = usePromiseTracker();
 
@@ -24,6 +27,26 @@ export default function Cards() {
       console.log(err);
     }
   };
+
+  useEffect(() => {
+    const onSearch = async () => {
+      try {
+        history.push({
+          pathname: "/blogs",
+          search: "?search=" + search,
+        });
+        const params = new URLSearchParams({
+          type: dropSelect,
+          search: search,
+        }).toString();
+        const res = await axios.get(`/api/blogs?${params}`);
+        setBlogs(res.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    if (search !== undefined) onSearch();
+  }, [search]);
 
   const blogCards = blogs.map((blog) => {
     const postDate = new Date(blog.date);
@@ -66,7 +89,68 @@ export default function Cards() {
           <Spin size="large" />
         </div>
       ) : (
-        <div className="blog-cards-container">{blogCards}</div>
+        <>
+          <div className="search-bar-container">
+            {dropSelect !== "date" ? (
+              <input
+                className="search-bar"
+                value={search}
+                onChange={(e) => {
+                  setSearch(e.target.value);
+                }}
+                placeholder="Search Blogs"
+              />
+            ) : (
+              <input
+                type="date"
+                className="search-bar"
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+                placeholder="Search Blogs"
+              />
+            )}
+            <div className="search-category-container">
+              <button
+                className="search-category"
+                onClick={() => setShowDrop(!dropdown)}
+              >
+                By {dropSelect} &nbsp;
+                <i className="fa fa-angle-down" />
+              </button>
+              {dropdown && (
+                <div className="search-category-dropdown">
+                  <span
+                    onClick={() => {
+                      setSearch("");
+                      setDropSelect("title");
+                      setShowDrop(false);
+                    }}
+                  >
+                    Title
+                  </span>
+                  <span
+                    onClick={(e) => {
+                      setSearch("");
+                      setDropSelect("author");
+                      setShowDrop(false);
+                    }}
+                  >
+                    Author
+                  </span>
+                  <span
+                    onClick={() => {
+                      setDropSelect("date");
+                      setShowDrop(false);
+                    }}
+                  >
+                    Date
+                  </span>
+                </div>
+              )}
+            </div>
+          </div>
+          <div className="blog-cards-container">{blogCards}</div>
+        </>
       )}
     </>
   );
