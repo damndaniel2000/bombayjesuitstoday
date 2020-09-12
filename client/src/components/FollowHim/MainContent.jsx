@@ -58,7 +58,7 @@ const FollowMe = () => {
       <section className="followhim-section">
         <div className="followhim-section-text">
           <h1 className="followhim-questions">Am I Called?</h1>
-          <p className="followhim-content">
+          <div className="followhim-content">
             Do you relate to any of these points?
             <ul>
               <li> A feeling of doing something for Christ. </li>
@@ -82,7 +82,7 @@ const FollowMe = () => {
                 religious as it gently taps you.
               </li>
             </ul>
-          </p>
+          </div>
         </div>
         <ImgCarousel
           images={[
@@ -97,7 +97,7 @@ const FollowMe = () => {
           <br />
           <p style={{ textAlign: "center" }} className="followhim-content">
             If you could relate to any of those points or your mind is filled
-            with doubt and you are confused about your path in life,{" "}
+            with doubt and you are confused about your path in life, <br />
             <b>Contact Us</b>. <br /> We promise to guide you in the right way.
             <img
               className="contact-barcode"

@@ -1,3 +1,5 @@
+/*eslint-disable*/
+
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { trackPromise, usePromiseTracker } from "react-promise-tracker";
@@ -9,8 +11,10 @@ import "./BlogCards.css";
 export default function Cards() {
   const [blogs, setBlogs] = useState([]);
   const [search, setSearch] = useState();
+  const [noResult, setResult] = useState(false);
   const [dropdown, setShowDrop] = useState(false);
   const [dropSelect, setDropSelect] = useState("title");
+  const [load, setLoad] = useState(true);
   const history = useHistory();
   const { promiseInProgress } = usePromiseTracker();
 
@@ -22,7 +26,11 @@ export default function Cards() {
   const getBlogs = async () => {
     try {
       const response = await trackPromise(axios.get("/api/blogs"));
-      setBlogs(response.data);
+      if (response.data.length !== 0) {
+        setResult(false);
+        setBlogs(response.data);
+      } else setResult(true);
+      setLoad(false);
     } catch (err) {
       console.log(err);
     }
@@ -40,7 +48,13 @@ export default function Cards() {
           search: search,
         }).toString();
         const res = await axios.get(`/api/blogs?${params}`);
-        setBlogs(res.data);
+        if (res.data.length !== 0) {
+          setResult(false);
+          setBlogs(res.data);
+        } else {
+          setResult(true);
+          setBlogs([]);
+        }
       } catch (err) {
         console.log(err);
       }
@@ -48,43 +62,46 @@ export default function Cards() {
     if (search !== undefined) onSearch();
   }, [search]);
 
-  const blogCards = blogs.map((blog) => {
-    const postDate = new Date(blog.date);
-    const date = postDate.getDate();
-    const month = postDate.toLocaleString("default", { month: "long" });
-    const year = postDate.getFullYear();
-    const uploadTime = `${date} ${month}, ${year}`;
+  const blogCards =
+    blogs.length !== 0
+      ? blogs.map((blog) => {
+          const postDate = new Date(blog.date);
+          const date = postDate.getDate();
+          const month = postDate.toLocaleString("default", { month: "long" });
+          const year = postDate.getFullYear();
+          const uploadTime = `${date} ${month}, ${year}`;
 
-    if (blog.validated) {
-      return (
-        <div className="blog-card" key={blog._id}>
-          <img className="blog-card-img" src={blog.imgLink} alt="" />
-          <div className="blog-card-text">
-            <p className="blog-card-title">{blog.title}</p>
+          if (blog.validated) {
+            return (
+              <div className="blog-card" key={blog._id}>
+                <img className="blog-card-img" src={blog.imgLink} alt="" />
+                <div className="blog-card-text">
+                  <p className="blog-card-title">{blog.title}</p>
 
-            <div
-              className="blog-card-lower-text"
-              onClick={() => history.push("/blogs/content/" + blog._id)}
-            >
-              <p className="blog-card-author">
-                By <b>{blog.author}</b>
-              </p>
-              <p className="blog-card-time">
-                <i className="fa fa-clock-o" /> {uploadTime}
-              </p>
-              <button className="blog-card-button">Read</button>
-            </div>
-          </div>
-        </div>
-      );
-    } else {
-      return null;
-    }
-  });
+                  <div
+                    className="blog-card-lower-text"
+                    onClick={() => history.push("/blogs/content/" + blog._id)}
+                  >
+                    <p className="blog-card-author">
+                      By <b>{blog.author}</b>
+                    </p>
+                    <p className="blog-card-time">
+                      <i className="fa fa-clock-o" /> {uploadTime}
+                    </p>
+                    <button className="blog-card-button">Read</button>
+                  </div>
+                </div>
+              </div>
+            );
+          } else {
+            return null;
+          }
+        })
+      : null;
 
   return (
     <>
-      {promiseInProgress ? (
+      {load ? (
         <div className="spinner">
           <Spin size="large" />
         </div>
@@ -94,7 +111,7 @@ export default function Cards() {
             {dropSelect !== "date" ? (
               <input
                 className="search-bar"
-                value={search}
+                value={search || ""}
                 onChange={(e) => {
                   setSearch(e.target.value);
                 }}
@@ -104,7 +121,7 @@ export default function Cards() {
               <input
                 type="date"
                 className="search-bar"
-                value={search}
+                value={search || ""}
                 onChange={(e) => setSearch(e.target.value)}
                 placeholder="Search Blogs"
               />
@@ -149,7 +166,11 @@ export default function Cards() {
               )}
             </div>
           </div>
-          <div className="blog-cards-container">{blogCards}</div>
+
+          <div>
+            {noResult && <p className="no-search-found">No Blog Found</p>}
+            <div className="blog-cards-container">{blogCards}</div>
+          </div>
         </>
       )}
     </>

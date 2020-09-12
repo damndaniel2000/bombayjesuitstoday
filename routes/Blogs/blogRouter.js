@@ -16,6 +16,7 @@ blogRouter
       const regex = new RegExp(escapeRegex(req.query.search), "gi");
       Blog.find({ title: regex })
         .sort({ date: -1 })
+        .lean()
         .then((blog) => {
           res.setHeader("Content-Type", "application/json");
           res.json(blog);
@@ -25,6 +26,7 @@ blogRouter
       const regex = new RegExp(escapeRegex(req.query.search), "gi");
       Blog.find({ author: regex })
         .sort({ date: -1 })
+        .lean()
         .then((blog) => {
           res.setHeader("Content-Type", "application/json");
           res.json(blog);
@@ -33,6 +35,7 @@ blogRouter
     } else if (req.query.type === "date" && req.query.search) {
       const searchDate = new Date(req.query.search);
       Blog.find({ date: { $gte: searchDate } })
+        .lean()
         .then((blog) => {
           res.setHeader("Content-Type", "application/json");
           res.json(blog);
@@ -41,6 +44,7 @@ blogRouter
     } else {
       Blog.find()
         .sort({ date: -1 })
+        .lean()
         .then(
           (blogs) => {
             res.setHeader("Content-Type", "application/json");
