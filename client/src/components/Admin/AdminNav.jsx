@@ -2,6 +2,8 @@ import React from "react";
 import { useHistory } from "react-router-dom";
 import { Button } from "antd";
 
+import * as subscribe from "../../serviceWorkers/subscription";
+
 const AdminNav = () => {
   const history = useHistory();
   return (
@@ -62,6 +64,21 @@ const AdminNav = () => {
       >
         Validate Blogs
       </Button>
+      <br /> <br /> <br />
+      <Button
+        type="primary"
+        style={{
+          backgroundColor: "#1a137c",
+          border: "none",
+          padding: "0.4rem 2rem",
+        }}
+        onClick={() => {
+          subscribe.subscribeUser();
+        }}
+      >
+        Subscribe To Notifications
+      </Button>
+      <br /> <br /> <br />
     </>
   );
 };

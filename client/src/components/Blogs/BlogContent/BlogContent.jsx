@@ -50,7 +50,7 @@ function BlogContent(props) {
             <p className="blog-content">{ReactHtmlParser(blog.blogContent)}</p>
           </div>
           <ShareButtons
-            link={`http://bombayjesuitstoday.com/blogs/content/${id}`}
+            link={`https://bombayjesuitstoday.com/blogs/content/${id}`}
           />
           <br />
           <br />

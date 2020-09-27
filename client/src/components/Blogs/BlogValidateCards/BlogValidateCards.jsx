@@ -49,5 +49,11 @@ export default function Cards() {
     );
   });
 
-  return <div className="blog-cards-container">{blogCards}</div>;
+  return (
+    <>
+      <br />
+      <br />
+      <div className="blog-cards-container">{blogCards}</div>;
+    </>
+  );
 }

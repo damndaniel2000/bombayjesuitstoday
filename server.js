@@ -25,13 +25,15 @@ const blogRouter = require("./routes/Blogs/blogRouter");
 
 const userRouter = require("./routes/Misc/userRouter");
 const counterRouter = require("./routes/Misc/counterRouter");
+const subsRouter = require("./routes/Misc/subsRouter");
 
 MongoClient.connect("mongodb://localhost:27017/jesuits", {
-  user: "dand",
+  user: process.env.MONGO_USERNAME,
   pass: process.env.MONGO_PASS,
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useFindAndModify: false,
+  useCreateIndex: true,
 })
   .then(() => console.log("Database Connection Successful"))
   .catch((err) => console.error(err));
@@ -52,6 +54,7 @@ app.use("/api/blogs", blogRouter);
 
 app.use("/api/users", userRouter);
 app.use("/api/counter", counterRouter);
+app.use("/api/subs", subsRouter);
 
 app.use(express.static(path.join(__dirname, "client/build")));
 

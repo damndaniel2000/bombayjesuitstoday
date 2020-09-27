@@ -13,22 +13,23 @@ const HomeBlogs = () => {
           className="home-blogs-card"
           style={{
             backgroundImage:
-              "url(https://picjumbo.com/wp-content/uploads/endless-hills-free-photo-2210x1473.jpg)",
+              "url(https://cdn.pixabay.com/photo/2018/07/19/20/16/coneflower-3549331_960_720.jpg)",
             backgroundPosition: "bottom",
           }}
         >
           <div className="home-blogs-card-opacity">
-            <div className="home-blogs-card-title">The Rock & Satan</div>
+            <div className="home-blogs-card-title">Not Words, But Deeds</div>
             <div className="home-blogs-card-content">
-              Jesus renames Simon as Peter, which means ‘Rock’ – the foundation
-              on which he will build his Church. He is chosen as a leader, but
-              he and the others are to be the Church, the community, who will be
-              called to feed the multitudes and bring them God’s compassion.
+              When he asked people to raise their hands to indicate if they
+              would come, about 70% of the 500 people present raised their
+              hands. He fixed the following Saturday as the day on which they
+              would go out to help. When the day came, five people turned up.
+              They said, but did not do. They had words but no action.
             </div>
             <button
               className="home-blogs-card-button"
               onClick={() =>
-                history.push("/blogs/content/5f42116ce481e927e1a3708c")
+                history.push("/blogs/content/5f702731ccaaa56f60a63766")
               }
             >
               Read
@@ -40,8 +41,8 @@ const HomeBlogs = () => {
           className="home-blogs-card"
           style={{
             backgroundImage:
-              "url(https://cdn.pixabay.com/photo/2019/12/02/07/07/autumn-4667080_960_720.jpg)",
-            backgroundPosition: "top left",
+              "url(https://cdn.pixabay.com/photo/2018/08/11/20/37/church-3599448_960_720.jpg)",
+            backgroundPosition: "center",
           }}
         >
           <div className="home-blogs-card-opacity">
@@ -55,17 +56,15 @@ const HomeBlogs = () => {
               </span>
             </div>
             <div className="home-blogs-card-content">
-              The beatitudes in the Gospel of Luke are very concrete. They are
-              addressed directly to the disciples in the second person plural.
-              The disciples are poor, hungry, and weeping right now in the
-              present. "When" clause (certain future) is mentioned regarding
-              impending persecution, put as an exhortation to rejoice in the
-              face of persecution.
+              Life is unpredictable and uncertain. So-called good, gentle person
+              can turn murderous and so-called evil thug can become life-saver.
+              Transformation in our behaviour is always possible. History is
+              full of such stories of transformation.
             </div>
             <button
               className="home-blogs-card-button"
               onClick={() =>
-                history.push("/blogs/content/5f584c9b6734f5472ef41750")
+                history.push("/blogs/content/5f702601ccaaa56f60a63765")
               }
             >
               Read

@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Drawer, Menu, Dropdown } from "antd";
 import { useHistory, Route } from "react-router-dom";
+import UserContext from "../../../context/UserContext";
 
 import "./HomeNav.css";
 import MassModal from "../MassModal/MassModal";
@@ -11,6 +12,7 @@ const NavBar = (props) => {
   const [videoDrop, setDrop] = useState(false);
   const [modal, setModal] = useState();
   const history = useHistory();
+  const { userData } = useContext(UserContext);
 
   const showDrawer = () => {
     setVisible(true);
@@ -113,6 +115,27 @@ const NavBar = (props) => {
     }
   };
 
+  const dropBlogs = (
+    <Menu>
+      <Menu.ItemGroup>
+        <Menu.Item
+          key="1"
+          onClick={() => history.push("/blogs/upload")}
+          className="desktop-dropdown-items"
+        >
+          Upload
+        </Menu.Item>
+        <Menu.Item
+          key="2"
+          onClick={() => history.push("/blogs/validate")}
+          className="desktop-dropdown-items"
+        >
+          Validate
+        </Menu.Item>
+      </Menu.ItemGroup>
+    </Menu>
+  );
+
   return (
     <>
       {modal && <MassModal visible={modal} modalToggler={massModalToggle} />}
@@ -177,16 +200,31 @@ const NavBar = (props) => {
                   </span>
                 </div>
               </Dropdown>
-
-              <div>
-                <span onClick={blogs}> Blogs </span>
-              </div>
+              {userData.user ? (
+                <Dropdown overlay={dropBlogs}>
+                  <div>
+                    <span onClick={blogs}>
+                      Blogs&nbsp;&nbsp;
+                      <i className="fa fa-angle-down" />
+                    </span>
+                  </div>
+                </Dropdown>
+              ) : (
+                <div>
+                  <span onClick={blogs}> Blogs </span>
+                </div>
+              )}
               <div>
                 <span onClick={contributors}> Contributors </span>
               </div>
               <div>
                 <span onClick={followHim}>Follow Him</span>
               </div>
+              {userData.user && (
+                <div>
+                  <span onClick={() => history.push("/login")}>Login</span>
+                </div>
+              )}
             </nav>
           </div>
         </div>
