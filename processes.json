@@ -1,0 +1,10 @@
+{
+  "apps": [
+    {
+      "name": "jesuits",
+      "script": "server",
+      "watch": "../",
+      "log_date_format": "YYYY-MM-DD HH:mm Z"
+    }
+  ]
+}
