@@ -161,7 +161,7 @@ const BlogDetails = (props) => {
                 toolbar:
                   "formatselect | bold italic underline link | \
 					 alignleft aligncenter alignright alignjustify | \
-					 bullist numlist | undo redo",
+					 bullist numlist | undo redo removeformat",
               }}
               defaultValue={blog}
               onEditorChange={(e) => setContent(e)}
@@ -196,7 +196,6 @@ const BlogDetails = (props) => {
         </button>
       </div>
       <div className="blog-container">
-        {" "}
         <p className="blog-content">{ReactHtmlParser(content)}</p>
       </div>
     </>

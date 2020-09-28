@@ -77,7 +77,7 @@ const BlogUpload = () => {
                 toolbar:
                   "formatselect | bold italic underline link | \
              alignleft aligncenter alignright alignjustify | \
-             bullist numlist | undo redo",
+             bullist numlist | undo redo removeformat",
               }}
               value={blog}
               onEditorChange={(e) => setBlog(e)}

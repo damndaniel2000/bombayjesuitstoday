@@ -1,5 +1,7 @@
 {
-  "name": "Bombay Jesuits Today",
+  "short_name": "Bombay Jesuits Today",
+  "name": "Bombay Jesuits Today - New Blogs & Videos Everyday",
+  "description": "Videos and Blogs contributed by Jesuits throughout the world",
   "icons": [
     {
       "src": "android-chrome-192x192.png",

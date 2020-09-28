@@ -23,11 +23,12 @@
 }
 .blog-content {
   text-align: justify;
-  font-family: Zilla Slab;
   margin-top: 3rem;
-  font-size: 20px;
   color: #000;
+  font-size: 25px;
+  font-family: Zilla Slab;
 }
+
 .blogs-share-container {
   margin-top: -20px;
 }
