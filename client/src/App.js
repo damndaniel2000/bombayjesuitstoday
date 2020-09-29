@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Switch } from "react-router-dom";
 import axios from "axios";
+import { useCookies } from "react-cookie";
 
 import "./App.css";
 import UserContext from "./context/UserContext";
@@ -11,6 +12,7 @@ import Footer from "./components/Footer/Footer.jsx";
 
 import HomePage from "./pages/HomePage";
 import FollowHimPage from "./pages/FollowHimPage";
+import PrivacyPolicy from "./pages/PrivacyPolicyPage";
 
 import VideosGospelPage from "./pages/VideoPages/VideoCardPages/VideosGospelPage";
 import VideoSpiritualPage from "./pages/VideoPages/VideoCardPages/VideoSpiritualPage";
@@ -67,6 +69,7 @@ const App = () => {
     user: undefined,
   });
   const [count, setCount] = useState();
+  const [cookies, setCookie, removeCookie] = useCookies(["visits"]);
 
   useEffect(() => {
     const checkLoggedIn = async () => {
@@ -106,6 +109,8 @@ const App = () => {
             component={() => <HomePage count={count} />}
           />
           <HomeNavBar exact path="/follow-him" component={FollowHimPage} />
+          <NavBar exact path="/privacy-policy" component={PrivacyPolicy} />
+
           <NavBar exact path="/videos/gospel" component={VideosGospelPage} />
           <NavBar
             exact
@@ -117,6 +122,7 @@ const App = () => {
           <NavBar exact path="/videos/youth" component={VideoYouthPage} />
           <NavBar exact path="/videos/follow" component={VideoFollowPage} />
           <NavBar exact path="/videos/upload" component={VideoUpload} />
+
           <NavBar
             exact
             path="/contributors/jesuits"
@@ -141,7 +147,9 @@ const App = () => {
           <NavBar exact path="/blogs/content/:id" component={BlogContentPage} />
           <NavBar exact path="/blogs/upload" component={BlogUploadPage} />
           <NavBar exact path="/blogs/example" component={BlogExamplePage} />
+
           <NavBar exact path="/login" component={LoginPage} />
+
           <NavBar exact path="/videos/post" component={AdminVideoPost} />
           <NavBar
             exact
@@ -208,6 +216,7 @@ const App = () => {
             path="/videos/validate/follow/:id"
             component={AdminFollowVideoValidateDetails}
           />
+
           <NavBar
             exact
             path="/blogs/validate"
@@ -218,6 +227,7 @@ const App = () => {
             path="/blogs/validate/:id"
             component={AdminBlogValidateDetails}
           />
+
           <NavBar
             exact
             path="/contributors/validate"

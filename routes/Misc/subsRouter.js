@@ -29,9 +29,10 @@ subRouter.post("/send", (req, res, next) => {
     title: req.body.title,
     message: req.body.message,
     image: req.body.image,
-    badge: "https://www.flaticon.com/svg/static/icons/svg/3408/3408540.svg",
-    icon: "https://www.flaticon.com/svg/static/icons/svg/3408/3408540.svg",
+    badge: "https://bombayjesuitstoday.com/images/dove.png",
+    icon: "https://bombayjesuitstoday.com/images/dove.png",
     data: { url: req.body.url },
+    ttl: 86000,
   };
   Subs.find({})
     .then((subs) => {
