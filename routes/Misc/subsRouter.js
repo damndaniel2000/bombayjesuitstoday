@@ -32,7 +32,6 @@ subRouter.post("/send", (req, res, next) => {
     badge: "https://bombayjesuitstoday.com/images/dove.png",
     icon: "https://bombayjesuitstoday.com/images/dove.png",
     data: { url: req.body.url },
-    ttl: 86000,
   };
   Subs.find({})
     .then((subs) => {
