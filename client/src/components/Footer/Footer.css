@@ -3,6 +3,9 @@
   color: #fff;
   padding: 2rem 0 0.5rem 0;
 }
+.footer-container a {
+  color: #248ef7;
+}
 
 .footer-top-content {
   display: -webkit-box;

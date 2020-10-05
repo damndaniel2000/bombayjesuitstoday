@@ -25,17 +25,18 @@ const Footer = (props) => {
               <h3> Contact Us </h3>
               <p>
                 <i className="fa fa-envelope" />
+                &nbsp;&nbsp;
                 <a href="mailto:sjspiritual2020@gmail.com">
-                  &nbsp;&nbsp;sjspiritual2020@gmail.com
+                  sjspiritual2020@gmail.com
                 </a>
               </p>
               <p>
                 <i className="fa fa-phone" />{" "}
-                <a href="tel:02226871975">&nbsp;(022) 2687 1975</a>
+                <a href="tel:02226871975">(022) 2687 1975</a>
               </p>
               <p>
                 <i className="fa fa-phone" />{" "}
-                <a href="tel:02226872192">&nbsp;(022) 2687 2192</a>
+                <a href="tel:02226872192">(022) 2687 2192</a>
               </p>
             </div>
             <div className="footer-social">

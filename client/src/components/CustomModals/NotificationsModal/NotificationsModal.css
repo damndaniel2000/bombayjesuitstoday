@@ -3,16 +3,13 @@
   width: 100%;
   height: 100vh;
   position: fixed;
+  z-index: 1;
 }
 
 .notification-modal {
   color: #000;
   width: 900px;
-  transform: translate(-50%, 0);
-  z-index: 4;
-  position: fixed;
-  left: 50%;
-  top: 16%;
+  margin: 8rem auto 0 auto;
   padding: 3rem 4rem 1rem 4rem;
   border-radius: 50px;
   background-color: #fff;
@@ -32,7 +29,11 @@
   font-weight: bold;
 }
 .notification-modal-button-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
   justify-content: space-between;
   width: 70%;
   margin: 4rem auto 0 auto;
@@ -85,8 +86,15 @@
     font-size: 15px;
   }
   .notification-modal-button-container {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: reverse;
+    -ms-flex-direction: column-reverse;
     flex-direction: column-reverse;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
     width: 50%;
     margin: 2rem auto 0 auto;
@@ -122,6 +130,9 @@
     font-size: 11px;
   }
   .notification-modal-button-container {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: reverse;
+    -ms-flex-direction: column-reverse;
     flex-direction: column-reverse;
     width: 45%;
     margin: 1rem auto 0 auto;
