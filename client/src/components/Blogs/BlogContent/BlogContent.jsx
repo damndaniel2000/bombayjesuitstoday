@@ -6,6 +6,8 @@ import { useParams } from "react-router-dom";
 import { trackPromise, usePromiseTracker } from "react-promise-tracker";
 import ReactHtmlParser from "react-html-parser";
 
+import "./BlogContent.css";
+
 import ShareButtons from "./ShareButton";
 
 function BlogContent(props) {

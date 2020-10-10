@@ -28,7 +28,6 @@ import VideoUpload from "./pages/VideoPages/VideoUploadPage";
 import BlogCardsPage from "./pages/BlogPages/BlogCardsPage";
 import BlogContentPage from "./pages/BlogPages/BlogContentPage";
 import BlogUploadPage from "./pages/BlogPages/BlogUploadPage";
-import BlogExamplePage from "./pages/BlogPages/BlogExamplePage";
 
 import ContributorsJesuitsPage from "./pages/ContributorPages/ContributorCardPages/ContributorsJesuitsPage";
 import ContributorsLaityPage from "./pages/ContributorPages/ContributorCardPages/ContributorsLaityPage";
@@ -104,8 +103,6 @@ const App = () => {
   return (
     <CookiesProvider>
       <Router>
-        <CookieModal />
-        <NotificationModal />
         <UserContext.Provider value={{ userData, setUserData }}>
           <Switch>
             <HomeNavBar
@@ -155,7 +152,6 @@ const App = () => {
               component={BlogContentPage}
             />
             <NavBar exact path="/blogs/upload" component={BlogUploadPage} />
-            <NavBar exact path="/blogs/example" component={BlogExamplePage} />
 
             <NavBar exact path="/login" component={LoginPage} />
 

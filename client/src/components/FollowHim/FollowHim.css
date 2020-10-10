@@ -1,6 +1,6 @@
 .followhim-hero-img {
   background-image: url("https://res.cloudinary.com/dij0e4dwn/image/upload/v1597302749/jj_crb31p.jpg");
-  height: 85vh;
+  height: 82vh;
   background-size: cover;
 }
 
@@ -14,11 +14,11 @@
 
 .followhim-questions {
   font-family: Saira Semi Condensed;
-  font-size: 60px;
+  font-size: 55px;
 }
 .followhim-content {
   font-family: Zilla Slab;
-  font-size: 30px;
+  font-size: 25px;
   text-align: justify;
 }
 
@@ -34,8 +34,8 @@
 }
 
 .carousel-img {
-  width: 1000px;
-  height: 600px;
+  width: 800px;
+  height: 550px;
   display: inline-block;
   vertical-align: top;
   margin: 0 2rem;
@@ -76,15 +76,15 @@
 }
 
 .contact-barcode {
-  width: 300px;
-  height: 300px;
+  width: 250px;
+  height: 250px;
   display: block;
   border: solid 1px grey;
   margin: 2rem auto;
 }
 
 .followhim-slogan {
-  font-size: 70px;
+  font-size: 60px;
   font-family: Staatliches;
   color: #000;
   margin: 7rem auto 0 auto;
@@ -93,7 +93,7 @@
 
 .ignatian-march {
   width: 50%;
-  height: 550px;
+  height: 500px;
   margin: 3rem auto 5rem auto;
 }
 

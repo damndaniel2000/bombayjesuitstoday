@@ -13,7 +13,7 @@
 
 .blog-card {
   position: relative;
-  height: 650px;
+  height: 600px;
   margin-bottom: 4rem;
   width: 48%;
   background-color: #fff;
@@ -22,7 +22,7 @@
 }
 
 .blog-card-img {
-  height: 400px;
+  height: 350px;
   width: 100%;
 }
 
@@ -41,14 +41,14 @@
   line-height: 33px;
   letter-spacing: 0.5px;
   font-family: Saira Semi Condensed;
-  font-size: 23px;
+  font-size: 20px;
   color: #000;
   font-weight: bold;
   text-transform: capitalize;
 }
 
 .blog-card-author {
-  font-size: 16px;
+  font-size: 14px;
 }
 .blog-card-time {
   margin-top: -12px;
@@ -60,8 +60,8 @@
   border: solid 2px rgb(21, 34, 85);
   color: #fff;
   border-radius: 50px;
-  font-size: 13px;
-  padding: 3px 20px;
+  font-size: 11px;
+  padding: 3px 17px;
   cursor: pointer;
   outline: none;
   -webkit-box-shadow: 0px 10px 20px rgb(21, 34, 85, 0.6);
@@ -99,7 +99,7 @@
 .search-bar {
   margin-right: 1rem;
   width: 50%;
-  padding: 0.8rem 1rem;
+  padding: 10px 20px;
   font-size: 18px;
   border: none;
   -webkit-box-shadow: 0px 1px 5px rgba(138, 138, 138, 0.5);
@@ -109,9 +109,9 @@
 }
 
 .search-category {
-  width: 175px;
-  padding: 0.75rem 2rem;
-  font-size: 18px;
+  width: 165px;
+  padding: 12px 16px;
+  font-size: 16px;
   font-weight: bold;
   background-color: #fff;
   border: solid 1px #d9cdfb;
@@ -134,10 +134,10 @@
   -ms-flex-pack: distribute;
   justify-content: space-around;
   background-color: #fff;
-  font-size: 18px;
+  font-size: 16px;
   position: absolute;
   z-index: 1;
-  width: 175px;
+  width: 165px;
   height: 120px;
   cursor: pointer;
   -webkit-box-shadow: 0px 10px 20px rgb(21, 34, 85, 0.6);

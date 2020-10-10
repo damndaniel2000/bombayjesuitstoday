@@ -15,7 +15,7 @@
 
 .home-follow-img {
   width: 60%;
-  height: 700px;
+  height: 600px;
 }
 
 .home-follow-button-container {
@@ -25,9 +25,9 @@
 .home-follow-button {
   border: none;
   background-color: rgb(199, 28, 28);
-  padding: 10px 30px;
+  padding: 10px 25px;
   border-radius: 10px;
-  font-size: 30px;
+  font-size: 25px;
   font-family: Rancho;
   color: #fff;
   outline: none;

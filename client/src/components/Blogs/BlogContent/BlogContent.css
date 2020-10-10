@@ -6,26 +6,26 @@
 .blog-title {
   font-family: Staatliches;
   letter-spacing: 1px;
-  font-size: 40px;
+  font-size: 35px;
   color: blue;
 }
 .blog-author {
   font-family: Lobster Two;
   font-weight: bold;
-  font-size: 20px;
+  font-size: 18px;
   color: #000;
 }
 .blog-img {
   position: relative;
   margin: 1rem 0;
-  height: 600px;
+  height: 550px;
   background-size: cover;
 }
 .blog-content {
   text-align: justify;
   margin-top: 3rem;
   color: #000;
-  font-size: 25px;
+  font-size: 20px;
   font-family: Zilla Slab;
 }
 
