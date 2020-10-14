@@ -14,9 +14,6 @@ import HomePage from "./pages/HomePage";
 import FollowHimPage from "./pages/FollowHimPage";
 import PrivacyPolicy from "./pages/PrivacyPolicyPage";
 
-import CookieModal from "./components/CustomModals/CookiesModal/CookiesModal";
-import NotificationModal from "./components/CustomModals/NotificationsModal/NotificationsModal";
-
 import VideosGospelPage from "./pages/VideoPages/VideoCardPages/VideosGospelPage";
 import VideoSpiritualPage from "./pages/VideoPages/VideoCardPages/VideoSpiritualPage";
 import VideoMissionPage from "./pages/VideoPages/VideoCardPages/VideoMissionPage";

@@ -29,8 +29,8 @@ subRouter.post("/send", (req, res, next) => {
     title: req.body.title,
     message: req.body.message,
     image: req.body.image,
-    badge: "https://bombayjesuitstoday.com/images/dove.png",
-    icon: "https://bombayjesuitstoday.com/images/dove.png",
+    badge: req.body.badge,
+    icon: req.body.badge,
     data: { url: req.body.url },
   };
   Subs.find({})

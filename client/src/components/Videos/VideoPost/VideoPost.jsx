@@ -58,10 +58,24 @@ const VideoPost = () => {
   const handleRadios = (evt) => {
     setPath(evt.target.value);
   };
+
+  const handleNotification = () => {
+    const url = "https://bombayjesuitstoday.com/videos/gospel";
+    axios
+      .post("/api/subs/send", {
+        title: "New Videos Have Been Posted",
+        message: "Don't miss out!",
+        badge: "https://bombayjesuitstoday.com/images/dove.png",
+        url: url,
+      })
+      .then(() => message.success("Notification sent"))
+      .catch((err) => console.log(err));
+  };
+
   return (
     <div className="video-post-form">
       <h1> Post Video </h1>
-      <Form onFinish={handleSubmit} layout="vertical" size="large">
+      <Form layout="vertical" size="large">
         <Form.Item name="uploader">
           <label htmlFor="uploader">Uploader's Name :</label>
 
@@ -140,8 +154,21 @@ const VideoPost = () => {
           </Radio.Group>
         </div>
 
-        <button className="video-post-form-button" type="primary">
+        <button
+          className="video-post-form-button"
+          type="primary"
+          onClick={handleSubmit}
+        >
           Post
+        </button>
+        <br />
+        <button
+          style={{ backgroundColor: "green" }}
+          className="video-post-form-button"
+          type="primary"
+          onClick={handleNotification}
+        >
+          Send Notification
         </button>
       </Form>
     </div>

@@ -98,6 +98,7 @@ const BlogDetails = (props) => {
         title: header,
         message: title,
         image: imgLink,
+        badge: "https://bombayjesuitstoday.com/images/dove.png",
         url: url,
       })
       .then(() => message.success("Notification sent"))
