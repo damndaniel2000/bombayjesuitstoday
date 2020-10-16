@@ -10,6 +10,9 @@ import NavBar from "./components/Nav/Navbar/NavBar";
 import HomeNavBar from "./components/Nav/HomeNav/HomeNavBar";
 import Footer from "./components/Footer/Footer.jsx";
 
+import CookieModal from "./components/CustomModals/CookiesModal/CookiesModalHandler.jsx";
+import NotificationModal from "./components/CustomModals/NotificationsModal/NotificationModalHandler.jsx";
+
 import HomePage from "./pages/HomePage";
 import FollowHimPage from "./pages/FollowHimPage";
 import PrivacyPolicy from "./pages/PrivacyPolicyPage";
@@ -100,6 +103,8 @@ const App = () => {
   return (
     <CookiesProvider>
       <Router>
+        <CookieModal />
+        <NotificationModal />
         <UserContext.Provider value={{ userData, setUserData }}>
           <Switch>
             <HomeNavBar

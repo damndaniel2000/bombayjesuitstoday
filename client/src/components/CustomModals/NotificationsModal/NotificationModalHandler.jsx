@@ -18,20 +18,35 @@ const ModalHandler = () => {
 
   useEffect(() => {
     const handlePermission = () => {
+      const currentVisit = parseInt(cookies.visitCount);
+      console.log(currentVisit % 8);
       return navigator.permissions
         .query({ name: "notifications" })
         .then((result) => {
           if (
             result.state === "prompt" &&
             cookies.showNotificationModal !== "false"
-          )
-            setTimeout(() => setModalVisible(true), 20000);
+          ) {
+            if (
+              (cookies.visitCount === undefined || currentVisit % 8 === 0) &&
+              currentVisit !== 0
+            )
+              setTimeout(() => setModalVisible(true), 2000);
+          }
         })
         .catch((err) => console.log(err));
     };
 
     handlePermission();
   }, []);
+
+  const dontAskAgain = () => {
+    setCookie("showNotificationModal", false, {
+      path: "/",
+      expires: new Date("Dec 31 2100"),
+    });
+    setModalVisible(false);
+  };
 
   return (
     <>
@@ -42,6 +57,7 @@ const ModalHandler = () => {
               style={animation}
               closeModal={() => setModalVisible(false)}
               key={key}
+              dontAskAgain={dontAskAgain}
             />
           )
       )}

@@ -24,7 +24,7 @@ const ModalHandler = () => {
         expires: new Date("Dec 31 2100"),
       });
     }
-    setModalVisible(true);
+    setTimeout(() => setModalVisible(true), 10000);
   }, []);
 
   const acceptCookie = () => {
@@ -35,7 +35,7 @@ const ModalHandler = () => {
     setModalVisible(false);
   };
 
-  if (cookies.visitCount !== undefined && modalVisible) {
+  if (cookies.visitCount === undefined && modalVisible) {
     return (
       <>
         {transition.map(
