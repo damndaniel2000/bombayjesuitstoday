@@ -13,6 +13,8 @@ const VideoPost = () => {
     videoURL: "",
   });
   const [path, setPath] = useState();
+  const [ytUrl, setUrl] = useState();
+  const ytApiKey = "AIzaSyDBX0aq_cztB34O0uJvfFJvn6q6Howyexw";
   const { uploader, caption, title, embedLink, videoURL } = state;
 
   const handleSubmit = async () => {
@@ -69,6 +71,34 @@ const VideoPost = () => {
         url: url,
       })
       .then(() => message.success("Notification sent"))
+      .catch((err) => console.log(err));
+  };
+
+  const getId = (url) => {
+    const query = {};
+    const pairs = (url[0] === "?" ? url.substr(1) : url).split("&");
+    for (let i = 0; i < pairs.length; i++) {
+      let pair = pairs[i].split("=");
+      query[decodeURIComponent(pair[0])] = decodeURIComponent(pair[1] || "");
+    }
+    return query;
+  };
+
+  const processUrl = () => {
+    const videoId = Object.values(getId(ytUrl));
+    axios
+      .get(
+        `https://www.googleapis.com/youtube/v3/videos?part=snippet&id=${videoId[0]}&key=${ytApiKey}`
+      )
+      .then((res) => {
+        const data = res.data.items[0].snippet;
+        setState({
+          caption: data.description,
+          title: data.title,
+          embedLink: "https://www.youtube.com/embed/" + videoId[0],
+          videoURL: ytUrl,
+        });
+      })
       .catch((err) => console.log(err));
   };
 
@@ -171,6 +201,8 @@ const VideoPost = () => {
           Send Notification
         </button>
       </Form>
+      <input value={ytUrl} onChange={(e) => setUrl(e.target.value)} />
+      <button onClick={processUrl}> Process </button>
     </div>
   );
 };

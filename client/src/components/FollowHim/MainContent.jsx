@@ -22,10 +22,10 @@ const FollowMe = () => {
         </div>
         <ImgCarousel
           images={[
-            "https://res.cloudinary.com/dij0e4dwn/image/upload/v1597405398/Follow%20Him/8C1A0963_w6cxgo.jpg",
-            "https://res.cloudinary.com/dij0e4dwn/image/upload/v1597405350/Follow%20Him/David_Mao_akn7by.jpg",
-            "https://res.cloudinary.com/dij0e4dwn/image/upload/v1597405360/Follow%20Him/DSCN2983_otqc4b.jpg",
-            "https://res.cloudinary.com/dij0e4dwn/image/upload/v1597405332/Follow%20Him/IMG_20170707_125231_-_Copy_vtz8ap.jpg",
+            "https://res.cloudinary.com/dij0e4dwn/image/upload/v1603001730/Follow%20Him%28Optimized%29/8C1A0963_w6cxgo_sdaofe.jpg",
+            "https://res.cloudinary.com/dij0e4dwn/image/upload/v1603001725/Follow%20Him%28Optimized%29/David_Mao_akn7by_vuixal.jpg",
+            "https://res.cloudinary.com/dij0e4dwn/image/upload/v1603001725/Follow%20Him%28Optimized%29/DSCN2983_otqc4b_hpxvx3.jpg",
+            "https://res.cloudinary.com/dij0e4dwn/image/upload/v1603001726/Follow%20Him%28Optimized%29/IMG_20170707_125231_-_Copy_vtz8ap_cmczjt.jpg",
           ]}
         />
       </section>
@@ -47,10 +47,10 @@ const FollowMe = () => {
         </div>
         <ImgCarousel
           images={[
-            "https://res.cloudinary.com/dij0e4dwn/image/upload/v1597405306/Follow%20Him/IMG_20170716_092948460_t88s13.jpg",
-            "https://res.cloudinary.com/dij0e4dwn/image/upload/v1597405295/Follow%20Him/Manickpur_Youth_event_Aug_2018_xnmsjw.jpg",
-            "https://res.cloudinary.com/dij0e4dwn/image/upload/v1597405310/Follow%20Him/Philip_Terrasa_-_July_2018_bztwak.jpg",
-            "https://res.cloudinary.com/dij0e4dwn/image/upload/v1597405326/Follow%20Him/IMG_20171122_123617_dmtvuf.jpg",
+            "https://res.cloudinary.com/dij0e4dwn/image/upload/v1603001732/Follow%20Him%28Optimized%29/IMG_20170716_092948460_t88s13_tlqgmz.jpg",
+            "https://res.cloudinary.com/dij0e4dwn/image/upload/v1603002892/Follow%20Him%28Optimized%29/Manickpur_Youth_event_Aug_2018_xnmsjw_erpk5l.jpg",
+            "https://res.cloudinary.com/dij0e4dwn/image/upload/v1603001730/Follow%20Him%28Optimized%29/Philip_Terrasa_-_July_2018_bztwak_c4vyt6.jpg",
+            "https://res.cloudinary.com/dij0e4dwn/image/upload/v1603001725/Follow%20Him%28Optimized%29/IMG_20171122_123617_dmtvuf_uh7iuk.jpg",
           ]}
         />
       </section>
@@ -86,10 +86,10 @@ const FollowMe = () => {
         </div>
         <ImgCarousel
           images={[
-            "https://res.cloudinary.com/dij0e4dwn/image/upload/v1597405285/Follow%20Him/41_-_1_July_uuanth.jpg",
-            "https://res.cloudinary.com/dij0e4dwn/image/upload/v1597405285/Follow%20Him/35_-_9_July_yrv92t.jpg",
-            "https://res.cloudinary.com/dij0e4dwn/image/upload/v1597405284/Follow%20Him/17_16_July_ph9vox.jpg",
-            "https://res.cloudinary.com/dij0e4dwn/image/upload/v1597405284/Follow%20Him/Bombay_Jesuits_yjbc84.jpg",
+            "https://res.cloudinary.com/dij0e4dwn/image/upload/v1603001730/Follow%20Him%28Optimized%29/41_-_1_July_uuanth_hinumm.jpg",
+            "https://res.cloudinary.com/dij0e4dwn/image/upload/v1603001735/Follow%20Him%28Optimized%29/35_-_9_July_yrv92t_olafsd.jpg",
+            "https://res.cloudinary.com/dij0e4dwn/image/upload/v1603002893/Follow%20Him%28Optimized%29/17_16_July_ph9vox_zhq8o5.jpg",
+            "https://res.cloudinary.com/dij0e4dwn/image/upload/v1603002892/Follow%20Him%28Optimized%29/Bombay_Jesuits_yjbc84_e79vzj.jpg",
           ]}
         />
         <div className="followhim-section-text">
