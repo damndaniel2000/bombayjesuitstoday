@@ -205,13 +205,6 @@ const VideoPost = () => {
       </Form>
       <input value={ytUrl} onChange={(e) => setUrl(e.target.value)} />
       <button onClick={processUrl}> Process </button>
-      <iframe
-        width="600"
-        height="340"
-        src={hello}
-        frameborder="0"
-        allowfullscreen
-      ></iframe>
     </div>
   );
 };

@@ -1,20 +1,23 @@
-/*eslint-disable*/
-
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { trackPromise, usePromiseTracker } from "react-promise-tracker";
-import { Spin } from "antd";
+import { Spin, Pagination } from "antd";
 import { useHistory } from "react-router";
 
 import "./BlogCards.css";
 
 export default function Cards() {
   const [blogs, setBlogs] = useState([]);
+  const [pageBlogs, setPageBlogs] = useState([]);
+  const [page, setPage] = useState(1);
+  const [total, setTotal] = useState(Number);
+
   const [search, setSearch] = useState();
   const [noResult, setResult] = useState(false);
   const [dropdown, setShowDrop] = useState(false);
   const [dropSelect, setDropSelect] = useState("title");
   const [load, setLoad] = useState(true);
+
   const history = useHistory();
   const { promiseInProgress } = usePromiseTracker();
 
@@ -29,6 +32,7 @@ export default function Cards() {
       if (response.data.length !== 0) {
         setResult(false);
         setBlogs(response.data);
+        setTotal(response.data.length);
       } else setResult(true);
       setLoad(false);
     } catch (err) {
@@ -51,9 +55,11 @@ export default function Cards() {
         if (res.data.length !== 0) {
           setResult(false);
           setBlogs(res.data);
+          setTotal(res.data.length);
         } else {
           setResult(true);
           setBlogs([]);
+          setTotal(res.data.length);
         }
       } catch (err) {
         console.log(err);
@@ -62,9 +68,25 @@ export default function Cards() {
     if (search !== undefined) onSearch();
   }, [search]);
 
+  useEffect(() => {
+    if (blogs.length >= 10) {
+      setPageBlogs(blogs.slice(page, page + 10));
+      backtop();
+    } else setPageBlogs(blogs);
+  }, [blogs, page]);
+
+  const backtop = () => {
+    var scrollStep = -window.scrollY / (100 / 15),
+      scrollInterval = setInterval(function () {
+        if (window.scrollY !== 0) {
+          window.scrollBy(0, scrollStep);
+        } else clearInterval(scrollInterval);
+      }, 15);
+  };
+
   const blogCards =
-    blogs.length !== 0
-      ? blogs.map((blog) => {
+    pageBlogs.length !== 0
+      ? pageBlogs.map((blog) => {
           const postDate = new Date(blog.date);
           const date = postDate.getDate();
           const month = postDate.toLocaleString("default", { month: "long" });
@@ -171,6 +193,18 @@ export default function Cards() {
             {noResult && <p className="no-search-found">No Blog Found</p>}
             <div className="blog-cards-container">{blogCards}</div>
           </div>
+          <Pagination
+            current={page}
+            total={total}
+            hideOnSinglePage={true}
+            defaultPageSize={10}
+            responsive={true}
+            showSizeChanger={false}
+            onChange={(page) => {
+              setPage(page);
+            }}
+            style={{ margin: "80px auto" }}
+          />
         </>
       )}
     </>
