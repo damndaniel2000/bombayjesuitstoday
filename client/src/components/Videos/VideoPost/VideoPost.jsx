@@ -15,6 +15,7 @@ const VideoPost = () => {
   const [path, setPath] = useState();
   const [ytUrl, setUrl] = useState();
   const ytApiKey = "AIzaSyDBX0aq_cztB34O0uJvfFJvn6q6Howyexw";
+  const [hello, setHello] = useState();
   const { uploader, caption, title, embedLink, videoURL } = state;
 
   const handleSubmit = async () => {
@@ -92,6 +93,7 @@ const VideoPost = () => {
       )
       .then((res) => {
         const data = res.data.items[0].snippet;
+        console.log(data);
         setState({
           caption: data.description,
           title: data.title,
@@ -203,6 +205,13 @@ const VideoPost = () => {
       </Form>
       <input value={ytUrl} onChange={(e) => setUrl(e.target.value)} />
       <button onClick={processUrl}> Process </button>
+      <iframe
+        width="600"
+        height="340"
+        src={hello}
+        frameborder="0"
+        allowfullscreen
+      ></iframe>
     </div>
   );
 };

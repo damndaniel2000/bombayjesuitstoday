@@ -1,14 +1,18 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { trackPromise, usePromiseTracker } from "react-promise-tracker";
-import { Spin, Radio } from "antd";
+import { Spin, Radio, Pagination } from "antd";
 import { useHistory } from "react-router-dom";
 
 import ShareButton from "./ShareButton";
+import GVideo from "./GVideo";
 import "./VideoCards.css";
 
 const VideoCards = (props) => {
   const [videos, setVideos] = useState([]);
+  const [pageVids, setPageVids] = useState([]);
+  const [page, setPage] = useState(1);
+  const [total, setTotal] = useState(Number);
   const { promiseInProgress } = usePromiseTracker();
   const history = useHistory();
   const radio = "/videos/" + props.path;
@@ -18,6 +22,7 @@ const VideoCards = (props) => {
       try {
         const res = await trackPromise(axios.get("/api/videos-" + props.path));
         setVideos(res.data);
+        setTotal(res.data.length);
       } catch (err) {
         console.log(err);
       }
@@ -25,6 +30,13 @@ const VideoCards = (props) => {
     window.scrollTo(0, 0);
     getVideos();
   }, [props.path]);
+
+  useEffect(() => {
+    if (videos.length >= 5) {
+      setPageVids(videos.slice(page, page + 5));
+      backtop();
+    } else setPageVids(videos);
+  }, [videos, page]);
 
   const handleRadios = (evt) => {
     history.push(evt.target.value);
@@ -46,7 +58,7 @@ const VideoCards = (props) => {
       }, 15);
   };
 
-  const videoCards = videos.map((card) => {
+  const videoCards = pageVids.map((card) => {
     const postDate = new Date(card.date);
     const date = postDate.getDate();
     const month = postDate.toLocaleString("default", { month: "long" });
@@ -127,6 +139,18 @@ const VideoCards = (props) => {
         </div>
       )}
       {videoCards}
+      <Pagination
+        current={page}
+        total={total}
+        hideOnSinglePage={true}
+        defaultPageSize={5}
+        responsive={true}
+        showSizeChanger={false}
+        onChange={(page) => {
+          setPage(page);
+        }}
+        style={{ margin: "80px auto" }}
+      />
     </>
   );
 };
