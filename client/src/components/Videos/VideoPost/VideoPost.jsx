@@ -139,9 +139,9 @@ const VideoPost = () => {
   return (
     <div className="video-post-form">
       <h1> Post Video </h1>
+      <Input value={ytUrl} onChange={(e) => setUrl(e.target.value)} />
+      <button onClick={processUrl}> Process </button>
       <Form layout="vertical" size="large">
-        <Input value={ytUrl} onChange={(e) => setUrl(e.target.value)} />
-        <button onClick={processUrl}> Process </button>
         <Form.Item name="uploader">
           <label htmlFor="uploader">Uploader's Name :</label>
 
@@ -237,8 +237,6 @@ const VideoPost = () => {
           Send Notification
         </button>
       </Form>
-      <input value={ytUrl} onChange={(e) => setUrl(e.target.value)} />
-      <button onClick={processUrl}> Process </button>
     </div>
   );
 };

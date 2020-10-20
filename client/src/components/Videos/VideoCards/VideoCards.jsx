@@ -33,7 +33,10 @@ const VideoCards = (props) => {
 
   useEffect(() => {
     if (videos.length >= 5) {
-      setPageVids(videos.slice(page, page + 5));
+      let currentItems = (page - 1) * 5;
+      if (page === 1) currentItems = 0;
+      setPageVids(videos.slice(currentItems, currentItems + 5));
+      pageVids.reverse();
       backtop();
     } else setPageVids(videos);
   }, [videos, page]);

@@ -70,7 +70,9 @@ export default function Cards() {
 
   useEffect(() => {
     if (blogs.length >= 10) {
-      setPageBlogs(blogs.slice(page, page + 10));
+      let currentItems = (page - 1) * 10;
+      if (page === 1) currentItems = 0;
+      setPageBlogs(blogs.slice(currentItems, currentItems + 10));
       backtop();
     } else setPageBlogs(blogs);
   }, [blogs, page]);
