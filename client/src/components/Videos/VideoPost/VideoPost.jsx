@@ -15,7 +15,6 @@ const VideoPost = () => {
   const [path, setPath] = useState();
   const [ytUrl, setUrl] = useState();
   const ytApiKey = "AIzaSyDBX0aq_cztB34O0uJvfFJvn6q6Howyexw";
-  const [hello, setHello] = useState();
   const { uploader, caption, title, embedLink, videoURL } = state;
 
   const handleSubmit = async () => {
@@ -93,8 +92,10 @@ const VideoPost = () => {
       )
       .then((res) => {
         const data = res.data.items[0].snippet;
-        console.log(data);
+
+        const name = processUploader(data.channelId);
         setState({
+          uploader: name,
           caption: data.description,
           title: data.title,
           embedLink: "https://www.youtube.com/embed/" + videoId[0],
@@ -104,10 +105,43 @@ const VideoPost = () => {
       .catch((err) => console.log(err));
   };
 
+  const processUploader = (channelId) => {
+    let name;
+    switch (channelId) {
+      case "UCejo1B53RYH9X2a9RtAsYtA":
+        name = "Fr. Errol Fernandes SJ";
+        setPath("spiritual");
+        break;
+      case "UCkXNQpNd4bfbXaQuxNGQ1yw":
+        name = "Fr. Vijay Gonsalves SJ";
+        break;
+      case "UCEypxIaduGt4NU3-h9ZgRFA":
+        name = "Fr. Gerard Rodricks SJ";
+        setPath("gospel");
+        break;
+      case "UCa20s0nm63xe-trJQ10V63g":
+        name = "Holy Family Church";
+        setPath("laity");
+        break;
+      case "UCFVsEgVPGTEnxZK7Gx0YN5A":
+        name = "Br. Sumit D'souza SJ";
+        break;
+      case "UCVGPM2WMUjO8_dVa6IFLy9A":
+        name = "Fr. Ivan D'souza SJ";
+        break;
+      default:
+        name = "null";
+        break;
+    }
+    return name;
+  };
+
   return (
     <div className="video-post-form">
       <h1> Post Video </h1>
       <Form layout="vertical" size="large">
+        <Input value={ytUrl} onChange={(e) => setUrl(e.target.value)} />
+        <button onClick={processUrl}> Process </button>
         <Form.Item name="uploader">
           <label htmlFor="uploader">Uploader's Name :</label>
 
@@ -176,7 +210,7 @@ const VideoPost = () => {
         </p>
 
         <div>
-          <Radio.Group onChange={handleRadios}>
+          <Radio.Group onChange={handleRadios} value={path}>
             <Radio.Button value="gospel"> Gospel </Radio.Button>
             <Radio.Button value="spiritual"> Spiritual </Radio.Button>
             <Radio.Button value="mission"> Misson </Radio.Button>
