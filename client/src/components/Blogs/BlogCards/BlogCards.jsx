@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { trackPromise, usePromiseTracker } from "react-promise-tracker";
+import { trackPromise } from "react-promise-tracker";
 import { Spin, Pagination } from "antd";
 import { useHistory } from "react-router";
 
@@ -19,7 +19,6 @@ export default function Cards() {
   const [load, setLoad] = useState(true);
 
   const history = useHistory();
-  const { promiseInProgress } = usePromiseTracker();
 
   useEffect(() => {
     getBlogs();

@@ -110,14 +110,14 @@ const VideoPost = () => {
     switch (channelId) {
       case "UCejo1B53RYH9X2a9RtAsYtA":
         name = "Fr. Errol Fernandes SJ";
-        setPath("spiritual");
+        setPath("gospel");
         break;
       case "UCkXNQpNd4bfbXaQuxNGQ1yw":
         name = "Fr. Vijay Gonsalves SJ";
         break;
       case "UCEypxIaduGt4NU3-h9ZgRFA":
         name = "Fr. Gerard Rodricks SJ";
-        setPath("gospel");
+        setPath("spiritual");
         break;
       case "UCa20s0nm63xe-trJQ10V63g":
         name = "Holy Family Church";
