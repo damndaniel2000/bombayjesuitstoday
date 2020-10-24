@@ -176,11 +176,8 @@ const VideoCards = (props) => {
         ></iframe>
         <div className="video-card-sharebuttons">
           <ShareButton videoUrl={gData.videoURL} />
-          <a
-            href={detectDevice(gData.videoURL)}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+
+          <a href={gData.videoURL} target="_blank" rel="noopener noreferrer">
             Not Loading? Click here to view in Youtube{" "}
             <i className="fa fa-youtube-play" />
           </a>
