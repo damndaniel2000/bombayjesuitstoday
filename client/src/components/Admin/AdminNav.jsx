@@ -1,6 +1,6 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
-import { Button } from "antd";
+import { Button } from "@material-ui/core";
 
 import * as subscribe from "../../serviceWorkers/subscription";
 
@@ -11,12 +11,8 @@ const AdminNav = () => {
     <>
       <br /> <br /> <br /> <br /> <br />
       <Button
-        type="primary"
-        style={{
-          backgroundColor: "#1a137c",
-          border: "none",
-          padding: "0.4rem 2rem",
-        }}
+        variant="contained"
+        color="primary"
         onClick={() => history.push("/videos/post")}
       >
         Post Video

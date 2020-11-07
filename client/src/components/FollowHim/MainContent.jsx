@@ -1,4 +1,5 @@
 import React from "react";
+import { Typography } from "@material-ui/core";
 
 import "./FollowHim.css";
 
@@ -11,7 +12,13 @@ const FollowMe = () => {
 
       <section className="followhim-section">
         <div className="followhim-section-text">
-          <h1 className="followhim-questions"> Who Are We ? </h1>
+          <Typography
+            color="primary"
+            variant="p"
+            className="followhim-questions"
+          >
+            Who Are We ?
+          </Typography>
           <p className="followhim-content">
             The Jesuits are a religious order of priests and brothers serving in
             the Catholic Church. Founded by St Ignatius and his companions in
@@ -32,7 +39,13 @@ const FollowMe = () => {
 
       <section className="followhim-section">
         <div className="followhim-section-text">
-          <h1 className="followhim-questions"> What Do We Do? </h1>
+          <Typography
+            color="primary"
+            variant="p"
+            className="followhim-questions"
+          >
+            What Do We Do?
+          </Typography>
           <p className="followhim-content">
             Jesuits by heart are companions of Jesus. By profession they are
             engineers, farmers, retreat directors, teachers, doctors, poets,
@@ -57,7 +70,14 @@ const FollowMe = () => {
 
       <section className="followhim-section">
         <div className="followhim-section-text">
-          <h1 className="followhim-questions">Am I Called?</h1>
+          <Typography
+            color="primary"
+            variant="p"
+            className="followhim-questions"
+          >
+            Am I Called?
+          </Typography>
+
           <div className="followhim-content">
             Do you relate to any of these points?
             <ul>
@@ -98,7 +118,8 @@ const FollowMe = () => {
           <p style={{ textAlign: "center" }} className="followhim-content">
             If you could relate to any of those points or your mind is filled
             with doubt and you are confused about your path in life, <br />
-            <b>Contact Us</b>. <br /> We promise to guide you in the right way.
+            <span style={{ fontWeight: 600 }}>Contact Us</span>. <br /> We
+            promise to guide you in the right way.
             <img
               className="contact-barcode"
               src={window.location.origin + "/images/contact-barcode.png"}

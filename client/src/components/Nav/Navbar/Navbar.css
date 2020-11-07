@@ -1,6 +1,4 @@
 .nav-strip {
-  background-color: #152256;
-  color: #fff;
   height: 5rem;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -20,100 +18,57 @@
   height: 100px;
 }
 .main-nav-div {
-  font-size: 13px;
   width: 45%;
-  padding: 1rem;
 }
 
-.main-nav {
+.desktop-nav {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
+  justify-content: space-around;
+  font-size: 15px;
+  font-weight: 600;
 }
-
-.desktop-nav div {
-  height: 5rem;
-  display: -webkit-box;
-  display: -ms-flexbox;
+.desktop-nav > div {
+  cursor: pointer;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
+  align-items: center;
 }
-
-.desktop-nav span {
-  padding: 10px 25px;
-}
-
-.desktop-dropdown-items {
-  font-size: 16px;
-}
-
-.desktop-dropdown-items:hover {
-  background-color: #152256;
-  color: #fff;
-}
-.desktop-dropdown-items:active {
-  background-color: #152256;
-  color: #fff;
-}
-
-.desktop-nav span:hover {
-  background-color: rgb(255, 255, 255, 0.2);
-  border-radius: 50px;
-  cursor: pointer;
-}
-.desktop-nav span:active {
-  background-color: rgb(255, 255, 255, 0.2);
-  border-radius: 50px;
-  cursor: pointer;
+.desktop-nav > div:hover {
+  color: #061178;
 }
 
 .nav-mobile-nav {
   display: none;
 }
+.drawer-items .MuiTypography-body1 {
+  font-family: raleway;
+  font-weight: 600;
+  font-size: 15px;
+}
+.drawer-items .MuiListItemIcon-root {
+  color: #000;
+}
 
-.drawer-nav-links {
-  margin-top: 2.5rem;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  font-size: 18px;
+.nav-drop-menu {
+  position: absolute;
+  top: 85px;
+  right: 380px;
+  width: 250px;
+  background-color: white;
+  border-top: solid 3px #061178;
+  z-index: 10;
 }
-.drawer-nav-links span {
-  padding: 0.5rem 1rem;
-  height: 55px;
-  text-align: left;
-  width: 100%;
-  cursor: pointer;
+.nav-drop-menu:hover {
+  color: black;
 }
-.drawer-nav-links span:hover {
-  background-color: #fff;
-  color: #152256;
+.nav-drop-menu .MuiTypography-body1 {
+  font-size: 15px;
+  font-family: raleway;
+  font-weight: 600;
 }
-.drawer-drop-content {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  padding-left: 2rem;
+.nav-drop-menu .MuiListItem-root:hover {
+  color: #061178;
 }
 
 @media only screen and (max-width: 1500px) {
@@ -128,13 +83,6 @@
   }
 }
 
-@media only screen and (max-width: 1000px) {
-  .drawer-nav-links {
-    margin-top: 5rem;
-    font-size: 17px;
-  }
-}
-
 @media only screen and (max-width: 500px) {
   .nav-strip {
     padding: 0.2rem 0.7rem;
@@ -142,15 +90,6 @@
   }
   .nav-mobile-nav {
     font-size: 20px;
-  }
-  .drawer-nav-links {
-    margin-top: 10px;
-    font-size: 15px;
-    padding-top: 3rem;
-  }
-  .drawer-nav-links span {
-    padding: 1rem;
-    height: 55px;
   }
   .navbar-logo {
     width: 80px;

@@ -1,10 +1,39 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { trackPromise } from "react-promise-tracker";
-import { Spin, Pagination } from "antd";
 import { useHistory } from "react-router";
+import {
+  Card,
+  CardActions,
+  CardMedia,
+  CardContent,
+  Typography,
+  Button,
+  makeStyles,
+} from "@material-ui/core";
+import { Skeleton, Pagination } from "@material-ui/lab";
 
 import "./BlogCards.css";
+
+const useStyle = makeStyles((theme) => ({
+  cardButton: {
+    fontSize: 12,
+    borderRadius: 50,
+    padding: "2px 5px",
+    [theme.breakpoints.down("xs")]: {
+      fontSize: 10,
+      padding: "2px 8px",
+      minHeight: 0,
+      minWidth: 0,
+    },
+  },
+  skeletonImg: {
+    height: 350,
+    [theme.breakpoints.down("xs")]: {
+      height: 250,
+    },
+  },
+}));
 
 export default function Cards() {
   const [blogs, setBlogs] = useState([]);
@@ -19,6 +48,7 @@ export default function Cards() {
   const [load, setLoad] = useState(true);
 
   const history = useHistory();
+  const classes = useStyle();
 
   useEffect(() => {
     getBlogs();
@@ -96,25 +126,39 @@ export default function Cards() {
 
           if (blog.validated) {
             return (
-              <div className="blog-card" key={blog._id}>
-                <img className="blog-card-img" src={blog.imgLink} alt="" />
+              <Card className="blog-card" key={blog._id}>
+                <CardMedia
+                  className="blog-card-img"
+                  image={blog.imgLink}
+                  alt={"Blog by " + blog.author}
+                />
                 <div className="blog-card-text">
-                  <p className="blog-card-title">{blog.title}</p>
+                  <Typography variant="p" className="blog-card-title">
+                    {blog.title}
+                  </Typography>
 
                   <div
                     className="blog-card-lower-text"
                     onClick={() => history.push("/blogs/content/" + blog._id)}
                   >
-                    <p className="blog-card-author">
-                      By <b>{blog.author}</b>
-                    </p>
-                    <p className="blog-card-time">
-                      <i className="fa fa-clock-o" /> {uploadTime}
-                    </p>
-                    <button className="blog-card-button">Read</button>
+                    <Typography variant="p" className="blog-card-author">
+                      {blog.author}
+                    </Typography>
+                    <Typography variant="p" className="blog-card-time">
+                      {uploadTime}
+                    </Typography>
+                    <div>
+                      <Button
+                        color="primary"
+                        variant="contained"
+                        className={classes.cardButton}
+                      >
+                        Read
+                      </Button>
+                    </div>
                   </div>
                 </div>
-              </div>
+              </Card>
             );
           } else {
             return null;
@@ -124,89 +168,104 @@ export default function Cards() {
 
   return (
     <>
+      <div className="search-bar-container">
+        {dropSelect !== "date" ? (
+          <input
+            className="search-bar"
+            value={search || ""}
+            onChange={(e) => {
+              setSearch(e.target.value);
+            }}
+            placeholder="Search Blogs"
+          />
+        ) : (
+          <input
+            type="date"
+            className="search-bar"
+            value={search || ""}
+            onChange={(e) => setSearch(e.target.value)}
+            placeholder="Search Blogs"
+          />
+        )}
+        <div className="search-category-container">
+          <button
+            className="search-category"
+            onClick={() => setShowDrop(!dropdown)}
+          >
+            By {dropSelect} &nbsp;
+            <i className="fa fa-angle-down" />
+          </button>
+          {dropdown && (
+            <div className="search-category-dropdown">
+              <span
+                onClick={() => {
+                  setSearch("");
+                  setDropSelect("title");
+                  setShowDrop(false);
+                }}
+              >
+                Title
+              </span>
+              <span
+                onClick={(e) => {
+                  setSearch("");
+                  setDropSelect("author");
+                  setShowDrop(false);
+                }}
+              >
+                Author
+              </span>
+              <span
+                onClick={() => {
+                  setDropSelect("date");
+                  setShowDrop(false);
+                }}
+              >
+                Date
+              </span>
+            </div>
+          )}
+        </div>
+      </div>
+
       {load ? (
-        <div className="spinner">
-          <Spin size="large" />
+        <div className="blog-cards-container">
+          {[0, 0, 0, 0, 0, 0].map((item) => (
+            <Card className="blog-card">
+              <Skeleton variant="rect" className={classes.skeletonImg} />
+              <div className="blog-card-text">
+                <Skeleton
+                  className="blog-card-title"
+                  style={{ width: "100%" }}
+                />
+                <Skeleton
+                  className="blog-card-title"
+                  style={{ width: "100%" }}
+                />
+                <div
+                  className="blog-card-lower-text"
+                  style={{ display: "block" }}
+                >
+                  <Skeleton
+                    variant="rect"
+                    className="blog-card-author"
+                    style={{ width: "100px", marginBottom: "10px" }}
+                  />
+                  <Skeleton
+                    variant="rect"
+                    className="blog-card-time"
+                    style={{ width: "100px" }}
+                  />
+                </div>
+              </div>
+            </Card>
+          ))}
         </div>
       ) : (
-        <>
-          <div className="search-bar-container">
-            {dropSelect !== "date" ? (
-              <input
-                className="search-bar"
-                value={search || ""}
-                onChange={(e) => {
-                  setSearch(e.target.value);
-                }}
-                placeholder="Search Blogs"
-              />
-            ) : (
-              <input
-                type="date"
-                className="search-bar"
-                value={search || ""}
-                onChange={(e) => setSearch(e.target.value)}
-                placeholder="Search Blogs"
-              />
-            )}
-            <div className="search-category-container">
-              <button
-                className="search-category"
-                onClick={() => setShowDrop(!dropdown)}
-              >
-                By {dropSelect} &nbsp;
-                <i className="fa fa-angle-down" />
-              </button>
-              {dropdown && (
-                <div className="search-category-dropdown">
-                  <span
-                    onClick={() => {
-                      setSearch("");
-                      setDropSelect("title");
-                      setShowDrop(false);
-                    }}
-                  >
-                    Title
-                  </span>
-                  <span
-                    onClick={(e) => {
-                      setSearch("");
-                      setDropSelect("author");
-                      setShowDrop(false);
-                    }}
-                  >
-                    Author
-                  </span>
-                  <span
-                    onClick={() => {
-                      setDropSelect("date");
-                      setShowDrop(false);
-                    }}
-                  >
-                    Date
-                  </span>
-                </div>
-              )}
-            </div>
-          </div>
-
-          <div>
-            {noResult && <p className="no-search-found">No Blog Found</p>}
-            <div className="blog-cards-container">{blogCards}</div>
-          </div>
-          <Pagination
-            current={page}
-            total={total}
-            hideOnSinglePage={true}
-            defaultPageSize={10}
-            responsive={true}
-            showSizeChanger={false}
-            onChange={(page) => {
-              setPage(page);
-            }}
-            style={{ margin: "80px auto" }}
-          />
-        </>
+        <div>
+          {noResult && <p className="no-search-found">No Blog Found</p>}
+          <div className="blog-cards-container">{blogCards}</div>
+        </div>
       )}
     </>
   );

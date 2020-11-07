@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Spin } from "antd";
+//import { Spin } from "antd";
 import { withRouter } from "react-router";
 import { useParams } from "react-router-dom";
 import { trackPromise, usePromiseTracker } from "react-promise-tracker";
@@ -34,9 +34,7 @@ function BlogContent(props) {
   return (
     <>
       {promiseInProgress ? (
-        <div className="spinner">
-          <Spin size="large" />
-        </div>
+        <div className="spinner">{/*<Spin size="large" />*/}</div>
       ) : (
         <>
           <div className="blog-container">

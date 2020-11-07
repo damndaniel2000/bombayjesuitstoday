@@ -1,16 +1,48 @@
 import React, { useState, useContext } from "react";
-import { Drawer, Menu, Dropdown } from "antd";
 import { useHistory, Route } from "react-router-dom";
+import {
+  Drawer,
+  List,
+  ListItem,
+  ListItemIcon,
+  ListItemText,
+  Collapse,
+  Menu,
+  MenuItem,
+  makeStyles,
+} from "@material-ui/core";
 import UserContext from "../../../context/UserContext";
 
+import HomeRoundedIcon from "@material-ui/icons/HomeRounded";
+import DirectionsIcon from "@material-ui/icons/Directions";
+import PlayCircleFilledRoundedIcon from "@material-ui/icons/PlayCircleFilledRounded";
+import CreateRoundedIcon from "@material-ui/icons/CreateRounded";
+import GroupRoundedIcon from "@material-ui/icons/GroupRounded";
+import ExpandLess from "@material-ui/icons/ExpandLess";
+import ExpandMore from "@material-ui/icons/ExpandMore";
+
 import "./HomeNav.css";
-import MassModal from "../MassModal/MassModal";
+import "../Navbar/Navbar.css";
 import logo from "../logo.png";
+
+//import MassModal from "../MassModal/MassModal";
+
+const useStyle = makeStyles({
+  dropHoverItems: {
+    fontSize: 10,
+  },
+});
 
 const NavBar = (props) => {
   const [visible, setVisible] = useState(false);
   const [videoDrop, setDrop] = useState(false);
   const [modal, setModal] = useState();
+  const [dropMenus, setDropMenus] = useState({
+    videos: false,
+    blog: false,
+  });
+
+  const classes = useStyle();
   const history = useHistory();
   const { userData } = useContext(UserContext);
 
@@ -63,173 +95,136 @@ const NavBar = (props) => {
     history.push("/contributors/jesuits");
     hideDrawer();
   };
+  const login = () => history.push("/login");
   const massModalToggle = () => {
     setModal(!modal);
   };
 
-  const dropVideos = (
-    <Menu>
-      <Menu.ItemGroup>
-        <Menu.Item
-          key="1"
-          onClick={() => setModal(!modal)}
-          className="desktop-dropdown-items"
-        >
-          Daily Mass
-        </Menu.Item>
-        <Menu.Item key="2" onClick={gVideos} className="desktop-dropdown-items">
-          Gospel Insights
-        </Menu.Item>
-        <Menu.Item key="3" onClick={mVideos} className="desktop-dropdown-items">
-          Ignatian Mission
-        </Menu.Item>
-        <Menu.Item key="4" onClick={sVideos} className="desktop-dropdown-items">
-          Ignatian Spirituality
-        </Menu.Item>
-        <Menu.Item key="5" onClick={lVideos} className="desktop-dropdown-items">
-          SJ Laity
-        </Menu.Item>
-        <Menu.Item key="6" onClick={yVideos} className="desktop-dropdown-items">
-          Youth
-        </Menu.Item>
-        <Menu.Item key="7" onClick={fVideos} className="desktop-dropdown-items">
-          Follow Him
-        </Menu.Item>
-      </Menu.ItemGroup>
-    </Menu>
-  );
+  const navLinks = [
+    { name: "Home", link: home },
+    { name: "Videos", icon: true },
+    { name: "Blogs", link: blogs },
+    { name: "Contributors", link: contributors },
+    { name: "Follow Him", link: followHim },
+    // { name: "Login", link: login },
+  ];
 
-  const drawerDropVideos = () => {
-    if (videoDrop) {
-      return (
-        <div className="drawer-drop-content">
-          <span onClick={() => setModal(!modal)}> Daily Mass </span>
-          <span onClick={gVideos}> Gospel Insights </span>
-          <span onClick={sVideos}> Ignatian Spirituality </span>
-          <span onClick={mVideos}> Ignatian Mission </span>
-          <span onClick={lVideos}> SJ Laity </span>
-          <span onClick={yVideos}> Youth </span>
-          <span onClick={fVideos}> Follow Him </span>
-        </div>
-      );
-    }
-  };
+  const drawerLinks = [
+    { name: "Home", link: home, icon: <HomeRoundedIcon /> },
+    {
+      name: "Videos",
+      link: () => setDrop(!videoDrop),
+      icon: <PlayCircleFilledRoundedIcon />,
+    },
+    { name: "Blogs", link: blogs, icon: <CreateRoundedIcon /> },
+    { name: "Contributors", link: contributors, icon: <GroupRoundedIcon /> },
+    { name: "Follow Him", link: followHim, icon: <DirectionsIcon /> },
+  ];
 
-  const dropBlogs = (
-    <Menu>
-      <Menu.ItemGroup>
-        <Menu.Item
-          key="1"
-          onClick={() => history.push("/blogs/upload")}
-          className="desktop-dropdown-items"
-        >
-          Upload
-        </Menu.Item>
-        <Menu.Item
-          key="2"
-          onClick={() => history.push("/blogs/validate")}
-          className="desktop-dropdown-items"
-        >
-          Validate
-        </Menu.Item>
-      </Menu.ItemGroup>
-    </Menu>
+  const videoDropLinks = [
+    { name: "Daily Mass", link: "" },
+    { name: "Gospel Insights", link: gVideos },
+    { name: "Ignatian Spirituality", link: sVideos },
+    { name: "Ignatian Mission", link: mVideos },
+    { name: "SJ Laity", link: lVideos },
+    { name: "Follow Him", link: fVideos },
+  ];
+
+  const drawerDropVideos = () => (
+    <div className="drawer-drop-content">
+      <span> Daily Mass </span>
+      <span onClick={gVideos}> Gospel Insights </span>
+      <span onClick={sVideos}> Ignatian Spirituality </span>
+      <span onClick={mVideos}> Ignatian Mission </span>
+      <span onClick={lVideos}> SJ Laity </span>
+      <span onClick={yVideos}> Youth </span>
+      <span onClick={fVideos}> Follow Him </span>
+    </div>
   );
 
   return (
     <>
-      {modal && <MassModal visible={modal} modalToggler={massModalToggle} />}
-
-      <div className="home-nav-strip">
+      <nav className="nav-strip">
         <div>
           <img src={logo} className="navbar-logo" alt="logo" />
         </div>
+
         <div className="main-nav-div">
           <div className="nav-mobile-nav">
-            <i className="fa fa-navicon" onClick={showDrawer} />
-
-            <Drawer
-              bodyStyle={{
-                backgroundColor: "#000",
-                color: "#fff",
-                padding: 0,
-              }}
-              placement="left"
-              visible={visible}
-              onClose={hideDrawer}
-              closeIcon={
-                <i
-                  className="fa fa-close"
-                  style={{ color: "#fff", fontSize: "20px" }}
-                />
-              }
-            >
-              <div className="home-drawer-nav-links">
-                <span onClick={home}>
-                  <i className="fa fa-home" /> Home
-                </span>
-                <span onClick={() => setDrop(!videoDrop)}>
-                  <i className="fa fa-video-camera" /> Videos &nbsp; &nbsp;
-                  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                  <i className="fa fa-angle-down" />
-                </span>
-                {drawerDropVideos()}
-                <span onClick={blogs}>
-                  <i className="fa fa-pencil" /> Blogs
-                </span>
-                <span onClick={contributors}>
-                  <i className="fa fa-users" /> Contributors
-                </span>
-                <span onClick={followHim}>
-                  <i className="fa fa-compass" /> Follow Him
-                </span>
-              </div>
-            </Drawer>
+            <i className="fa fa-navicon" onClick={() => setVisible(true)} />
           </div>
-          <div className="desktop-nav">
-            <nav className="main-nav">
-              <div>
-                <span onClick={home}> Home </span>
-              </div>
 
-              <Dropdown overlay={dropVideos}>
-                <div>
-                  <span>
-                    Videos&nbsp;&nbsp;
-                    <i className="fa fa-angle-down" />
-                  </span>
-                </div>
-              </Dropdown>
-              {userData.user ? (
-                <Dropdown overlay={dropBlogs}>
-                  <div>
-                    <span onClick={blogs}>
-                      Blogs&nbsp;&nbsp;
-                      <i className="fa fa-angle-down" />
-                    </span>
-                  </div>
-                </Dropdown>
+          <Drawer anchor="top" open={visible} onClose={hideDrawer}>
+            <List>
+              {drawerLinks.map((item) => (
+                <>
+                  <ListItem onClick={item.link} button>
+                    <ListItemIcon>{item.icon}</ListItemIcon>
+                    <ListItemText primary={item.name} />
+                    {item.name === "Videos" ? (
+                      !videoDrop ? (
+                        <ExpandMore />
+                      ) : (
+                        <ExpandLess />
+                      )
+                    ) : null}
+                  </ListItem>
+                  {item.name === "Videos" && (
+                    <Collapse in={videoDrop} timeout="auto" unmountOnExit>
+                      <List
+                        component="div"
+                        style={{ paddingLeft: "6rem" }}
+                        disablePadding
+                      >
+                        {videoDropLinks.map((item) => (
+                          <ListItem button>
+                            <ListItemText
+                              primary={item.name}
+                              onClick={item.link}
+                            />
+                          </ListItem>
+                        ))}
+                      </List>
+                    </Collapse>
+                  )}
+                </>
+              ))}
+            </List>
+          </Drawer>
+
+          <div className="desktop-nav">
+            <div onClick={home}>Home</div>
+            <div className="nav-drop-item">
+              <span onClick={() => setDropMenus({ videos: !dropMenus.videos })}>
+                Videos
+              </span>{" "}
+              {!dropMenus.videos ? (
+                <ExpandMore
+                  onClick={() => setDropMenus({ videos: !dropMenus.videos })}
+                />
               ) : (
-                <div>
-                  <span onClick={blogs}> Blogs </span>
+                <ExpandLess
+                  onClick={() => setDropMenus({ videos: !dropMenus.videos })}
+                />
+              )}
+              {dropMenus.videos && (
+                <div className="nav-drop-menu">
+                  <List component="div" disablePadding>
+                    {videoDropLinks.map((item) => (
+                      <ListItem button>
+                        <ListItemText primary={item.name} onClick={item.link} />
+                      </ListItem>
+                    ))}
+                  </List>
                 </div>
               )}
-              <div>
-                <span onClick={contributors}> Contributors </span>
-              </div>
-              <div>
-                <span onClick={followHim}>Follow Him</span>
-              </div>
-              {userData.user && (
-                <div>
-                  <span onClick={() => history.push("/login")}>Login</span>
-                </div>
-              )}
-            </nav>
+            </div>
+            <div>Blogs</div>
+            <div>Follow Him</div>
+            <div>Contributors</div>
           </div>
         </div>
-      </div>
-
+      </nav>
       <div>{props.children}</div>
     </>
   );
