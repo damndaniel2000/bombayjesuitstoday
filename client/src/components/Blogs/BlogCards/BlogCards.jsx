@@ -10,6 +10,8 @@ import {
   Typography,
   Button,
   makeStyles,
+  useMediaQuery,
+  useTheme,
 } from "@material-ui/core";
 import { Skeleton, Pagination } from "@material-ui/lab";
 
@@ -49,10 +51,11 @@ export default function Cards() {
 
   const history = useHistory();
   const classes = useStyle();
+  const theme = useTheme();
+  const matchesXS = useMediaQuery(theme.breakpoints.down("xs"));
 
   useEffect(() => {
     getBlogs();
-    window.scrollTo(0, 0);
   }, []);
 
   const getBlogs = async () => {
@@ -262,10 +265,21 @@ export default function Cards() {
           ))}
         </div>
       ) : (
-        <div>
-          {noResult && <p className="no-search-found">No Blog Found</p>}
-          <div className="blog-cards-container">{blogCards}</div>
-        </div>
+        <>
+          <div>
+            {noResult && <p className="no-search-found">No Blog Found</p>}
+            <div className="blog-cards-container">{blogCards}</div>
+          </div>
+          <div className="pagination-container">
+            <Pagination
+              count={10}
+              color="secondary"
+              size={matchesXS ? "small" : "large"}
+              page={page}
+              onChange={(e, page) => setPage(page)}
+            />
+          </div>
+        </>
       )}
     </>
   );
