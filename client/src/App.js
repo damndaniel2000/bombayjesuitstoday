@@ -25,7 +25,7 @@ import PrivacyPolicy from "./pages/PrivacyPolicyPage";
 // import VideoUpload from "./pages/VideoPages/VideoUploadPage";
 
 import BlogCardsPage from "./pages/BlogPages/BlogCardsPage";
-// import BlogContentPage from "./pages/BlogPages/BlogContentPage";
+import BlogContentPage from "./pages/BlogPages/BlogContentPage";
 //import BlogUploadPage from "./pages/BlogPages/BlogUploadPage";
 
 // import ContributorsJesuitsPage from "./pages/ContributorPages/ContributorCardPages/ContributorsJesuitsPage";
@@ -144,11 +144,11 @@ const App = () => {
               component={ContributorsUploadPage}
             />*/}
               <NavBar exact path="/blogs" component={BlogCardsPage} />
-              {/*<NavBar
-              exact
-              path="/blogs/content/:id"
-              component={BlogContentPage}
-            />*/}
+              <NavBar
+                exact
+                path="/blogs/content/:id"
+                component={BlogContentPage}
+              />
               {/*<NavBar exact path="/blogs/upload" component={BlogUploadPage} />*/}
               {/*<NavBar exact path="/login" component={LoginPage} />*/}
               {/*<NavBar exact path="/videos/post" component={AdminVideoPost} />*/}

@@ -3,30 +3,12 @@
   margin: 3rem auto;
   text-align: left;
 }
-.blog-title {
-  font-family: Staatliches;
-  letter-spacing: 1px;
-  font-size: 35px;
-  color: blue;
-}
-.blog-author {
-  font-family: Lobster Two;
-  font-weight: bold;
-  font-size: 18px;
-  color: #000;
-}
+
 .blog-img {
   position: relative;
   margin: 1rem 0;
   height: 550px;
   background-size: cover;
-}
-.blog-content {
-  text-align: justify;
-  margin-top: 3rem;
-  color: #000;
-  font-size: 20px;
-  font-family: Zilla Slab;
 }
 
 .blogs-share-container {
@@ -50,13 +32,5 @@
     font-size: 18px;
     width: 95%;
     margin: 0 auto;
-  }
-  .blog-title {
-    font-size: 30px;
-    margin-left: 10px;
-  }
-  .blog-author {
-    font-size: 18px;
-    padding-left: 10px;
   }
 }
