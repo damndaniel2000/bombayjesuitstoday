@@ -1,98 +1,31 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
-import { useHistory } from "react-router-dom";
-import { trackPromise, usePromiseTracker } from "react-promise-tracker";
-import { Spin, Radio } from "antd";
+import React from "react";
+import { Card, CardMedia, CardContent } from "@material-ui/core";
 
 import "./Contributors.css";
 
-const ContributorsCard = (props) => {
-  const [contributors, setContributors] = useState([]);
-  const { promiseInProgress } = usePromiseTracker();
-  const history = useHistory();
+import { videos, blogs, laity } from "./contriArrays";
 
-  const radio = "/contributors/" + props.path;
-
-  useEffect(() => {
-    const getContributors = async () => {
-      try {
-        const res = await trackPromise(
-          axios.get("/api/contributors-" + props.path)
-        );
-        setContributors(res.data);
-      } catch (err) {
-        console.log(err.message);
-      }
-    };
-    getContributors();
-  }, [props.path]);
-
-  const handleRadios = (evt) => {
-    history.push(evt.target.value);
-  };
-
-  const contributorsList = contributors.map((contri) => {
-    if (contri.validated) {
-      return (
-        <div className="contributors-card">
-          <div className="contributors-card-photo">
-            <img
-              className="contributors-avatar"
-              src={contri.imgURL}
-              alt="Profile Pic"
-            />
-          </div>
-          <div className="contributors-card-details">
-            <div>
-              <p className="contributors-card-name"> {contri.name} </p>
-              <p className="contributors-card-location">
-                {contri.basedLocation}
-              </p>
-              <blockquote>{contri.quote}</blockquote>
-            </div>
-            <div></div>
-          </div>
-        </div>
-      );
-    } else {
-      return null;
-    }
-  });
+const Contributors = () => {
+  const contriCards = (arr) =>
+    arr.map((item) => (
+      <Card>
+        <CardMedia image={item.img} title={item.name} />
+        <CardContent>
+          {console.log(item.img)}
+          <h4>{item.name}</h4>
+          <h6>{item.location}</h6>
+          <p>{item.quote}</p>
+        </CardContent>
+      </Card>
+    ));
 
   return (
     <>
-      <br />
-
-      <p className="contributors-page-title">Meet Our Contributors</p>
-
-      <Radio.Group onChange={handleRadios} defaultValue={radio}>
-        <Radio.Button
-          className="page-radio-buttons"
-          value="/contributors/jesuits"
-        >
-          Jesuits
-        </Radio.Button>
-        <Radio.Button
-          className="page-radio-buttons"
-          value="/contributors/laity"
-        >
-          Laity
-        </Radio.Button>
-        <Radio.Button
-          className="page-radio-buttons"
-          value="/contributors/blogs"
-        >
-          Blogs
-        </Radio.Button>
-      </Radio.Group>
-      {promiseInProgress && (
-        <div className="spinner">
-          <Spin size="large" />
-        </div>
-      )}
-      <div className="contributors-card-container">{contributorsList} </div>
+      <h2> Meet Our Contributors </h2>
+      <h3>Videos</h3>
+      {contriCards(videos)}
     </>
   );
 };
 
-export default ContributorsCard;
+export default Contributors;

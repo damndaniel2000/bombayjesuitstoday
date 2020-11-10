@@ -28,10 +28,7 @@ import BlogCardsPage from "./pages/BlogPages/BlogCardsPage";
 import BlogContentPage from "./pages/BlogPages/BlogContentPage";
 //import BlogUploadPage from "./pages/BlogPages/BlogUploadPage";
 
-// import ContributorsJesuitsPage from "./pages/ContributorPages/ContributorCardPages/ContributorsJesuitsPage";
-// import ContributorsLaityPage from "./pages/ContributorPages/ContributorCardPages/ContributorsLaityPage";
-// import ContributorsBlogsPage from "./pages/ContributorPages/ContributorCardPages/ContributorsBlogsPage";
-// import ContributorsUploadPage from "./pages/ContributorPages/ContributosUploadPage";
+import ContributorsPage from "./pages/ContributorPages/ContributorsPage";
 
 // import LoginPage from "./pages/Admin/LoginPage";
 //
@@ -54,13 +51,6 @@ import BlogContentPage from "./pages/BlogPages/BlogContentPage";
 
 // import AdminBlogValidateCards from "./pages/Admin/Blogs/BlogsValidateCardsPage";
 // import AdminBlogValidateDetails from "./pages/Admin/Blogs/BlogsValidateDetailsPage";
-
-// import AdminContributorsValidateCardsPage from "./pages/Admin/Contributors/ContributorsValidateCardsPage";
-// import AdminContributorsValidateJesuitDetailsPage from "./pages/Admin/Contributors/ContributorsValidateDetails/ContributorsValidateJesuitDetailsPage";
-// import AdminContributorsValidateLaityDetailsPage from "./pages/Admin/Contributors/ContributorsValidateDetails/ContributorsValidateLaityDetailsPage";
-// import AdminContributorsValidateBlogsDetailsPage from "./pages/Admin/Contributors/ContributorsValidateDetails/ContributorsValidateBlogDetailsPage";
-// import AdminContributorsJesuitAddVideoPage from "./pages/Admin/Contributors/ContributorsAdd/ContributorsJesuitsAddVideoPage";
-// import AdminContributorsLaityAddVideoPage from "./pages/Admin/Contributors/ContributorsAdd/ContributorsLaityAddVideoPage";
 
 import NotFound from "./pages/NotFoundPage";
 
@@ -123,26 +113,9 @@ const App = () => {
             <NavBar exact path="/videos/youth" component={VideoYouthPage} />
             <NavBar exact path="/videos/follow" component={VideoFollowPage} />*/}
               {/*<NavBar exact path="/videos/upload" component={VideoUpload} />*/}
-              {/*<NavBar
-              exact
-              path="/contributors/jesuits"
-              component={ContributorsJesuitsPage}
-            />
-            <NavBar
-              exact
-              path="/contributors/laity"
-              component={ContributorsLaityPage}
-            />
-            <NavBar
-              exact
-              path="/contributors/blogs"
-              component={ContributorsBlogsPage}
-            />
-            <NavBar
-              exact
-              path="/contributors/upload-details"
-              component={ContributorsUploadPage}
-            />*/}
+
+              <NavBar exact path="/contributors" component={ContributorsPage} />
+
               <NavBar exact path="/blogs" component={BlogCardsPage} />
               <NavBar
                 exact
@@ -228,37 +201,7 @@ const App = () => {
               path="/blogs/validate/:id"
               component={AdminBlogValidateDetails}
             />*/}
-              {/*<NavBar
-              exact
-              path="/contributors/validate"
-              component={AdminContributorsValidateCardsPage}
-            />*/}
-              {/*<NavBar
-              exact
-              path="/contributors/validate/jesuits/:id"
-              component={AdminContributorsValidateJesuitDetailsPage}
-            />
-            <NavBar
-              exact
-              path="/contributors/validate/laity/:id"
-              component={AdminContributorsValidateLaityDetailsPage}
-            />
-            <NavBar
-              exact
-              path="/contributors/validate/blogs/:id"
-              component={AdminContributorsValidateBlogsDetailsPage}
-            />
-            <NavBar
-              exact
-              path="/contributors-jesuits/videos/:id/add"
-              component={AdminContributorsJesuitAddVideoPage}
-            />
-            <NavBar
-              exact
-              path="/contributors-laity/videos/:id/add"
-              component={AdminContributorsLaityAddVideoPage}
-            />
-*/}
+
               {/*<NavBar component={NotFound} />*/}
             </Switch>
             <Footer />
