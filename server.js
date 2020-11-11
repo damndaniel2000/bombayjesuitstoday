@@ -17,10 +17,6 @@ const videoYouthRouter = require("./routes/Videos/videoYouthRouter");
 const videoFollowRouter = require("./routes/Videos/videoFollowRouter");
 const videoUploadRouter = require("./routes/Videos/videoUploadRouter");
 
-const contributorJesuitRouter = require("./routes/Contributors/contributorsJesuitsRouter");
-const contributorLaityRouter = require("./routes/Contributors/contributorsLaityRouter");
-const contributorBlogsRouter = require("./routes/Contributors/contributorsBlogsRouter");
-
 const blogRouter = require("./routes/Blogs/blogRouter");
 
 const userRouter = require("./routes/Misc/userRouter");
@@ -45,10 +41,6 @@ app.use("/api/videos-gospel", videoGospelRouter);
 app.use("/api/videos-youth", videoYouthRouter);
 app.use("/api/videos-follow", videoFollowRouter);
 app.use("/api/videos-upload", videoUploadRouter);
-
-app.use("/api/contributors-jesuits", contributorJesuitRouter);
-app.use("/api/contributors-laity", contributorLaityRouter);
-app.use("/api/contributors-blogs", contributorBlogsRouter);
 
 app.use("/api/blogs", blogRouter);
 

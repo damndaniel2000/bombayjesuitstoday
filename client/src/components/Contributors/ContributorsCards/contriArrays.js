@@ -77,7 +77,7 @@ export const laity = [
     name: "Holy Family Church",
     location: "Chakala, Mumbai",
     quote:
-      "The Lord is my light and my salvation — whom shall I fear? The Lord is the stronghold of my life — of whom shall I be afraid? - Psalm 27:1",
+      "The Lord is my light and my salvation — whom shall I fear? - Psalm 27:1",
     img:
       "https://res.cloudinary.com/dij0e4dwn/image/upload/v1598042286/contributors/Holy_family_church_zcdxoz.jpg",
   },
