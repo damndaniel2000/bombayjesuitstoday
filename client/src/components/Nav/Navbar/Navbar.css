@@ -10,6 +10,7 @@
   -ms-flex-align: center;
   align-items: center;
   padding: 0.2rem 2rem;
+  border-bottom: solid 1px rgb(205, 205, 205);
 }
 
 .navbar-logo {
@@ -27,7 +28,6 @@
   display: flex;
   justify-content: space-around;
   font-size: 15px;
-  font-weight: 600;
 }
 .desktop-nav > div {
   cursor: pointer;
@@ -65,7 +65,6 @@
 .nav-drop-menu .MuiTypography-body1 {
   font-size: 15px;
   font-family: raleway;
-  font-weight: 600;
 }
 .nav-drop-menu .MuiListItem-root:hover {
   color: #061178;

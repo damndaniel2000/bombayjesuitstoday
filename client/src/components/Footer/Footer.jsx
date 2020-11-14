@@ -1,7 +1,7 @@
 import React from "react";
 
 import "./Footer.css";
-import logo from "./logo.png";
+import logo from "../Nav/logo.png";
 
 const Footer = (props) => {
   return (
@@ -12,14 +12,12 @@ const Footer = (props) => {
           <div className="footer-text-container">
             <div className="footer-address">
               <h3>Address</h3>
-              <address>
-                <p>
-                  Vinayalaya,
-                  <br /> Mahakali Caves Road,
-                  <br /> Andheri (East),
-                  <br /> Mumbai - 400 093
-                </p>
-              </address>
+              <p>
+                Vinayalaya,
+                <br /> Mahakali Caves Road,
+                <br /> Andheri (East),
+                <br /> Mumbai - 400 093
+              </p>
             </div>
             <div className="footer-email">
               <h3> Contact Us </h3>
