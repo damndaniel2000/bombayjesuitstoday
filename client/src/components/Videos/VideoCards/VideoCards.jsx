@@ -1,36 +1,36 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { trackPromise, usePromiseTracker } from "react-promise-tracker";
-import { Spin, Radio, Pagination } from "antd";
 import { useHistory } from "react-router-dom";
+import { Card, useMediaQuery, useTheme } from "@material-ui/core";
+import { Skeleton, Pagination } from "@material-ui/lab";
 
 import ShareButton from "./ShareButton";
 import "./VideoCards.css";
 
 const VideoCards = (props) => {
   const [videos, setVideos] = useState([]);
-
   const [pageVids, setPageVids] = useState([]);
   const [page, setPage] = useState(1);
   const [total, setTotal] = useState(Number);
-
-  const { promiseInProgress } = usePromiseTracker();
+  const [isLoading, setLoading] = useState(true);
 
   const history = useHistory();
+  const theme = useTheme();
+  const matchesXS = useMediaQuery(theme.breakpoints.down("xs"));
 
   const radio = "/videos/" + props.path;
 
   useEffect(() => {
     const getVideos = async () => {
       try {
-        const res = await trackPromise(axios.get("/api/videos-" + props.path));
+        const res = await axios.get("/api/videos-" + props.path);
         setVideos(res.data);
         setTotal(res.data.length);
+        setLoading(false);
       } catch (err) {
         console.log(err);
       }
     };
-    window.scrollTo(0, 0);
     getVideos();
   }, [props.path]);
 
@@ -40,7 +40,6 @@ const VideoCards = (props) => {
       if (page === 1) currentItems = 0;
       setPageVids(videos.slice(currentItems, currentItems + 5));
       pageVids.reverse();
-      backtop();
     } else setPageVids(videos);
   }, [videos, page]);
 
@@ -51,12 +50,10 @@ const VideoCards = (props) => {
   useEffect(() => {
     const getData = async () => {
       try {
-        const res = await trackPromise(
-          axios.get(
-            "https://api.rss2json.com/v1/api.json?rss_url=" +
-              encodeURIComponent(reqURL) +
-              channelID
-          )
+        const res = await axios.get(
+          "https://api.rss2json.com/v1/api.json?rss_url=" +
+            encodeURIComponent(reqURL) +
+            channelID
         );
         const data = res.data.items[0];
         const idObj = getId(data.link);
@@ -100,15 +97,6 @@ const VideoCards = (props) => {
     } else return link;
   };
 
-  const backtop = () => {
-    var scrollStep = -window.scrollY / (100 / 15),
-      scrollInterval = setInterval(function () {
-        if (window.scrollY !== 0) {
-          window.scrollBy(0, scrollStep);
-        } else clearInterval(scrollInterval);
-      }, 15);
-  };
-
   const videoCards = () => {
     return pageVids.map((card) => {
       const postDate = new Date(card.date);
@@ -118,15 +106,13 @@ const VideoCards = (props) => {
       const uploadTime = `${date} ${month}, ${year}`;
 
       return (
-        <div className="video-card-div" key={card._id}>
+        <Card className="video-card-div" key={card._id}>
           <div className="video-card-content">
             <span className="video-card-title">{card.title}</span>
             <p className="video-card-uploader">
               By <b>{card.uploader}</b>
             </p>
-            <p className="video-card-time">
-              <i className="fa fa-clock-o" /> {uploadTime}
-            </p>
+            <p className="video-card-time">{uploadTime}</p>
             <p className="video-card-caption">{card.caption}</p>
           </div>
           <iframe
@@ -137,20 +123,9 @@ const VideoCards = (props) => {
             allowFullScreen
           ></iframe>
           <div className="video-card-sharebuttons">
-            <ShareButton videoUrl={card.videoURL} />
-            <a
-              href={detectDevice(card.videoURL)}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Not Loading? Click here to view in Youtube{" "}
-              <i className="fa fa-youtube-play" />
-            </a>
+            <ShareButton videoUrl={card.videoURL} detectDevice={detectDevice} />
           </div>
-          <div className="backtop" onClick={backtop}>
-            Back To Top <i className="fa fa-arrow-up" />
-          </div>
-        </div>
+        </Card>
       );
     });
   };
@@ -182,9 +157,6 @@ const VideoCards = (props) => {
             <i className="fa fa-youtube-play" />
           </a>
         </div>
-        <div className="backtop" onClick={backtop}>
-          Back To Top <i className="fa fa-arrow-up" />
-        </div>
       </div>
     );
   };
@@ -193,7 +165,7 @@ const VideoCards = (props) => {
     <>
       <br />
       <br />
-      <div>
+      {/*<div>
         <Radio.Group onChange={handleRadios} defaultValue={radio}>
           <Radio.Button value="/videos/gospel" className="page-radio-buttons">
             Gospel
@@ -218,27 +190,24 @@ const VideoCards = (props) => {
             Follow Him
           </Radio.Button>
         </Radio.Group>
-      </div>
+      </div>*/}
       <br />
-      {promiseInProgress && (
-        <div className="spinner">
-          <Spin size="large" />
-        </div>
+
+      {props.path === "spiritual" && page === 1 && !isLoading && GVideoCard()}
+      {!isLoading && total > 0 && (
+        <>
+          {videoCards()}
+          <div className="pagination-container">
+            <Pagination
+              count={Math.floor(total / 5)}
+              color="secondary"
+              size={matchesXS ? "small" : "large"}
+              page={page}
+              onChange={(e, page) => setPage(page)}
+            />
+          </div>
+        </>
       )}
-      {props.path === "spiritual" && page === 1 && GVideoCard()}
-      {videoCards()}
-      <Pagination
-        current={page}
-        total={total}
-        hideOnSinglePage={true}
-        defaultPageSize={5}
-        responsive={true}
-        showSizeChanger={false}
-        onChange={(page) => {
-          setPage(page);
-        }}
-        style={{ margin: "80px auto" }}
-      />
     </>
   );
 };

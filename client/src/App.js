@@ -16,7 +16,7 @@ import Footer from "./components/Footer/Footer.jsx";
 import FollowHimPage from "./pages/FollowHimPage";
 import PrivacyPolicy from "./pages/PrivacyPolicyPage";
 
-// import VideosGospelPage from "./pages/VideoPages/VideoCardPages/VideosGospelPage";
+import VideosGospelPage from "./pages/VideoPages/VideoCardPages/VideosGospelPage";
 // import VideoSpiritualPage from "./pages/VideoPages/VideoCardPages/VideoSpiritualPage";
 // import VideoMissionPage from "./pages/VideoPages/VideoCardPages/VideoMissionPage";
 // import VideoLaityPage from "./pages/VideoPages/VideoCardPages/VideoLaityPage";
@@ -102,8 +102,12 @@ const App = () => {
             />*/}
               <HomeNavBar exact path="/follow-him" component={FollowHimPage} />
               {/*<NavBar exact path="/privacy-policy" component={PrivacyPolicy} />*/}
-              {/*<NavBar exact path="/videos/gospel" component={VideosGospelPage} />
-            <NavBar
+              <NavBar
+                exact
+                path="/videos/gospel"
+                component={VideosGospelPage}
+              />
+              {/*<NavBar
               exact
               path="/videos/spiritual"
               component={VideoSpiritualPage}

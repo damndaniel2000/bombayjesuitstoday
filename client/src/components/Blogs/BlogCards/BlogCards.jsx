@@ -272,7 +272,7 @@ export default function Cards() {
           </div>
           <div className="pagination-container">
             <Pagination
-              count={10}
+              count={Math.floor(total / 10)}
               color="secondary"
               size={matchesXS ? "small" : "large"}
               page={page}
