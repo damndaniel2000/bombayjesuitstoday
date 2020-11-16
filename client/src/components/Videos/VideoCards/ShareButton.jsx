@@ -12,6 +12,9 @@ const useStyle = makeStyles((theme) => ({
   icons: {
     fontSize: 35,
     cursor: "pointer",
+    [theme.breakpoints.down("xs")]: {
+      fontSize: 30,
+    },
   },
 }));
 
