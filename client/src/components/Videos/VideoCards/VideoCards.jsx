@@ -1,11 +1,22 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
-import { Card, useMediaQuery, useTheme, makeStyles } from "@material-ui/core";
+import {
+  Card,
+  Button,
+  ButtonGroup,
+  Fab,
+  Zoom,
+  useScrollTrigger,
+  useMediaQuery,
+  useTheme,
+  makeStyles,
+} from "@material-ui/core";
 import { Skeleton, Pagination } from "@material-ui/lab";
 
 import ShareButton from "./ShareButton";
 import "./VideoCards.css";
+import KeyboardArrowUpIcon from "@material-ui/icons/KeyboardArrowUp";
 
 const useStyles = makeStyles((theme) => ({
   video: {
@@ -34,6 +45,23 @@ const useStyles = makeStyles((theme) => ({
   caption: {
     marginBottom: 10,
   },
+  radios: {
+    width: 120,
+    padding: "10px 0",
+    borderRadius: 0,
+    [theme.breakpoints.down("xs")]: {
+      width: 90,
+    },
+  },
+  upArrow: {
+    position: "fixed",
+    bottom: theme.spacing(5),
+    right: theme.spacing(30),
+    [theme.breakpoints.down("xs")]: {
+      bottom: theme.spacing(2),
+      right: theme.spacing(3),
+    },
+  },
 }));
 
 const VideoCards = (props) => {
@@ -43,6 +71,7 @@ const VideoCards = (props) => {
   const [total, setTotal] = useState(Number);
   const [isLoading, setLoading] = useState(true);
 
+  const trigger = useScrollTrigger({ threshold: 400 });
   const history = useHistory();
   const classes = useStyles();
   const theme = useTheme();
@@ -182,6 +211,60 @@ const VideoCards = (props) => {
 
   return (
     <>
+      <ButtonGroup
+        size={matchesXS ? "small" : "large"}
+        color="secondary"
+        style={{ display: "block" }}
+      >
+        <Button
+          variant={props.path === "spiritual" ? "contained" : "outlined"}
+          className={classes.radios}
+          onClick={() => history.push("/videos/spiritual")}
+        >
+          Spiritual
+        </Button>
+        <Button
+          variant={props.path === "gospel" ? "contained" : "outlined"}
+          className={classes.radios}
+          onClick={() => history.push("/videos/gospel")}
+        >
+          Gospel
+        </Button>
+        <Button
+          variant={props.path === "mission" ? "contained" : "outlined"}
+          className={classes.radios}
+          onClick={() => history.push("/videos/mission")}
+        >
+          Mission
+        </Button>
+      </ButtonGroup>
+      <ButtonGroup
+        size={matchesXS ? "small" : "large"}
+        color="secondary"
+        style={{ display: "block" }}
+      >
+        <Button
+          variant={props.path === "laity" ? "contained" : "outlined"}
+          className={classes.radios}
+          onClick={() => history.push("/videos/laity")}
+        >
+          Laity
+        </Button>
+        <Button
+          variant={props.path === "youth" ? "contained" : "outlined"}
+          className={classes.radios}
+          onClick={() => history.push("/videos/youth")}
+        >
+          Youth
+        </Button>
+        <Button
+          variant={props.path === "follow" ? "contained" : "outlined"}
+          className={classes.radios}
+          onClick={() => history.push("/videos/follow")}
+        >
+          Follow
+        </Button>
+      </ButtonGroup>
       {isLoading &&
         [0, 0, 0, 0, 0].map(() => (
           <Card className="video-card-div">
@@ -211,6 +294,16 @@ const VideoCards = (props) => {
           </div>
         </>
       )}
+      <Zoom in={trigger}>
+        <Fab
+          color="primary"
+          size="small"
+          className={classes.upArrow}
+          onClick={() => window.scrollTo(0, 0)}
+        >
+          <KeyboardArrowUpIcon />
+        </Fab>
+      </Zoom>
     </>
   );
 };

@@ -17,11 +17,11 @@ import FollowHimPage from "./pages/FollowHimPage";
 import PrivacyPolicy from "./pages/PrivacyPolicyPage";
 
 import VideosGospelPage from "./pages/VideoPages/VideoCardPages/VideosGospelPage";
-// import VideoSpiritualPage from "./pages/VideoPages/VideoCardPages/VideoSpiritualPage";
-// import VideoMissionPage from "./pages/VideoPages/VideoCardPages/VideoMissionPage";
-// import VideoLaityPage from "./pages/VideoPages/VideoCardPages/VideoLaityPage";
-// import VideoYouthPage from "./pages/VideoPages/VideoCardPages/VideoYouthPage";
-// import VideoFollowPage from "./pages/VideoPages/VideoCardPages/VideoFollowPage";
+import VideoSpiritualPage from "./pages/VideoPages/VideoCardPages/VideoSpiritualPage";
+import VideoMissionPage from "./pages/VideoPages/VideoCardPages/VideoMissionPage";
+import VideoLaityPage from "./pages/VideoPages/VideoCardPages/VideoLaityPage";
+import VideoYouthPage from "./pages/VideoPages/VideoCardPages/VideoYouthPage";
+import VideoFollowPage from "./pages/VideoPages/VideoCardPages/VideoFollowPage";
 // import VideoUpload from "./pages/VideoPages/VideoUploadPage";
 
 import BlogCardsPage from "./pages/BlogPages/BlogCardsPage";
@@ -107,15 +107,19 @@ const App = () => {
                 path="/videos/gospel"
                 component={VideosGospelPage}
               />
-              {/*<NavBar
-              exact
-              path="/videos/spiritual"
-              component={VideoSpiritualPage}
-            />*/}
-              {/*<NavBar exact path="/videos/laity" component={VideoLaityPage} />
-            <NavBar exact path="/videos/mission" component={VideoMissionPage} />
-            <NavBar exact path="/videos/youth" component={VideoYouthPage} />
-            <NavBar exact path="/videos/follow" component={VideoFollowPage} />*/}
+              <NavBar
+                exact
+                path="/videos/spiritual"
+                component={VideoSpiritualPage}
+              />
+              <NavBar exact path="/videos/laity" component={VideoLaityPage} />
+              <NavBar
+                exact
+                path="/videos/mission"
+                component={VideoMissionPage}
+              />
+              <NavBar exact path="/videos/youth" component={VideoYouthPage} />
+              <NavBar exact path="/videos/follow" component={VideoFollowPage} />
               {/*<NavBar exact path="/videos/upload" component={VideoUpload} />*/}
 
               <NavBar exact path="/contributors" component={ContributorsPage} />

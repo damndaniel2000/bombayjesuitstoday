@@ -9,6 +9,9 @@ import {
   CardContent,
   Typography,
   Button,
+  Fab,
+  Zoom,
+  useScrollTrigger,
   makeStyles,
   useMediaQuery,
   useTheme,
@@ -16,6 +19,7 @@ import {
 import { Skeleton, Pagination } from "@material-ui/lab";
 
 import "./BlogCards.css";
+import KeyboardArrowUpIcon from "@material-ui/icons/KeyboardArrowUp";
 
 const useStyle = makeStyles((theme) => ({
   cardButton: {
@@ -34,6 +38,15 @@ const useStyle = makeStyles((theme) => ({
     [theme.breakpoints.down("xs")]: {
       height: 250,
     },
+    upArrow: {
+      position: "fixed",
+      bottom: theme.spacing(5),
+      right: theme.spacing(30),
+      [theme.breakpoints.down("xs")]: {
+        bottom: theme.spacing(2),
+        right: theme.spacing(3),
+      },
+    },
   },
 }));
 
@@ -43,6 +56,7 @@ export default function Cards() {
   const [page, setPage] = useState(1);
   const [total, setTotal] = useState(Number);
 
+  const trigger = useScrollTrigger({ threshold: 400 });
   const [search, setSearch] = useState();
   const [noResult, setResult] = useState(false);
   const [dropdown, setShowDrop] = useState(false);
@@ -281,6 +295,16 @@ export default function Cards() {
           </div>
         </>
       )}
+      <Zoom in={trigger}>
+        <Fab
+          color="primary"
+          size="small"
+          className={classes.upArrow}
+          onClick={() => window.scrollTo(0, 0)}
+        >
+          <KeyboardArrowUpIcon />
+        </Fab>
+      </Zoom>
     </>
   );
 }
