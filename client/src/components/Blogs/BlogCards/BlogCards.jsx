@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { trackPromise } from "react-promise-tracker";
 import { useHistory } from "react-router";
 import {
   Card,
@@ -38,14 +37,14 @@ const useStyle = makeStyles((theme) => ({
     [theme.breakpoints.down("xs")]: {
       height: 250,
     },
-    upArrow: {
-      position: "fixed",
-      bottom: theme.spacing(5),
-      right: theme.spacing(30),
-      [theme.breakpoints.down("xs")]: {
-        bottom: theme.spacing(2),
-        right: theme.spacing(3),
-      },
+  },
+  upArrow: {
+    position: "fixed",
+    bottom: theme.spacing(2),
+    right: theme.spacing(10),
+    [theme.breakpoints.down("xs")]: {
+      bottom: theme.spacing(2),
+      right: theme.spacing(3),
     },
   },
 }));
@@ -56,35 +55,35 @@ export default function Cards() {
   const [page, setPage] = useState(1);
   const [total, setTotal] = useState(Number);
 
-  const trigger = useScrollTrigger({ threshold: 400 });
   const [search, setSearch] = useState();
   const [noResult, setResult] = useState(false);
   const [dropdown, setShowDrop] = useState(false);
   const [dropSelect, setDropSelect] = useState("title");
   const [load, setLoad] = useState(true);
 
+  const trigger = useScrollTrigger({ threshold: 200 });
   const history = useHistory();
   const classes = useStyle();
   const theme = useTheme();
   const matchesXS = useMediaQuery(theme.breakpoints.down("xs"));
 
   useEffect(() => {
+    const getBlogs = async () => {
+      try {
+        const response = await axios.get("/api/blogs");
+        if (response.data.length !== 0) {
+          setResult(false);
+          setBlogs(response.data);
+          setTotal(response.data.length);
+        } else setResult(true);
+        setLoad(false);
+      } catch (err) {
+        console.log(err);
+      }
+    };
     getBlogs();
+    window.scrollTo(0, 0);
   }, []);
-
-  const getBlogs = async () => {
-    try {
-      const response = await trackPromise(axios.get("/api/blogs"));
-      if (response.data.length !== 0) {
-        setResult(false);
-        setBlogs(response.data);
-        setTotal(response.data.length);
-      } else setResult(true);
-      setLoad(false);
-    } catch (err) {
-      console.log(err);
-    }
-  };
 
   useEffect(() => {
     const onSearch = async () => {
@@ -119,18 +118,8 @@ export default function Cards() {
       let currentItems = (page - 1) * 10;
       if (page === 1) currentItems = 0;
       setPageBlogs(blogs.slice(currentItems, currentItems + 10));
-      backtop();
     } else setPageBlogs(blogs);
   }, [blogs, page]);
-
-  const backtop = () => {
-    var scrollStep = -window.scrollY / (100 / 15),
-      scrollInterval = setInterval(function () {
-        if (window.scrollY !== 0) {
-          window.scrollBy(0, scrollStep);
-        } else clearInterval(scrollInterval);
-      }, 15);
-  };
 
   const blogCards =
     pageBlogs.length !== 0

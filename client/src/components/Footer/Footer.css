@@ -1,6 +1,7 @@
 .footer-container {
   background: linear-gradient(180deg, #003a8c 0%, #061178 100%);
   padding: 2rem 0 0.5rem 0;
+  margin-top: 4rem;
 }
 .footer-container a {
   color: #fff;

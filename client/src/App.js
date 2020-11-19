@@ -32,7 +32,7 @@ import ContributorsPage from "./pages/ContributorPages/ContributorsPage";
 
 // import LoginPage from "./pages/Admin/LoginPage";
 //
-// //import AdminVideoPost from "./pages/Admin/Videos/VideoPostPage";
+import AdminVideoPost from "./pages/Admin/Videos/VideoPostPage";
 // import AdminVideoUploadGet from "./pages/Admin/Videos/VideoUploadGet";
 
 // import AdminSpiritualVideoValidateCards from "./pages/Admin/Videos/VideoValidateCards/ValidateSpiritualCards";
@@ -49,7 +49,7 @@ import ContributorsPage from "./pages/ContributorPages/ContributorsPage";
 // import AdminYouthVideoValidateDetails from "./pages/Admin/Videos/VideoValidateDetails/ValidateYouthDetails";
 // import AdminFollowVideoValidateDetails from "./pages/Admin/Videos/VideoValidateDetails/ValidateFollowDetails";
 
-// import AdminBlogValidateCards from "./pages/Admin/Blogs/BlogsValidateCardsPage";
+import AdminBlogValidateCards from "./pages/Admin/Blogs/BlogsValidateCardsPage";
 // import AdminBlogValidateDetails from "./pages/Admin/Blogs/BlogsValidateDetailsPage";
 
 import NotFound from "./pages/NotFoundPage";
@@ -132,7 +132,7 @@ const App = () => {
               />
               {/*<NavBar exact path="/blogs/upload" component={BlogUploadPage} />*/}
               {/*<NavBar exact path="/login" component={LoginPage} />*/}
-              {/*<NavBar exact path="/videos/post" component={AdminVideoPost} />*/}
+              <NavBar exact path="/videos/post" component={AdminVideoPost} />
               {/*<NavBar
               exact
               path="/videos/uploads"
@@ -199,11 +199,11 @@ const App = () => {
               component={AdminFollowVideoValidateDetails}
             />
 */}
-              {/*<NavBar
-              exact
-              path="/blogs/validate"
-              component={AdminBlogValidateCards}
-            />*/}
+              <NavBar
+                exact
+                path="/blogs/validate"
+                component={AdminBlogValidateCards}
+              />
               {/*<NavBar
               exact
               path="/blogs/validate/:id"

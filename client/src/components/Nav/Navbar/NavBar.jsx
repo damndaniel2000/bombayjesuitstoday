@@ -91,7 +91,7 @@ const NavBar = (props) => {
     hideDrawer();
   };
   const contributors = () => {
-    history.push("/contributors/jesuits");
+    history.push("/contributors");
     hideDrawer();
   };
   const login = () => history.push("/login");
@@ -218,9 +218,9 @@ const NavBar = (props) => {
                 </div>
               )}
             </div>
-            <div>Blogs</div>
-            <div>Follow Him</div>
-            <div>Contributors</div>
+            <div onClick={blogs}>Blogs</div>
+            <div onClick={followHim}>Follow Him</div>
+            <div onClick={contributors}>Contributors</div>
           </div>
         </div>
       </nav>
