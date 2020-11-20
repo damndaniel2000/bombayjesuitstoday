@@ -77,8 +77,6 @@ const VideoCards = (props) => {
   const theme = useTheme();
   const matchesXS = useMediaQuery(theme.breakpoints.down("xs"));
 
-  const radio = "/videos/" + props.path;
-
   useEffect(() => {
     const getVideos = async () => {
       try {
@@ -91,6 +89,8 @@ const VideoCards = (props) => {
       }
     };
     getVideos();
+
+    //eslint-disable-next-line
   }, [props.path]);
 
   useEffect(() => {
@@ -100,6 +100,8 @@ const VideoCards = (props) => {
       setPageVids(videos.slice(currentItems, currentItems + 5));
       pageVids.reverse();
     } else setPageVids(videos);
+
+    //eslint-disable-next-line
   }, [videos, page]);
 
   const [gData, setGdata] = useState({});

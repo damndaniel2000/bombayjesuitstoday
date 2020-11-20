@@ -50,7 +50,7 @@ import AdminVideoPost from "./pages/Admin/Videos/VideoPostPage";
 // import AdminFollowVideoValidateDetails from "./pages/Admin/Videos/VideoValidateDetails/ValidateFollowDetails";
 
 import AdminBlogValidateCards from "./pages/Admin/Blogs/BlogsValidateCardsPage";
-// import AdminBlogValidateDetails from "./pages/Admin/Blogs/BlogsValidateDetailsPage";
+import AdminBlogValidateDetails from "./pages/Admin/Blogs/BlogsValidateDetailsPage";
 
 import NotFound from "./pages/NotFoundPage";
 
@@ -204,11 +204,11 @@ const App = () => {
                 path="/blogs/validate"
                 component={AdminBlogValidateCards}
               />
-              {/*<NavBar
-              exact
-              path="/blogs/validate/:id"
-              component={AdminBlogValidateDetails}
-            />*/}
+              <NavBar
+                exact
+                path="/blogs/validate/:id"
+                component={AdminBlogValidateDetails}
+              />
 
               {/*<NavBar component={NotFound} />*/}
             </Switch>

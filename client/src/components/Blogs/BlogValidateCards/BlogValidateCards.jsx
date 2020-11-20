@@ -3,9 +3,7 @@ import axios from "axios";
 import { useHistory } from "react-router";
 import {
   Card,
-  CardActions,
   CardMedia,
-  CardContent,
   Typography,
   Button,
   Fab,

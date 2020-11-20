@@ -3,9 +3,7 @@ import axios from "axios";
 import { useHistory } from "react-router";
 import {
   Card,
-  CardActions,
   CardMedia,
-  CardContent,
   Typography,
   Button,
   Fab,
@@ -111,6 +109,8 @@ export default function Cards() {
       }
     };
     if (search !== undefined) onSearch();
+
+    //eslint-disable-next-line
   }, [search]);
 
   useEffect(() => {

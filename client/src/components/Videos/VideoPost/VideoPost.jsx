@@ -11,13 +11,20 @@ import {
 import "./VideoPost.css";
 import BuildRoundedIcon from "@material-ui/icons/BuildRounded";
 
+import Alert from "../../Custom/Alerts";
+
 const useStyles = makeStyles((theme) => ({
   form: {
     "& div": {
       margin: theme.spacing(1),
+      marginLeft: 0,
     },
     "& .MuiTextField-root": {
       width: "100%",
+      borderRadius: 0,
+    },
+    "& .MuiOutlinedInput-root": {
+      borderRadius: 0,
     },
   },
   buttons: {
@@ -44,6 +51,11 @@ const VideoPost = () => {
   });
   const [path, setPath] = useState();
   const [ytUrl, setUrl] = useState("");
+  const [notification, setNotification] = useState({
+    showNotification: false,
+    severity: "",
+    msg: "",
+  });
 
   const classes = useStyles();
 
@@ -65,21 +77,20 @@ const VideoPost = () => {
         { headers: { "x-auth-token": token } }
       )
       .then(() => {
-        successMessage();
+        setNotification({
+          showNotification: true,
+          severity: "success",
+          msg: "Posted Successfully",
+        });
         setState({ uploader: "" });
       })
       .catch((err) => {
-        console.log(err);
-        errorMessage();
+        setNotification({
+          showNotification: true,
+          severity: "error",
+          msg: "There was an error while posting",
+        });
       });
-  };
-
-  const successMessage = () => {
-    // return message.success("Video posted successfully. Thank You", 5);
-  };
-
-  const errorMessage = () => {
-    // return message.error("There was a problem in posting the video. Sorry", 5);
   };
 
   const handleChange = (evt) => {
@@ -103,8 +114,20 @@ const VideoPost = () => {
         badge: "https://bombayjesuitstoday.com/images/dove.png",
         url: url,
       })
-      //  .then(() => message.success("Notification sent"))
-      .catch((err) => console.log(err));
+      .then(() =>
+        setNotification({
+          showNotification: true,
+          severity: "success",
+          msg: "Notification sent",
+        })
+      )
+      .catch(() =>
+        setNotification({
+          showNotification: true,
+          severity: "error",
+          msg: "Notification was not sent",
+        })
+      );
   };
 
   const getId = (url) => {
@@ -198,6 +221,7 @@ const VideoPost = () => {
             }}
           />
         </div>
+
         <div>
           <label htmlFor="uploader">Uploader's Name :</label>
           <br />
@@ -212,6 +236,7 @@ const VideoPost = () => {
             required
           />
         </div>
+
         <div>
           <label htmlFor="title">Title of the Video: </label>
           <br />
@@ -226,6 +251,7 @@ const VideoPost = () => {
             required
           />
         </div>
+
         <div>
           <label htmlFor="caption">Caption :</label>
           <br />
@@ -241,6 +267,7 @@ const VideoPost = () => {
             required
           />
         </div>
+
         <div>
           <label htmlFor="embedLink">Embed Link :</label>
           <br />
@@ -255,6 +282,7 @@ const VideoPost = () => {
             required
           />
         </div>
+
         <div>
           <label htmlFor="videoURL">Video URL :</label>
           <br />
@@ -278,7 +306,7 @@ const VideoPost = () => {
             marginBottom: "2rem",
           }}
         >
-          <label htmlFor="videoURL">Select Path :</label>
+          <label htmlFor="videoURL">Select Path : </label>
           <Select
             variant="outlined"
             color="secondary"
@@ -314,6 +342,12 @@ const VideoPost = () => {
           Send Notification
         </Button>
       </form>
+      <Alert
+        open={notification.showNotification}
+        setNotification={setNotification}
+        severity={notification.severity}
+        message={notification.msg}
+      />
     </div>
   );
 };

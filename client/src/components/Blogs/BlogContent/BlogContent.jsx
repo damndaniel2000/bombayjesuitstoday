@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { withRouter } from "react-router";
 import { useParams } from "react-router-dom";
-import { trackPromise, usePromiseTracker } from "react-promise-tracker";
 import ReactHtmlParser from "react-html-parser";
 import { Typography, makeStyles } from "@material-ui/core";
 import { Skeleton } from "@material-ui/lab";
