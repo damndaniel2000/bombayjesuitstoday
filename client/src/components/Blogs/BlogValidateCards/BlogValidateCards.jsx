@@ -71,6 +71,7 @@ export default function Cards() {
       }
     };
     getBlogs();
+    window.scrollTo(0, 0);
   }, []);
 
   useEffect(() => {
@@ -78,6 +79,7 @@ export default function Cards() {
       let currentItems = (page - 1) * 10;
       if (page === 1) currentItems = 0;
       setPageBlogs(blogs.slice(currentItems, currentItems + 10));
+      window.scrollTo(0, 0);
     } else setPageBlogs(blogs);
   }, [blogs, page]);
 
@@ -90,45 +92,41 @@ export default function Cards() {
           const year = postDate.getFullYear();
           const uploadTime = `${date} ${month}, ${year}`;
 
-          if (blog.validated) {
-            return (
-              <Card className="blog-card" key={blog._id}>
-                <CardMedia
-                  className="blog-card-img"
-                  image={blog.imgLink}
-                  alt={"Blog by " + blog.author}
-                />
-                <div className="blog-card-text">
-                  <Typography variant="p" className="blog-card-title">
-                    {blog.title}
-                  </Typography>
+          return (
+            <Card className="blog-card" key={blog._id}>
+              <CardMedia
+                className="blog-card-img"
+                image={blog.imgLink}
+                alt={"Blog by " + blog.author}
+              />
+              <div className="blog-card-text">
+                <Typography variant="p" className="blog-card-title">
+                  {blog.title}
+                </Typography>
 
-                  <div
-                    className="blog-card-lower-text"
-                    onClick={() => history.push("/blogs/validate/" + blog._id)}
-                  >
-                    <Typography variant="p" className="blog-card-author">
-                      {blog.author}
-                    </Typography>
-                    <Typography variant="p" className="blog-card-time">
-                      {uploadTime}
-                    </Typography>
-                    <div>
-                      <Button
-                        color="primary"
-                        variant="contained"
-                        className={classes.cardButton}
-                      >
-                        Edit
-                      </Button>
-                    </div>
+                <div
+                  className="blog-card-lower-text"
+                  onClick={() => history.push("/blogs/validate/" + blog._id)}
+                >
+                  <Typography variant="p" className="blog-card-author">
+                    {blog.author}
+                  </Typography>
+                  <Typography variant="p" className="blog-card-time">
+                    {uploadTime}
+                  </Typography>
+                  <div>
+                    <Button
+                      color="primary"
+                      variant="contained"
+                      className={classes.cardButton}
+                    >
+                      Edit
+                    </Button>
                   </div>
                 </div>
-              </Card>
-            );
-          } else {
-            return null;
-          }
+              </div>
+            </Card>
+          );
         })
       : null;
 

@@ -12,7 +12,7 @@ import NavBar from "./components/Nav/Navbar/NavBar";
 import HomeNavBar from "./components/Nav/HomeNav/HomeNavBar";
 import Footer from "./components/Footer/Footer.jsx";
 
-// import HomePage from "./pages/HomePage";
+import HomePage from "./pages/HomePage";
 import FollowHimPage from "./pages/FollowHimPage";
 import PrivacyPolicy from "./pages/PrivacyPolicyPage";
 
@@ -26,7 +26,7 @@ import VideoFollowPage from "./pages/VideoPages/VideoCardPages/VideoFollowPage";
 
 import BlogCardsPage from "./pages/BlogPages/BlogCardsPage";
 import BlogContentPage from "./pages/BlogPages/BlogContentPage";
-//import BlogUploadPage from "./pages/BlogPages/BlogUploadPage";
+import BlogUploadPage from "./pages/BlogPages/BlogUploadPage";
 
 import ContributorsPage from "./pages/ContributorPages/ContributorsPage";
 
@@ -95,11 +95,11 @@ const App = () => {
         <ThemeProvider theme={theme}>
           <UserContext.Provider value={{ userData, setUserData }}>
             <Switch>
-              {/*<HomeNavBar
-              exact
-              path="/"
-              component={() => <HomePage count={count} />}
-            />*/}
+              <HomeNavBar
+                exact
+                path="/"
+                component={() => <HomePage count={count} />}
+              />
               <HomeNavBar exact path="/follow-him" component={FollowHimPage} />
               {/*<NavBar exact path="/privacy-policy" component={PrivacyPolicy} />*/}
               <NavBar
@@ -130,7 +130,7 @@ const App = () => {
                 path="/blogs/content/:id"
                 component={BlogContentPage}
               />
-              {/*<NavBar exact path="/blogs/upload" component={BlogUploadPage} />*/}
+              <NavBar exact path="/blogs/upload" component={BlogUploadPage} />
               {/*<NavBar exact path="/login" component={LoginPage} />*/}
               <NavBar exact path="/videos/post" component={AdminVideoPost} />
               {/*<NavBar

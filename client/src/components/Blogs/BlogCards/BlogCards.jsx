@@ -118,6 +118,7 @@ export default function Cards() {
       let currentItems = (page - 1) * 10;
       if (page === 1) currentItems = 0;
       setPageBlogs(blogs.slice(currentItems, currentItems + 10));
+      window.scrollTo(0, 0);
     } else setPageBlogs(blogs);
   }, [blogs, page]);
 

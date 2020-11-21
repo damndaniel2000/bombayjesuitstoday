@@ -35,12 +35,6 @@ const useStyles = makeStyles((theme) => ({
       width: "60%",
     },
   },
-  select: {
-    width: "40%",
-    "& .MuiOutlinedInput-input": {
-      padding: "3px 0",
-    },
-  },
   content: {
     textAlign: "justify",
     marginTop: "3rem",
@@ -89,7 +83,7 @@ const BlogDetails = (props) => {
           setTitle(blog.title);
           setImgLink(blog.imgLink);
           setContent(blog.blogContent);
-          setDate(new Date(blog.date));
+          setDate(blog.date !== "string" ? new Date(blog.date) : blog.date);
           setLoad(false);
         })
         .catch((err) => console.log(err));

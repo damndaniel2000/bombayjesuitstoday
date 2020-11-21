@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 
-import MassModal from "../../Nav/MassModal/MassModal";
+//import MassModal from "../../Nav/MassModal/MassModal";
 import "./HomeCards.css";
 
 const HomeCards = () => {
@@ -26,9 +26,6 @@ const HomeCards = () => {
                 {" "}
                 Daily Mass{" "}
               </button>{" "}
-              {modal && (
-                <MassModal visible={modal} modalToggler={massModalToggle} />
-              )}
               <br />
             </div>
           </div>
