@@ -30,8 +30,8 @@ import BlogUploadPage from "./pages/BlogPages/BlogUploadPage";
 
 import ContributorsPage from "./pages/ContributorPages/ContributorsPage";
 
-// import LoginPage from "./pages/Admin/LoginPage";
-//
+import LoginPage from "./pages/Admin/LoginPage";
+
 import AdminVideoPost from "./pages/Admin/Videos/VideoPostPage";
 // import AdminVideoUploadGet from "./pages/Admin/Videos/VideoUploadGet";
 
@@ -131,7 +131,8 @@ const App = () => {
                 component={BlogContentPage}
               />
               <NavBar exact path="/blogs/upload" component={BlogUploadPage} />
-              {/*<NavBar exact path="/login" component={LoginPage} />*/}
+              <NavBar exact path="/login" component={LoginPage} />
+
               <NavBar exact path="/videos/post" component={AdminVideoPost} />
               {/*<NavBar
               exact
