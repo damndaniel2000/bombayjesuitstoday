@@ -23,9 +23,7 @@ const userRouter = require("./routes/Misc/userRouter");
 const counterRouter = require("./routes/Misc/counterRouter");
 const subsRouter = require("./routes/Misc/subsRouter");
 
-MongoClient.connect("mongodb://localhost:27017/jesuits", {
-  user: process.env.MONGO_USERNAME,
-  pass: process.env.MONGO_PASS,
+MongoClient.connect("mongodb+srv://dan:NWsmH2ALWZY2rQL@cluster0.owjks.mongodb.net/jesuits?retryWrites=true&w=majority", {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useFindAndModify: false,
