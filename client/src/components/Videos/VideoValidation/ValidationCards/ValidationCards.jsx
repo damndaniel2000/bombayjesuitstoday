@@ -1,22 +1,46 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { trackPromise, usePromiseTracker } from "react-promise-tracker";
-import { Spin, Radio } from "antd";
+import {
+  Card,
+  Button,
+  ButtonGroup,
+  useMediaQuery,
+  useTheme,
+  makeStyles,
+  CircularProgress,
+} from "@material-ui/core";
 import { useHistory } from "react-router-dom";
 
 import "./VideoValidateCards.css";
 
+const useStyles = makeStyles((theme) => ({
+  radios: {
+    width: 120,
+    padding: "10px 0",
+    borderRadius: 0,
+    [theme.breakpoints.down("xs")]: {
+      width: 90,
+    },
+  },
+}));
+
 const VideoValidationCards = (props) => {
   const [videos, setVideos] = useState([]);
-  const { promiseInProgress } = usePromiseTracker();
+  const [isLoading, setLoading] = useState(true);
+
+  const theme = useTheme();
+  const classes = useStyles();
+  const matchesXS = useMediaQuery(theme.breakpoints.down("xs"));
   const history = useHistory();
+
   const radio = "/videos/validate/" + props.path;
 
   useEffect(() => {
     const getVideos = async () => {
       try {
-        const res = await trackPromise(axios.get("/api/videos-" + props.path));
+        const res = await axios.get("/api/videos-" + props.path);
         setVideos(res.data);
+        setLoading(false);
       } catch (err) {
         console.log(err);
       }
@@ -61,55 +85,62 @@ const VideoValidationCards = (props) => {
 
   return (
     <>
+      <ButtonGroup
+        size={matchesXS ? "small" : "large"}
+        color="secondary"
+        style={{ display: "block" }}
+      >
+        <Button
+          variant={props.path === "spiritual" ? "contained" : "outlined"}
+          className={classes.radios}
+          onClick={() => history.push("/videos/validate/spiritual")}
+        >
+          Spiritual
+        </Button>
+        <Button
+          variant={props.path === "gospel" ? "contained" : "outlined"}
+          className={classes.radios}
+          onClick={() => history.push("/videos/validate/gospel")}
+        >
+          Gospel
+        </Button>
+        <Button
+          variant={props.path === "mission" ? "contained" : "outlined"}
+          className={classes.radios}
+          onClick={() => history.push("/videos/validate/mission")}
+        >
+          Mission
+        </Button>
+      </ButtonGroup>
+      <ButtonGroup
+        size={matchesXS ? "small" : "large"}
+        color="secondary"
+        style={{ display: "block" }}
+      >
+        <Button
+          variant={props.path === "laity" ? "contained" : "outlined"}
+          className={classes.radios}
+          onClick={() => history.push("/videos/validate/laity")}
+        >
+          Laity
+        </Button>
+        <Button
+          variant={props.path === "youth" ? "contained" : "outlined"}
+          className={classes.radios}
+          onClick={() => history.push("/videos/validate/youth")}
+        >
+          Youth
+        </Button>
+        <Button
+          variant={props.path === "follow" ? "contained" : "outlined"}
+          className={classes.radios}
+          onClick={() => history.push("/videos/validate/follow")}
+        >
+          Follow
+        </Button>
+      </ButtonGroup>
       <br />
-      <br />
-      <div>
-        <Radio.Group onChange={handleRadios} defaultValue={radio}>
-          <Radio.Button
-            value="/videos/validate/gospel"
-            className="page-radio-buttons"
-          >
-            Gospel
-          </Radio.Button>
-          <Radio.Button
-            value="/videos/validate/spiritual"
-            className="page-radio-buttons"
-          >
-            Spiritual
-          </Radio.Button>
-          <Radio.Button
-            value="/videos/validate/mission"
-            className="page-radio-buttons"
-          >
-            Mission
-          </Radio.Button>
-          <br />
-          <Radio.Button
-            value="/videos/validate/laity"
-            className="page-radio-buttons"
-          >
-            SJ Laity
-          </Radio.Button>
-          <Radio.Button
-            value="/videos/validate/youth"
-            className="page-radio-buttons"
-          >
-            Youth
-          </Radio.Button>
-          <Radio.Button
-            value="/videos/validate/follow"
-            className="page-radio-buttons"
-          >
-            Follow Him
-          </Radio.Button>
-        </Radio.Group>
-      </div>
-      <br />
-      {promiseInProgress && (
-        <div className="spinner">
-          <Spin size="large" />
-        </div>
-      )}
+      {isLoading && <CircularProgress />}
       <div className="validate-video-cards-container"> {videoCards}</div>
     </>
   );

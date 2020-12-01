@@ -16,7 +16,6 @@ const HomePage = (props) => {
       <HomeCards />
       <HomeFollow />
       <HomeBlogs />
-      <HomeCounter count={props.count} />
     </div>
   );
 };

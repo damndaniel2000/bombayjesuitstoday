@@ -92,6 +92,7 @@ const NavBar = (props) => {
   };
   const contributors = () => {
     history.push("/contributors");
+    console.log("Hello");
     hideDrawer();
   };
   const login = () => history.push("/login");
@@ -196,21 +197,16 @@ const NavBar = (props) => {
             <div className="nav-drop-item">
               <span onClick={() => setDropMenus({ videos: !dropMenus.videos })}>
                 Videos
-              </span>{" "}
-              {!dropMenus.videos ? (
-                <ExpandMore
-                  onClick={() => setDropMenus({ videos: !dropMenus.videos })}
-                />
-              ) : (
-                <ExpandLess
-                  onClick={() => setDropMenus({ videos: !dropMenus.videos })}
-                />
-              )}
+              </span>
               {dropMenus.videos && (
                 <div className="nav-drop-menu">
                   <List component="div" disablePadding>
                     {videoDropLinks.map((item) => (
-                      <ListItem button>
+                      <ListItem
+                        tabIndex="0"
+                        onBlur={() => console.log("Hello")}
+                        button
+                      >
                         <ListItemText primary={item.name} onClick={item.link} />
                       </ListItem>
                     ))}
@@ -221,6 +217,7 @@ const NavBar = (props) => {
             <div onClick={blogs}>Blogs</div>
             <div onClick={followHim}>Follow Him</div>
             <div onClick={contributors}>Contributors</div>
+            <div onClick={login}>Login</div>
           </div>
         </div>
       </nav>

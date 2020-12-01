@@ -35,12 +35,12 @@ import LoginPage from "./pages/Admin/LoginPage";
 import AdminVideoPost from "./pages/Admin/Videos/VideoPostPage";
 // import AdminVideoUploadGet from "./pages/Admin/Videos/VideoUploadGet";
 
-// import AdminSpiritualVideoValidateCards from "./pages/Admin/Videos/VideoValidateCards/ValidateSpiritualCards";
-// import AdminGospelVideoValidateCards from "./pages/Admin/Videos/VideoValidateCards/ValidateGospelCards";
-// import AdminLaityVideoValidateCards from "./pages/Admin/Videos/VideoValidateCards/ValidateLaityCards";
-// import AdminMissionVideoValidateCards from "./pages/Admin/Videos/VideoValidateCards/ValidateMissionCards";
-// import AdminYouthVideoValidateCards from "./pages/Admin/Videos/VideoValidateCards/ValidateYouthCards";
-// import AdminFollowVideoValidateCards from "./pages/Admin/Videos/VideoValidateCards/ValidateFollowCards";
+import AdminSpiritualVideoValidateCards from "./pages/Admin/Videos/VideoValidateCards/ValidateSpiritualCards";
+import AdminGospelVideoValidateCards from "./pages/Admin/Videos/VideoValidateCards/ValidateGospelCards";
+import AdminLaityVideoValidateCards from "./pages/Admin/Videos/VideoValidateCards/ValidateLaityCards";
+import AdminMissionVideoValidateCards from "./pages/Admin/Videos/VideoValidateCards/ValidateMissionCards";
+import AdminYouthVideoValidateCards from "./pages/Admin/Videos/VideoValidateCards/ValidateYouthCards";
+import AdminFollowVideoValidateCards from "./pages/Admin/Videos/VideoValidateCards/ValidateFollowCards";
 
 // import AdminSpiritualVideoValidateDetails from "./pages/Admin/Videos/VideoValidateDetails/ValidateSpiritualDetails";
 // import AdminMissionVideoValidateDetails from "./pages/Admin/Videos/VideoValidateDetails/ValidateMissionDetails";
@@ -59,7 +59,6 @@ const App = () => {
     token: undefined,
     user: undefined,
   });
-  const [count, setCount] = useState();
 
   useEffect(() => {
     const checkLoggedIn = async () => {
@@ -83,10 +82,6 @@ const App = () => {
     };
 
     checkLoggedIn();
-
-    axios.put("/api/counter/5f3fe7c67c551223a7bf6d94").then((counter) => {
-      setCount(counter.data.count);
-    });
   }, []);
 
   return (
@@ -95,11 +90,7 @@ const App = () => {
         <ThemeProvider theme={theme}>
           <UserContext.Provider value={{ userData, setUserData }}>
             <Switch>
-              <HomeNavBar
-                exact
-                path="/"
-                component={() => <HomePage count={count} />}
-              />
+              <HomeNavBar exact path="/" component={HomePage} />
               <HomeNavBar exact path="/follow-him" component={FollowHimPage} />
               {/*<NavBar exact path="/privacy-policy" component={PrivacyPolicy} />*/}
               <NavBar
@@ -135,40 +126,40 @@ const App = () => {
 
               <NavBar exact path="/videos/post" component={AdminVideoPost} />
               {/*<NavBar
-              exact
-              path="/videos/uploads"
-              component={AdminVideoUploadGet}
-            />*/}
-              {/*<NavBar
-              exact
-              path="/videos/validate/spiritual"
-              component={AdminSpiritualVideoValidateCards}
-            />
-            <NavBar
-              exact
-              path="/videos/validate/gospel"
-              component={AdminGospelVideoValidateCards}
-            />
-            <NavBar
-              exact
-              path="/videos/validate/mission"
-              component={AdminMissionVideoValidateCards}
-            />
-            <NavBar
-              exact
-              path="/videos/validate/laity"
-              component={AdminLaityVideoValidateCards}
-            />
-            <NavBar
-              exact
-              path="/videos/validate/youth"
-              component={AdminYouthVideoValidateCards}
-            />
-            <NavBar
-              exact
-              path="/videos/validate/follow"
-              component={AdminFollowVideoValidateCards}
-            />*/}
+                exact
+                path="/videos/uploads"
+                component={AdminVideoUploadGet}
+              />*/}
+              <NavBar
+                exact
+                path="/videos/validate/spiritual"
+                component={AdminSpiritualVideoValidateCards}
+              />
+              <NavBar
+                exact
+                path="/videos/validate/gospel"
+                component={AdminGospelVideoValidateCards}
+              />
+              <NavBar
+                exact
+                path="/videos/validate/mission"
+                component={AdminMissionVideoValidateCards}
+              />
+              <NavBar
+                exact
+                path="/videos/validate/laity"
+                component={AdminLaityVideoValidateCards}
+              />
+              <NavBar
+                exact
+                path="/videos/validate/youth"
+                component={AdminYouthVideoValidateCards}
+              />
+              <NavBar
+                exact
+                path="/videos/validate/follow"
+                component={AdminFollowVideoValidateCards}
+              />
               {/*<NavBar
               exact
               path="/videos/validate/spiritual/:id"

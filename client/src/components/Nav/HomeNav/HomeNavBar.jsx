@@ -21,8 +21,6 @@ import GroupRoundedIcon from "@material-ui/icons/GroupRounded";
 import ExpandLess from "@material-ui/icons/ExpandLess";
 import ExpandMore from "@material-ui/icons/ExpandMore";
 
-import "./HomeNav.css";
-import "../Navbar/Navbar.css";
 import logo from "../logo.png";
 
 //import MassModal from "../MassModal/MassModal";
@@ -33,7 +31,7 @@ const useStyle = makeStyles({
   },
 });
 
-const NavBar = (props) => {
+const HomeNavBar = (props) => {
   const [visible, setVisible] = useState(false);
   const [videoDrop, setDrop] = useState(false);
   const [modal, setModal] = useState();
@@ -92,7 +90,8 @@ const NavBar = (props) => {
     hideDrawer();
   };
   const contributors = () => {
-    history.push("/contributors/jesuits");
+    history.push("/contributors");
+    console.log("Hello");
     hideDrawer();
   };
   const login = () => history.push("/login");
@@ -197,21 +196,16 @@ const NavBar = (props) => {
             <div className="nav-drop-item">
               <span onClick={() => setDropMenus({ videos: !dropMenus.videos })}>
                 Videos
-              </span>{" "}
-              {!dropMenus.videos ? (
-                <ExpandMore
-                  onClick={() => setDropMenus({ videos: !dropMenus.videos })}
-                />
-              ) : (
-                <ExpandLess
-                  onClick={() => setDropMenus({ videos: !dropMenus.videos })}
-                />
-              )}
+              </span>
               {dropMenus.videos && (
                 <div className="nav-drop-menu">
                   <List component="div" disablePadding>
                     {videoDropLinks.map((item) => (
-                      <ListItem button>
+                      <ListItem
+                        tabIndex="0"
+                        onBlur={() => console.log("Hello")}
+                        button
+                      >
                         <ListItemText primary={item.name} onClick={item.link} />
                       </ListItem>
                     ))}
@@ -219,9 +213,10 @@ const NavBar = (props) => {
                 </div>
               )}
             </div>
-            <div>Blogs</div>
-            <div>Follow Him</div>
-            <div>Contributors</div>
+            <div onClick={blogs}>Blogs</div>
+            <div onClick={followHim}>Follow Him</div>
+            <div onClick={contributors}>Contributors</div>
+            <div onClick={login}>Login</div>
           </div>
         </div>
       </nav>
@@ -230,18 +225,18 @@ const NavBar = (props) => {
   );
 };
 
-const NavRoute = ({ component: Component, ...rest }) => {
+const HomeNavRoute = ({ component: Component, ...rest }) => {
   return (
     <Route
       {...rest}
       render={(props) => {
         return (
-          <NavBar>
+          <HomeNavBar>
             <Component {...props} />
-          </NavBar>
+          </HomeNavBar>
         );
       }}
     />
   );
 };
-export default NavRoute;
+export default HomeNavRoute;

@@ -10,7 +10,9 @@ const VideoValidateCards = () => {
   return !userData.user ? (
     <NotFoundPage />
   ) : (
-    <MissionValidateCards path="mission" />
+    <div style={{ minHeight: "100vh" }}>
+      <MissionValidateCards path="mission" />
+    </div>
   );
 };
 

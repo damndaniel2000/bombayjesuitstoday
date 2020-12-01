@@ -10,7 +10,9 @@ const VideoValidateCards = () => {
   return !userData.user ? (
     <NotFoundPage />
   ) : (
-    <LaityValidateCards path="laity" />
+    <div style={{ minHeight: "100vh" }}>
+      <LaityValidateCards path="laity" />
+    </div>
   );
 };
 
