@@ -7,9 +7,8 @@ import {
   ListItemIcon,
   ListItemText,
   Collapse,
-  Menu,
-  MenuItem,
-  makeStyles,
+  Zoom,
+  ClickAwayListener,
 } from "@material-ui/core";
 import UserContext from "../../../context/UserContext";
 
@@ -21,17 +20,12 @@ import GroupRoundedIcon from "@material-ui/icons/GroupRounded";
 import ExpandLess from "@material-ui/icons/ExpandLess";
 import ExpandMore from "@material-ui/icons/ExpandMore";
 
+import "../Navbar/Navbar.css";
 import logo from "../logo.png";
 
 //import MassModal from "../MassModal/MassModal";
 
-const useStyle = makeStyles({
-  dropHoverItems: {
-    fontSize: 10,
-  },
-});
-
-const HomeNavBar = (props) => {
+const NavBar = (props) => {
   const [visible, setVisible] = useState(false);
   const [videoDrop, setDrop] = useState(false);
   const [modal, setModal] = useState();
@@ -40,13 +34,9 @@ const HomeNavBar = (props) => {
     blog: false,
   });
 
-  const classes = useStyle();
   const history = useHistory();
   const { userData } = useContext(UserContext);
 
-  const showDrawer = () => {
-    setVisible(true);
-  };
   const hideDrawer = () => {
     setVisible(false);
     setDrop(false);
@@ -91,55 +81,41 @@ const HomeNavBar = (props) => {
   };
   const contributors = () => {
     history.push("/contributors");
-    console.log("Hello");
     hideDrawer();
   };
   const login = () => history.push("/login");
+
   const massModalToggle = () => {
     setModal(!modal);
   };
 
-  const navLinks = [
-    { name: "Home", link: home },
-    { name: "Videos", icon: true },
-    { name: "Blogs", link: blogs },
-    { name: "Contributors", link: contributors },
-    { name: "Follow Him", link: followHim },
-    // { name: "Login", link: login },
-  ];
-
   const drawerLinks = [
-    { name: "Home", link: home, icon: <HomeRoundedIcon /> },
+    { id: 1, name: "Home", link: home, icon: <HomeRoundedIcon /> },
     {
+      id: 2,
       name: "Videos",
       link: () => setDrop(!videoDrop),
       icon: <PlayCircleFilledRoundedIcon />,
     },
-    { name: "Blogs", link: blogs, icon: <CreateRoundedIcon /> },
-    { name: "Contributors", link: contributors, icon: <GroupRoundedIcon /> },
-    { name: "Follow Him", link: followHim, icon: <DirectionsIcon /> },
+    { id: 3, name: "Blogs", link: blogs, icon: <CreateRoundedIcon /> },
+    {
+      id: 4,
+      name: "Contributors",
+      link: contributors,
+      icon: <GroupRoundedIcon />,
+    },
+    { id: 5, name: "Follow Him", link: followHim, icon: <DirectionsIcon /> },
   ];
 
   const videoDropLinks = [
-    { name: "Daily Mass", link: "" },
-    { name: "Gospel Insights", link: gVideos },
-    { name: "Ignatian Spirituality", link: sVideos },
-    { name: "Ignatian Mission", link: mVideos },
-    { name: "SJ Laity", link: lVideos },
-    { name: "Follow Him", link: fVideos },
+    { id: 1, name: "Daily Mass", link: "" },
+    { id: 2, name: "Gospel Insights", link: gVideos },
+    { id: 3, name: "Ignatian Spirituality", link: sVideos },
+    { id: 4, name: "Ignatian Mission", link: mVideos },
+    { id: 5, name: "SJ Laity", link: lVideos },
+    { id: 6, name: "Follow Him", link: fVideos },
+    { id: 7, name: "Youth Talk", link: yVideos },
   ];
-
-  const drawerDropVideos = () => (
-    <div className="drawer-drop-content">
-      <span> Daily Mass </span>
-      <span onClick={gVideos}> Gospel Insights </span>
-      <span onClick={sVideos}> Ignatian Spirituality </span>
-      <span onClick={mVideos}> Ignatian Mission </span>
-      <span onClick={lVideos}> SJ Laity </span>
-      <span onClick={yVideos}> Youth </span>
-      <span onClick={fVideos}> Follow Him </span>
-    </div>
-  );
 
   return (
     <>
@@ -157,7 +133,7 @@ const HomeNavBar = (props) => {
             <List>
               {drawerLinks.map((item) => (
                 <>
-                  <ListItem onClick={item.link} button>
+                  <ListItem onClick={item.link} key={item.id} button>
                     <ListItemIcon>{item.icon}</ListItemIcon>
                     <ListItemText primary={item.name} />
                     {item.name === "Videos" ? (
@@ -176,7 +152,7 @@ const HomeNavBar = (props) => {
                         disablePadding
                       >
                         {videoDropLinks.map((item) => (
-                          <ListItem button>
+                          <ListItem key={item.id} button>
                             <ListItemText
                               primary={item.name}
                               onClick={item.link}
@@ -198,19 +174,27 @@ const HomeNavBar = (props) => {
                 Videos
               </span>
               {dropMenus.videos && (
-                <div className="nav-drop-menu">
-                  <List component="div" disablePadding>
-                    {videoDropLinks.map((item) => (
-                      <ListItem
-                        tabIndex="0"
-                        onBlur={() => console.log("Hello")}
-                        button
-                      >
-                        <ListItemText primary={item.name} onClick={item.link} />
-                      </ListItem>
-                    ))}
-                  </List>
-                </div>
+                <ClickAwayListener
+                  onClickAway={() => setDropMenus({ videos: false })}
+                >
+                  <Zoom in={!dropMenus.video}>
+                    <div className="nav-drop-menu">
+                      <List component="div" disablePadding>
+                        {videoDropLinks.map((item) => (
+                          <ListItem key={item.id} button>
+                            <ListItemText
+                              primary={item.name}
+                              onClick={() => {
+                                item.link();
+                                setDropMenus({ videos: false });
+                              }}
+                            />
+                          </ListItem>
+                        ))}
+                      </List>
+                    </div>
+                  </Zoom>
+                </ClickAwayListener>
               )}
             </div>
             <div onClick={blogs}>Blogs</div>
@@ -225,18 +209,18 @@ const HomeNavBar = (props) => {
   );
 };
 
-const HomeNavRoute = ({ component: Component, ...rest }) => {
+const NavRoute = ({ component: Component, ...rest }) => {
   return (
     <Route
       {...rest}
       render={(props) => {
         return (
-          <HomeNavBar>
+          <NavBar>
             <Component {...props} />
-          </HomeNavBar>
+          </NavBar>
         );
       }}
     />
   );
 };
-export default HomeNavRoute;
+export default NavRoute;

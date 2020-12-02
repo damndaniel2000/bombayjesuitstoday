@@ -1,10 +1,45 @@
-/*eslint-disable*/
-
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { withRouter } from "react-router";
 import { useHistory } from "react-router-dom";
-import { Form, Input, message } from "antd";
+import {
+  TextField,
+  Select,
+  MenuItem,
+  Button,
+  CircularProgress,
+  makeStyles,
+} from "@material-ui/core";
+
+import Alert from "../../../Custom/Alerts";
+
+const useStyles = makeStyles((theme) => ({
+  form: {
+    "& div": {
+      margin: theme.spacing(1),
+      marginLeft: 0,
+    },
+    "& .MuiTextField-root": {
+      width: "100%",
+      borderRadius: 0,
+    },
+    "& .MuiOutlinedInput-root": {
+      borderRadius: 0,
+    },
+  },
+  buttons: {
+    width: "30%",
+    [theme.breakpoints.down("xs")]: {
+      width: "60%",
+    },
+  },
+  select: {
+    width: "40%",
+    "& .MuiOutlinedInput-input": {
+      padding: "3px 0",
+    },
+  },
+}));
 
 const BlogDetails = (props) => {
   const [video, setVideo] = useState([]);
@@ -14,7 +49,18 @@ const BlogDetails = (props) => {
   const [embedLink, setEmbed] = useState();
   const [videoURL, setURL] = useState();
   const [postDate, setDate] = useState();
+  const [path, setPath] = useState(props.path);
+
+  const [load, setLoad] = useState(true);
   const [render, setRender] = useState(true);
+
+  const [notification, setNotification] = useState({
+    showNotification: false,
+    severity: "",
+    msg: "",
+  });
+
+  const classes = useStyles();
 
   const token = localStorage.getItem("auth-token");
   const history = useHistory();
@@ -32,6 +78,7 @@ const BlogDetails = (props) => {
           setEmbed(video.embedLink);
           setURL(video.videoURL);
           setDate(video.date);
+          setLoad(false);
         })
         .catch((err) => console.log(err));
     };
@@ -39,6 +86,7 @@ const BlogDetails = (props) => {
     getVideo();
 
     window.scrollTo(0, 0);
+    //eslint-disable-next-line
   }, [render]);
 
   const handleSubmit = () => {
@@ -55,16 +103,20 @@ const BlogDetails = (props) => {
         },
         { headers: { "x-auth-token": token } }
       )
-      .then(() => successMessage())
-      .catch(() => errorMessage());
-  };
-
-  const successMessage = () => {
-    return message.success("Updated Successfully", 5);
-  };
-
-  const errorMessage = () => {
-    return message.error("There was a problem in updating", 5);
+      .then(() =>
+        setNotification({
+          showNotification: true,
+          severity: "success",
+          msg: "Posted Successfully",
+        })
+      )
+      .catch(() =>
+        setNotification({
+          showNotification: true,
+          severity: "error",
+          msg: "There was an error while posting",
+        })
+      );
   };
 
   const handleDelete = (id) => {
@@ -76,93 +128,168 @@ const BlogDetails = (props) => {
           headers: { "x-auth-token": token },
         })
         .then(() => {
-          history.push("/");
-          successMessage();
+          history.push("/validate/spiritual");
         })
-        .catch((err) => errorMessage());
+        .catch((err) =>
+          setNotification({
+            showNotification: true,
+            severity: "error",
+            msg: "There was an error while posting",
+          })
+        );
     } else {
-      errorMessage();
+      setNotification({
+        showNotification: true,
+        severity: "error",
+        msg: "There was an error while posting",
+      });
     }
   };
 
+  const handlePath = (evt) => {
+    setPath(evt.target.value);
+  };
+
   return (
-    <div className="video-post-form">
-      <h1> Update Video Details </h1>
-      <Form onFinish={handleSubmit} layout="vertical" size="large">
-        <Form.Item name="uploader">
-          <label htmlFor="uploader">Uploader Name :</label>
+    <>
+      {!load ? (
+        <div className="video-post-form">
+          <h2> Update Video Details </h2>
 
-          <Input
-            onChange={(e) => setUploader(e.target.value)}
-            placeholder="Name"
-            name="uploader"
-            value={uploader}
-          />
-        </Form.Item>
+          <form className={classes.form}>
+            <div>
+              <label htmlFor="uploader">Uploader's Name :</label>
+              <br />
+              <TextField
+                variant="outlined"
+                color="secondary"
+                size="small"
+                name="uploader"
+                placeholder="Name"
+                onChange={(e) => setUploader(e.target.value)}
+                value={uploader}
+                required
+              />
+            </div>
 
-        <Form.Item name="title">
-          <label htmlFor="title">Title of the Video : </label>
-          <Input
-            onChange={(e) => setTitle(e.target.value)}
-            placeholder="Title"
-            name="title"
-            value={title}
-          />
-        </Form.Item>
+            <div>
+              <label htmlFor="title">Title of the Video: </label>
+              <br />
+              <TextField
+                variant="outlined"
+                size="small"
+                color="secondary"
+                placeholder="Title"
+                name="title"
+                onChange={(e) => setTitle(e.target.value)}
+                value={title}
+                required
+              />
+            </div>
 
-        <Form.Item name="title">
-          <label htmlFor="title">Date of Posting : </label>
-          <Input
-            type="date"
-            placeholder="Title"
-            name="title"
-            value={postDate}
-            onChange={(e) => setDate(e.target.value)}
-          />
-        </Form.Item>
+            <div>
+              <label htmlFor="caption">Caption :</label>
+              <br />
+              <TextField
+                variant="outlined"
+                size="small"
+                color="secondary"
+                value={caption}
+                name="caption"
+                placeholder="Caption..."
+                rows={3}
+                onChange={(e) => setCaption(e.target.value)}
+                required
+              />
+            </div>
 
-        <Form.Item name="caption">
-          <label htmlFor="caption">Caption :</label>
-          <Input.TextArea
-            onChange={(e) => setCaption(e.target.value)}
-            value={caption}
-            name="caption"
-            placeholder="Caption..."
-            rows={3}
-            required
-          />
-        </Form.Item>
+            <div>
+              <label htmlFor="embedLink">Embed Link :</label>
+              <br />
+              <TextField
+                variant="outlined"
+                size="small"
+                color="secondary"
+                placeholder="Link"
+                name="embedLink"
+                value={embedLink}
+                onChange={(e) => setEmbed(e.target.value)}
+                required
+              />
+            </div>
 
-        <Form.Item name="embed">
-          <label htmlFor="embed">Embed Link: </label>
-          <Input
-            onChange={(e) => setEmbed(e.target.value)}
-            placeholder="Embed Link"
-            name="embed"
-            value={embedLink}
-          />
-        </Form.Item>
-        <Form.Item name="url">
-          <label htmlFor="url">Video URL: </label>
-          <Input
-            onChange={(e) => setURL(e.target.value)}
-            placeholder="URL"
-            name="url"
-            value={videoURL}
-          />
-        </Form.Item>
+            <div>
+              <label htmlFor="videoURL">Video URL :</label>
+              <br />
+              <TextField
+                variant="outlined"
+                size="small"
+                color="secondary"
+                name="videoURL"
+                placeholder="URL"
+                value={videoURL}
+                onChange={(e) => setURL(e.target.value)}
+                required
+              />
+            </div>
 
-        <button className="video-post-form-button">Update Details</button>
-        <br />
-      </Form>
-      <button
-        style={{ backgroundColor: "maroon" }}
-        className="video-post-form-button"
-        onClick={handleDelete}
-      >
-        Delete Entry
-      </button>
-    </div>
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                marginBottom: "2rem",
+              }}
+            >
+              <label htmlFor="videoURL">Select Path : </label>
+              <Select
+                variant="outlined"
+                color="secondary"
+                value={path}
+                className={classes.select}
+                onChange={handlePath}
+              >
+                <MenuItem value="gospel">Gospel</MenuItem>
+                <MenuItem value="spiritual">Spiritual</MenuItem>
+                <MenuItem value="mission">Mission</MenuItem>
+                <MenuItem value="laity">SJ Laity</MenuItem>
+                <MenuItem value="youth">Youth</MenuItem>
+                <MenuItem value="follow">Follow Him</MenuItem>
+              </Select>
+            </div>
+
+            <Button
+              variant="contained"
+              color="primary"
+              className={classes.buttons}
+              onClick={handleSubmit}
+            >
+              Update
+            </Button>
+            <br />
+            <br />
+            <Button
+              variant="contained"
+              style={{ backgroundColor: "rgb(191, 41, 41)", color: "#fff" }}
+              className={classes.buttons}
+              onClick={handleDelete}
+            >
+              Delete
+            </Button>
+          </form>
+          <Alert
+            open={notification.showNotification}
+            setNotification={setNotification}
+            severity={notification.severity}
+            message={notification.msg}
+          />
+        </div>
+      ) : (
+        <div style={{ minHeight: "100vh" }}>
+          <CircularProgress />
+        </div>
+      )}
+    </>
   );
 };
 

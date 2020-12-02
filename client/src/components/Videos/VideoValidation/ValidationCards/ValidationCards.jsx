@@ -33,8 +33,6 @@ const VideoValidationCards = (props) => {
   const matchesXS = useMediaQuery(theme.breakpoints.down("xs"));
   const history = useHistory();
 
-  const radio = "/videos/validate/" + props.path;
-
   useEffect(() => {
     const getVideos = async () => {
       try {
@@ -50,10 +48,6 @@ const VideoValidationCards = (props) => {
     getVideos();
   }, [props.path]);
 
-  const handleRadios = (evt) => {
-    history.push(evt.target.value);
-  };
-
   const videoCards = videos.map((card) => {
     const postDate = new Date(card.date);
     const date = postDate.getDate();
@@ -62,7 +56,7 @@ const VideoValidationCards = (props) => {
     const uploadTime = `${date} ${month}, ${year}`;
 
     return (
-      <div className="validate-video-card-div" key={card._id}>
+      <Card className="validate-video-card-div" key={card._id}>
         <div className="video-card-content">
           <span className="video-card-title">{card.title}</span>
           <p className="video-card-uploader">
@@ -72,14 +66,16 @@ const VideoValidationCards = (props) => {
             <i className="fa fa-clock-o" /> {uploadTime}
           </p>
         </div>
-        <button
+        <Button
+          variant="contained"
+          color="secondary"
           onClick={() =>
             history.push(`/videos/validate/${props.path}/` + card._id)
           }
         >
           Edit
-        </button>
-      </div>
+        </Button>
+      </Card>
     );
   });
 

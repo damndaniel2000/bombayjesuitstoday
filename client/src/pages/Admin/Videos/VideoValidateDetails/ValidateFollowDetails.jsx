@@ -8,7 +8,7 @@ const ValidateVideoDetails = () => {
   const { userData } = useContext(UserContext);
 
   return (
-    <div style={{ minHeight: "150vh" }}>
+    <div style={{ minHeight: "100vh" }}>
       {!userData.user ? (
         <NotFoundPage />
       ) : (
