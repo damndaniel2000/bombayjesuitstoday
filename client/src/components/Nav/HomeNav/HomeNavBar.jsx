@@ -20,7 +20,7 @@ import GroupRoundedIcon from "@material-ui/icons/GroupRounded";
 import ExpandLess from "@material-ui/icons/ExpandLess";
 import ExpandMore from "@material-ui/icons/ExpandMore";
 
-import "../Navbar/Navbar.css";
+import "./HomeNav.css";
 import logo from "../logo.png";
 
 //import MassModal from "../MassModal/MassModal";
@@ -119,7 +119,7 @@ const NavBar = (props) => {
 
   return (
     <>
-      <nav className="nav-strip">
+      <nav className="home-nav-strip">
         <div>
           <img src={logo} className="navbar-logo" alt="logo" />
         </div>
