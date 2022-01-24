@@ -1,8 +1,45 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { Form, Input, Radio, message } from "antd";
+import {
+  TextField,
+  Select,
+  MenuItem,
+  Button,
+  makeStyles,
+} from "@material-ui/core";
 
 import "./VideoPost.css";
+import BuildRoundedIcon from "@material-ui/icons/BuildRounded";
+
+import Alert from "../../Custom/Alerts";
+
+const useStyles = makeStyles((theme) => ({
+  form: {
+    "& div": {
+      margin: theme.spacing(1),
+      marginLeft: 0,
+    },
+    "& .MuiTextField-root": {
+      width: "100%",
+      borderRadius: 0,
+    },
+    "& .MuiOutlinedInput-root": {
+      borderRadius: 0,
+    },
+  },
+  buttons: {
+    width: "30%",
+    [theme.breakpoints.down("xs")]: {
+      width: "60%",
+    },
+  },
+  select: {
+    width: "40%",
+    "& .MuiOutlinedInput-input": {
+      padding: "3px 0",
+    },
+  },
+}));
 
 const VideoPost = () => {
   const [state, setState] = useState({
@@ -13,7 +50,15 @@ const VideoPost = () => {
     videoURL: "",
   });
   const [path, setPath] = useState();
-  const [ytUrl, setUrl] = useState();
+  const [ytUrl, setUrl] = useState("");
+  const [notification, setNotification] = useState({
+    showNotification: false,
+    severity: "",
+    msg: "",
+  });
+
+  const classes = useStyles();
+
   const ytApiKey = "AIzaSyDBX0aq_cztB34O0uJvfFJvn6q6Howyexw";
   const { uploader, caption, title, embedLink, videoURL } = state;
 
@@ -32,21 +77,20 @@ const VideoPost = () => {
         { headers: { "x-auth-token": token } }
       )
       .then(() => {
-        successMessage();
+        setNotification({
+          showNotification: true,
+          severity: "success",
+          msg: "Posted Successfully",
+        });
         setState({ uploader: "" });
       })
       .catch((err) => {
-        console.log(err);
-        errorMessage();
+        setNotification({
+          showNotification: true,
+          severity: "error",
+          msg: "There was an error while posting",
+        });
       });
-  };
-
-  const successMessage = () => {
-    return message.success("Video posted successfully. Thank You", 5);
-  };
-
-  const errorMessage = () => {
-    return message.error("There was a problem in posting the video. Sorry", 5);
   };
 
   const handleChange = (evt) => {
@@ -57,7 +101,7 @@ const VideoPost = () => {
     });
   };
 
-  const handleRadios = (evt) => {
+  const handlePath = (evt) => {
     setPath(evt.target.value);
   };
 
@@ -70,8 +114,20 @@ const VideoPost = () => {
         badge: "https://bombayjesuitstoday.com/images/dove.png",
         url: url,
       })
-      .then(() => message.success("Notification sent"))
-      .catch((err) => console.log(err));
+      .then(() =>
+        setNotification({
+          showNotification: true,
+          severity: "success",
+          msg: "Notification sent",
+        })
+      )
+      .catch(() =>
+        setNotification({
+          showNotification: true,
+          severity: "error",
+          msg: "Notification was not sent",
+        })
+      );
   };
 
   const getId = (url) => {
@@ -85,6 +141,7 @@ const VideoPost = () => {
   };
 
   const processUrl = () => {
+    if (ytUrl === "") return;
     const videoId = Object.values(getId(ytUrl));
     axios
       .get(
@@ -138,36 +195,70 @@ const VideoPost = () => {
 
   return (
     <div className="video-post-form">
-      <h1> Post Video </h1>
-      <Input value={ytUrl} onChange={(e) => setUrl(e.target.value)} />
-      <button onClick={processUrl}> Process </button>
-      <Form layout="vertical" size="large">
-        <Form.Item name="uploader">
-          <label htmlFor="uploader">Uploader's Name :</label>
+      <h2> Post Video </h2>
 
-          <Input
-            placeholder="Name"
+      <form className={classes.form}>
+        <div>
+          <label htmlFor="link-processor">
+            Paste link here and click on icon :
+          </label>
+          <TextField
+            variant="outlined"
+            color="secondary"
+            size="small"
+            name="link-processor"
+            value={ytUrl}
+            onChange={(e) => setUrl(e.target.value)}
+            InputProps={{
+              endAdornment: (
+                <div
+                  style={{ margin: 0, cursor: "pointer" }}
+                  onClick={processUrl}
+                >
+                  <BuildRoundedIcon />
+                </div>
+              ),
+            }}
+          />
+        </div>
+
+        <div>
+          <label htmlFor="uploader">Uploader's Name :</label>
+          <br />
+          <TextField
+            variant="outlined"
+            color="secondary"
+            size="small"
             name="uploader"
+            placeholder="Name"
             onChange={handleChange}
             value={uploader}
             required
           />
-        </Form.Item>
+        </div>
 
-        <Form.Item name="title">
+        <div>
           <label htmlFor="title">Title of the Video: </label>
-          <Input
+          <br />
+          <TextField
+            variant="outlined"
+            size="small"
+            color="secondary"
             placeholder="Title"
             name="title"
             onChange={handleChange}
             value={title}
             required
           />
-        </Form.Item>
+        </div>
 
-        <Form.Item name="caption">
+        <div>
           <label htmlFor="caption">Caption :</label>
-          <Input.TextArea
+          <br />
+          <TextField
+            variant="outlined"
+            size="small"
+            color="secondary"
             value={caption}
             name="caption"
             placeholder="Caption..."
@@ -175,68 +266,88 @@ const VideoPost = () => {
             onChange={handleChange}
             required
           />
-        </Form.Item>
+        </div>
 
-        <Form.Item name="embedLink">
+        <div>
           <label htmlFor="embedLink">Embed Link :</label>
-
-          <Input
+          <br />
+          <TextField
+            variant="outlined"
+            size="small"
+            color="secondary"
             placeholder="Link"
             name="embedLink"
             value={embedLink}
             onChange={handleChange}
             required
           />
-        </Form.Item>
-        <p className="form-extra">
-          Go to your video -> Share -> Embed -> Copy the link inside src=' ' and
-          paste it here
-        </p>
+        </div>
 
-        <Form.Item name="videoURL">
+        <div>
           <label htmlFor="videoURL">Video URL :</label>
-
-          <Input
+          <br />
+          <TextField
+            variant="outlined"
+            size="small"
+            color="secondary"
             name="videoURL"
             placeholder="URL"
             value={videoURL}
             onChange={handleChange}
             required
           />
-        </Form.Item>
-        <p className="form-extra">
-          This is the link to the page your video is on. This appears in the
-          searchbar on top
-        </p>
-
-        <div>
-          <Radio.Group onChange={handleRadios} value={path}>
-            <Radio.Button value="gospel"> Gospel </Radio.Button>
-            <Radio.Button value="spiritual"> Spiritual </Radio.Button>
-            <Radio.Button value="mission"> Misson </Radio.Button>
-            <Radio.Button value="laity"> SJ Laity </Radio.Button>
-            <Radio.Button value="youth"> Youth </Radio.Button>
-            <Radio.Button value="follow"> Follow Him </Radio.Button>
-          </Radio.Group>
         </div>
 
-        <button
-          className="video-post-form-button"
-          type="primary"
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            marginBottom: "2rem",
+          }}
+        >
+          <label htmlFor="videoURL">Select Path : </label>
+          <Select
+            variant="outlined"
+            color="secondary"
+            value={path}
+            className={classes.select}
+            onChange={handlePath}
+          >
+            <MenuItem value="gospel">Gospel</MenuItem>
+            <MenuItem value="spiritual">Spiritual</MenuItem>
+            <MenuItem value="mission">Mission</MenuItem>
+            <MenuItem value="laity">SJ Laity</MenuItem>
+            <MenuItem value="youth">Youth</MenuItem>
+            <MenuItem value="follow">Follow Him</MenuItem>
+          </Select>
+        </div>
+
+        <Button
+          variant="contained"
+          color="primary"
+          className={classes.buttons}
           onClick={handleSubmit}
         >
           Post
-        </button>
+        </Button>
         <br />
-        <button
-          style={{ backgroundColor: "green" }}
-          className="video-post-form-button"
-          type="primary"
+        <br />
+        <Button
+          variant="contained"
+          style={{ backgroundColor: "rgb(45, 180, 15)", color: "#fff" }}
+          className={classes.buttons}
           onClick={handleNotification}
         >
           Send Notification
-        </button>
-      </Form>
+        </Button>
+      </form>
+      <Alert
+        open={notification.showNotification}
+        setNotification={setNotification}
+        severity={notification.severity}
+        message={notification.msg}
+      />
     </div>
   );
 };

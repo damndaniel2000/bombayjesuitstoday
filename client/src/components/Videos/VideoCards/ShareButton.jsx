@@ -1,29 +1,45 @@
 import React from "react";
-import {
-  FacebookShareButton,
-  FacebookIcon,
-  WhatsappShareButton,
-  WhatsappIcon,
-} from "react-share";
+import { FacebookShareButton, WhatsappShareButton } from "react-share";
+import { makeStyles } from "@material-ui/core";
+
+import WhatsAppIcon from "@material-ui/icons/WhatsApp";
+import FacebookIcon from "@material-ui/icons/Facebook";
+import OpenInNewIcon from "@material-ui/icons/OpenInNew";
+
 import "./VideoCards.css";
 
-const ShareButtons = (props) => {
+const useStyle = makeStyles((theme) => ({
+  icons: {
+    fontSize: 35,
+    cursor: "pointer",
+    [theme.breakpoints.down("xs")]: {
+      fontSize: 30,
+    },
+  },
+}));
+
+const ShareButtons = ({ videoUrl, detectDevice }) => {
+  const classes = useStyle();
+
   return (
-    <>
-      <div className="share-buttons-container">
-        <div style={{ marginTop: "6px", color: "purple" }}>
-          <p>Share -> </p>
-        </div>
-        <div className="share-buttons">
-          <FacebookShareButton url={props.videoUrl}>
-            <FacebookIcon size={32} round />
-          </FacebookShareButton>
-          <WhatsappShareButton url={props.videoUrl}>
-            <WhatsappIcon size={32} round />
-          </WhatsappShareButton>
-        </div>
+    <div className="share-buttons">
+      <div title="Share on Facebook">
+        <FacebookShareButton url={videoUrl}>
+          <FacebookIcon className={classes.icons} />
+        </FacebookShareButton>
       </div>
-    </>
+      <div title="Share on Whatsapp">
+        <WhatsappShareButton url={videoUrl}>
+          <WhatsAppIcon className={classes.icons} />
+        </WhatsappShareButton>
+      </div>
+      <div title="Open in Youtube">
+        <OpenInNewIcon
+          className={classes.icons}
+          onClick={() => detectDevice(videoUrl)}
+        />
+      </div>
+    </div>
   );
 };
 

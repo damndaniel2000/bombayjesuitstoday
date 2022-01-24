@@ -1,37 +1,96 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { trackPromise, usePromiseTracker } from "react-promise-tracker";
-import { Spin, Radio, Pagination } from "antd";
 import { useHistory } from "react-router-dom";
+import {
+  Card,
+  Button,
+  ButtonGroup,
+  Fab,
+  Zoom,
+  useScrollTrigger,
+  useMediaQuery,
+  useTheme,
+  makeStyles,
+} from "@material-ui/core";
+import { Skeleton, Pagination } from "@material-ui/lab";
 
 import ShareButton from "./ShareButton";
 import "./VideoCards.css";
+import KeyboardArrowUpIcon from "@material-ui/icons/KeyboardArrowUp";
+
+const useStyles = makeStyles((theme) => ({
+  video: {
+    height: 400,
+    width: "100%",
+    marginTop: "1rem",
+    [theme.breakpoints.down("xs")]: {
+      height: 300,
+      width: "95%",
+      margin: "0 auto",
+    },
+  },
+  title: {
+    marginBottom: 10,
+    width: "80%",
+  },
+  uploader: {
+    marginTop: "1.5rem",
+    width: "15%",
+    marginBottom: 10,
+  },
+  date: {
+    width: "15%",
+    marginBottom: "1rem",
+  },
+  caption: {
+    marginBottom: 10,
+  },
+  radios: {
+    width: 120,
+    padding: "10px 0",
+    borderRadius: 0,
+    [theme.breakpoints.down("xs")]: {
+      width: 90,
+    },
+  },
+  upArrow: {
+    position: "fixed",
+    bottom: theme.spacing(5),
+    right: theme.spacing(30),
+    [theme.breakpoints.down("xs")]: {
+      bottom: theme.spacing(2),
+      right: theme.spacing(3),
+    },
+  },
+}));
 
 const VideoCards = (props) => {
   const [videos, setVideos] = useState([]);
-
   const [pageVids, setPageVids] = useState([]);
   const [page, setPage] = useState(1);
   const [total, setTotal] = useState(Number);
+  const [isLoading, setLoading] = useState(true);
 
-  const { promiseInProgress } = usePromiseTracker();
-
+  const trigger = useScrollTrigger({ threshold: 400 });
   const history = useHistory();
-
-  const radio = "/videos/" + props.path;
+  const classes = useStyles();
+  const theme = useTheme();
+  const matchesXS = useMediaQuery(theme.breakpoints.down("xs"));
 
   useEffect(() => {
     const getVideos = async () => {
       try {
-        const res = await trackPromise(axios.get("/api/videos-" + props.path));
+        const res = await axios.get("/api/videos-" + props.path);
         setVideos(res.data);
         setTotal(res.data.length);
+        setLoading(false);
       } catch (err) {
         console.log(err);
       }
     };
-    window.scrollTo(0, 0);
     getVideos();
+
+    //eslint-disable-next-line
   }, [props.path]);
 
   useEffect(() => {
@@ -40,8 +99,9 @@ const VideoCards = (props) => {
       if (page === 1) currentItems = 0;
       setPageVids(videos.slice(currentItems, currentItems + 5));
       pageVids.reverse();
-      backtop();
     } else setPageVids(videos);
+
+    //eslint-disable-next-line
   }, [videos, page]);
 
   const [gData, setGdata] = useState({});
@@ -51,12 +111,10 @@ const VideoCards = (props) => {
   useEffect(() => {
     const getData = async () => {
       try {
-        const res = await trackPromise(
-          axios.get(
-            "https://api.rss2json.com/v1/api.json?rss_url=" +
-              encodeURIComponent(reqURL) +
-              channelID
-          )
+        const res = await axios.get(
+          "https://api.rss2json.com/v1/api.json?rss_url=" +
+            encodeURIComponent(reqURL) +
+            channelID
         );
         const data = res.data.items[0];
         const idObj = getId(data.link);
@@ -89,24 +147,11 @@ const VideoCards = (props) => {
     return query;
   };
 
-  const handleRadios = (evt) => {
-    history.push(evt.target.value);
-  };
-
   const detectDevice = (link) => {
     if (window.screen.width < 800) {
       let newLink = link.replace("https://", "");
       return `intent://${newLink}#Intent;scheme=vnd.youtube;package=com.google.android.youtube;S.browser_fallback_url=market://details?id=com.google.android.youtube;end;`;
     } else return link;
-  };
-
-  const backtop = () => {
-    var scrollStep = -window.scrollY / (100 / 15),
-      scrollInterval = setInterval(function () {
-        if (window.scrollY !== 0) {
-          window.scrollBy(0, scrollStep);
-        } else clearInterval(scrollInterval);
-      }, 15);
   };
 
   const videoCards = () => {
@@ -118,15 +163,13 @@ const VideoCards = (props) => {
       const uploadTime = `${date} ${month}, ${year}`;
 
       return (
-        <div className="video-card-div" key={card._id}>
+        <Card className="video-card-div" key={card._id}>
           <div className="video-card-content">
             <span className="video-card-title">{card.title}</span>
             <p className="video-card-uploader">
               By <b>{card.uploader}</b>
             </p>
-            <p className="video-card-time">
-              <i className="fa fa-clock-o" /> {uploadTime}
-            </p>
+            <p className="video-card-time">{uploadTime}</p>
             <p className="video-card-caption">{card.caption}</p>
           </div>
           <iframe
@@ -137,35 +180,22 @@ const VideoCards = (props) => {
             allowFullScreen
           ></iframe>
           <div className="video-card-sharebuttons">
-            <ShareButton videoUrl={card.videoURL} />
-            <a
-              href={detectDevice(card.videoURL)}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Not Loading? Click here to view in Youtube{" "}
-              <i className="fa fa-youtube-play" />
-            </a>
+            <ShareButton videoUrl={card.videoURL} detectDevice={detectDevice} />
           </div>
-          <div className="backtop" onClick={backtop}>
-            Back To Top <i className="fa fa-arrow-up" />
-          </div>
-        </div>
+        </Card>
       );
     });
   };
 
   const GVideoCard = () => {
     return (
-      <div className="video-card-div">
+      <Card className="video-card-div">
         <div className="video-card-content">
           <span className="video-card-title">{gData.title}</span>
           <p className="video-card-uploader">
             By <b>Fr. Gerard Rodricks SJ</b>
           </p>
-          <p className="video-card-time">
-            <i className="fa fa-clock-o" /> Today
-          </p>
+          <p className="video-card-time">Today</p>
         </div>
         <iframe
           className="video-card-video"
@@ -175,70 +205,107 @@ const VideoCards = (props) => {
           allowFullScreen
         ></iframe>
         <div className="video-card-sharebuttons">
-          <ShareButton videoUrl={gData.videoURL} />
-
-          <a href={gData.videoURL} target="_blank" rel="noopener noreferrer">
-            Not Loading? Click here to view in Youtube{" "}
-            <i className="fa fa-youtube-play" />
-          </a>
+          <ShareButton videoUrl={gData.videoURL} detectDevice={detectDevice} />
         </div>
-        <div className="backtop" onClick={backtop}>
-          Back To Top <i className="fa fa-arrow-up" />
-        </div>
-      </div>
+      </Card>
     );
   };
 
   return (
     <>
-      <br />
-      <br />
-      <div>
-        <Radio.Group onChange={handleRadios} defaultValue={radio}>
-          <Radio.Button value="/videos/gospel" className="page-radio-buttons">
-            Gospel
-          </Radio.Button>
-          <Radio.Button
-            value="/videos/spiritual"
-            className="page-radio-buttons"
-          >
-            Spiritual
-          </Radio.Button>
-          <Radio.Button value="/videos/mission" className="page-radio-buttons">
-            Mission
-          </Radio.Button>
-          <br />
-          <Radio.Button value="/videos/laity" className="page-radio-buttons">
-            SJ Laity
-          </Radio.Button>
-          <Radio.Button value="/videos/youth" className="page-radio-buttons">
-            Youth
-          </Radio.Button>
-          <Radio.Button value="/videos/follow" className="page-radio-buttons">
-            Follow Him
-          </Radio.Button>
-        </Radio.Group>
-      </div>
-      <br />
-      {promiseInProgress && (
-        <div className="spinner">
-          <Spin size="large" />
-        </div>
+      <ButtonGroup
+        size={matchesXS ? "small" : "large"}
+        color="secondary"
+        style={{ display: "block", marginTop: "3rem" }}
+      >
+        <Button
+          variant={props.path === "spiritual" ? "contained" : "outlined"}
+          className={classes.radios}
+          onClick={() => history.push("/videos/spiritual")}
+        >
+          Spiritual
+        </Button>
+        <Button
+          variant={props.path === "gospel" ? "contained" : "outlined"}
+          className={classes.radios}
+          onClick={() => history.push("/videos/gospel")}
+        >
+          Gospel
+        </Button>
+        <Button
+          variant={props.path === "mission" ? "contained" : "outlined"}
+          className={classes.radios}
+          onClick={() => history.push("/videos/mission")}
+        >
+          Mission
+        </Button>
+      </ButtonGroup>
+      <ButtonGroup
+        size={matchesXS ? "small" : "large"}
+        color="secondary"
+        style={{ display: "block" }}
+      >
+        <Button
+          variant={props.path === "laity" ? "contained" : "outlined"}
+          className={classes.radios}
+          onClick={() => history.push("/videos/laity")}
+        >
+          Laity
+        </Button>
+        <Button
+          variant={props.path === "youth" ? "contained" : "outlined"}
+          className={classes.radios}
+          onClick={() => history.push("/videos/youth")}
+        >
+          Youth
+        </Button>
+        <Button
+          variant={props.path === "follow" ? "contained" : "outlined"}
+          className={classes.radios}
+          onClick={() => history.push("/videos/follow")}
+        >
+          Follow
+        </Button>
+      </ButtonGroup>
+      {isLoading &&
+        [0, 0, 0, 0, 0].map(() => (
+          <Card className="video-card-div">
+            <div className="video-card-content">
+              <Skeleton variant="rect" className={classes.title} />
+              <Skeleton variant="rect" className={classes.uploader} />
+              <Skeleton variant="rect" className={classes.date} />
+              <Skeleton variant="rect" className={classes.caption} />
+              <Skeleton variant="rect" className={classes.caption} />
+              <Skeleton variant="rect" className={classes.caption} />
+            </div>
+            <Skeleton variant="rect" className={classes.video} />
+          </Card>
+        ))}
+      {props.path === "spiritual" && page === 1 && !isLoading && GVideoCard()}
+      {!isLoading && total > 0 && (
+        <>
+          {videoCards()}
+          <div className="pagination-container">
+            <Pagination
+              count={Math.floor(total / 5)}
+              color="secondary"
+              size={matchesXS ? "small" : "large"}
+              page={page}
+              onChange={(e, page) => setPage(page)}
+            />
+          </div>
+        </>
       )}
-      {props.path === "spiritual" && page === 1 && GVideoCard()}
-      {videoCards()}
-      <Pagination
-        current={page}
-        total={total}
-        hideOnSinglePage={true}
-        defaultPageSize={5}
-        responsive={true}
-        showSizeChanger={false}
-        onChange={(page) => {
-          setPage(page);
-        }}
-        style={{ margin: "80px auto" }}
-      />
+      <Zoom in={trigger}>
+        <Fab
+          color="primary"
+          size="small"
+          className={classes.upArrow}
+          onClick={() => window.scrollTo(0, 0)}
+        >
+          <KeyboardArrowUpIcon />
+        </Fab>
+      </Zoom>
     </>
   );
 };

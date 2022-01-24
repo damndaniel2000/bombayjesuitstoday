@@ -1,17 +1,45 @@
-/* eslint-disable */
-
 import React, { useState } from "react";
 import { Editor } from "@tinymce/tinymce-react";
 import axios from "axios";
-import { Link } from "react-router-dom";
-import { Form, Input, message } from "antd";
+import { TextField, Button, makeStyles } from "@material-ui/core";
 
 import "./BlogUpload.css";
+import Alert from "../../Custom/Alerts";
+
+const useStyles = makeStyles((theme) => ({
+  form: {
+    "& div": {
+      margin: theme.spacing(1),
+      marginLeft: 0,
+    },
+    "& .MuiTextField-root": {
+      width: "100%",
+      borderRadius: 0,
+    },
+    "& .MuiOutlinedInput-root": {
+      borderRadius: 0,
+    },
+  },
+  buttons: {
+    width: "30%",
+    [theme.breakpoints.down("xs")]: {
+      width: "60%",
+    },
+  },
+}));
 
 const BlogUpload = () => {
   const [blog, setBlog] = useState();
   const [author, setAuthor] = useState();
   const [title, setTitle] = useState();
+
+  const [notification, setNotification] = useState({
+    showNotification: false,
+    severity: "",
+    msg: "",
+  });
+
+  const classes = useStyles();
 
   const handleSubmit = () => {
     axios
@@ -21,102 +49,94 @@ const BlogUpload = () => {
         blogContent: blog,
       })
       .then(() => {
-        successMessage();
         setBlog("");
         setAuthor("");
         setTitle("");
+        setNotification({
+          showNotification: true,
+          severity: "success",
+          msg: "Posted successfully",
+        });
       })
-      .catch(() => errorMessage());
-  };
-
-  const successMessage = () => {
-    return message.success("Blog uploaded successfully. Thank You", 5);
-  };
-
-  const errorMessage = () => {
-    return message.error("There was a problem in uploading the blog. Sorry", 5);
+      .catch(() =>
+        setNotification({
+          showNotification: true,
+          severity: "error",
+          msg: "There was an error while posting the blog",
+        })
+      );
   };
 
   return (
     <>
-      <div className="blog-editor-container">
-        <h1> Upload Your Blog </h1>
-        <Form onFinish={handleSubmit} layout="vertical" size="large">
-          <Form.Item name="author">
-            <label htmlFor="author">Your Name :</label>
+      <div className="video-post-form">
+        <h2> Upload Blog </h2>
 
-            <Input
-              placeholder="Name"
-              name="author"
-              onChange={(e) => setAuthor(e.target.value)}
-              value={author}
-              required
-            />
-          </Form.Item>
-          <Form.Item name="title">
-            <label htmlFor="title">Title of your blog :</label>
-
-            <Input
-              placeholder="Title"
+        <form className={classes.form}>
+          <div>
+            <label htmlFor="title">Title of the blog :</label>
+            <br />
+            <TextField
+              variant="outlined"
+              color="secondary"
+              size="small"
               name="title"
+              placeholder="Title"
               onChange={(e) => setTitle(e.target.value)}
               value={title}
               required
             />
-            <p className="form-extra">Please keep the title short.</p>
-          </Form.Item>
+          </div>
+
+          <div>
+            <label htmlFor="author">Your Name :</label>
+            <br />
+            <TextField
+              variant="outlined"
+              color="secondary"
+              size="small"
+              name="author"
+              placeholder="Name"
+              onChange={(e) => setAuthor(e.target.value)}
+              value={author}
+              required
+            />
+          </div>
+
           <div>
             <Editor
+              initialValue={blog}
               apiKey="8q4z6qq9dp0eudbmmi67fkqj2kwwtcvobndarz5lo08ip9jj"
-              initialValue="Write your blog here. No need to write the title again here.
-							 If you are using a mobile device, you can scroll the text formatting options above to see more of them."
               init={{
-                height: 500,
+                height: 400,
                 menubar: false,
                 plugins: ["lists link", "wordcount"],
                 toolbar:
                   "formatselect | bold italic underline link | \
-             alignleft aligncenter alignright alignjustify | \
-             bullist numlist | undo redo removeformat",
+   alignleft aligncenter alignright alignjustify | \
+   bullist numlist | undo redo removeformat",
               }}
-              value={blog}
               onEditorChange={(e) => setBlog(e)}
             />
           </div>
           <br />
 
-          <Form.Item>
-            <p>
-              If you have a photo to attach, mail it to us on the email ID
-              below. In the subject, write the title of your blog. <br />
-              You can only attach only one photo. If you don't have a photo, we
-              will attach one for you. <br />
-              You can check the demo below to see how your blog will look
-            </p>
-            <p>
-              <i className="fa fa-envelope" />
-              <a
-                style={{ color: "blue" }}
-                href="mailto:sjspiritual2020@gmail.com"
-              >
-                &nbsp;&nbsp;sjspiritual2020@gmail.com
-              </a>
-            </p>
-          </Form.Item>
-
-          <button className="video-post-form-button" type="primary">
-            Upload Blog
-          </button>
-        </Form>
+          <Button
+            variant="contained"
+            color="primary"
+            className={classes.buttons}
+            onClick={handleSubmit}
+          >
+            Post Blog
+          </Button>
+        </form>
+        <Alert
+          open={notification.showNotification}
+          setNotification={setNotification}
+          severity={notification.severity}
+          message={notification.msg}
+        />
       </div>
-      <p>
-        <Link
-          to="/blogs/example"
-          style={{ color: "blue", textDecoration: "underline" }}
-        >
-          View an example format of the Blog{" "}
-        </Link>
-      </p>
     </>
   );
 };

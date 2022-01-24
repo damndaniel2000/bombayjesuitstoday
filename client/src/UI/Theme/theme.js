@@ -33,7 +33,7 @@ export default createMuiTheme({
     button: {
       fontFamily: "Raleway",
       fontWeight: 700,
-      textTransform: "sentence",
+      textTransform: "capitalize",
     },
   },
 });

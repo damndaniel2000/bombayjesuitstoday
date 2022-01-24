@@ -7,4 +7,16 @@
   background-color: #fff;
   padding: 1rem;
   margin: 1rem auto;
+  width: 30%;
+}
+@media only screen and (max-width: 1000px) {
+  .validate-video-card-div {
+    width: 45%;
+  }
+}
+@media only screen and (max-width: 1000px) {
+  .validate-video-card-div {
+    width: 80%;
+    margin: 0.5rem auto;
+  }
 }

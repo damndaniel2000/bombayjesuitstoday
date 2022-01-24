@@ -13,17 +13,14 @@
     "@tinymce/tinymce-react": "^3.6.0",
     "axios": "^0.19.2",
     "cra-append-sw": "^2.7.0",
-    "font-awesome": "^4.7.0",
     "react": "^16.13.1",
     "react-cookie": "^4.0.3",
     "react-dom": "^16.13.1",
     "react-html-parser": "^2.0.2",
-    "react-promise-loader": "^1.0.5",
-    "react-promise-tracker": "^2.1.0",
+    "react-material-ui-carousel": "^2.1.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "^3.4.3",
-    "react-share": "^4.2.1",
-    "react-spring": "^8.0.27"
+    "react-share": "^4.2.1"
   },
   "scripts": {
     "start": "set PORT=5000&& react-scripts start",
@@ -45,5 +42,5 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://localhost:3000"
+  "proxy": "http://localhost:3000/"
 }

@@ -7,15 +7,11 @@ import NotFoundPage from "../../../NotFoundPage";
 const VideoValidateCards = () => {
   const { userData } = useContext(UserContext);
 
-  return (
-    <div style={{ minHeight: "150vh" }}>
-      {!userData.user ? (
-        <NotFoundPage />
-      ) : (
-        <>
-          <GospelValidateCards path="gospel" />
-        </>
-      )}
+  return !userData.user ? (
+    <NotFoundPage />
+  ) : (
+    <div style={{ minHeight: "100vh" }}>
+      <GospelValidateCards path="gospel" />
     </div>
   );
 };

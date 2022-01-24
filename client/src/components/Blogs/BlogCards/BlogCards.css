@@ -14,7 +14,7 @@
 .blog-card {
   position: relative;
   height: 600px;
-  margin-bottom: 4rem;
+  margin-bottom: 3rem;
   width: 48%;
   background-color: #fff;
   -webkit-box-shadow: 0 0 20px rgba(33, 33, 33, 0.2);
@@ -72,6 +72,7 @@
   box-shadow: 0px 1px 5px rgba(138, 138, 138, 0.5);
   border-radius: 5px;
   outline: none;
+  font-family: raleway;
 }
 
 .search-category {
@@ -125,6 +126,12 @@
   font-size: 2.5vw;
 }
 
+.pagination-container {
+  display: flex;
+  justify-content: center;
+  margin: 0 auto 6rem auto;
+}
+
 @media only screen and (max-width: 1000px) {
   .blog-cards-container {
     width: 95%;
@@ -174,6 +181,7 @@
 @media only screen and (max-width: 500px) {
   .blog-cards-container {
     width: 95%;
+    margin-bottom: 1rem;
   }
   .blog-card {
     height: auto;
@@ -214,5 +222,8 @@
   }
   .no-search-found {
     font-size: 7vw;
+  }
+  .pagination-container {
+    margin-bottom: 7rem;
   }
 }

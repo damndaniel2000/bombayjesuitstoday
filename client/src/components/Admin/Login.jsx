@@ -1,21 +1,85 @@
 import React, { useState, useContext } from "react";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
-import { Form, Input, message, Modal, Button } from "antd";
 import UserContext from "../../context/UserContext";
+import {
+  TextField,
+  Button,
+  CircularProgress,
+  makeStyles,
+} from "@material-ui/core";
+
+import * as subscribe from "../../serviceWorkers/subscription";
+
+import Alert from "../Custom/Alerts";
+
+const useStyles = makeStyles((theme) => ({
+  form: {
+    "& div": {
+      marginBottom: ".5rem",
+    },
+    "& .MuiTextField-root": {
+      width: "40%",
+      borderRadius: 0,
+    },
+    "& .MuiOutlinedInput-root": {
+      borderRadius: 0,
+    },
+  },
+  buttons: {
+    width: "20%",
+    [theme.breakpoints.down("xs")]: {
+      width: "60%",
+    },
+  },
+}));
 
 const Login = () => {
   const [userName, setUserName] = useState();
   const [password, setPassword] = useState();
-  const [modalVisible, setVisible] = useState(true);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState();
+  const [notification, setNotification] = useState({
+    showNotification: false,
+    severity: "",
+    msg: "",
+  });
 
   const history = useHistory();
+  const classes = useStyles();
+
+  const buttons = [
+    {
+      text: "Post Video",
+      func: () => history.push("/videos/post"),
+    },
+    {
+      text: "Validate Videos",
+      func: () => history.push("/videos/validate/spiritual"),
+    },
+    {
+      text: "Upload Blog",
+      func: () => history.push("/blogs/upload"),
+    },
+    {
+      text: "Validate Blogs",
+      func: () => history.push("/blogs/validate"),
+    },
+    {
+      text: "Subscribe",
+      func: () => subscribe.subscribeUser(),
+    },
+  ];
 
   const { userData, setUserData } = useContext(UserContext);
 
   const handleSubmit = async () => {
+    setLoading(true);
+    if (userData.user) {
+      localStorage.removeItem("auth-token");
+      setLoading(false);
+      window.location.href = "/login";
+      return;
+    }
     try {
       const loginUser = { userName, password };
       const loginRes = await axios.post("/api/users/login", loginUser);
@@ -25,73 +89,107 @@ const Login = () => {
         user: loginRes.data.user,
       });
       localStorage.setItem("auth-token", loginRes.data.token);
-      setVisible(!modalVisible);
-      loginSuccessMessage();
+      setLoading(false);
+      setNotification({
+        showNotification: true,
+        severity: "success",
+        msg: "Logged in successfully",
+      });
     } catch (err) {
-      err.response.data.msg && setError(err.response.data.msg);
-      console.log(err);
+      setLoading(false);
+      setNotification({
+        showNotification: true,
+        severity: "error",
+        msg: err.response.data.msg ? err.response.data.msg : null,
+      });
     }
   };
 
-  const loginSuccessMessage = () => {
-    return message.success("Logged in Successfully", 5);
-  };
-
   return (
-    <>
-      {userData.user ? null : (
-        <Modal
-          title="Login"
-          centered
-          visible={modalVisible}
-          closable={false}
-          footer={[
-            <Button
-              key="back"
-              onClick={() => {
-                setVisible(!modalVisible);
-                history.push("/");
-              }}
-            >
-              Return
-            </Button>,
-            <Button
-              key="submit"
-              type="primary"
-              loading={loading}
-              onClick={handleSubmit}
-            >
-              Login
-            </Button>,
-          ]}
-        >
-          {error && <p style={{ color: "red" }}>{error}</p>}
-          <Form layout="vertical" size="large">
-            <Form.Item name="userName">
-              <Input
-                placeholder="Username"
-                name="userName"
-                value={userName}
-                onChange={(e) => setUserName(e.target.value)}
-                required
-              />
-            </Form.Item>
+    <div className="video-post-form">
+      <h2> Login </h2>
 
-            <Form.Item name="password">
-              <Input
-                type="password"
-                placeholder="Password"
-                name="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                autoComplete="on"
-                required
-              />
-            </Form.Item>
-          </Form>
-        </Modal>
-      )}
-    </>
+      <form className={classes.form}>
+        <div>
+          <TextField
+            variant="outlined"
+            color="secondary"
+            size="small"
+            name="uploader"
+            label="Username"
+            onChange={(e) => setUserName(e.target.value)}
+            value={userName}
+            onKeyPress={(event) => {
+              if (event.key === "Enter") {
+                document.getElementById("login-button").click();
+              }
+            }}
+            required
+          />
+        </div>
+
+        <div>
+          <TextField
+            type="password"
+            variant="outlined"
+            size="small"
+            color="secondary"
+            value={password}
+            label="Password"
+            onChange={(e) => setPassword(e.target.value)}
+            onKeyPress={(event) => {
+              if (event.key === "Enter") {
+                document.getElementById("login-button").click();
+              }
+            }}
+            required
+          />
+        </div>
+        <Button
+          variant="contained"
+          color="primary"
+          id="login-button"
+          className={classes.buttons}
+          onClick={handleSubmit}
+        >
+          {!userData.user && <>Login</>}
+          {userData.user && <>Logout</>}
+        </Button>
+        <br />
+        <br />
+        {loading && <CircularProgress />}
+      </form>
+      <div
+        style={{
+          display: "flex",
+          flexWrap: "wrap",
+          justifyContent: "space-between",
+        }}
+      >
+        {userData.user &&
+          buttons.map((item) => (
+            <Button
+              variant="contained"
+              style={{
+                backgroundColor: "rgb(27, 186, 46)",
+                color: "#fff",
+                width: "30%",
+                marginBottom: ".5rem",
+              }}
+              className={classes.buttons}
+              onClick={item.func}
+            >
+              {item.text}
+            </Button>
+          ))}
+      </div>
+      <Alert
+        open={notification.showNotification}
+        setNotification={setNotification}
+        severity={notification.severity}
+        message={notification.msg}
+      />
+    </div>
   );
 };
 

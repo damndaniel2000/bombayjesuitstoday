@@ -1,12 +1,54 @@
-/*eslint-disable*/
-
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { withRouter } from "react-router";
 import { useHistory, useParams } from "react-router-dom";
-import { Form, Input, Switch, message } from "antd";
 import { Editor } from "@tinymce/tinymce-react";
 import ReactHtmlParser from "react-html-parser";
+import {
+  TextField,
+  Button,
+  Switch,
+  FormControlLabel,
+  CircularProgress,
+  makeStyles,
+} from "@material-ui/core";
+
+import Alert from "../../Custom/Alerts";
+
+const useStyles = makeStyles((theme) => ({
+  form: {
+    "& div": {
+      margin: theme.spacing(1),
+      marginLeft: 0,
+    },
+    "& .MuiTextField-root": {
+      width: "100%",
+      borderRadius: 0,
+    },
+    "& .MuiOutlinedInput-root": {
+      borderRadius: 0,
+    },
+  },
+  buttons: {
+    width: "30%",
+    [theme.breakpoints.down("xs")]: {
+      width: "60%",
+    },
+  },
+  content: {
+    textAlign: "justify",
+    marginTop: "3rem",
+    fontSize: 20,
+    fontFamily: "zilla slab",
+    display: "block",
+    lineHeight: "1.9rem",
+    [theme.breakpoints.down("xs")]: {
+      fontSize: 18,
+      width: "95%",
+      margin: "0 auto",
+    },
+  },
+}));
 
 const BlogDetails = (props) => {
   const [blog, setBlog] = useState([]);
@@ -14,10 +56,18 @@ const BlogDetails = (props) => {
   const [title, setTitle] = useState();
   const [imgLink, setImgLink] = useState();
   const [content, setContent] = useState();
-  const [postDate, setDate] = useState();
+  const [postDate, setDate] = useState(new Date());
   const [validate, setValidate] = useState(false);
   const [render, setRender] = useState(true);
 
+  const [load, setLoad] = useState(true);
+  const [notification, setNotification] = useState({
+    showNotification: false,
+    severity: "",
+    msg: "",
+  });
+
+  const classes = useStyles();
   const token = localStorage.getItem("auth-token");
   const history = useHistory();
   const { id } = useParams();
@@ -33,18 +83,17 @@ const BlogDetails = (props) => {
           setTitle(blog.title);
           setImgLink(blog.imgLink);
           setContent(blog.blogContent);
-          setDate(blog.date);
+          setDate(blog.date !== "string" ? new Date(blog.date) : blog.date);
+          setLoad(false);
         })
         .catch((err) => console.log(err));
     };
     fetchBlogs();
 
     window.scrollTo(0, 0);
-  }, [render]);
 
-  const validateChange = () => {
-    setValidate(true);
-  };
+    //eslint-disable-next-line
+  }, [render]);
 
   const handleSubmit = () => {
     axios
@@ -60,20 +109,23 @@ const BlogDetails = (props) => {
         },
         { headers: { "x-auth-token": token } }
       )
-      .then(() => successMessage())
-      .catch(() => errorMessage());
-  };
-
-  const successMessage = () => {
-    return message.success("Updated Successfully", 5);
-  };
-
-  const errorMessage = () => {
-    return message.error("There was a problem in updating", 5);
+      .then(() =>
+        setNotification({
+          showNotification: true,
+          severity: "success",
+          msg: "Update Successful",
+        })
+      )
+      .catch(() =>
+        setNotification({
+          showNotification: true,
+          severity: "error",
+          msg: "There was an error while updating",
+        })
+      );
   };
 
   const handleDelete = (id) => {
-    const token = localStorage.getItem("auth-token");
     const confirm = prompt("Types YES in the input below");
     if (confirm === "YES") {
       axios
@@ -82,11 +134,20 @@ const BlogDetails = (props) => {
         })
         .then(() => {
           history.push("/blogs/validate");
-          successMessage();
         })
-        .catch((err) => errorMessage());
+        .catch((err) =>
+          setNotification({
+            showNotification: true,
+            severity: "error",
+            msg: "There was an error while deleting",
+          })
+        );
     } else {
-      errorMessage();
+      setNotification({
+        showNotification: true,
+        severity: "error",
+        msg: "There was an error while deleting",
+      });
     }
   };
 
@@ -101,103 +162,172 @@ const BlogDetails = (props) => {
         badge: "https://bombayjesuitstoday.com/images/dove.png",
         url: url,
       })
-      .then(() => message.success("Notification sent"))
-      .catch((err) => console.log(err));
+      .then(() =>
+        setNotification({
+          showNotification: true,
+          severity: "success",
+          msg: "Notification sent",
+        })
+      )
+      .catch((err) =>
+        setNotification({
+          showNotification: true,
+          severity: "error",
+          msg: "Notification was not sent",
+        })
+      );
   };
 
   return (
     <>
-      <div className="video-post-form">
-        <h1> Update Blog Details </h1>
-        <Form onFinish={handleSubmit} layout="vertical" size="large">
-          <Form.Item name="author">
-            <label htmlFor="author">Author Name :</label>
+      {!load ? (
+        <div className="video-post-form">
+          <h2> Update Blog Details </h2>
 
-            <Input
-              onChange={(e) => setAuthor(e.target.value)}
-              placeholder="Name"
-              name="author"
-              value={author}
-            />
-          </Form.Item>
+          <form className={classes.form}>
+            <div>
+              <label htmlFor="author">Author Name :</label>
+              <br />
+              <TextField
+                variant="outlined"
+                color="secondary"
+                size="small"
+                name="author"
+                placeholder="Name"
+                onChange={(e) => setAuthor(e.target.value)}
+                value={author}
+                required
+              />
+            </div>
 
-          <Form.Item name="title">
-            <label htmlFor="title">Title of the Blog : </label>
-            <Input
-              onChange={(e) => setTitle(e.target.value)}
-              placeholder="Title"
-              name="title"
-              value={title}
-            />
-          </Form.Item>
+            <div>
+              <label htmlFor="title">Title of the blog :</label>
+              <br />
+              <TextField
+                variant="outlined"
+                color="secondary"
+                size="small"
+                name="title"
+                placeholder="Title"
+                onChange={(e) => setTitle(e.target.value)}
+                value={title}
+                required
+              />
+            </div>
 
-          <Form.Item name="postDate">
-            <label htmlFor="postDate">Date of Posting : </label>
-            <Input
-              type="date"
-              name="postDate"
-              value={postDate}
-              onChange={(e) => setDate(e.target.value)}
-            />
-          </Form.Item>
+            <div>
+              <label htmlFor="post-date">Date of posting :</label>
+              <br />
+              <TextField
+                type="date"
+                variant="outlined"
+                color="secondary"
+                size="small"
+                name="post-date"
+                value={
+                  postDate !== undefined && typeof postDate === "object"
+                    ? `${postDate.getFullYear()}-${postDate.getMonth()}-${postDate.getDate()}`
+                    : postDate
+                }
+                onChange={(e) => {
+                  setDate(e.target.value);
+                }}
+                required
+              />
+            </div>
 
-          <Form.Item name="link">
-            <label htmlFor="link">Link of the Image : </label>
-            <Input
-              onChange={(e) => setImgLink(e.target.value)}
-              placeholder="Img Link"
-              name="link"
-              value={imgLink}
-            />
-          </Form.Item>
+            <div>
+              <label htmlFor="img-link">Link of image :</label>
+              <br />
+              <TextField
+                variant="outlined"
+                color="secondary"
+                size="small"
+                placeholder="Link"
+                name="img-link"
+                onChange={(e) => setImgLink(e.target.value)}
+                value={imgLink}
+                required
+              />
+            </div>
 
-          <div>
-            <Editor
-              initialValue={content}
-              apiKey="8q4z6qq9dp0eudbmmi67fkqj2kwwtcvobndarz5lo08ip9jj"
-              init={{
-                height: 500,
-                menubar: false,
-                plugins: ["lists link", "wordcount"],
-                toolbar:
-                  "formatselect | bold italic underline link | \
-					 alignleft aligncenter alignright alignjustify | \
-					 bullist numlist | undo redo removeformat",
-              }}
-              defaultValue={blog}
-              onEditorChange={(e) => setContent(e)}
-            />
-          </div>
-          <br />
+            <div>
+              <Editor
+                initialValue={content}
+                apiKey="8q4z6qq9dp0eudbmmi67fkqj2kwwtcvobndarz5lo08ip9jj"
+                init={{
+                  height: 400,
+                  menubar: false,
+                  plugins: ["lists link", "wordcount"],
+                  toolbar:
+                    "formatselect | bold italic underline link | \
+         alignleft aligncenter alignright alignjustify | \
+         bullist numlist | undo redo removeformat",
+                }}
+                defaultValue={blog}
+                onEditorChange={(e) => setContent(e)}
+              />
+            </div>
 
-          <Form.Item>
-            <Switch
-              onChange={validateChange}
-              checkedChildren={<i className="fa fa-check" />}
-              unCheckedChildren={<i className="fa fa-close" />}
-            />
-          </Form.Item>
-          <button className="video-post-form-button">Update Details</button>
-          <br />
-        </Form>
-        <button
-          style={{ backgroundColor: "green" }}
-          className="video-post-form-button"
-          onClick={handleNotification}
-        >
-          Send Notification
-        </button>
-        <br />
-        <button
-          style={{ backgroundColor: "maroon" }}
-          className="video-post-form-button"
-          onClick={handleDelete}
-        >
-          Delete Entry
-        </button>
-      </div>
+            <div>
+              <FormControlLabel
+                style={{ float: "unset" }}
+                control={
+                  <Switch
+                    color="secondary"
+                    checked={validate}
+                    onChange={() => setValidate(!validate)}
+                  />
+                }
+                label="Validated"
+              />
+            </div>
+            <br />
+
+            <Button
+              variant="contained"
+              color="primary"
+              className={classes.buttons}
+              onClick={handleSubmit}
+            >
+              Update Details
+            </Button>
+            <br />
+            <br />
+            <Button
+              variant="contained"
+              style={{ backgroundColor: "rgb(45, 180, 15)", color: "#fff" }}
+              className={classes.buttons}
+              onClick={handleNotification}
+            >
+              Send Notification
+            </Button>
+            <br />
+            <br />
+            <Button
+              variant="contained"
+              style={{ backgroundColor: "rgb(191, 41, 41)", color: "#fff" }}
+              className={classes.buttons}
+              onClick={handleDelete}
+            >
+              Delete Blog
+            </Button>
+          </form>
+        </div>
+      ) : (
+        <div style={{ minHeight: "100vh" }}>
+          <CircularProgress />
+        </div>
+      )}
+      <Alert
+        open={notification.showNotification}
+        setNotification={setNotification}
+        severity={notification.severity}
+        message={notification.msg}
+      />
+
       <div className="blog-container">
-        <p className="blog-content">{ReactHtmlParser(content)}</p>
+        <p className={classes.content}>{ReactHtmlParser(content)}</p>
       </div>
     </>
   );

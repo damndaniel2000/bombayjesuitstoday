@@ -24,14 +24,14 @@
   text-align: justify;
 }
 
-#carousel-container {
+.carousel-container {
   width: 100%;
   overflow-x: auto;
   white-space: nowrap;
   scrollbar-width: none;
   margin: 5rem auto;
 }
-#carousel-container::-webkit-scrollbar {
+.carousel-container::-webkit-scrollbar {
   display: none;
 }
 
@@ -60,6 +60,7 @@
   font-size: 18px;
   font-family: Zilla Slab;
   margin-top: -50px;
+  width: 100%;
 }
 .carousel-arrow {
   width: 30px;
@@ -130,7 +131,7 @@
   .followhim-content {
     font-size: 18px;
   }
-  #carousel-container {
+  .carousel-container {
     margin-top: 2rem;
     margin-bottom: 1rem;
   }

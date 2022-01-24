@@ -7,9 +7,10 @@ import {
   ListItemIcon,
   ListItemText,
   Collapse,
-  Menu,
-  MenuItem,
-  makeStyles,
+  Zoom,
+  Tooltip,
+  withStyles,
+  ClickAwayListener,
 } from "@material-ui/core";
 import UserContext from "../../../context/UserContext";
 
@@ -21,16 +22,22 @@ import GroupRoundedIcon from "@material-ui/icons/GroupRounded";
 import ExpandLess from "@material-ui/icons/ExpandLess";
 import ExpandMore from "@material-ui/icons/ExpandMore";
 
-import "../Navbar/Navbar.css";
+import "./Navbar.css";
 import logo from "../logo.png";
 
-//import MassModal from "../MassModal/MassModal";
-
-const useStyle = makeStyles({
-  dropHoverItems: {
-    fontSize: 10,
+const LightTooltip = withStyles((theme) => ({
+  tooltip: {
+    backgroundColor: "white",
+    color: "rgba(0, 0, 0, 0.87)",
+    boxShadow: theme.shadows[1],
+    borderTop: "solid 3px #061178",
   },
-});
+  tooltipPlacementBottom: {
+    margin: "2.2rem 0",
+  },
+}))(Tooltip);
+
+//import MassModal from "../MassModal/MassModal";
 
 const NavBar = (props) => {
   const [visible, setVisible] = useState(false);
@@ -41,13 +48,9 @@ const NavBar = (props) => {
     blog: false,
   });
 
-  const classes = useStyle();
   const history = useHistory();
   const { userData } = useContext(UserContext);
 
-  const showDrawer = () => {
-    setVisible(true);
-  };
   const hideDrawer = () => {
     setVisible(false);
     setDrop(false);
@@ -91,53 +94,58 @@ const NavBar = (props) => {
     hideDrawer();
   };
   const contributors = () => {
-    history.push("/contributors/jesuits");
+    history.push("/contributors");
     hideDrawer();
   };
   const login = () => history.push("/login");
+
   const massModalToggle = () => {
     setModal(!modal);
   };
 
-  const navLinks = [
-    { name: "Home", link: home },
-    { name: "Videos", icon: true },
-    { name: "Blogs", link: blogs },
-    { name: "Contributors", link: contributors },
-    { name: "Follow Him", link: followHim },
-    // { name: "Login", link: login },
-  ];
-
   const drawerLinks = [
-    { name: "Home", link: home, icon: <HomeRoundedIcon /> },
+    { id: 1, name: "Home", link: home, icon: <HomeRoundedIcon /> },
     {
+      id: 2,
       name: "Videos",
       link: () => setDrop(!videoDrop),
       icon: <PlayCircleFilledRoundedIcon />,
     },
-    { name: "Blogs", link: blogs, icon: <CreateRoundedIcon /> },
-    { name: "Contributors", link: contributors, icon: <GroupRoundedIcon /> },
-    { name: "Follow Him", link: followHim, icon: <DirectionsIcon /> },
+    { id: 3, name: "Blogs", link: blogs, icon: <CreateRoundedIcon /> },
+    {
+      id: 4,
+      name: "Contributors",
+      link: contributors,
+      icon: <GroupRoundedIcon />,
+    },
+    { id: 5, name: "Follow Him", link: followHim, icon: <DirectionsIcon /> },
   ];
 
   const videoDropLinks = [
-    { name: "Daily Mass", link: "" },
-    { name: "Gospel Insights", link: gVideos },
-    { name: "Ignatian Spirituality", link: sVideos },
-    { name: "Ignatian Mission", link: mVideos },
-    { name: "SJ Laity", link: lVideos },
-    { name: "Follow Him", link: fVideos },
+    { id: 1, name: "Daily Mass", link: "" },
+    { id: 2, name: "Gospel Insights", link: gVideos },
+    { id: 3, name: "Ignatian Spirituality", link: sVideos },
+    { id: 4, name: "Ignatian Mission", link: mVideos },
+    { id: 5, name: "SJ Laity", link: lVideos },
+    { id: 6, name: "Follow Him", link: fVideos },
+    { id: 7, name: "Youth Talk", link: yVideos },
   ];
 
-  const drawerDropVideos = () => (
-    <div className="drawer-drop-content">
-      <span> Daily Mass </span>
-      <span onClick={gVideos}> Gospel Insights </span>
-      <span onClick={sVideos}> Ignatian Spirituality </span>
-      <span onClick={mVideos}> Ignatian Mission </span>
-      <span onClick={lVideos}> SJ Laity </span>
-      <span onClick={yVideos}> Youth </span>
-      <span onClick={fVideos}> Follow Him </span>
+  const videoDropMenu = (
+    <div className="nav-drop-menu">
+      <List component="div" disablePadding>
+        {videoDropLinks.map((item) => (
+          <ListItem key={item.id} button>
+            <ListItemText
+              primary={item.name}
+              onClick={() => {
+                item.link();
+                setDropMenus({ videos: false });
+              }}
+            />
+          </ListItem>
+        ))}
+      </List>
     </div>
   );
 
@@ -157,7 +165,7 @@ const NavBar = (props) => {
             <List>
               {drawerLinks.map((item) => (
                 <>
-                  <ListItem onClick={item.link} button>
+                  <ListItem onClick={item.link} key={item.id} button>
                     <ListItemIcon>{item.icon}</ListItemIcon>
                     <ListItemText primary={item.name} />
                     {item.name === "Videos" ? (
@@ -176,7 +184,7 @@ const NavBar = (props) => {
                         disablePadding
                       >
                         {videoDropLinks.map((item) => (
-                          <ListItem button>
+                          <ListItem key={item.id} button>
                             <ListItemText
                               primary={item.name}
                               onClick={item.link}
@@ -193,34 +201,34 @@ const NavBar = (props) => {
 
           <div className="desktop-nav">
             <div onClick={home}>Home</div>
-            <div className="nav-drop-item">
-              <span onClick={() => setDropMenus({ videos: !dropMenus.videos })}>
-                Videos
-              </span>{" "}
-              {!dropMenus.videos ? (
-                <ExpandMore
-                  onClick={() => setDropMenus({ videos: !dropMenus.videos })}
-                />
-              ) : (
-                <ExpandLess
-                  onClick={() => setDropMenus({ videos: !dropMenus.videos })}
-                />
-              )}
-              {dropMenus.videos && (
-                <div className="nav-drop-menu">
-                  <List component="div" disablePadding>
-                    {videoDropLinks.map((item) => (
-                      <ListItem button>
-                        <ListItemText primary={item.name} onClick={item.link} />
-                      </ListItem>
-                    ))}
-                  </List>
+
+            <ClickAwayListener
+              onClickAway={() => setDropMenus({ videos: false })}
+            >
+              <LightTooltip
+                title={videoDropMenu}
+                PopperProps={{
+                  disablePortal: true,
+                }}
+                onClose={() => setDropMenus({ video: true })}
+                open={dropMenus.videos}
+                disableFocusListener
+                disableHoverListener
+                disableTouchListener
+                interactive
+              >
+                <div className="nav-drop-item">
+                  <span onClick={() => setDropMenus({ videos: true })}>
+                    Videos
+                  </span>
                 </div>
-              )}
-            </div>
-            <div>Blogs</div>
-            <div>Follow Him</div>
-            <div>Contributors</div>
+              </LightTooltip>
+            </ClickAwayListener>
+
+            <div onClick={blogs}>Blogs</div>
+            <div onClick={followHim}>Follow Him</div>
+            <div onClick={contributors}>Contributors</div>
+            <div onClick={login}>Login</div>
           </div>
         </div>
       </nav>

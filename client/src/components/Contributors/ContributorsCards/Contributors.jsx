@@ -1,98 +1,93 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
-import { useHistory } from "react-router-dom";
-import { trackPromise, usePromiseTracker } from "react-promise-tracker";
-import { Spin, Radio } from "antd";
+import { Card, CardMedia, CardContent, makeStyles } from "@material-ui/core";
 
 import "./Contributors.css";
 
-const ContributorsCard = (props) => {
-  const [contributors, setContributors] = useState([]);
-  const { promiseInProgress } = usePromiseTracker();
-  const history = useHistory();
+import { videos, blogs, laity } from "./contriArrays";
 
-  const radio = "/contributors/" + props.path;
+const useStyles = makeStyles((theme) => ({
+  img: {
+    width: "100%",
+    height: 350,
+    backgroundSize: "contain",
+    [theme.breakpoints.down("xs")]: {
+      height: 300,
+    },
+  },
+}));
 
-  useEffect(() => {
-    const getContributors = async () => {
-      try {
-        const res = await trackPromise(
-          axios.get("/api/contributors-" + props.path)
-        );
-        setContributors(res.data);
-      } catch (err) {
-        console.log(err.message);
-      }
-    };
-    getContributors();
-  }, [props.path]);
+const Contributors = () => {
+  const classes = useStyles();
+  const screenSize = window.screen.width;
 
-  const handleRadios = (evt) => {
-    history.push(evt.target.value);
+  const [divId, setDiv] = useState(null);
+
+  const contriCards = (arr) =>
+    arr.map((item) => (
+      <Card className="contributor-card">
+        <CardMedia image={item.img} title={item.name} className={classes.img} />
+        <CardContent>
+          <h4 className="contributor-name">{item.name}</h4>
+          <h6 className="contributor-location">{item.location}</h6>
+          <p className="contributor-quote">{item.quote}</p>
+        </CardContent>
+      </Card>
+    ));
+
+  useEffect(() => setDiv(document.getElementById("scrollDiv")), []);
+
+  let x = 0,
+    y = 0,
+    top = 0,
+    left = 0;
+
+  let draggingFunction = (e) => {
+    document.addEventListener("mouseup", () => {
+      document.removeEventListener("mousemove", draggingFunction);
+    });
+    if (divId !== null) {
+      divId.scrollLeft = left - e.pageX + x;
+      divId.scrollTop = top - e.pageY + y;
+    }
   };
 
-  const contributorsList = contributors.map((contri) => {
-    if (contri.validated) {
-      return (
-        <div className="contributors-card">
-          <div className="contributors-card-photo">
-            <img
-              className="contributors-avatar"
-              src={contri.imgURL}
-              alt="Profile Pic"
-            />
-          </div>
-          <div className="contributors-card-details">
-            <div>
-              <p className="contributors-card-name"> {contri.name} </p>
-              <p className="contributors-card-location">
-                {contri.basedLocation}
-              </p>
-              <blockquote>{contri.quote}</blockquote>
-            </div>
-            <div></div>
-          </div>
-        </div>
-      );
-    } else {
-      return null;
-    }
-  });
+  if (divId !== null)
+    divId.addEventListener("mousedown", (e) => {
+      e.preventDefault();
+
+      y = e.pageY;
+      x = e.pageX;
+      top = divId.scrollTop;
+      left = divId.scrollLeft;
+
+      document.addEventListener("mousemove", draggingFunction);
+    });
 
   return (
     <>
-      <br />
+      <h3 className="contributor-title">Videos</h3>
+      <div id="scrollDiv" className="contributor-cards-container">
+        {contriCards(videos)}
+      </div>
+      <p className="contributor-scroll-text">
+        {screenSize < 1000
+          ? "Swipe to view more >"
+          : "Scroll or Drag to view more>"}
+      </p>
 
-      <p className="contributors-page-title">Meet Our Contributors</p>
-
-      <Radio.Group onChange={handleRadios} defaultValue={radio}>
-        <Radio.Button
-          className="page-radio-buttons"
-          value="/contributors/jesuits"
-        >
-          Jesuits
-        </Radio.Button>
-        <Radio.Button
-          className="page-radio-buttons"
-          value="/contributors/laity"
-        >
-          Laity
-        </Radio.Button>
-        <Radio.Button
-          className="page-radio-buttons"
-          value="/contributors/blogs"
-        >
-          Blogs
-        </Radio.Button>
-      </Radio.Group>
-      {promiseInProgress && (
-        <div className="spinner">
-          <Spin size="large" />
-        </div>
+      <h3 className="contributor-title">Laity</h3>
+      <div className="contributor-cards-container">{contriCards(laity)}</div>
+      {screenSize < 1000 && (
+        <p className="contributor-scroll-text"> Swipe to view more > </p>
       )}
-      <div className="contributors-card-container">{contributorsList} </div>
+
+      <h3 className="contributor-title">Blogs</h3>
+      <div className="contributor-cards-container">{contriCards(blogs)}</div>
+      {screenSize < 1000 && (
+        <p className="contributor-scroll-text"> Swipe to view more > </p>
+      )}
     </>
   );
 };
 
-export default ContributorsCard;
+export default Contributors;
