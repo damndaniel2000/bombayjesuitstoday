@@ -216,7 +216,7 @@ const VideoCards = (props) => {
       <ButtonGroup
         size={matchesXS ? "small" : "large"}
         color="secondary"
-        style={{ display: "block" }}
+        style={{ display: "block", marginTop: "3rem" }}
       >
         <Button
           variant={props.path === "spiritual" ? "contained" : "outlined"}

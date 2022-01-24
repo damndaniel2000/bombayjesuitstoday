@@ -9,7 +9,6 @@ import theme from "./UI/Theme/theme";
 import UserContext from "./context/UserContext";
 
 import NavBar from "./components/Nav/Navbar/NavBar";
-import HomeNavBar from "./components/Nav/HomeNav/HomeNavBar";
 import Footer from "./components/Footer/Footer.jsx";
 
 import HomePage from "./pages/HomePage";
@@ -82,6 +81,11 @@ const App = () => {
     };
 
     checkLoggedIn();
+
+    axios
+      .get("/api/blogs")
+      .then((data) => console.log(data))
+      .catch((err) => console.log(err));
   }, []);
 
   return (
@@ -90,8 +94,8 @@ const App = () => {
         <ThemeProvider theme={theme}>
           <UserContext.Provider value={{ userData, setUserData }}>
             <Switch>
-              <HomeNavBar exact path="/" component={HomePage} />
-              <HomeNavBar exact path="/follow-him" component={FollowHimPage} />
+              <NavBar exact path="/" component={HomePage} />
+              <NavBar exact path="/follow-him" component={FollowHimPage} />
               <NavBar exact path="/privacy-policy" component={PrivacyPolicy} />
               <NavBar
                 exact

@@ -52,17 +52,10 @@
 }
 
 .nav-drop-menu {
-  position: absolute;
-  top: 85px;
-  right: 380px;
   width: 250px;
-  background-color: white;
-  border-top: solid 3px #061178;
-  z-index: 10;
-}
-.nav-drop-menu:hover {
   color: black;
 }
+
 .nav-drop-menu .MuiTypography-body1 {
   font-size: 15px;
   font-family: raleway;

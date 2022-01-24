@@ -34,6 +34,7 @@ const FollowMe = () => {
             "https://res.cloudinary.com/dij0e4dwn/image/upload/v1603001725/Follow%20Him%28Optimized%29/DSCN2983_otqc4b_hpxvx3.jpg",
             "https://res.cloudinary.com/dij0e4dwn/image/upload/v1603001726/Follow%20Him%28Optimized%29/IMG_20170707_125231_-_Copy_vtz8ap_cmczjt.jpg",
           ]}
+          id="carousel-1"
         />
       </section>
 
@@ -65,6 +66,7 @@ const FollowMe = () => {
             "https://res.cloudinary.com/dij0e4dwn/image/upload/v1603001730/Follow%20Him%28Optimized%29/Philip_Terrasa_-_July_2018_bztwak_c4vyt6.jpg",
             "https://res.cloudinary.com/dij0e4dwn/image/upload/v1603001725/Follow%20Him%28Optimized%29/IMG_20171122_123617_dmtvuf_uh7iuk.jpg",
           ]}
+          id="carousel-2"
         />
       </section>
 
@@ -111,6 +113,7 @@ const FollowMe = () => {
             "https://res.cloudinary.com/dij0e4dwn/image/upload/v1603002893/Follow%20Him%28Optimized%29/17_16_July_ph9vox_zhq8o5.jpg",
             "https://res.cloudinary.com/dij0e4dwn/image/upload/v1603002892/Follow%20Him%28Optimized%29/Bombay_Jesuits_yjbc84_e79vzj.jpg",
           ]}
+          id="carousel-3"
         />
         <div className="followhim-section-text">
           <br />

@@ -23,12 +23,15 @@ const userRouter = require("./routes/Misc/userRouter");
 const counterRouter = require("./routes/Misc/counterRouter");
 const subsRouter = require("./routes/Misc/subsRouter");
 
-MongoClient.connect("mongodb+srv://dan:NWsmH2ALWZY2rQL@cluster0.owjks.mongodb.net/jesuits?retryWrites=true&w=majority", {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-  useFindAndModify: false,
-  useCreateIndex: true,
-})
+MongoClient.connect(
+  "mongodb+srv://dan:3aT8NXhWRbYjnO8G@cluster0.owjks.mongodb.net/jesuits?retryWrites=true&w=majority",
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useFindAndModify: false,
+    useCreateIndex: true,
+  }
+)
   .then(() => console.log("Database Connection Successful"))
   .catch((err) => console.error(err));
 

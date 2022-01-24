@@ -8,6 +8,8 @@ import {
   ListItemText,
   Collapse,
   Zoom,
+  Tooltip,
+  withStyles,
   ClickAwayListener,
 } from "@material-ui/core";
 import UserContext from "../../../context/UserContext";
@@ -20,8 +22,20 @@ import GroupRoundedIcon from "@material-ui/icons/GroupRounded";
 import ExpandLess from "@material-ui/icons/ExpandLess";
 import ExpandMore from "@material-ui/icons/ExpandMore";
 
-import "../Navbar/Navbar.css";
+import "./Navbar.css";
 import logo from "../logo.png";
+
+const LightTooltip = withStyles((theme) => ({
+  tooltip: {
+    backgroundColor: "white",
+    color: "rgba(0, 0, 0, 0.87)",
+    boxShadow: theme.shadows[1],
+    borderTop: "solid 3px #061178",
+  },
+  tooltipPlacementBottom: {
+    margin: "2.2rem 0",
+  },
+}))(Tooltip);
 
 //import MassModal from "../MassModal/MassModal";
 
@@ -117,6 +131,24 @@ const NavBar = (props) => {
     { id: 7, name: "Youth Talk", link: yVideos },
   ];
 
+  const videoDropMenu = (
+    <div className="nav-drop-menu">
+      <List component="div" disablePadding>
+        {videoDropLinks.map((item) => (
+          <ListItem key={item.id} button>
+            <ListItemText
+              primary={item.name}
+              onClick={() => {
+                item.link();
+                setDropMenus({ videos: false });
+              }}
+            />
+          </ListItem>
+        ))}
+      </List>
+    </div>
+  );
+
   return (
     <>
       <nav className="nav-strip">
@@ -169,34 +201,30 @@ const NavBar = (props) => {
 
           <div className="desktop-nav">
             <div onClick={home}>Home</div>
-            <div className="nav-drop-item">
-              <span onClick={() => setDropMenus({ videos: !dropMenus.videos })}>
-                Videos
-              </span>
-              {dropMenus.videos && (
-                <ClickAwayListener
-                  onClickAway={() => setDropMenus({ videos: false })}
-                >
-                  <Zoom in={!dropMenus.video}>
-                    <div className="nav-drop-menu">
-                      <List component="div" disablePadding>
-                        {videoDropLinks.map((item) => (
-                          <ListItem key={item.id} button>
-                            <ListItemText
-                              primary={item.name}
-                              onClick={() => {
-                                item.link();
-                                setDropMenus({ videos: false });
-                              }}
-                            />
-                          </ListItem>
-                        ))}
-                      </List>
-                    </div>
-                  </Zoom>
-                </ClickAwayListener>
-              )}
-            </div>
+
+            <ClickAwayListener
+              onClickAway={() => setDropMenus({ videos: false })}
+            >
+              <LightTooltip
+                title={videoDropMenu}
+                PopperProps={{
+                  disablePortal: true,
+                }}
+                onClose={() => setDropMenus({ video: true })}
+                open={dropMenus.videos}
+                disableFocusListener
+                disableHoverListener
+                disableTouchListener
+                interactive
+              >
+                <div className="nav-drop-item">
+                  <span onClick={() => setDropMenus({ videos: true })}>
+                    Videos
+                  </span>
+                </div>
+              </LightTooltip>
+            </ClickAwayListener>
+
             <div onClick={blogs}>Blogs</div>
             <div onClick={followHim}>Follow Him</div>
             <div onClick={contributors}>Contributors</div>
